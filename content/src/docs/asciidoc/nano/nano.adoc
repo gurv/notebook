@@ -1,0 +1,15 @@
+= nano (Linux Command-Line Text Editor)
+
+|===
+|Клавиши |Действие
+|ctrl-o |
+Запись в файл
+|ctrl-x |
+выход
+|ctrl+w |
+поиск
+|ctrl+k |
+вырезать
+|ctrl+u |
+вставить
+|===
