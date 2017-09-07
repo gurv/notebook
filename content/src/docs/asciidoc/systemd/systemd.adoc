@@ -1,0 +1,46 @@
+= systemd
+
+* каталоги юнитов
+** /etc/systemd/system/ - юниты, созданные системным администратором
+** /usr/lib/systemd/system/ – юниты из установленных пакетов
+** /run/systemd/system/ — юниты, созданные в рантайме
+
+* запустить
+```
+systemctl start unit
+```
+
+* остановить
+```
+systemctl stop unit
+```
+
+* перезапустить
+```
+systemctl restart unit
+```
+
+* перезагрузка настроек
+```
+systemctl reload unit
+```
+
+* статус
+```
+systemctl status unit
+```
+
+* проверка настройки автозапуска
+```
+systemctl is-enabled unit
+```
+
+* включить в автозапуск
+```
+systemctl enable unit
+```
+
+* убрать из автозапуска
+```
+systemctl disable unit
+```

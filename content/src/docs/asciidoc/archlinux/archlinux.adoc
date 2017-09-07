@@ -1,0 +1,317 @@
+= ArchLinux (установка)
+
+[TIP]
+====
+Полезное
+
+* http://dobroserver.ru/minimalistichnoe-okruzhenie-s-arch-linux
+* https://wiki.archlinux.org/index.php/VirtualBox_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)#.D0.93.D0.BE.D1.81.D1.82.D0.B5.D0.B2.D0.B0.D1.8F_.D0.9E.D0.A1_.D0.B7.D0.B0.D0.B2.D0.B8.D1.81.D0.B0.D0.B5.D1.82_.D0.BF.D0.BE.D1.81.D0.BB.D0.B5_.D0.B7.D0.B0.D0.BF.D1.83.D1.81.D0.BA.D0.B0_Xorg
+====
+
+* загрузиться с ISO-дистрибутива и сменить пароль для root-а
+```
+passwd
+```
+[TIP]
+====
+если далее необходимо через SSH-соединение
+```
+systemctl start sshd
+ip addr | grep "scope global"
+```
+====
+
+* создание (выбрать тип dos c bootable), форматирование и монтирование раздела на диске
+```
+cfdisk /dev/sda
+mkfs.ext4 /dev/sda1 -L "boot"
+mount /dev/sda1 /mnt
+```
+
+* отредактировать список зеркал (строку с российским зеркалом перенести вверх списка)
+```
+nano /etc/pacman.d/mirrorlist
+```
+
+* установить базовые пакеты
+```
+pacstrap -i /mnt base base-devel
+```
+
+* временно подменить корневой каталог
+```
+arch-chroot /mnt
+```
+
+* выбрать язык (оставить только en_US.UTF-8 UTF-8 и ru_RU.UTF-8 UTF-8)
+```
+nano /etc/locale.gen
+```
+
+* генерация языков и язык по умолчанию
+```
+locale-gen
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+```
+
+* установка часового пояса МСК
+```
+ln -s /usr/share/zoneinfo/Europe/Moscow /etc/localtime.conf
+```
+
+* раскладка клавиатуры и шрифт в консоли
+```
+echo -e "KEYMAP=ru\nFONT=cyr-sun16\nFONT_MAP=" > /etc/vconsole.conf
+```
+
+* имя хоста
+```
+echo "arch" > /etc/hostname
+```
+
+* пользователь с правами админа
+```
+useradd -m user
+passwd user
+nano /etc/sudoers
+```
+(после строки: root ALL=(ALL) ALL добавить новую строку: gurv ALL=(ALL) ALL)
+
+* загрузчик
+```
+pacman -S grub
+grub-install --target=i386-pc --force --recheck /dev/sda
+exit
+arch-chroot /mnt grub-mkconfig --output=/boot/grub/grub.cfg
+genfstab -p /mnt > /mnt/etc/fstab
+```
+
+* отредактировать настройки сети
+```
+nano /mnt/etc/resolv.conf
+```
+(например, в случае VM-гостя, должно быть: nameserver 192.168.1.1)
+
+* выключить и затем отключить загрузку с ISO-дистрибутива
+```
+poweroff
+```
+
+* автозапуск и старт DHCP-клиента
+```
+systemctl enable dhcpcd
+systemctl start dhcpcd
+```
+
+* установить Midnight Commander
+```
+pacman -S mc
+```
+
+* установить SSH
+```
+pacman -S openssh
+nano /etc/ssh/sshd_config
+systemctl enable sshd
+```
+для X-клиентов должно быть:
+```
+PermitRootLogin yes
+X11Forwarding yes
+```
+
+* перегрузка
+```
+reboot
+```
+
+* шрифты, раскладка клавиатуры
+```
+pacman -S --noconfirm kbd-ru-keymaps terminus-font ttf-dejavu ttf-liberation
+nano /etc/vconsole.conf
+```
+должно быть:
+```
+LOCALE=en_US.UTF-8
+KEYMAP=ru
+FONT="ter-v20n"
+FONT_MAP=
+USECOLOR="yes"
+```
+
+* X (Xorg)
+
+** установить
++
+```
+pacman -S --noconfirm xf86-video-vesa
+pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
+pacman -S --noconfirm termite chromium
+```
+
+** переключение раскладки клавиатуры
++
+```
+nano ~/.xinitrc
+```
+добавить строку
++
+```
+setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
+```
+
+* awesome (https://awesomewm.org/)
++
+[TIP]
+====
+* Win+s - виджет подсказки активных горячих клавиш
+* Win+Shift+q - выход
+* Win+q - меню
+* n+r - командная строка
+* Win+Shift+c - закрыть окно
+* Win+F{1..5} — переключение между тегами
+* Win+Shift+F{1..5} — переместить активное окно из текущего тега в выбранный тег
+* Win+Ctrl+F{1..5} — отображать вместе окна из текущего тега и из выбранного тега(тегов)
+* Win+Ctrl+Shift+F{1..5} — вкл/выкл отображения активного окна на указанном теге(тегах)
+====
+
+** установить
++
+```
+pacman -S --noconfirm awesome
+mkdir ~/.config
+mkdir ~/.config/awesome
+cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
+echo "exec awesome" > ~/.xinitrc
+```
+
+** использовать termite
++
+```
+nano ~/.config/awesome/rc.lua
+```
+должно быть:
++
+```
+terminal = "termite"
+```
+
+** отключить рисунок (закомментировать строку с theme.wallpaper)
++
+```
+nano /usr/share/awesome/themes/default/theme.lua
+```
+
+* Если VM-гость (см. http://www.cs.columbia.edu/~jae/4118-LAST/arch-setup-2016-1.html)
+
+** установить гостевые модуля
++
+```
+pacman -S --noconfirm virtualbox-guest-modules-arch virtualbox-guest-utils
+```
+
+** создать файл
++
+```
+nano /etc/modules-load.d/virtualbox.conf
+```
+со следующими строками:
++
+```
+vboxguest
+vboxsf
+vboxvideo
+```
+
+** зарегистрировать сервис
++
+```
+systemctl enable vboxservice
+nano ~/.xinitrc
+```
+добавить строку
++
+```
+/usr/bin/VBoxClient-all
+```
+
+** установить утилиту для дальнейшей возможности сжать VDI-файл
++
+```
+pacman -S dcfldd
+```
++
+[TIP]
+====
+* это сделать на VM-госте перед сжатием:
+```
+dcfldd if=/dev/zero of=/fillfile bs=4M
+rm -rf /fillfile
+```
+* это сжатие на VM-хосте под Windows
+```
+VBoxManage.exe modifyhd arch.vdi --compact
+```
+====
+
+* установить Docker
+```
+pacman -S --noconfirm docker
+systemctl enable docker
+systemctl start docker
+docker info
+gpasswd -a user docker
+```
+
+[TIP]
+====
+* TODO пытался в /etc/docker/daemon.json указать
+```
+{
+  "hosts": ["tcp://0.0.0.0:2376"]
+}
+```
+, но стартует с ошибками
+
+* в /usr/lib/systemd/system/docker.service указад
+```
+ExecStart=/usr/bin/dockerd -H 0.0.0.0:2375
+```
+====
+
+* установить IDEA JetBrains (указать java-environment jdk8-openjdk)
+```
+pacman -S intellij-idea-community-edition
+```
+
+* VirtualBox-хост
++
+[TIP]
+====
+* запуск в X: virtualbox
+* запуск в терминале: VBoxSDL или VBoxHeadless
+====
++
+[TIP]
+====
+* TODO пакет дополнений
+* TODO образ диска с гостевыми дополнениями
+====
+
+** установить
++
+```
+pacman -S virtualbox linux-headers net-tools
+```
+
+** настроить (добавить строку: vboxdrv)
++
+```
+nano /etc/modules-load.d/virtualbox.conf
+```
+
+** (добавить: vboxnetadp vboxnetflt vboxpci)
++
+```
+nano /etc/modules-load.d/vbox-other-modules.conf
+```
