@@ -18,4 +18,6 @@ include::nodejs/nodejs.adoc[]
 
 include::angular/angular.adoc[]
 
+include::gradle/gradle.adoc[]
+
 :leveloffset: -1

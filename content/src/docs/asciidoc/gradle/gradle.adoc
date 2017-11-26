@@ -1,0 +1,40 @@
+= Gradle
+
+* Ссылки: https://gradle.org[сайт], https://discuss.gradle.org/c/help-discuss[форум], https://blog.gradle.org/[blog]
+
+* Установка
+
+** Скачать https://gradle.org/releases[последнюю версию]
+
+** Распаковать архив, например, в каталог C:\app
+
+** В системную переменную PATH добавить, например, C:\app\gradle-4.3.1\bin
+
+[TIP]
+====
+Необходима JDK или JRE версии 7 и выше
+====
+
+* Версия
+```
+gradle -v
+```
+
+
+[TIP]
+====
+* https://github.com/gradle/gradle-native[gradle-native]
+====
+
+== Разработка плагинов
+
+* https://docs.gradle.org/current/userguide/pt06.html["The Software model"]
+(https://docs.gradle.org/current/userguide/software_model.html["Rule based model configuration"],
+https://docs.gradle.org/current/userguide/software_model_extend.html["Extending the software model"])
+
+[WARNING]
+====
+20170824 объявлено об остановке этих работ (см. https://blog.gradle.org/state-and-future-of-the-gradle-software-model["State and future of the Gradle Software Model"])
+====
+
+
