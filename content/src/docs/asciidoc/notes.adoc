@@ -14,4 +14,8 @@ include::nano/nano.adoc[]
 
 include::systemd/systemd.adoc[]
 
+include::nodejs/nodejs.adoc[]
+
+include::angular/angular.adoc[]
+
 :leveloffset: -1

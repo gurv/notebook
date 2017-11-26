@@ -1,0 +1,41 @@
+= Node.js
+
+* Сайт https://nodejs.org
+
+* Дистрибутив (Windows x64) https://nodejs.org/dist/v8.9.1/node-v8.9.1-x64.msi
+
+[TIP]
+====
+В установку Node.js входит npm
+====
+
+* Версия
+```
+node -v
+```
+
+[TIP]
+====
+Установка последней версии
+```
+npm cache clean
+npm update -g
+```
+====
+
+= npm
+
+* Сайт https://www.npmjs.com
+
+* Версия
+```
+nmp -v
+```
+
+[TIP]
+====
+Установка последней версии
+```
+npm install -g npm@latest
+```
+====
