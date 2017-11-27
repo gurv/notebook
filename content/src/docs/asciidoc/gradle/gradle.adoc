@@ -20,11 +20,34 @@
 gradle -v
 ```
 
+* Свойства
+```
+gradle -q properties
+```
+
+* Задачи
+```
+gradle -q tasks
+```
+
+* Зависимости
+```
+gradlew -q dependencies
+```
+
+* Запуск задачи без выполнения
+```
+gradlew --dry-run :helloWorld
+```
 
 [TIP]
 ====
 * https://github.com/gradle/gradle-native[gradle-native]
 ====
+
+== Полезное
+
+* https://docs.gradle.org/current/userguide/working_with_files.html#sec:file_collections[Chapter 20. Working With Files]
 
 == Разработка плагинов
 
