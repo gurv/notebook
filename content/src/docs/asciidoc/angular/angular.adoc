@@ -5,6 +5,10 @@
 
 == Angular CLI
 
+* Полезное
+
+** https://habrahabr.ru/post/335318/[Хабр. Angular 4 Material. Часть 1 — Создание и настройка проекта]
+
 * Установка
 ```
 npm install -g @angular/cli
