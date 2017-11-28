@@ -112,6 +112,9 @@ ng g cl MyClassA
 
 == Angular Material
 
+* https://github.com/angular/material2[GitHub],
+https://material.angular.io/guide/getting-started[Getting started]
+
 * Установка
 ```
 npm install --save @angular/material
