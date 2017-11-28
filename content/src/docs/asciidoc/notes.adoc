@@ -4,6 +4,8 @@
 
 = Записная книжка GurV
 
+* https://github.com/gurv/notebook[GitHub]
+
 :leveloffset: +1
 
 include::archlinux/archlinux.adoc[]
