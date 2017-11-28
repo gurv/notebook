@@ -118,3 +118,8 @@ npm install --save @angular/material
 npm install --save @angular/cdk
 npm install --save @angular/animations
 ```
+
+* Версия
+```
+npm view @angular/material version
+```
