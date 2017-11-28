@@ -46,6 +46,7 @@ ng serve –prod
 ```
 start http://localhost:4200
 ```
+или link:localhost:4200[localhost:4200]
 ====
 
 * Конфигурация Webpack
