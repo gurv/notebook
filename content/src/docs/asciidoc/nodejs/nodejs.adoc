@@ -25,7 +25,7 @@ npm update -g
 
 = npm
 
-* Сайт https://www.npmjs.com
+* https://www.npmjs.com[Сайт]
 
 * Версия
 ```
