@@ -20,4 +20,6 @@ include::angular/angular.adoc[]
 
 include::gradle/gradle.adoc[]
 
+include::asciidoc/asciidoc.adoc[]
+
 :leveloffset: -1
