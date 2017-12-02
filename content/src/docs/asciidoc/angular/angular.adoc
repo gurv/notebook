@@ -112,7 +112,7 @@ ng g cl MyClassA
 
 == Angular Material
 
-* https://github.com/angular/material2[GitHub],
+* Ссылки: https://github.com/angular/material2[GitHub],
 https://material.angular.io/guide/getting-started[Getting started]
 
 * Установка
@@ -126,3 +126,9 @@ npm install --save @angular/animations
 ```
 npm view @angular/material version
 ```
+
+* Полезное:
+
+https://github.com/tomastrajan/angular-ngrx-material-starter[angular-ngrx-material-starter (git)],
+https://tomastrajan.github.io/angular-ngrx-material-starter#/about[angular-ngrx-material-starter (demo)],
+https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1[angular-ngrx-material-starter (blog)]
