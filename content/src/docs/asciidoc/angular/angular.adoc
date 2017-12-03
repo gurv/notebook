@@ -1,13 +1,16 @@
 = Angular
 
-* Сайт https://angular.io
-* npm https://www.npmjs.com/package/@angular/cli
+* Ссылки:
+https://angular.io[сайт],
+https://www.npmjs.com/package/@angular/cli[npm]
 
 == Angular CLI
 
 * Полезное
 
-** https://habrahabr.ru/post/335318/[Хабр. "Angular 4 Material. Часть 1 — Создание и настройка проекта"]
+https://habrahabr.ru/post/335318/[Хабр. "Angular 4 Material. Часть 1 — Создание и настройка проекта"],
+
+https://github.com/angular/material.angular.io[material.angular.io (git)]
 
 * Установка
 ```
@@ -22,7 +25,7 @@ ng -v
 * Создать новый проект
 +
 ```
-ng new my-app
+ng new my-app --style scss
 cd my-app
 ```
 
@@ -132,3 +135,9 @@ npm view @angular/material version
 https://github.com/tomastrajan/angular-ngrx-material-starter[angular-ngrx-material-starter (git)],
 https://tomastrajan.github.io/angular-ngrx-material-starter#/about[angular-ngrx-material-starter (demo)],
 https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1[angular-ngrx-material-starter (blog)]
+
+== Angular Material
+
+* Полезное:
+
+https://sass-scss.ru/guide/[Основы Sass]
