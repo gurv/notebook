@@ -4,6 +4,10 @@
 https://angular.io[сайт],
 https://www.npmjs.com/package/@angular/cli[npm]
 
+
+* Полезное:
+https://sass-scss.ru/guide/[Основы Sass]
+
 == Angular CLI
 
 * Полезное
@@ -136,8 +140,5 @@ https://github.com/tomastrajan/angular-ngrx-material-starter[angular-ngrx-materi
 https://tomastrajan.github.io/angular-ngrx-material-starter#/about[angular-ngrx-material-starter (demo)],
 https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1[angular-ngrx-material-starter (blog)]
 
-== Angular Material
-
-* Полезное:
-
-https://sass-scss.ru/guide/[Основы Sass]
+https://github.com/angular/material.angular.io[github прооекта документации],
+https://blog.thoughtram.io/angular/2017/05/23/custom-themes-with-angular-material.html[CUSTOM THEMES WITH ANGULAR MATERIAL]
