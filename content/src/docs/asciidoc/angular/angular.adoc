@@ -2,19 +2,13 @@
 
 * Ссылки:
 https://angular.io[сайт],
-https://www.npmjs.com/package/@angular/cli[npm]
-
+https://www.npmjs.com/package/@angular/cli[npm],
+https://angular.io/guide/router[Routing & Navigation]
 
 * Полезное:
 https://sass-scss.ru/guide/[Основы Sass]
 
 == Angular CLI
-
-* Полезное
-
-https://habrahabr.ru/post/335318/[Хабр. "Angular 4 Material. Часть 1 — Создание и настройка проекта"],
-
-https://github.com/angular/material.angular.io[material.angular.io (git)]
 
 * Установка
 ```
@@ -117,6 +111,10 @@ ng generate class MyClassA
 ng g cl MyClassA
 ```
 
+* Полезное:
+
+https://medium.com/@tomastrajan/6-best-practices-pro-tips-for-angular-cli-better-developer-experience-7b328bc9db81[6 Best Practices & Pro Tips when using Angular CLI],
+
 == Angular Material
 
 * Ссылки: https://github.com/angular/material2[GitHub],
@@ -140,5 +138,9 @@ https://github.com/tomastrajan/angular-ngrx-material-starter[angular-ngrx-materi
 https://tomastrajan.github.io/angular-ngrx-material-starter#/about[angular-ngrx-material-starter (demo)],
 https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1[angular-ngrx-material-starter (blog)]
 
-https://github.com/angular/material.angular.io[github прооекта документации],
-https://blog.thoughtram.io/angular/2017/05/23/custom-themes-with-angular-material.html[CUSTOM THEMES WITH ANGULAR MATERIAL]
+https://github.com/angular/material.angular.io[material.angular.io (git)],
+
+https://blog.thoughtram.io/angular/2017/05/23/custom-themes-with-angular-material.html[CUSTOM THEMES WITH ANGULAR MATERIAL],
+
+https://habrahabr.ru/post/335318/[Хабр. "Angular 4 Material. Часть 1 — Создание и настройка проекта"]
+
