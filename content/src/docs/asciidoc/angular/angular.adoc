@@ -159,3 +159,8 @@ https://embed.plnkr.co/plunk/gPY4rD["Custom breakpoints for @angular/flex-layout
 
 https://themeforest.net/item/fury-angular-2-material-design-admin-template/19325966["Fury - Angular 5 Material Design Admin Template"],
 http://fury.visurel.com/components/snack-bar[demo]
+
+== AGM - Angular Google Maps
+
+* Ссылки: https://github.com/SebastianM/angular-google-maps[GitHub],
+https://www.npmjs.com/package/@agm/core[npm]
