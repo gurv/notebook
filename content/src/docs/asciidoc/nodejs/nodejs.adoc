@@ -73,3 +73,9 @@ npm list rimraf
 ```
 npm list -п rimraf
 ```
+
+* Версии пакетов в локальном npm-репозитории
+npm list --depth=0
+
+* Версии пакетов в глобальном npm-репозитории
+npm list -g --depth=0
