@@ -164,3 +164,8 @@ http://fury.visurel.com/components/snack-bar[demo]
 
 * Ссылки: https://github.com/SebastianM/angular-google-maps[GitHub],
 https://www.npmjs.com/package/@agm/core[npm]
+
+== ng2-google-charts
+
+* Ссылки: https://github.com/gmazzamuto/ng2-google-charts[GitHub],
+https://www.npmjs.com/package/ng2-google-charts[npm]
