@@ -144,3 +144,18 @@ https://blog.thoughtram.io/angular/2017/05/23/custom-themes-with-angular-materia
 
 https://habrahabr.ru/post/335318/[Хабр. "Angular 4 Material. Часть 1 — Создание и настройка проекта"]
 
+== Angular Flex Layout
+
+* Ссылки: https://github.com/angular/flex-layout[GitHub],
+https://www.npmjs.com/package/@angular/flex-layout[npm],
+https://tburleson-layouts-demos.firebaseapp.com/#/docs[demo]
+
+* Полезное:
+
+https://alligator.io/angular/flex-layout["Flex Layout for Angular"],
+https://www.diycode.cc/projects/angular/flex-layout["Flex Layout"],
+http://mean-dev.info/sticky-footer-angular-2-flex-layout/["Прилипающий футер (sticky footer) на Angular 2+ и Flex-layout"],
+https://embed.plnkr.co/plunk/gPY4rD["Custom breakpoints for @angular/flex-layout (Plunker)"],
+
+https://themeforest.net/item/fury-angular-2-material-design-admin-template/19325966["Fury - Angular 5 Material Design Admin Template"],
+http://fury.visurel.com/components/snack-bar[demo]
