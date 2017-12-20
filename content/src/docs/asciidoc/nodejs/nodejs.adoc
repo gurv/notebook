@@ -58,3 +58,18 @@ npm install
 ```
 npm install rimraf
 ```
+
+* Версия пакета (например, rimraf) в удаленном npm-репозитории
+```
+npm view rimraf version
+```
+
+* Версия пакета (например, rimraf) в локальном npm-репозитории
+```
+npm list rimraf
+```
+
+* Версия пакета (например, rimraf) в глобальном npm-репозитории
+```
+npm list -п rimraf
+```
