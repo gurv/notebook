@@ -48,11 +48,8 @@ npm update
 [TIP]
 ====
 Ошибки сборки часто (TS2305, ...) "лечатся"
-
-* удалить каталог node_modules
-
-* выполнить установку
 ```
+rmdir node_modules /s /q
 npm install
 ```
 ====
