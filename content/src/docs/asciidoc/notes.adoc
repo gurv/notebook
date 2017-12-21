@@ -26,4 +26,6 @@ include::gradle/gradle.adoc[]
 
 include::asciidoc/asciidoc.adoc[]
 
+include::java/java.adoc[]
+
 :leveloffset: -1

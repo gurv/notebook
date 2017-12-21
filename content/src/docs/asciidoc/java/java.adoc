@@ -1,0 +1,12 @@
+= Java
+
+* Ссылки:
+http://www.oracle.com/technetwork/indexes/downloads/index.html[Oracle Java],
+http://jdk.java.net/9/[OpenJdk 9]
+
+== Mission Control & Flight Recorder
+
+```
+java -XX:+UnlockCommercialFeatures -XX:+FlightRecorder -jar sample.jar
+jmc
+```
