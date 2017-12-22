@@ -115,6 +115,13 @@ ng g cl MyClassA
 
 https://medium.com/@tomastrajan/6-best-practices-pro-tips-for-angular-cli-better-developer-experience-7b328bc9db81[6 Best Practices & Pro Tips when using Angular CLI],
 
+== Angular HttpClient
+
+* Полезное:
+https://habrahabr.ru/post/336280/["Основы Angular: HttpClient"],
+angular-testing-snippets-httpclient-d1dc2f035eb8["Angular Testing Snippets: the new HttpClient"],
+https://medium.com/codingthesmartway-com-blog/angular-4-3-httpclient-accessing-rest-web-services-with-angular-2305b8fd654b["Angular 4.3 HttpClient (Accessing REST Web Services With Angular)"]
+
 == Angular Material
 
 * Ссылки: https://github.com/angular/material2[GitHub],
