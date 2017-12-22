@@ -155,7 +155,8 @@ https://habrahabr.ru/post/335318/[Хабр. "Angular 4 Material. Часть 1 �
 
 * Ссылки: https://github.com/angular/flex-layout[GitHub],
 https://www.npmjs.com/package/@angular/flex-layout[npm],
-https://tburleson-layouts-demos.firebaseapp.com/#/docs[demo]
+https://tburleson-layouts-demos.firebaseapp.com/#/docs[demo],
+https://github.com/angular/flex-layout/wiki/API-Documentation[API]
 
 * Полезное:
 
