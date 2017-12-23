@@ -1,0 +1,5 @@
+= Rust
+
+* Ссылки:
+https://www.rust-lang.org/[site],
+https://win.rustup.rs/[distribution]

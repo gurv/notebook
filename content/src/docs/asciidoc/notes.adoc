@@ -30,6 +30,8 @@ include::java/java.adoc[]
 
 include::groovy/groovy.adoc[]
 
+include::rust/rust.adoc[]
+
 include::micex/micex.adoc[]
 
 :leveloffset: -1
