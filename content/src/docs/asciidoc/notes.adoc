@@ -28,6 +28,8 @@ include::asciidoc/asciidoc.adoc[]
 
 include::java/java.adoc[]
 
+include::groovy/groovy.adoc[]
+
 include::micex/micex.adoc[]
 
 :leveloffset: -1
