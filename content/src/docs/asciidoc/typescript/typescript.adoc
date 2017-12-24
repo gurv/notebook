@@ -1,0 +1,6 @@
+= TypeScript
+
+* Ссылки:
+https://www.typescriptlang.org/index.html[site],
+https://www.typescriptlang.org/docs/home.html[documentation],
+https://www.typescriptlang.org/#download-links[download]

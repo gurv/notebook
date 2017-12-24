@@ -32,6 +32,8 @@ include::groovy/groovy.adoc[]
 
 include::rust/rust.adoc[]
 
+include::typescript/typescript.adoc[]
+
 include::micex/micex.adoc[]
 
 :leveloffset: -1
