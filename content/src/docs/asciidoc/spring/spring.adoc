@@ -4,15 +4,12 @@
 https://spring.io/[site],
 https://docs.spring.io/spring/docs/current/spring-framework-reference/[documentation],
 https://github.com/spring-projects/spring-framework[GitHub],
-https://projects.spring.io/spring-boot/[spring-boot],
-https://github.com/spring-projects/spring-boot[spring-boot GitHub],
-http://projects.spring.io/spring-cloud/[spring-cloud],
-https://github.com/spring-cloud[spring-cloud GitHub]
 
 == Spring Boot
 
 * Ссылки:
 https://projects.spring.io/spring-boot/[site],
+https://github.com/spring-projects/spring-boot[GitHub],
 https://start.spring.io/[Spring Initializr]
 
 == Spring Security
@@ -20,5 +17,9 @@ https://start.spring.io/[Spring Initializr]
 == Spring Data
 
 == Spring Cloud
+
+* Ссылки:
+http://projects.spring.io/spring-cloud/[site],
+https://github.com/spring-cloud[GitHub]
 
 == Spring WebFlux
