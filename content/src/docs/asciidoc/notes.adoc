@@ -28,6 +28,8 @@ include::asciidoc/asciidoc.adoc[]
 
 include::java/java.adoc[]
 
+include::spring/spring.adoc[]
+
 include::groovy/groovy.adoc[]
 
 include::rust/rust.adoc[]

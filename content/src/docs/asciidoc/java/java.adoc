@@ -10,20 +10,3 @@ http://jdk.java.net/9/[OpenJdk 9]
 java -XX:+UnlockCommercialFeatures -XX:+FlightRecorder -jar sample.jar
 jmc
 ```
-
-== Spring Framework
-
-* Ссылки:
-https://spring.io/[site],
-https://docs.spring.io/spring/docs/current/spring-framework-reference/[documentation],
-https://github.com/spring-projects/spring-framework[GitHub],
-https://projects.spring.io/spring-boot/[spring-boot],
-https://github.com/spring-projects/spring-boot[spring-boot GitHub],
-http://projects.spring.io/spring-cloud/[spring-cloud],
-https://github.com/spring-cloud[spring-cloud GitHub]
-
-=== Spring Boot
-
-* Ссылки:
-https://projects.spring.io/spring-boot/[site],
-https://start.spring.io/[Spring Initializr]
