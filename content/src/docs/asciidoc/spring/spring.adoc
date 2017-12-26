@@ -4,6 +4,7 @@
 https://spring.io/[site],
 https://docs.spring.io/spring/docs/current/spring-framework-reference/[documentation],
 https://github.com/spring-projects/spring-framework[GitHub],
+https://repo.spring.io/webapp/#/home[repo]
 
 == Spring Boot
 
@@ -20,7 +21,49 @@ https://start.spring.io/[Spring Initializr]
 
 * Ссылки:
 http://projects.spring.io/spring-cloud/[site],
-https://github.com/spring-cloud[GitHub]
+https://github.com/spring-cloud[GitHub],
+https://cloud.spring.io/spring-cloud-netflix/[Netflix]
+
+* Полезное:
+https://habrahabr.ru/company/jugru/blog/341026/["Хабр. Что такое Spring Cloud и как его готовить"]
+
+=== Spring Cloud Config
+
+Centralized external configuration management backed by a git repository. The configuration resources map directly to Spring `Environment` but could be used by non-Spring applications if desired.
+
+* Ссылки:
+https://cloud.spring.io/spring-cloud-config/[site],
+https://github.com/spring-cloud/spring-cloud-config[GitHib]
+
+=== Spring Cloud Netflix
+
+Integration with various Netflix OSS components (Eureka, Hystrix, Zuul, Archaius, etc.). 
+
+* Ссылки:
+https://cloud.spring.io/spring-cloud-netflix/[site]
+
+=== Spring Cloud Stream
+
+A lightweight event-driven microservices framework to quickly build applications that can connect to external systems. Simple declarative model to send and receive messages using Apache Kafka or RabbitMQ between Spring Boot apps.
+
+* Ссылки:
+https://cloud.spring.io/spring-cloud-stream/[site],
+https://docs.spring.io/spring-cloud-stream/docs/current/reference/htmlsingle/[documentation],
+https://github.com/spring-cloud/spring-cloud-stream[GitHub]
+
+* Полезное:
+http://www.baeldung.com/spring-cloud-stream["Introduction to Spring Cloud Stream"]
+
+=== Spring Cloud Security
+
+Provides support for load-balanced OAuth2 rest client and authentication header relays in a Zuul proxy.
+
+=== Spring Cloud Sleuth
+
+Distributed tracing for Spring Cloud applications, compatible with Zipkin, HTrace and log-based (e.g. ELK) tracing. 
+
+* Ссылки:
+https://cloud.spring.io/spring-cloud-sleuth/[site]
 
 * Полезное:
 https://habrahabr.ru/company/jugru/blog/341026/["Хабр. Что такое Spring Cloud и как его готовить"]
