@@ -64,3 +64,7 @@ Distributed tracing for Spring Cloud applications, compatible with Zipkin, HTrac
 https://cloud.spring.io/spring-cloud-sleuth/[site]
 
 == Spring WebFlux
+
+* Ссылки:
+https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html[docs],
+https://github.com/spring-projects/spring-framework/tree/master/spring-webflux[git]
