@@ -130,7 +130,11 @@ https://alligator.io/angular/httpclient-intro/[Introduction to Angular's HttpCli
 == Angular Material
 
 * Ссылки: https://github.com/angular/material2[GitHub],
-https://material.angular.io/guide/getting-started[Getting started]
+https://material.angular.io/guide/getting-started[Getting started],
+https://material.angular.io/components/categories[components],
+https://material.io/icons/[icons],
+https://material.io/guidelines/[design guide],
+https://material-components-web.appspot.com/[design components]
 
 * Установка
 ```
