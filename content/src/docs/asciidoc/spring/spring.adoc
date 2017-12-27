@@ -15,6 +15,10 @@ https://start.spring.io/[Spring Initializr]
 
 == Spring Security
 
+* Полезное:
+https://developer.okta.com/blog/2017/12/18/spring-security-5-oidc["Get Started with Spring Security 5.0 and OIDC"],
+http://www.baeldung.com/spring-security-openid-connect["Spring Security and OpenID Connect"]
+
 == Spring Data
 
 == Spring Cloud
