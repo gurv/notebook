@@ -1,0 +1,14 @@
+= OpenID Connect
+
+* Ссылки:
+http://openid.net/connect/[site],
+https://en.wikipedia.org/wiki/OpenID_Connect[wiki]
+
+* Providers:
+https://developer.okta.com/docs/api/resources/oidc[Okta],
+https://developers.google.com/identity/protocols/OpenIDConnect#authenticatingtheuser[Goggle],
+https://docs.microsoft.com/ru-ru/azure/active-directory/develop/active-directory-protocols-openid-connect-code[Microsoft],
+https://developer.yahoo.com/oauth2/guide/openid_connect/[Yahoo]
+
+* Полезное:
+https://habrahabr.ru/post/281406/["Хабр (2016): Вкратце об OpenID Connect"]
