@@ -30,6 +30,8 @@ include::java/java.adoc[]
 
 include::spring/spring.adoc[]
 
+include::kubernetes/kubernetes.adoc[]
+
 include::groovy/groovy.adoc[]
 
 include::rust/rust.adoc[]
