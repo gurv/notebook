@@ -10,3 +10,9 @@ http://jdk.java.net/9/[OpenJdk 9]
 java -XX:+UnlockCommercialFeatures -XX:+FlightRecorder -jar sample.jar
 jmc
 ```
+
+== Java SE 8 Date and Time
+
+http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html["Java SE 8 Date and Time"],
+https://habrahabr.ru/post/274811/["Хабр 201801: Java и время: часть первая"],
+https://habrahabr.ru/post/274905/["Хабр 201801: Java и время: часть первая"]
