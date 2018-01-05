@@ -38,6 +38,8 @@ include::rust/rust.adoc[]
 
 include::typescript/typescript.adoc[]
 
+include::rxjs/rxjs.adoc[]
+
 include::oidc/oidc.adoc[]
 
 include::micex/micex.adoc[]
