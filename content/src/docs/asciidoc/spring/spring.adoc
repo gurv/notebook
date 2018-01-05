@@ -23,6 +23,35 @@ https://docs.spring.io/spring-security/site/docs/5.0.0.RELEASE/reference/htmlsin
 
 == Spring Data
 
+* Включение логирования для Hibernate (файл application.yml)
+```
+spring:
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+logging:
+  level:
+    org.hibernate: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type: TRACE
+```
+
+=== Spring Data REST
+
+* Ссылки:
+https://projects.spring.io/spring-data-rest/[site],
+https://docs.spring.io/spring-data/rest/docs/3.0.2.RELEASE/reference/html/[reference]
+
+== Spring Hateoas
+
+* Ссылки:
+https://projects.spring.io/spring-hateoas/[site],
+https://github.com/spring-projects/spring-hateoas[GitHub],
+https://docs.spring.io/spring-hateoas/docs/0.23.0.RELEASE/reference/html/[reference]
+
 == Spring Cloud
 
 * Ссылки:
