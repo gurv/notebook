@@ -21,6 +21,33 @@ http://www.baeldung.com/spring-security-openid-connect["Spring Security and Open
 https://github.com/spring-projects/spring-security/tree/5.0.0.RELEASE/samples/boot/oauth2login["OAuth 2.0 Login Sample"],
 https://docs.spring.io/spring-security/site/docs/5.0.0.RELEASE/reference/htmlsingle/#jc-oauth2login["OAuth 2.0 Login Sample Documentation (есть информация о регистрации приложений на GitHub, Google, Facebook, Okta"]
 
+== Spring Batch
+
+A lightweight, comprehensive batch framework designed to enable the development of robust batch applications vital for the daily operations of enterprise systems.
+
+* Ссылки:
+http://projects.spring.io/spring-batch/[site],
+https://github.com/spring-projects/spring-batch[GitHub],
+https://docs.spring.io/spring-batch/4.0.x/reference/html/index.html[reference],
+http://download.oracle.com/otndocs/jcp/batch-1_0_revA-mrel-eval-spec/index.html[JSR-352]
+
+* Полезное:
+http://spring-projects.ru/guides/batch-processing/["Создание Batch-сервиса"],
+http://javainside.ru/primer-ispolzovaniya-spring-batch-3-0-chast-1/["Spring Batch 3.0 – Часть 1: Пример использования"],
+http://sboychenko.ru/spring-batch-jmstemplate/["Spring Batch + JmsTemplate"]
+
+== Spring Kafka
+
+The Spring for Apache Kafka (spring-kafka) project applies core Spring concepts to the development of Kafka-based messaging solutions.
+
+* Ссылки:
+http://projects.spring.io/spring-kafka/[site],
+https://github.com/spring-projects/spring-kafka[GitHub],
+https://docs.spring.io/spring-kafka/docs/2.1.1.BUILD-SNAPSHOT/reference/html/[reference]
+
+* Полезное:
+http://www.baeldung.com/spring-kafka["Intro to Apache Kafka with Spring"]
+
 == Spring Data
 
 * Включение логирования для Hibernate (файл application.yml)
@@ -83,7 +110,7 @@ A lightweight event-driven microservices framework to quickly build applications
 
 * Ссылки:
 https://cloud.spring.io/spring-cloud-stream/[site],
-https://docs.spring.io/spring-cloud-stream/docs/current/reference/htmlsingle/[documentation],
+https://docs.spring.io/spring-cloud-stream/docs/current/reference/htmlsingle/[reference],
 https://github.com/spring-cloud/spring-cloud-stream[GitHub]
 
 * Полезное:
