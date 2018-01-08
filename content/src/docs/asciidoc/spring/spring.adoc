@@ -111,10 +111,20 @@ A lightweight event-driven microservices framework to quickly build applications
 * Ссылки:
 https://cloud.spring.io/spring-cloud-stream/[site],
 https://docs.spring.io/spring-cloud-stream/docs/current/reference/htmlsingle/[reference],
-https://github.com/spring-cloud/spring-cloud-stream[GitHub]
+https://github.com/spring-cloud/spring-cloud-stream[GitHub],
+https://github.com/spring-cloud/spring-cloud-stream-samples[samples]
 
 * Полезное:
 http://www.baeldung.com/spring-cloud-stream["Introduction to Spring Cloud Stream"]
+
+=== Spring Cloud Data Flow
+
+Spring Cloud Data Flow is a toolkit for building data integration and real-time data processing pipelines.
+
+* Ссылки:
+https://cloud.spring.io/spring-cloud-dataflow/[site],
+https://docs.spring.io/spring-cloud-dataflow/docs/1.3.0.M3/reference/htmlsingle/#getting-started[reference],
+https://github.com/spring-cloud/spring-cloud-dataflow[GitHub]
 
 === Spring Cloud Security
 
