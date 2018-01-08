@@ -32,6 +32,8 @@ include::spring/spring.adoc[]
 
 include::kafka/kafka.adoc[]
 
+include::docker/docker.adoc[]
+
 include::kubernetes/kubernetes.adoc[]
 
 include::groovy/groovy.adoc[]
