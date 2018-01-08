@@ -5,3 +5,11 @@ https://kafka.apache.org/[site],
 https://kafka.apache.org/documentation/[documentation],
 https://github.com/apache/kafka[GitHub],
 https://kafka.apache.org/downloads[download]
+
+* Запуск
+
+** Windows
+```
+%KAFKA_HOME%\bin\windows\zookeeper-server-start.bat %KAFKA_HOME%\config\zookeeper.properties
+%KAFKA_HOME%\bin\windows\kafka-server-start.bat %KAFKA_HOME%\config\server.properties
+```
