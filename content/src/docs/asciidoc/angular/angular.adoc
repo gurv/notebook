@@ -6,7 +6,8 @@ https://www.npmjs.com/package/@angular/cli[npm],
 https://angular.io/guide/router[Routing & Navigation]
 
 * Полезное:
-https://sass-scss.ru/guide/[Основы Sass]
+https://sass-scss.ru/guide/[Основы Sass],
+https://angular.io/guide/dynamic-component-loader["Dynamic Component Loader"]
 
 == Angular CLI
 
