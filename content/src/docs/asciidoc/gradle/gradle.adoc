@@ -47,7 +47,9 @@ gradlew --dry-run :helloWorld
 
 == Полезное
 
-* https://docs.gradle.org/current/userguide/working_with_files.html#sec:file_collections[Chapter 20. Working With Files]
+https://docs.gradle.org/current/userguide/working_with_files.html#sec:file_collections["Chapter 20. Working With Files"],
+https://guides.gradle.org/using-the-worker-api/["Using the Worker API"]
+
 
 == Разработка плагинов
 
