@@ -10,13 +10,7 @@
 
 include::git/git.adoc[]
 
-include::archlinux/archlinux.adoc[]
-
-include::mc/mc.adoc[]
-
-include::nano/nano.adoc[]
-
-include::systemd/systemd.adoc[]
+include::linux/linux.adoc[]
 
 include::nodejs/nodejs.adoc[]
 
@@ -49,8 +43,6 @@ include::rxjs/rxjs.adoc[]
 include::oidc/oidc.adoc[]
 
 include::idea/idea.adoc[]
-
-include::alpine/alpine.adoc[]
 
 include::micex/micex.adoc[]
 

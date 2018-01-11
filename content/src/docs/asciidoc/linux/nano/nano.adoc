@@ -1,4 +1,6 @@
-= nano (Linux Command-Line Text Editor)
+= nano
+
+Linux Command-Line Text Editor
 
 |===
 |Клавиши |Действие

@@ -1,4 +1,6 @@
-= mc (Midnight Commander)
+= mc
+
+(Midnight Commander)
 
 [options="header"]
 |===
