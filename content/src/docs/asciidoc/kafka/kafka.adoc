@@ -13,3 +13,7 @@ https://kafka.apache.org/downloads[download]
 %KAFKA_HOME%\bin\windows\zookeeper-server-start.bat %KAFKA_HOME%\config\zookeeper.properties
 %KAFKA_HOME%\bin\windows\kafka-server-start.bat %KAFKA_HOME%\config\server.properties
 ```
+
+* Полезное
+
+https://github.com/blacktop/docker-kafka-alpine["Alpine Linux based Kafka Docker Image"]
