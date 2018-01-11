@@ -30,6 +30,8 @@ include::java/java.adoc[]
 
 include::spring/spring.adoc[]
 
+include::zookeeper/zookeeper.adoc[]
+
 include::kafka/kafka.adoc[]
 
 include::docker/docker.adoc[]
