@@ -1,0 +1,19 @@
+= Alpine Linux
+
+Alpine Linux is an independent, non-commercial, general purpose Linux distribution designed for power users who appreciate security, simplicity and resource efficiency.
+
+* Ссылки:
+https://alpinelinux.org/[site],
+https://wiki.alpinelinux.org/[wiki]
+https://pkgs.alpinelinux.org/[apk],
+https://hub.docker.com/r/_/alpine/[DockerHub]
+
+== apk
+
+* --no-cache
+
+It allows users to install packages with an index that is updated and used on-the-fly and not cached locally
+
+* --virtual GROUP_NAME
+
+Group dependencies (easy clean)

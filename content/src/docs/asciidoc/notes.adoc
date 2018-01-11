@@ -50,6 +50,8 @@ include::oidc/oidc.adoc[]
 
 include::idea/idea.adoc[]
 
+include::alpine/alpine.adoc[]
+
 include::micex/micex.adoc[]
 
 :leveloffset: -1
