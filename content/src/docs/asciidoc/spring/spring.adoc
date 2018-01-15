@@ -19,7 +19,8 @@ https://start.spring.io/[Spring Initializr]
 https://developer.okta.com/blog/2017/12/18/spring-security-5-oidc["Get Started with Spring Security 5.0 and OIDC"],
 http://www.baeldung.com/spring-security-openid-connect["Spring Security and OpenID Connect"]
 https://github.com/spring-projects/spring-security/tree/5.0.0.RELEASE/samples/boot/oauth2login["OAuth 2.0 Login Sample"],
-https://docs.spring.io/spring-security/site/docs/5.0.0.RELEASE/reference/htmlsingle/#jc-oauth2login["OAuth 2.0 Login Sample Documentation (есть информация о регистрации приложений на GitHub, Google, Facebook, Okta"]
+https://docs.spring.io/spring-security/site/docs/5.0.0.RELEASE/reference/htmlsingle/#jc-oauth2login["OAuth 2.0 Login Sample Documentation (есть информация о регистрации приложений на GitHub, Google, Facebook, Okta"],
+https://habrahabr.ru/post/346628/["201801 Хабр: Путь запроса по внутренностям Spring Security"]
 
 == Spring Batch
 
