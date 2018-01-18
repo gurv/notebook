@@ -40,6 +40,11 @@ gradlew -q dependencies
 gradlew --dry-run :helloWorld
 ```
 
+* Запуск задачи с получением отчета профилирования
+```
+gradlew :helloWorld --profile
+```
+
 [TIP]
 ====
 * https://github.com/gradle/gradle-native[gradle-native]
