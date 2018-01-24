@@ -40,6 +40,8 @@ include::typescript/typescript.adoc[]
 
 include::rxjs/rxjs.adoc[]
 
+include::graphql/graphql.adoc[]
+
 include::cucumber/cucumber.adoc[]
 
 include::oidc/oidc.adoc[]
