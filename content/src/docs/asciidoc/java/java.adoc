@@ -4,6 +4,9 @@
 http://www.oracle.com/technetwork/indexes/downloads/index.html[Oracle Java],
 http://jdk.java.net/9/[OpenJdk 9]
 
+* Полезное:
+https://habrahabr.ru/post/314386/["Хабр 201709: Шпаргалки Java программиста 9: Java SE — Шпаргалка для собеседований и повторений"]
+
 == Mission Control & Flight Recorder
 
 ```
