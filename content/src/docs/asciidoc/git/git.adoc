@@ -8,3 +8,40 @@
 ```
 git commit --amend -m "новый"
 ```
+
+* Какие коммиты добавились по сравнению с веткой dev
+```
+git cherry -v dev
+```
+
+* Сколько коммитов добавилось по сравнению с веткой dev
+```
+git cherry -v dev | wc -l
+```
+
+* Просмотр настройки текстового редактора
+```
+git config --global core.editor
+```
+
+* Настройка текстового редактора
+```
+git config --global core.editor 'D:\app\sublime\3.0\sublime_text.exe' -w
+```
+
+* Просмотр настройки diff-утилиты
+```
+git config --global merge.tool
+```
+
+* Удаление тегов
+```
+git tag -d tagName
+git push origin :refs/tags/tagName
+```
+
+* Удаление тегов (другой вариант)
+```
+git push --delete origin tagName
+git tag -d tagName
+```
