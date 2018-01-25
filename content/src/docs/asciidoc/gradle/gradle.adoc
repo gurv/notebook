@@ -45,6 +45,8 @@ gradlew --dry-run :helloWorld
 gradlew :helloWorld --profile
 ```
 
+* Управления зависимостями и порядком выполнения задач: dependsOn, mustRunAfter, finalizedBy
+
 [TIP]
 ====
 * https://github.com/gradle/gradle-native[gradle-native]
