@@ -40,6 +40,11 @@ gradlew -q dependencies
 gradlew --dry-run :helloWorld
 ```
 
+* Запуск задачи с обязательным выполнением
+```
+gradlew –rerun-tasks :helloWorld
+```
+
 * Запуск задачи с получением отчета профилирования
 ```
 gradlew :helloWorld --profile
