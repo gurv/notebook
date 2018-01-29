@@ -72,6 +72,14 @@ gradle hello --no-daemon -Dorg.gradle.debug=true
 
 * Добавить в IDEA debug-конфигурацию по шаблону "Defaults/Remote" и с настройками по умолчанию, запустить эту конфигурацию. Процесс сборки продолжится и остановится на breakpoint-е
 
+== Plugins
+
+* https://github.com/Transmode/gradle-docker[se.transmode.gradle:gradle-docker]
+[TIP]
+====
+20170129: Похоже что самый популярный
+====
+
 == Полезное
 
 https://docs.gradle.org/current/userguide/working_with_files.html#sec:file_collections["Chapter 20. Working With Files"],

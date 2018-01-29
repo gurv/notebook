@@ -3,5 +3,13 @@
 * Ссылки:
 https://www.docker.com/[site],
 https://docs.docker.com/[documentation],
+https://docs.docker.com/engine/reference/commandline/cli/[engine CLI],
+https://docs.docker.com/compose/reference/overview/[compose CLI],
+https://docs.docker.com/machine/reference/[machine CLI],
 https://hub.docker.com/[Docker Hub],
 https://github.com/docker/docker-ce[GitHub (CE)]
+
+* Собрать образ
+```
+docker build -t imageNameAndTag dockerFile
+```
