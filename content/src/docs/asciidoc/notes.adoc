@@ -48,6 +48,8 @@ include::oidc/oidc.adoc[]
 
 include::idea/idea.adoc[]
 
+include::chrome/chrome.adoc[]
+
 include::micex/micex.adoc[]
 
 :leveloffset: -1
