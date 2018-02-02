@@ -12,6 +12,8 @@ include::git/git.adoc[]
 
 include::linux/linux.adoc[]
 
+include::windows/windows.adoc[]
+
 include::nodejs/nodejs.adoc[]
 
 include::angular/angular.adoc[]

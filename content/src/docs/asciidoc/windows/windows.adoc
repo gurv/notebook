@@ -1,0 +1,16 @@
+= Windows
+
+* Java-процессы
+```
+tasklist /fi "imagename eq java.exe"
+```
+
+* Имя хоста
+```
+hostname
+```
+
+* MAC-адреса
+```
+getmac /v
+```
