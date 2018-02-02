@@ -9,7 +9,12 @@ https://docs.docker.com/machine/reference/[machine CLI],
 https://hub.docker.com/[Docker Hub],
 https://github.com/docker/docker-ce[GitHub (CE)]
 
-* Собрать образ
+* Скачать образ (https://docs.docker.com/engine/reference/commandline/pull/[ref])
+```
+docker pull openjdk:8-jre-alpine
+```
+
+* Собрать образ (https://docs.docker.com/engine/reference/commandline/build/[ref])
 ```
 docker build -t imageNameAndTag dockerFile
 ```
