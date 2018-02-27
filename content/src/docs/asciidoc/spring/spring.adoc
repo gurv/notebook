@@ -184,3 +184,27 @@ https://cloud.spring.io/spring-cloud-sleuth/[site]
 * Ссылки:
 https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html[docs],
 https://github.com/spring-projects/spring-framework/tree/master/spring-webflux[git]
+
+== Spring Boot Actuator
+
+Spring Boot Actuator includes a number of additional features to help you monitor and manage your application when it’s pushed to production. You can choose to manage and monitor your application using HTTP or JMX endpoints. Auditing, health and metrics gathering can be automatically applied to your application.
+
+* Ссылки:
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready[doc],
+https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator[git]
+
+== SpringFox
+
+The Springfox suite of java libraries are all about automating the generation of machine and human readable specifications for JSON APIs written using the spring family of projects. Springfox works by examining an application, once, at runtime to infer API semantics based on spring configurations, class structure and various compile time java Annotations.
+
+* Ссылки:
+https://springfox.github.io/springfox/docs/current/[doc],
+https://github.com/springfox/springfox[git]
+
+== JavaMelody
+
+The goal of JavaMelody is to monitor Java or Java EE applications in QA and production environments. It is not a tool to simulate requests from users, it is a tool to measure and calculate statistics on real operation of an application depending on the usage of the application by users.
+
+"Очень удобная штука, которая встраивается в виде веб-фильтра во все запросы, да и не только в запросы, собирает кучу полезных данных и очень компактно выставляет их в виде красивой странички прямо на борту микросевиса" (ЦФТ 2018)
+
+https://github.com/javamelody/javamelody/wiki[git]
