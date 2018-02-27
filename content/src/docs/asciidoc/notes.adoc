@@ -54,4 +54,6 @@ include::chrome/chrome.adoc[]
 
 include::micex/micex.adoc[]
 
+include::microservices/microservices.adoc[]
+
 :leveloffset: -1
