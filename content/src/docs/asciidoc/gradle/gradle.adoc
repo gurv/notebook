@@ -90,6 +90,11 @@ https://guides.gradle.org/using-the-worker-api/["Using the Worker API"]
 task helloWorld(overwrite: true) { }
 ```
 
+* Сборка без прогона тестов
+```
+gradle build -x test
+```
+
 == Разработка плагинов
 
 * https://docs.gradle.org/current/userguide/pt06.html["The Software model"]
