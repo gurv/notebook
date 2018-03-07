@@ -130,6 +130,14 @@ https://github.com/spring-cloud/spring-cloud-dataflow[git]
 * http://cloud.spring.io/spring-cloud-dataflow-ui/[doc],
 https://github.com/spring-cloud/spring-cloud-dataflow-ui[git]
 
+=== Spring Cloud Skipper
+
+Skipper is a tool that allows you to discover applications and manage their lifecycle on multiple Cloud Platforms.
+
+* https://cloud.spring.io/spring-cloud-skipper/[site],
+http://docs.spring.io/spring-cloud-skipper/docs/1.0.1.RELEASE/reference/htmlsingle/#getting-started[doc],
+https://github.com/spring-cloud/spring-cloud-skipper[git]
+
 === Spring Cloud Security
 
 Provides support for load-balanced OAuth2 rest client and authentication header relays in a Zuul proxy.
@@ -165,7 +173,7 @@ Spring Flo is a JavaScript library that offers a basic embeddable HTML5 visual b
 * https://github.com/spring-projects/spring-flo[git],
 https://github.com/spring-projects/spring-flo#samples[samples]
 
-=== Spring Statemachine
+== Spring Statemachine
 
 Spring Statemachine is a framework for application developers to use state machine concepts with Spring applications.
 
