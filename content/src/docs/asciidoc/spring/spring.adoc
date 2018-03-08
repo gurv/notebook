@@ -125,6 +125,11 @@ Spring Cloud Data Flow is a toolkit for building data integration and real-time 
 https://docs.spring.io/spring-cloud-dataflow/docs/1.3.0.M3/reference/htmlsingle/#getting-started[doc],
 https://github.com/spring-cloud/spring-cloud-dataflow[git]
 
+[TIP]
+====
+https://spring.io/blog/2018/02/27/spring-cloud-data-flow-1-4-0-m1-released["Spring Cloud Data Flow 1.4.0 M1 released"]
+====
+
 === Spring Cloud Data Flow Dashboard
 
 * http://cloud.spring.io/spring-cloud-dataflow-ui/[doc],
@@ -151,16 +156,6 @@ Distributed tracing for Spring Cloud applications, compatible with Zipkin, HTrac
 * Полезное:
 https://habrahabr.ru/company/jugru/blog/341026/["Хабр. Что такое Spring Cloud и как его готовить"]
 
-=== Spring Cloud Security
-
-Provides support for load-balanced OAuth2 rest client and authentication header relays in a Zuul proxy.
-
-=== Spring Cloud Sleuth
-
-Distributed tracing for Spring Cloud applications, compatible with Zipkin, HTrace and log-based (e.g. ELK) tracing. 
-
-* https://cloud.spring.io/spring-cloud-sleuth/[site]
-
 == Spring WebFlux
 
 * https://docs.spring.io/spring/docs/current/spring-framework-reference/web-reactive.html[docs],
@@ -181,6 +176,22 @@ Spring Statemachine is a framework for application developers to use state machi
 https://docs.spring.io/spring-statemachine/docs/2.0.0.RC1/reference/htmlsingle/[doc],
 https://github.com/spring-projects/spring-statemachine[git],
 https://github.com/spring-projects/spring-statemachine/tree/master/spring-statemachine-samples[samples]
+
+* Полезное:
+http://www.baeldung.com/spring-state-machine["A Guide to the Spring State Machine Project"]
+
+== Spring Shell
+
+The Spring Shell project provides an interactive shell that allows you to plugin your own custom commands using a Spring based programming model.
+
+* https://projects.spring.io/spring-shell/[site],
+https://docs.spring.io/spring-shell/docs/current/reference/htmlsingle/[doc],
+https://github.com/spring-projects/spring-shell[git]
+
+[TIP]
+====
+Используется в проектах Spring Data Flow Shell и Spring Cloud Skipper Shell
+====
 
 * Полезное:
 http://www.baeldung.com/spring-state-machine["A Guide to the Spring State Machine Project"]
