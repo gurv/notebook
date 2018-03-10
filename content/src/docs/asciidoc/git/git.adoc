@@ -1,6 +1,6 @@
 = git
 
-* Ссылки: https://github.com/gurv/vg[мой]
+* https://github.com/gurv/vg[gurv]
 
 == Полезное
 

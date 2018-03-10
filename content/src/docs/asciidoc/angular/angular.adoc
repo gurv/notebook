@@ -1,7 +1,6 @@
 = Angular
 
-* Ссылки:
-https://angular.io[сайт],
+* https://angular.io[site],
 https://www.npmjs.com/package/@angular/core[npm]
 
 * Полезное:
@@ -120,7 +119,6 @@ ng g cl MyClassA
 ```
 
 * Полезное:
-
 https://medium.com/@tomastrajan/6-best-practices-pro-tips-for-angular-cli-better-developer-experience-7b328bc9db81[6 Best Practices & Pro Tips when using Angular CLI],
 https://github.com/angular/angular-cli/wiki/stories-proxy[Proxy To Backend],
 https://webpack.github.io/docs/webpack-dev-server.html#proxy[webpack-dev-server:Proxy],
@@ -137,7 +135,7 @@ https://alligator.io/angular/httpclient-intro/[Introduction to Angular's HttpCli
 
 == Angular Material
 
-* Ссылки: https://github.com/angular/material2[GitHub],
+* https://github.com/angular/material2[git],
 https://material.angular.io/guide/getting-started[Getting started],
 https://material.angular.io/components/categories[components],
 https://material.io/icons/[icons],
@@ -157,7 +155,6 @@ npm view @angular/material version
 ```
 
 * Полезное:
-
 https://github.com/tomastrajan/angular-ngrx-material-starter[angular-ngrx-material-starter (git)],
 https://tomastrajan.github.io/angular-ngrx-material-starter#/about[angular-ngrx-material-starter (demo)],
 https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1[angular-ngrx-material-starter (blog)]
@@ -170,7 +167,7 @@ https://habrahabr.ru/post/335318/[Хабр. "Angular 4 Material. Часть 1 �
 
 == Angular Flex Layout
 
-* Ссылки: https://github.com/angular/flex-layout[GitHub],
+* https://github.com/angular/flex-layout[git],
 https://www.npmjs.com/package/@angular/flex-layout[npm],
 https://tburleson-layouts-demos.firebaseapp.com/#/docs[demo],
 https://github.com/angular/flex-layout/wiki/API-Documentation[API]
@@ -187,10 +184,10 @@ http://fury.visurel.com/components/snack-bar[demo]
 
 == AGM - Angular Google Maps
 
-* Ссылки: https://github.com/SebastianM/angular-google-maps[GitHub],
+* https://github.com/SebastianM/angular-google-maps[git],
 https://www.npmjs.com/package/@agm/core[npm]
 
 == ng2-google-charts
 
-* Ссылки: https://github.com/gmazzamuto/ng2-google-charts[GitHub],
+* https://github.com/gmazzamuto/ng2-google-charts[git],
 https://www.npmjs.com/package/ng2-google-charts[npm]

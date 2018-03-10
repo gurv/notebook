@@ -1,6 +1,8 @@
 = Gradle
 
-* Ссылки: https://gradle.org[сайт], https://discuss.gradle.org/c/help-discuss[форум], https://blog.gradle.org/[blog]
+* https://gradle.org[site],
+https://discuss.gradle.org/c/help-discuss[forum],
+https://blog.gradle.org/[blog]
 
 * Установка
 

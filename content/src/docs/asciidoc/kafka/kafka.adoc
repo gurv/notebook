@@ -1,9 +1,8 @@
 = Kafka
 
-* Ссылки:
-https://kafka.apache.org/[site],
-https://kafka.apache.org/documentation/[documentation],
-https://github.com/apache/kafka[GitHub],
+* https://kafka.apache.org/[site],
+https://kafka.apache.org/documentation/[docs],
+https://github.com/apache/kafka[git],
 https://kafka.apache.org/downloads[download]
 
 * Запуск

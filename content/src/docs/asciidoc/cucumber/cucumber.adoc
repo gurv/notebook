@@ -2,11 +2,10 @@
 
 Cucumber is a tool that supports Behaviour-Driven Development (BDD) - a software development process that aims to enhance software quality and reduce maintenance costs.
 
-* Ссылки:
-https://cucumber.io/[site],
+* https://cucumber.io/[site],
 https://en.wikipedia.org/wiki/Cucumber_(software)[wiki],
-https://cucumber.io/docs[documentation],
-https://github.com/cucumber/cucumber[GitHub]
+https://cucumber.io/docs[docs],
+https://github.com/cucumber/cucumber[git]
 
 * Полезное:
 https://habrahabr.ru/post/332754/["Хабр 201707: Руководство: Cucumber + Java"]

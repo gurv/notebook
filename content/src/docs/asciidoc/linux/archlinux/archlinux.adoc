@@ -1,13 +1,13 @@
 = ArchLinux
 
-(установка)
+== Установка
 
 [TIP]
 ====
 Полезное
 
-* http://dobroserver.ru/minimalistichnoe-okruzhenie-s-arch-linux
-* https://wiki.archlinux.org/index.php/VirtualBox_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)#.D0.93.D0.BE.D1.81.D1.82.D0.B5.D0.B2.D0.B0.D1.8F_.D0.9E.D0.A1_.D0.B7.D0.B0.D0.B2.D0.B8.D1.81.D0.B0.D0.B5.D1.82_.D0.BF.D0.BE.D1.81.D0.BB.D0.B5_.D0.B7.D0.B0.D0.BF.D1.83.D1.81.D0.BA.D0.B0_Xorg
+* http://dobroserver.ru/minimalistichnoe-okruzhenie-s-arch-linux["Минималистичное окружение с Arch Linux"]
+* https://wiki.archlinux.org/index.php/VirtualBox_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)#.D0.93.D0.BE.D1.81.D1.82.D0.B5.D0.B2.D0.B0.D1.8F_.D0.9E.D0.A1_.D0.B7.D0.B0.D0.B2.D0.B8.D1.81.D0.B0.D0.B5.D1.82_.D0.BF.D0.BE.D1.81.D0.BB.D0.B5_.D0.B7.D0.B0.D0.BF.D1.83.D1.81.D0.BA.D0.B0_Xorg["VirtualBox"]
 ====
 
 * загрузиться с ISO-дистрибутива и сменить пароль для root-а
@@ -162,7 +162,7 @@ nano ~/.xinitrc
 setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
 ```
 
-* awesome (https://awesomewm.org/)
+* awesome (https://awesomewm.org/[site])
 +
 [TIP]
 ====
@@ -204,7 +204,7 @@ terminal = "termite"
 nano /usr/share/awesome/themes/default/theme.lua
 ```
 
-* Если VM-гость (см. http://www.cs.columbia.edu/~jae/4118-LAST/arch-setup-2016-1.html)
+* Если VM-гость (http://www.cs.columbia.edu/~jae/4118-LAST/arch-setup-2016-1.html[см.])
 
 ** установить гостевые модуля
 +

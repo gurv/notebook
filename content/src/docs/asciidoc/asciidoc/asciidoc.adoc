@@ -1,3 +1,5 @@
 = AsciiDoc
 
-* http://asciidoctor.org/[Сайт], http://asciidoctor.org/docs/[Documentation], http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#[Syntax Quick Reference]
+* http://asciidoctor.org/[site],
+http://asciidoctor.org/docs/[docs],
+http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#[Syntax Quick Reference]

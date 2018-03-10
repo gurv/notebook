@@ -1,6 +1,5 @@
 = Groovy
 
-* Ссылки:
-http://groovy-lang.org/[site],
-http://groovy-lang.org/documentation.html[documentation],
+* http://groovy-lang.org/[site],
+http://groovy-lang.org/documentation.html[docs],
 http://groovy-lang.org/download.html[download]

@@ -1,8 +1,7 @@
 = Docker
 
-* Ссылки:
-https://www.docker.com/[site],
-https://docs.docker.com/[documentation],
+* https://www.docker.com/[site],
+https://docs.docker.com/[docs],
 https://docs.docker.com/engine/reference/commandline/cli/[engine CLI],
 https://docs.docker.com/compose/reference/overview/[compose CLI],
 https://docs.docker.com/machine/reference/[machine CLI],

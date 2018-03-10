@@ -1,7 +1,6 @@
 = OpenID Connect
 
-* Ссылки:
-http://openid.net/connect/[site],
+* http://openid.net/connect/[site],
 https://en.wikipedia.org/wiki/OpenID_Connect[wiki]
 
 * Providers:

@@ -1,7 +1,6 @@
 = IDEA
 
-* Ссылки:
-https://www.jetbrains.com/idea/download/#section=windows[download],
+* https://www.jetbrains.com/idea/download/#section=windows[download],
 https://www.jetbrains.com/idea/nextversion/[EAP-download]
 
 * Полезное:

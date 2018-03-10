@@ -1,10 +1,9 @@
 = RxJS
 
-* Ссылки:
-http://reactivex.io/rxjs/[site],
-https://www.npmjs.com/package/rxjs[npm],
-https://github.com/ReactiveX/RxJS[GitHub],
-http://reactivex.io/rxjs/identifiers.html[references]
+* http://reactivex.io/rxjs/[site],
+http://reactivex.io/rxjs/identifiers.html[docs],
+https://github.com/ReactiveX/RxJS[git],
+https://www.npmjs.com/package/rxjs[npm]
 
 * Полезное:
 https://www.learnrxjs.io/["Learn RxJS"]
