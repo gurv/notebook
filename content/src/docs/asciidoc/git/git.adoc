@@ -45,3 +45,8 @@ git push origin :refs/tags/tagName
 git push --delete origin tagName
 git tag -d tagName
 ```
+
+* Проверка локального репозитория
+```
+git fsck --full
+```
