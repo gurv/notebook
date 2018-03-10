@@ -7,3 +7,11 @@ https://www.jetbrains.com/idea/nextversion/[EAP-download]
 * Полезное:
 http://proselyte.net/intellij-idea-hotkeys/[Горячие клавиши],
 https://www.jetbrains.com/help/idea/docker.html["Docker"]
+
+* Нужное:
+
+** Squash комиитов ветки
+
+"
+Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of commits, where you can pick which ones you want to squash.
+"
