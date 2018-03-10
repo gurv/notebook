@@ -203,12 +203,22 @@ Spring Boot Actuator includes a number of additional features to help you monito
 * https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready[doc],
 https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator[git]
 
+* Полезное:
+http://www.baeldung.com/spring-boot-actuators["201802: Spring Boot Actuator"]
+
 == SpringFox
 
 The Springfox suite of java libraries are all about automating the generation of machine and human readable specifications for JSON APIs written using the spring family of projects. Springfox works by examining an application, once, at runtime to infer API semantics based on spring configurations, class structure and various compile time java Annotations.
 
 * https://springfox.github.io/springfox/docs/current/[doc],
 https://github.com/springfox/springfox[git]
+
+=== Swigger
+
+* https://swagger.io/[site,
+https://swagger.io/docs/[doc],
+https://github.com/swagger-api[git]
+https://github.com/swagger-api/swagger-ui[git: swagger-ui]
 
 == JavaMelody
 
