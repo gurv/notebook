@@ -2,16 +2,21 @@
 
 * Ссылки:
 https://angular.io[сайт],
-https://www.npmjs.com/package/@angular/cli[npm],
-https://angular.io/guide/router[Routing & Navigation]
+https://www.npmjs.com/package/@angular/core[npm]
 
 * Полезное:
+https://angular.io/guide/router[Routing & Navigation],
 https://sass-scss.ru/guide/[Основы Sass],
 https://angular.io/guide/dynamic-component-loader["Dynamic Component Loader"],
 https://blog.angularindepth.com/here-is-what-you-need-to-know-about-dynamic-components-in-angular-ac1e96167f9e["Here is what you need to know about dynamic components in Angular"],
 https://blog.angularindepth.com/avoiding-common-confusions-with-modules-in-angular-ada070e6891f["Avoiding common confusions with modules in Angular"]
 
 == Angular CLI
+
+* https://cli.angular.io/[site]
+https://www.npmjs.com/package/@angular/cli[npm],
+https://github.com/angular/angular-cli[git]
+
 
 * Установка
 ```
