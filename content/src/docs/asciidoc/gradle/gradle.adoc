@@ -97,6 +97,12 @@ task helloWorld(overwrite: true) { }
 gradle build -x test
 ```
 
+
+* Обычная (не rich) консоль
+```
+gradle ... --console=plain
+```
+
 == Разработка плагинов
 
 * https://docs.gradle.org/current/userguide/pt06.html["The Software model"]
