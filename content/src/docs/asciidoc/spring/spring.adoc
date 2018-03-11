@@ -3,7 +3,8 @@
 * https://spring.io/[site],
 https://docs.spring.io/spring/docs/current/spring-framework-reference/[docs],
 https://github.com/spring-projects/spring-framework[git],
-https://repo.spring.io/webapp/#/home[repo]
+https://repo.spring.io/webapp/#/home[repo],
+https://spring-calendar.cfapps.io/[calendar]
 
 == Spring Boot
 
@@ -95,6 +96,9 @@ https://github.com/spring-cloud/spring-cloud-config[git]
 Integration with various Netflix OSS components (Eureka, Hystrix, Zuul, Archaius, etc.). 
 
 * https://cloud.spring.io/spring-cloud-netflix/[site]
+
+* Полезное:
+http://www.baeldung.com/spring-cloud-netflix-eureka["Introduction to Spring Cloud Netflix – Eureka"]
 
 === Spring Cloud Stream
 
@@ -219,6 +223,9 @@ https://github.com/springfox/springfox[git]
 https://swagger.io/docs/[docs],
 https://github.com/swagger-api[git]
 https://github.com/swagger-api/swagger-ui[git: swagger-ui]
+
+* Полезное
+https://piotrminkowski.wordpress.com/2017/04/14/microservices-api-documentation-with-swagger2/["Microservices API Documentation with Swagger2"]
 
 == JavaMelody
 
