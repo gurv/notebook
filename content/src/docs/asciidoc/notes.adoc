@@ -44,6 +44,8 @@ include::rxjs/rxjs.adoc[]
 
 include::graphql/graphql.adoc[]
 
+include::grpc/grpc.adoc[]
+
 include::cucumber/cucumber.adoc[]
 
 include::oidc/oidc.adoc[]

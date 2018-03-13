@@ -1,0 +1,12 @@
+= GRPC
+
+A high performance, open-source universal RPC framework.
+
+* https://grpc.io/[site],
+https://grpc.io/docs/[docs]
+https://github.com/grpc/[git]
+
+* Полезное
+https://speakerdeck.com/suusan2go/grpc-on-spring-boot["gRPC on Spring Boot by Kenta Suzuki"],
+https://github.com/LogNet/grpc-spring-boot-starter["git: grpc-spring-boot-starter"],
+https://habrahabr.ru/post/337716/["201709 habr: Как перейти на gRPC, сохранив REST"]
