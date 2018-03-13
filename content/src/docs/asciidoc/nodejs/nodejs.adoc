@@ -22,7 +22,7 @@ npm update -g
 ```
 ====
 
-= npm
+== npm
 
 * https://www.npmjs.com[site]
 
@@ -82,3 +82,14 @@ npm list --depth=0
 ```
 npm list -g --depth=0
 ```
+
+== webpack
+
+* https://webpack.js.org/[site],
+https://webpack.js.org/concepts/[docs],
+https://github.com/webpack/webpack[git]
+
+[TIP]
+====
+20180129 Хабр: https://habrahabr.ru/post/347812/["Вашему вниманию — Webpack 4"]
+====
