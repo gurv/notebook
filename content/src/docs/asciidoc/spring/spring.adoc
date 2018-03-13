@@ -217,7 +217,7 @@ The Springfox suite of java libraries are all about automating the generation of
 * https://springfox.github.io/springfox/docs/current/[docs],
 https://github.com/springfox/springfox[git]
 
-=== Swigger
+=== Swagger
 
 * https://swagger.io/[site],
 https://swagger.io/docs/[docs],
@@ -226,6 +226,21 @@ https://github.com/swagger-api/swagger-ui[git: swagger-ui]
 
 * Полезное
 https://piotrminkowski.wordpress.com/2017/04/14/microservices-api-documentation-with-swagger2/["Microservices API Documentation with Swagger2"]
+
+== Micrometer
+
+Micrometer provides a simple facade over the instrumentation clients for a number of popular monitoring systems. Currently, it supports the following monitoring systems: Atlas, Datadog, Graphite, Ganglia, Influx, JMX and Prometheus.
+
+Starting with Spring Boot 2.0, Micrometer is the instrumentation library powering the delivery of application metrics from Spring.
+Spring Boot Actuator provides dependency management and auto-configuration for Micrometer.
+
+* https://micrometer.io//[site],
+https://micrometer.io/docs[docs],
+https://github.com/micrometer-metrics/micrometer[git]
+
+* Полезное
+http://www.baeldung.com/micrometer["baeldung: Quick Guide to Micrometer"],
+https://ordina-jworks.github.io/microservices/2017/09/17/monitoring-your-microservices-with-micrometer.html["Monitoring your microservices with Micrometer.io"]
 
 == JavaMelody
 
