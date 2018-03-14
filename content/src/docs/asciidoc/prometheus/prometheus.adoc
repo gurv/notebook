@@ -1,0 +1,15 @@
+= Prometheus
+
+Power your metrics and alerting with a leading
+open-source monitoring solution.
+
+* https://prometheus.io/[site],
+https://prometheus.io/docs/introduction/overview/[docs],
+https://prometheus.io/docs/instrumenting/pushing/[docs: pushgateway]
+https://github.com/prometheus[git],
+https://hub.docker.com/r/prom/prometheus/[docker: prom/prometheus],
+https://registry.hub.docker.com/u/prom/pushgateway/[docker: prom/pushgateway]
+
+
+* Полезное:
+https://www.digitalocean.com/community/tutorials/how-to-install-prometheus-using-docker-on-ubuntu-14-04["How To Install Prometheus using Docker..."]

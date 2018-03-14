@@ -34,6 +34,8 @@ include::docker/docker.adoc[]
 
 include::kubernetes/kubernetes.adoc[]
 
+include::prometheus/prometheus.adoc[]
+
 include::groovy/groovy.adoc[]
 
 include::rust/rust.adoc[]
