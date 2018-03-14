@@ -205,6 +205,7 @@ http://www.baeldung.com/spring-state-machine["A Guide to the Spring State Machin
 Spring Boot Actuator includes a number of additional features to help you monitor and manage your application when it’s pushed to production. You can choose to manage and monitor your application using HTTP or JMX endpoints. Auditing, health and metrics gathering can be automatically applied to your application.
 
 * https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#production-ready[docs],
+https://docs.spring.io/spring-boot/docs/current/reference/html/production-ready-endpoints.html#production-ready-endpoints-exposing-endpoints["docs: Endpoints"],
 https://github.com/spring-projects/spring-boot/tree/master/spring-boot-project/spring-boot-actuator[git]
 
 * Полезное:
@@ -240,7 +241,8 @@ https://github.com/micrometer-metrics/micrometer[git]
 
 * Полезное
 http://www.baeldung.com/micrometer["baeldung: Quick Guide to Micrometer"],
-https://ordina-jworks.github.io/microservices/2017/09/17/monitoring-your-microservices-with-micrometer.html["Monitoring your microservices with Micrometer.io"]
+https://ordina-jworks.github.io/microservices/2017/09/17/monitoring-your-microservices-with-micrometer.html["Monitoring your microservices with Micrometer.io"],
+https://content.pivotal.io/slides/introducing-micrometer-application-metrics["201712: Introducing Micrometer Application Metrics"]
 
 == JavaMelody
 
