@@ -5,11 +5,17 @@ open-source monitoring solution.
 
 * https://prometheus.io/[site],
 https://prometheus.io/docs/introduction/overview/[docs],
-https://prometheus.io/docs/instrumenting/pushing/[docs: pushgateway]
+https://prometheus.io/docs/instrumenting/pushing/[docs: pushgateway],
 https://github.com/prometheus[git],
 https://hub.docker.com/r/prom/prometheus/[docker: prom/prometheus],
-https://registry.hub.docker.com/u/prom/pushgateway/[docker: prom/pushgateway]
-
+https://registry.hub.docker.com/u/prom/pushgateway/[docker: prom/pushgateway],
+https://grafana.com/dashboards[dashboards],
+https://github.com/prometheus/node_exporter[node_exporter (метрики *NIX-хоста)],
+https://github.com/martinlindhe/wmi_exporter[WMI exporter (метрики Windows-хоста)]
 
 * Полезное:
-https://www.digitalocean.com/community/tutorials/how-to-install-prometheus-using-docker-on-ubuntu-14-04["How To Install Prometheus using Docker..."]
+https://github.com/stefanprodan/swarmprom["git: Docker Swarm instrumentation with Prometheus, Grafana, cAdvisor, Node Exporter and Alert Manager"],
+https://www.digitalocean.com/community/tutorials/how-to-install-prometheus-using-docker-on-ubuntu-14-04["How To Install Prometheus using Docker..."],
+https://docs.docker.com/config/thirdparty/prometheus/["Collect Docker metrics with Prometheus"],
+https://finestructure.co/blog/2016/5/16/monitoring-with-prometheus-grafana-docker-part-1["Monitoring with Prometheus, Grafana & Docker Part 1"],
+https://prometheus.io/docs/visualization/grafana/#using["prometheus: GRAFANA SUPPORT FOR PROMETHEUS"]
