@@ -2,11 +2,13 @@
 
 * https://www.docker.com/[site],
 https://docs.docker.com/[docs],
+https://store.docker.com/[store],
 https://docs.docker.com/engine/reference/commandline/cli/[engine CLI],
 https://docs.docker.com/compose/reference/overview/[compose CLI],
 https://docs.docker.com/machine/reference/[machine CLI],
 https://hub.docker.com/[Docker Hub],
-https://github.com/docker/docker-ce[GitHub (CE)]
+https://github.com/docker/docker-ce[GitHub (CE)],
+https://github.com/docker/swarm[git: swarm]
 
 * Скачать образ (https://docs.docker.com/engine/reference/commandline/pull/[ref])
 ```
@@ -17,3 +19,7 @@ docker pull openjdk:8-jre-alpine
 ```
 docker build -t imageNameAndTag dockerFile
 ```
+
+* Полезное:
+https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach["stackoverflow: From inside of a Docker container, how do I connect to the localhost of the machine?"],
+https://habrahabr.ru/company/redmadrobot/blog/318866/["хабр 2017: Docker swarm mode (режим роя)"]
