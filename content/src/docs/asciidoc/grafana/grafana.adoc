@@ -1,0 +1,12 @@
+= Grafana
+
+The open platform for beautiful analytics and monitoring
+
+* https://grafana.com/[site],
+http://docs.grafana.org/[docs],
+https://github.com/grafana/grafana[git],
+https://hub.docker.com/r/grafana/grafana/[docker]
+
+* Dashboards:
+** https://grafana.com/dashboards/893[Docker and system monitoring by Thibaut Mottet]
+** https://grafana.com/dashboards/2129[Windows Node by ecto]
