@@ -1,4 +1,10 @@
-= Prometheus
+= Monitoring
+
+* Полезное:
+** https://github.com/stefanprodan/swarmprom[swarmprom] - хороший прототип,
+** https://www.consul.io/docs/agent/telemetry.html[Consul Metrics] (agent/server/cluster)
+
+== Prometheus
 
 Power your metrics and alerting with a leading
 open-source monitoring solution.
@@ -19,3 +25,16 @@ https://www.digitalocean.com/community/tutorials/how-to-install-prometheus-using
 https://docs.docker.com/config/thirdparty/prometheus/["Collect Docker metrics with Prometheus"],
 https://finestructure.co/blog/2016/5/16/monitoring-with-prometheus-grafana-docker-part-1["Monitoring with Prometheus, Grafana & Docker Part 1"],
 https://prometheus.io/docs/visualization/grafana/#using["prometheus: GRAFANA SUPPORT FOR PROMETHEUS"]
+
+== Grafana
+
+The open platform for beautiful analytics and monitoring
+
+* https://grafana.com/[site],
+http://docs.grafana.org/[docs],
+https://github.com/grafana/grafana[git],
+https://hub.docker.com/r/grafana/grafana/[docker]
+
+* Dashboards:
+** https://grafana.com/dashboards/893[Docker and system monitoring by Thibaut Mottet]
+** https://grafana.com/dashboards/2129[Windows Node by ecto]

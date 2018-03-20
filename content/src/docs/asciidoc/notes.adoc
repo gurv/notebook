@@ -34,9 +34,7 @@ include::docker/docker.adoc[]
 
 include::kubernetes/kubernetes.adoc[]
 
-include::prometheus/prometheus.adoc[]
-
-include::grafana/grafana.adoc[]
+include::monitoring/monitoring.adoc[]
 
 include::groovy/groovy.adoc[]
 
