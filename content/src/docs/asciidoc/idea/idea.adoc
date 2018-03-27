@@ -9,6 +9,8 @@ https://www.jetbrains.com/help/idea/docker.html["Docker"]
 
 * Нужное:
 
+** Ctrl + Shift + F12
+
 ** Squash комиитов ветки
 
 "
