@@ -19,3 +19,8 @@ getmac /v
 ```
 netstat -ano | find ":49997"
 ```
+
+* Убить процесс по его PID
+```
+tskill 10424
+```
