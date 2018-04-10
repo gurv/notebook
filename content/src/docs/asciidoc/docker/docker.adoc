@@ -20,6 +20,23 @@ docker pull openjdk:8-jre-alpine
 docker build -t imageNameAndTag dockerFile
 ```
 
+* Всякое
+```
+docker container ls
+```
+экспорт файловой системы контейнера
+```
+docker export 2c3890ad6c25 > out.tar
+```
+логи
+```
+docker logs -f 2c3890ad6c25
+```
+тома
+```
+docker volume ls
+```
+
 * Полезное:
 https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach["stackoverflow: From inside of a Docker container, how do I connect to the localhost of the machine?"],
 https://habrahabr.ru/company/redmadrobot/blog/318866/["хабр 2017: Docker swarm mode (режим роя)"]
