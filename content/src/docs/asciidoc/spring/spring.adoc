@@ -100,6 +100,13 @@ Integration with various Netflix OSS components (Eureka, Hystrix, Zuul, Archaius
 * Полезное:
 http://www.baeldung.com/spring-cloud-netflix-eureka["Introduction to Spring Cloud Netflix – Eureka"]
 
+=== Spring Cloud Consul
+
+Spring Cloud Consul provides Consul integrations for Spring Boot apps through autoconfiguration and binding to the Spring Environment and other Spring programming model idioms. With a few simple annotations you can quickly enable and configure the common patterns inside your application and build large distributed systems with Hashicorp's Consul. The patterns provided include Service Discovery, Distributed Configuration and Control Bus.
+
+* https://cloud.spring.io/spring-cloud-consul/[site],
+https://hub.docker.com/_/consul/[dockerhub]
+
 === Spring Cloud Stream
 
 A lightweight event-driven microservices framework to quickly build applications that can connect to external systems. Simple declarative model to send and receive messages using Apache Kafka or RabbitMQ between Spring Boot apps.
@@ -159,6 +166,15 @@ Distributed tracing for Spring Cloud applications, compatible with Zipkin, HTrac
 
 * Полезное:
 https://habrahabr.ru/company/jugru/blog/341026/["Хабр. Что такое Spring Cloud и как его готовить"]
+
+=== Spring Cloud Function
+
+FaaS
+
+* https://cloud.spring.io/spring-cloud-function/[site]
+
+* Полезное:
+http://presos.dsyer.com/decks/road-to-serverless.html["The Road to Serverless"]
 
 == Spring WebFlux
 
