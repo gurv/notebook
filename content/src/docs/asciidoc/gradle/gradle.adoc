@@ -79,7 +79,13 @@ gradle hello --no-daemon -Dorg.gradle.debug=true
 * https://github.com/Transmode/gradle-docker[se.transmode.gradle:gradle-docker]
 [TIP]
 ====
-20170129: Похоже что самый популярный
+201701: Похоже что самый популярный
+====
+
+* https://github.com/palantir/gradle-docker[id 'com.palantir.docker']
+[TIP]
+====
+201803: Не, этот лучше
 ====
 
 == Полезное
@@ -97,10 +103,19 @@ task helloWorld(overwrite: true) { }
 gradle build -x test
 ```
 
+* Параллельное выполнение задач
+```
+gradle task1 task2 --parallel
+```
 
 * Обычная (не rich) консоль
 ```
 gradle ... --console=plain
+```
+
+* файл settings.gradle - определить переменные окружения для Gradle, область действия которых - проект
+```
+systemProp.openSslPath="C:/app/openSSL/bin/openssl.exe"
 ```
 
 == Разработка плагинов
