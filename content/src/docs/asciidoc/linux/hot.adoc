@@ -1,0 +1,171 @@
+= Памятка
+
+Настроить пользователю shell (например, когда ошибка "This account is currently not available"):
+```
+chsh -s /bin/bash username
+```
+
+Сменить пользователя:
+```
+su username
+```
+
+Изменить пароль пользователю:
+```
+passwd username
+```
+
+Процессы java:
+```
+ps -ef | grep java
+```
+
+Копирование прав доступ к файлу/каталогу:
+```
+chmod --reference=src_file trg_file
+```
+
+Копирование владельца и группы файла/каталога:
+```
+chown --reference=src_file trg_file
+```
+
+Добавление прав на запись в каталог для всех пользователей:
+```
+chmod o+w ./logs
+```
+
+Просмотр файла:
+```
+tail -f /tmp/wildfly/log/server.log
+```
+
+Нагрузка (CPU / MEM / ...):
+```
+top
+```
+
+Информация о CPU:
+```
+lscpu
+```
+или
+```
+cat /proc/cpuinfo
+```
+
+Информация о памяти:
+```
+free
+```
+или
+```
+cat /proc/meminfo
+```
+
+Копирование файлов (с правами):
+```
+cp -p /tmp/readme.txt /opt/readme.txt
+```
+
+Копирование каталогов (с правами):
+```
+cp -a /tmp/wildfly /opt/wildfly_app
+```
+
+Переименование каталога:
+```
+mv /tmp/wildfly /tmp/wildfly_old
+```
+
+Удаление каталога:
+```
+rm -rf /tmp/wildfly_old
+```
+
+Смена пароля sys Oracle-сервера (нужен root или oracle):
+```
+su oracle
+sqlplus / as sysdba
+SQL> alter user sys identified by sys;
+User altered.
+SQL> exit
+```
+
+Копирование (scp) файла на другой узел:
+```
+scp -r /PPRB/audit-server-envelope-7.2.0.hf1.1.zip root@10.116.176.85:/envelope/src
+```
+
+Копирование (rsync) каталога c другого узла:
+```
+rsync -avzhe ssh wildfly@10.116.176.85:/opt/pprb/wildfly-app /opt/pprb
+```
+
+Удаление systemd-сервиса:
+```
+systemctl stop wildfly
+systemctl disable wildfly
+rm /etc/systemd/system/wildfly.service
+systemctl daemon-reload
+systemctl reset-failed
+```
+
+Создание нового systemd-сервиса:
+```
+systemctl enable wildfly-app
+systemctl daemon-reload
+systemctl reset-failed
+```
+
+Пример файла (/etc/systemd/system/wildfly-app.service) конфигурации unit-а для systemd:
+```
+[Unit]
+Description=pprb.wildfly-app
+After=syslog.target network.target
+Before=httpd.service
+
+[Service]
+User=wildfly
+LimitNOFILE=102642
+ExecStart=/opt/pprb/wildfly_app/start.sh
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Список systemd-сервисов в состоянии enabled:
+```
+systemctl list-unit-files | grep enabled
+```
+
+Копирование/вставка в редакторе mc:
+```
+F3 on/off режим выделения
+F5 скопировать выделенное
+ctrl + F сохранить выделенное
+shift + F5 вставить сохраненное
+```
+
+Файловые ресурсы:
+```
+df -h
+```
+
+Размер текущего каталога:
+```
+du -sh
+```
+
+Видеокарты:
+```
+[root@luna ~]# lspci | grep -e VGA -e 3D
+00:02.0 VGA compatible controller: Intel Corporation HD Graphics 630 (rev 04)
+```
+
+Посмотреть поддержку виртуализации:
+```
+LC_ALL=C lscpu | grep Virtualization
+```
+(Intel: VT-x , AMD: AMD-V)

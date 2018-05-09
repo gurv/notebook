@@ -1,5 +1,10 @@
 = ArchLinux
 
+X-терминал
+```
+termite
+```
+
 == Установка
 
 [TIP]
@@ -10,27 +15,45 @@
 * https://wiki.archlinux.org/index.php/VirtualBox_(%D0%A0%D1%83%D1%81%D1%81%D0%BA%D0%B8%D0%B9)#.D0.93.D0.BE.D1.81.D1.82.D0.B5.D0.B2.D0.B0.D1.8F_.D0.9E.D0.A1_.D0.B7.D0.B0.D0.B2.D0.B8.D1.81.D0.B0.D0.B5.D1.82_.D0.BF.D0.BE.D1.81.D0.BB.D0.B5_.D0.B7.D0.B0.D0.BF.D1.83.D1.81.D0.BA.D0.B0_Xorg["VirtualBox"]
 ====
 
-* загрузиться с ISO-дистрибутива и сменить пароль для root-а
+* подготовка для загрузки usb-носителя с ISO-образом ArchLinux
+
+Запустить Image Writer
+```
+C:\app\imageWriter\1.0.0\Win32DiskImager.exe
+```
+заполнить поле Image File (например, "C:/vm/iso/archlinux-2018.03.01-x86_64.iso"),
+поле Device (выбрать USB-носитель, например, F:),
+нажать Write,
+результат - носитель готов для загрузки
+
+* загрузиться с ISO-дистрибутива (подготовку usb-носителя см. выше) и сменить пароль для root-а
 ```
 passwd
 ```
+(например, пароль: root)
 [TIP]
 ====
-если далее необходимо через SSH-соединение
+Для *SSH*-соединения запустить
 ```
 systemctl start sshd
+```
+Если VM-гость, то из результатов этого
+```
 ip addr | grep "scope global"
 ```
+пробросить порты с, например, 10.0.2.15:22 на localhost:22
+
+Можно соединяться по SSH, например, из MobiXterm
 ====
 
-* создание (выбрать тип dos c bootable), форматирование и монтирование раздела на диске
+* создание (выбрать тип dos c bootable), форматирование и монтирование раздела на диске (для luna заменть sda на nvme0n1 , sda1 на nvme0n1p1 )
 ```
 cfdisk /dev/sda
 mkfs.ext4 /dev/sda1 -L "boot"
 mount /dev/sda1 /mnt
 ```
 
-* отредактировать список зеркал (строку с российским зеркалом перенести вверх списка)
+* отредактировать список зеркал (строку с российским зеркалом, искать по Russia, перенести вверх списка)
 ```
 nano /etc/pacman.d/mirrorlist
 ```
@@ -68,18 +91,18 @@ echo -e "KEYMAP=ru\nFONT=cyr-sun16\nFONT_MAP=" > /etc/vconsole.conf
 
 * имя хоста
 ```
-echo "arch" > /etc/hostname
+echo "luna" > /etc/hostname
 ```
 
 * пользователь с правами админа
 ```
-useradd -m user
-passwd user
+useradd -m gurv
+passwd gurv
 nano /etc/sudoers
 ```
 (после строки: root ALL=(ALL) ALL добавить новую строку: gurv ALL=(ALL) ALL)
 
-* загрузчик
+* загрузчик (для luna заменть sda на nvme0n1)
 ```
 pacman -S grub
 grub-install --target=i386-pc --force --recheck /dev/sda
@@ -94,10 +117,11 @@ nano /mnt/etc/resolv.conf
 ```
 (например, в случае VM-гостя, должно быть: nameserver 192.168.1.1)
 
-* выключить и затем отключить загрузку с ISO-дистрибутива
+* выключить
 ```
 poweroff
 ```
+и вынуть USB-носитель с ISO-образом (или на VM-хосте отключить загрузку с ISO-дистрибутива этого VM-guest)
 
 * автозапуск и старт DHCP-клиента
 ```
@@ -130,6 +154,9 @@ reboot
 * шрифты, раскладка клавиатуры
 ```
 pacman -S --noconfirm kbd-ru-keymaps terminus-font ttf-dejavu ttf-liberation
+!!! при прогоне на VM сообшение: error: target not found: kbd-ru-keymaps
+!!! успешно выполнил так: pacman -S --noconfirm terminus-font ttf-dejavu ttf-liberation
+
 nano /etc/vconsole.conf
 ```
 должно быть:
@@ -141,29 +168,95 @@ FONT_MAP=
 USECOLOR="yes"
 ```
 
-* X (Xorg)
-
-** установить
-+
+"перевернутый" монитор
 ```
-pacman -S --noconfirm xf86-video-vesa
+nano /etc/default/grub
+```
+должно быть
+```
+GRUB_CMDLINE_LINUX="fbcon=rotate:1"
+```
+и выполнить
+```
+grub-mkconfig --output=/boot/grub/grub.cfg
+```
+
+git / gradle / ...
+```
+sudo pacman -S git gradle nodejs npm
+git config --global user.name gurv
+git config --global user.email "vladimir.gurinovich@gmail.com"
+```
+
+== Xorg
+
+* установить
+```
+pacman -S --noconfirm xf86-video-intel
 pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
 pacman -S --noconfirm termite chromium
 ```
 
-** переключение раскладки клавиатуры
-+
+переключение раскладки клавиатуры
 ```
 nano ~/.xinitrc
 ```
 добавить строку
-+
 ```
 setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
 ```
+[TIP]
+====
+201805: это уже было в файле ~/.xinitrc для root. Добавил в файл для gurv.
+====
 
-* awesome (https://awesomewm.org/[site])
-+
+разрешить для всех пользователей
+```
+echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
+```
+
+Настройка мониторов (для luna)
+```
+nano /etc/X11/xorg.conf.d/10-monitor.conf
+```
+должно быть
+```
+Section "Monitor"
+    Identifier  "DP1"
+    Option      "PreferredMode" "1600x1200"
+    Option      "Primary" "true"
+    Option      "Rotate" "right"
+EndSection
+
+Section "Monitor"
+    Identifier  "HDMI1"
+    Option      "PreferredMode" "1600x1200"
+    Option      "LeftOf" "DP1"
+EndSection
+
+Section "Device"
+    Identifier "Device0"
+    Driver "intel"
+    Option "TearFree" "true"
+    Option "Monitor-DP1" "DP1"
+    Option "Monitor-HDMI1" "HDMI1"
+EndSection
+```
+
+[TIP]
+====
+на Luna в x-terminale можно настроить мониторы
+```
+xrandr --output HDMI-1 --mode 1600x1200
+xrandr --output DP-1 --mode 1600x1200
+xrandr --output DP-1 --rotate right
+```
+====
+
+== awesome
+
+https://awesomewm.org/[site]
+
 [TIP]
 ====
 * Win+s - виджет подсказки активных горячих клавиш
@@ -177,8 +270,7 @@ setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
 * Win+Ctrl+Shift+F{1..5} — вкл/выкл отображения активного окна на указанном теге(тегах)
 ====
 
-** установить
-+
+* установить
 ```
 pacman -S --noconfirm awesome
 mkdir ~/.config
@@ -187,15 +279,35 @@ cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
 echo "exec awesome" > ~/.xinitrc
 ```
 
+[TIP]
+====
+TODO 201805: Ранее в файл ~/.xinitrc добавлялась раскладка клавы, а здесь она затирается
+====
+
+Настроить шрифт:
+```
+nano ~/.Xresources
+```
+должно быть
+```
+Xft.dpi: 192.0
+```
+
 ** использовать termite
-+
 ```
 nano ~/.config/awesome/rc.lua
 ```
 должно быть:
-+
 ```
 terminal = "termite"
+```
+и размер шрифта
+```
+nano ~/.config/termite/config
+```
+должно быть:
+```
+font = Monospace 16
 ```
 
 ** отключить рисунок (закомментировать строку с theme.wallpaper)
@@ -204,69 +316,20 @@ terminal = "termite"
 nano /usr/share/awesome/themes/default/theme.lua
 ```
 
-* Если VM-гость (http://www.cs.columbia.edu/~jae/4118-LAST/arch-setup-2016-1.html[см.])
+== Docker
 
-** установить гостевые модуля
-+
-```
-pacman -S --noconfirm virtualbox-guest-modules-arch virtualbox-guest-utils
-```
-
-** создать файл
-+
-```
-nano /etc/modules-load.d/virtualbox.conf
-```
-со следующими строками:
-+
-```
-vboxguest
-vboxsf
-vboxvideo
-```
-
-** зарегистрировать сервис
-+
-```
-systemctl enable vboxservice
-nano ~/.xinitrc
-```
-добавить строку
-+
-```
-/usr/bin/VBoxClient-all
-```
-
-** установить утилиту для дальнейшей возможности сжать VDI-файл
-+
-```
-pacman -S dcfldd
-```
-+
-[TIP]
-====
-* это сделать на VM-госте перед сжатием:
-```
-dcfldd if=/dev/zero of=/fillfile bs=4M
-rm -rf /fillfile
-```
-* это сжатие на VM-хосте под Windows
-```
-VBoxManage.exe modifyhd arch.vdi --compact
-```
-====
-
-* установить Docker
+* установить
 ```
 pacman -S --noconfirm docker
 systemctl enable docker
 systemctl start docker
 docker info
-gpasswd -a user docker
+gpasswd -a gurv docker
 ```
 
 [TIP]
 ====
+* 20180503: установился docker-1:18.04.0-1
 * TODO пытался в /etc/docker/daemon.json указать
 ```
 {
@@ -275,45 +338,153 @@ gpasswd -a user docker
 ```
 , но стартует с ошибками
 
-* в /usr/lib/systemd/system/docker.service указад
+* в /usr/lib/systemd/system/docker.service должно быть
 ```
 ExecStart=/usr/bin/dockerd -H 0.0.0.0:2375
 ```
 ====
 
-* установить IDEA JetBrains (указать java-environment jdk8-openjdk)
+== pacaur
+helper для AUR
+
+* установить
+```
+curl -s https://gist.githubusercontent.com/Tadly/0e65d30f279a34c33e9b/raw/pacaur_install.sh | bash
+```
+
+== minikube
+
+* установить
+```
+pacaur -S minikube
+curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.6.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
+# пробный старт
+minikube start
+```
+
+[TIP]
+====
+20180507: ошибка
+```
+[root@luna ~]# minikube start
+Starting local Kubernetes v1.10.0 cluster...
+Starting VM...
+Getting VM IP address...
+Moving files into cluster...
+Setting up certs...
+Connecting to cluster...
+Setting up kubeconfig...
+Starting cluster components...
+E0508 18:25:44.787253    1081 start.go:281] Error restarting cluster:  restarting kube-proxy: waiting for kube-proxy to be up for configmap update: timed out waiting for the condition
+```
+====
+
+== IDEA
+
+* установить
 ```
 pacman -S intellij-idea-community-edition
 ```
+, указать java-environment jdk8-openjdk,
+старт
+```
+idea.sh
+```
 
-* VirtualBox-хост
-+
-[TIP]
-====
-* запуск в X: virtualbox
-* запуск в терминале: VBoxSDL или VBoxHeadless
-====
-+
+== VirtualBox
+
+* установить
+```
+pacman -S virtualbox linux-headers net-tools
+nano /etc/modules-load.d/virtualbox.conf
+```
+(добавить строку: vboxdrv)
+```
+nano /etc/modules-load.d/vbox-other-modules.conf
+```
+(добавить: vboxnetadp vboxnetflt vboxpci)
+
+* разное
+** запуск в X: virtualbox
+** запуск в терминале: VBoxSDL или VBoxHeadless
+
 [TIP]
 ====
 * TODO пакет дополнений
+
 * TODO образ диска с гостевыми дополнениями
+
+* 20180508:
+```
+[root@luna ~]# pacman -Qs virtualbox
+local/virtualbox 5.2.10-1
+    Powerful x86 virtualization for enterprise as well as home use
+local/virtualbox-host-dkms 5.2.10-1
+    VirtualBox Host kernel modules sources
+```
 ====
 
-** установить
-+
+== VirtualBox-guest
+
+* установить
 ```
-pacman -S virtualbox linux-headers net-tools
+pacman -S --noconfirm virtualbox-guest-modules-arch virtualbox-guest-utils
 ```
 
-** настроить (добавить строку: vboxdrv)
-+
+создать файл
 ```
 nano /etc/modules-load.d/virtualbox.conf
 ```
 
-** (добавить: vboxnetadp vboxnetflt vboxpci)
-+
+со следующими строками:
 ```
-nano /etc/modules-load.d/vbox-other-modules.conf
+vboxguest
+vboxsf
+vboxvideo
+```
+
+зарегистрировать сервис
+```
+systemctl enable vboxservice
+nano ~/.xinitrc
+```
+( добавить строку /usr/bin/VBoxClient-all )
+
+[TIP]
+====
+Если нужно сжатие VDI-файла на Windows-host-е
+```
+pacman -S dcfldd
+```
+это сделать на VM-guest перед сжатием
+```
+dcfldd if=/dev/zero of=/fillfile bs=4M
+rm -rf /fillfile
+```
+это сжатие на Windows-host
+```
+VBoxManage.exe modifyhd luna.vdi --compact
+```
+====
+
+== pacman
+
+Список установленных пакетов:
+```
+pacman -Qi | grep Name
+```
+
+Список файлов пакета:
+```
+pacman -Ql virtualbox
+```
+
+Удалить пакет:
+```
+pacman -R virtualbox
+```
+
+Очистка кеша:
+```
+pacman -Sc
 ```

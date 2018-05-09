@@ -88,6 +88,12 @@ gradle hello --no-daemon -Dorg.gradle.debug=true
 201803: Не, этот лучше
 ====
 
+* https://github.com/bmuschko/gradle-docker-plugin[id 'com.bmuschko.docker-java-application']
+[TIP]
+====
+201805: Или же этот? Он может через remote API Docker-а
+====
+
 == Полезное
 
 https://docs.gradle.org/current/userguide/working_with_files.html#sec:file_collections["Chapter 20. Working With Files"],

@@ -2,6 +2,8 @@
 
 :leveloffset: +1
 
+include::hot.adoc[]
+
 include::archlinux/archlinux.adoc[]
 
 include::alpine/alpine.adoc[]

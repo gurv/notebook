@@ -10,6 +10,8 @@ Linux Command-Line Text Editor
 выход
 |ctrl+w |
 поиск
+|alt+6 |
+скопировать
 |ctrl+k |
 вырезать
 |ctrl+u |

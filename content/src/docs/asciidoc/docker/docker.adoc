@@ -36,7 +36,26 @@ docker logs -f 2c3890ad6c25
 ```
 docker volume ls
 ```
+shell в alpine/java
+```
+docker run -it --rm openjdk:jre-alpine /bin/ash
+```
+каталог Docker-а на Linux-хосте
+```
+/var/lib/docker
+```
+
+указать удаленный Docker-хлст для Docker CLI (на Windows)
+```
+set DOCKER_HOST=tcp://192.168.1.33:2375
+```
 
 * Полезное:
 https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach["stackoverflow: From inside of a Docker container, how do I connect to the localhost of the machine?"],
 https://habrahabr.ru/company/redmadrobot/blog/318866/["хабр 2017: Docker swarm mode (режим роя)"]
+
+* Portainer
+
+Portainer is a lightweight management UI which allows you to easily manage your different Docker environments (Docker hosts or Swarm clusters).
+
+https://github.com/portainer/portainer[git]

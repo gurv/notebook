@@ -1,4 +1,5 @@
 :toc-title: Содержимое
+:toclevels: 3
 :images: ./images
 :icons: font
 
