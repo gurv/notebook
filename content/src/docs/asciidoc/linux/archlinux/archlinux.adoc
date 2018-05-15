@@ -223,7 +223,7 @@ nano /etc/X11/xorg.conf.d/10-monitor.conf
 ```
 Section "Monitor"
     Identifier  "DP1"
-    Option      "PreferredMode" "1600x1200"
+    Option      "PreferredMode" "1920x1200"
     Option      "Primary" "true"
     Option      "Rotate" "right"
 EndSection
@@ -239,7 +239,8 @@ Section "Device"
     Driver "intel"
     Option "TearFree" "true"
     Option "Monitor-DP1" "DP1"
-    Option "Monitor-HDMI1" "HDMI1"
+# not use
+#    Option "Monitor-HDMI1" "HDMI1"
 EndSection
 ```
 
@@ -360,6 +361,12 @@ pacaur -S minikube
 curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.6.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
 # пробный старт
 minikube start
+```
+
+dashboard
+```
+minikube dashboard --url
+chromium ...
 ```
 
 [TIP]
