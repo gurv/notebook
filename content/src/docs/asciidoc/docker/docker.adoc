@@ -50,6 +50,10 @@ docker run -it --rm openjdk:jre-alpine /bin/ash
 set DOCKER_HOST=tcp://192.168.1.33:2375
 ```
 
+Docker на Windows при удалении всех контейнеров/томов оставляет файлы
+(https://github.com/docker/for-win/issues/244["Windows 10: Docker does not release disk space after deleting all images and containers"]),
+требуется удаление самого Docker-а (201805: освободило 10 ГБт)
+
 * Полезное:
 https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach["stackoverflow: From inside of a Docker container, how do I connect to the localhost of the machine?"],
 https://habrahabr.ru/company/redmadrobot/blog/318866/["хабр 2017: Docker swarm mode (режим роя)"]
