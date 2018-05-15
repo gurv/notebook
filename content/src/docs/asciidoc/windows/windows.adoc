@@ -1,26 +1,66 @@
 = Windows
 
-* Java-процессы
+Java-процессы:
 ```
 tasklist /fi "imagename eq java.exe"
 ```
 
-* Имя хоста
+Имя хоста:
 ```
 hostname
 ```
 
-* MAC-адреса
+MAC-адреса:
 ```
 getmac /v
 ```
 
-* Поиск процесса использующего порт
+Поиск процесса использующего порт:
 ```
 netstat -ano | find ":49997"
 ```
 
-* Убить процесс по его PID
+Убить процесс по его PID:
 ```
 tskill 10424
+```
+
+Изменить глобальную системную переменную:
+```
+setx PATH "%PATH%;C:\app\kubernetes-1.10.2" -m
+```
+
+Файл "localhost":
+```
+c:\Windows\System32\Drivers\etc\hosts
+```
+
+Форматирование USB-носителя:
+```
+diskpart
+DISKPART> list disk
+
+  Диск ###  Состояние      Размер   Свободно Дин  GPT
+  --------  -------------  -------  -------  ---  ---
+  Диск 0    В сети          167 Gбайт      0 байт
+  Диск 1    В сети         7676 Mбайт  3072 Kбайт
+  Диск 2    В сети         1955 Mбайт  1856 Kбайт
+
+DISKPART> select disk 2
+
+Выбран диск 2.
+
+DISKPART> clean
+
+DiskPart: очистка диска выполнена успешно.
+
+DISKPART> create partition primary
+
+DiskPart: указанный раздел успешно создан.
+
+DISKPART> format fs=fat32
+
+  Завершено (в процентах): 100
+
+Программа DiskPart успешно отформатировала том.
 ```
