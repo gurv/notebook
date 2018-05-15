@@ -4,5 +4,18 @@
 https://github.com/kubernetes/kubernetes[git],
 https://kubernetes.io/docs/home/[docs]
 
+* kubectl на Windows
+
+https://dl.k8s.io/v1.10.2/kubernetes-client-windows-386.tar.gz[Загрузить, например версию 1.10.2]
+
+Файл конфигурации (создать/изменить):
+```
+C:\Users\GurV\.kube\config
+```
+
 * Полезное:
 https://habrahabr.ru/company/flant/blog/327338/["Хабр 201706: Зачем нужен Kubernetes и почему он больше, чем PaaS?"]
+
+https://plugins.jetbrains.com/plugin/download?rel=true&updateId=44772[IDEA-плагин]
+
+https://blog.jetbrains.com/idea/2018/03/intellij-idea-2018-1-kubernetes-support/["IntelliJ IDEA 2018.1: Kubernetes support"]
