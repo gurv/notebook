@@ -47,7 +47,7 @@ ng serve
 ```
 ng serve –prod
 ```
-
++
 [TIP]
 ====
 Вход
@@ -56,6 +56,13 @@ start http://localhost:4200
 ```
 или link:localhost:4200[localhost:4200]
 ====
+
+* Исправить анализатором кода (TSLint)
++
+```
+ng lint my-app --fix
+```
+Возможно останутся ERROR/WARNING, которые придется править вручную
 
 * Конфигурация Webpack
 
