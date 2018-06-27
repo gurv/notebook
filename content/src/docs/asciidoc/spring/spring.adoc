@@ -10,7 +10,8 @@ https://spring-calendar.cfapps.io/[calendar]
 
 * https://projects.spring.io/spring-boot/[site],
 https://github.com/spring-projects/spring-boot[git],
-https://start.spring.io/[Spring Initializr]
+https://start.spring.io/[Spring Initializr],
+https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html[Common application properties]
 
 == Spring Security
 
