@@ -44,3 +44,8 @@ systemctl enable unit
 ```
 systemctl disable unit
 ```
+
+* размер логов
+```
+journalctl --disk-usage
+```

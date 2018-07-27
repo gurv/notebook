@@ -4,6 +4,7 @@
 https://docs.spring.io/spring/docs/current/spring-framework-reference/[docs],
 https://github.com/spring-projects/spring-framework[git],
 https://repo.spring.io/webapp/#/home[repo],
+https://spring.io/blog/category/releases[releases],
 https://spring-calendar.cfapps.io/[calendar]
 
 == Spring Boot
@@ -49,6 +50,14 @@ http://www.baeldung.com/spring-kafka["Intro to Apache Kafka with Spring"]
 
 == Spring Data
 
+* Полезное:
+
+https://github.com/spring-projects/spring-data-examples[examples]
+
+https://github.com/spring-cloud/spring-cloud-dataflow/tree/master/spring-cloud-dataflow-server-core[проект от Pivotal на JdbcTemplate]
+
+https://github.com/pivotalsoftware/pivotal-cla[проект от Pivotal]
+
 * Включение логирования для Hibernate (файл application.yml)
 ```
 spring:
@@ -83,7 +92,15 @@ https://github.com/spring-cloud[git],
 https://cloud.spring.io/spring-cloud-netflix/[Netflix]
 
 * Полезное:
+
 https://habrahabr.ru/company/jugru/blog/341026/["Хабр. Что такое Spring Cloud и как его готовить"]
+
+https://www.programcreek.com/java-api-examples/?code=kbastani/service-block-samples/service-block-samples-master/cqrs-block/github-event-core/src/main/java/demo/processor/EventProcessor.java#[Spring Cloud Function Service Block Samples (201807: есть CQ]
+
+
+http://www.kennybastani.com/2017/01/building-event-driven-microservices.html[Building Event-driven Microservices Using CQRS and Serverless]
+
+http://www.kennybastani.com/2017/07/microservices-to-service-blocks-spring-cloud-function-aws-lambda.html[From Microservices to Service Blocks using Spring Cloud Function and AWS Lambda]
 
 === Spring Cloud Config
 

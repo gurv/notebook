@@ -9,6 +9,15 @@ https://www.jetbrains.com/help/idea/docker.html["Docker"]
 
 * Нужное:
 
+* включение Run Dashboard for Spring Boot
+
+в файле bin/idea64.exe.vmoptions должно быть
+```
+-Dide.run.dashboard=true
+```
+
+Установить "Lombok Plugin" и в Preferences включить "annotation processing"
+
 ** Ctrl + Shift + F12
 
 ** Squash комиитов ветки
@@ -16,3 +25,7 @@ https://www.jetbrains.com/help/idea/docker.html["Docker"]
 "
 Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of commits, where you can pick which ones you want to squash.
 "
+
+* Установка Lombook
+
+Установить "Lombok Plugin" и в Preferences включить "annotation processing"

@@ -2,6 +2,16 @@
 
 (Midnight Commander)
 
+* установить ч/б цвета
+
+в файле ~/.config/mc/ini должно быть:
+[source]
+----
+skin=dark
+----
+
+* клавиши
+
 [options="header"]
 |===
 |Клавиши |Действие

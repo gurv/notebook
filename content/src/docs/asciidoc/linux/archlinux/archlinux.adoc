@@ -181,6 +181,15 @@ GRUB_CMDLINE_LINUX="fbcon=rotate:1"
 grub-mkconfig --output=/boot/grub/grub.cfg
 ```
 
+время в логах journal (компонент systemd)
+```
+timedatectl set-timezone Europe/Moscow
+```
+и проверить
+```
+timedatectl status
+```
+
 git / gradle / ...
 ```
 sudo pacman -S git gradle nodejs npm
@@ -341,7 +350,7 @@ gpasswd -a gurv docker
 
 * в /usr/lib/systemd/system/docker.service должно быть
 ```
-ExecStart=/usr/bin/dockerd -H 0.0.0.0:2375
+ExecStart=/usr/bin/dockerd -H 0.0.0.0:2375 -H fd://
 ```
 ====
 
