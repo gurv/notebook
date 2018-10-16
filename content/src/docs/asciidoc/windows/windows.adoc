@@ -30,6 +30,11 @@ tskill 10424
 setx PATH "%PATH%;C:\app\kubernetes-1.10.2" -m
 ```
 
+Запуск от другого пользователя:
+```
+runas /user:gurv cmd
+```
+
 Файл "localhost":
 ```
 c:\Windows\System32\Drivers\etc\hosts

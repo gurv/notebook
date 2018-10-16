@@ -2,3 +2,60 @@
 
 * https://www.rust-lang.org/[site],
 https://win.rustup.rs/[download]
+
+* Установка на Windows 10
+
+** Скачать
+https://win.rustup.rs/[rustup-init.exe]
+и выполнить установку
+(см. каталоги ~\.cargo и ~\.rustup)
++
+Выполнить
++
+```
+setx PATH "%PATH%;C:\Users\GurV\.cargo\bin" -m
+```
+
+** Скачать
+http://repo.msys2.org/distrib/x86_64/msys2-x86_64-20180531.exe[MSYS2]
+и выполнить установку
++
+Запустить msys2.exe и выполнить
++
+```
+pacman -Syu
+```
++
+Перезапустить msys2.exe и выполнить
++
+```
+pacman -Su
+pacman -S git
+```
++
+Выполнить
++
+```
+rustup install stable-gnu
+rustup default stable-gnu
+rustup target add x86_64-unknown-linux-gnu
+```
+
+** Скачать
+https://visualstudio.microsoft.com/442290ed-5d67-4042-8c76-7651ed0c2e0f[Microsoft Visual C++ Build Tools 2017]
+и выполнить установку
++
+Выполнить
++
+```
+rustup install stable
+```
+
+* Новый проект (Windows)
++
+```
+cargo new aaa --bin
+cd aaa
+cargo build
+.\target\debug\aaa.exe
+```

@@ -50,3 +50,32 @@ git tag -d tagName
 ```
 git fsck --full
 ```
+
+* Отмена последних 2 шт отправленных (push) комиитов
+```
+git reset --hard HEAD~2
+git push --force
+```
+
+* Получить изменения со сбросом локальных изменений
+```
+git fetch --all
+git reset --hard original/master
+```
+
+* Показать staged & unstaged changes
+```
+git status
+```
+
+* Показать коммит
+```
+git show e51ac697cc27c8d58c6c3711b20ee3066c5e8c07
+```
+
+* Добавить еще изменения в последний неотправленный коммит
+```
+git status
+git add --all
+git commit -m "..." --amend
+```

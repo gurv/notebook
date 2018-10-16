@@ -271,8 +271,8 @@ https://awesomewm.org/[site]
 ====
 * Win+s - виджет подсказки активных горячих клавиш
 * Win+Shift+q - выход
-* Win+q - меню
-* n+r - командная строка
+* Win+w - меню
+* Win+r - командная строка
 * Win+Shift+c - закрыть окно
 * Win+F{1..5} — переключение между тегами
 * Win+Shift+F{1..5} — переместить активное окно из текущего тега в выбранный тег
@@ -503,4 +503,27 @@ pacman -R virtualbox
 Очистка кеша:
 ```
 pacman -Sc
+```
+
+== VS Code
+
+* Установить
+
+Загрузить
+https://code.visualstudio.com/download[отсюда]
+версию ".tar.gz	64 bit",
+распаковать, например, в /opt/app/vscode-1.28
+и выполнить:
+```
+sudo ln -s /opt/app/vscode-1.28/bin/code /usr/local/bin/code
+```
+
+Если при запуске
+```
+code
+```
+возникнет ошибка об отсутствии библиотеки,
+то выполнить
+```
+sudo pacman -S gconf
 ```
