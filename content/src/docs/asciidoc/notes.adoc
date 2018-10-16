@@ -9,56 +9,56 @@
 
 :leveloffset: +1
 
-include::git/git.adoc[]
+include::git.adoc[]
 
-include::linux/linux.adoc[]
+include::linux.adoc[]
 
-include::windows/windows.adoc[]
+include::windows.adoc[]
 
-include::nodejs/nodejs.adoc[]
+include::nodejs.adoc[]
 
-include::angular/angular.adoc[]
+include::angular.adoc[]
 
-include::gradle/gradle.adoc[]
+include::gradle.adoc[]
 
-include::asciidoc/asciidoc.adoc[]
+include::asciidoc.adoc[]
 
-include::java/java.adoc[]
+include::java.adoc[]
 
-include::spring/spring.adoc[]
+include::spring.adoc[]
 
-include::zookeeper/zookeeper.adoc[]
+include::zookeeper.adoc[]
 
-include::kafka/kafka.adoc[]
+include::kafka.adoc[]
 
-include::docker/docker.adoc[]
+include::docker.adoc[]
 
-include::kubernetes/kubernetes.adoc[]
+include::kubernetes.adoc[]
 
-include::monitoring/monitoring.adoc[]
+include::monitoring.adoc[]
 
-include::groovy/groovy.adoc[]
+include::groovy.adoc[]
 
-include::rust/rust.adoc[]
+include::rust.adoc[]
 
-include::typescript/typescript.adoc[]
+include::typescript.adoc[]
 
-include::rxjs/rxjs.adoc[]
+include::rxjs.adoc[]
 
-include::graphql/graphql.adoc[]
+include::graphql.adoc[]
 
-include::grpc/grpc.adoc[]
+include::grpc.adoc[]
 
-include::cucumber/cucumber.adoc[]
+include::cucumber.adoc[]
 
-include::oidc/oidc.adoc[]
+include::oidc.adoc[]
 
-include::idea/idea.adoc[]
+include::idea.adoc[]
 
-include::chrome/chrome.adoc[]
+include::chrome.adoc[]
 
-include::micex/micex.adoc[]
+include::micex.adoc[]
 
-include::microservices/microservices.adoc[]
+include::microservices.adoc[]
 
 :leveloffset: -1
