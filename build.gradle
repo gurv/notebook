@@ -1,3 +1,27 @@
+buildscript {
+    dependencies {
+        classpath group: 'org.asciidoctor', name: 'asciidoctorj-diagram', version: '1.5.0'
+        classpath group: 'org.asciidoctor', name: 'asciidoctorj-pdf', version: '1.5.0-alpha.11'
+    }
+}
+
+plugins {
+    id 'org.asciidoctor.convert' version '1.5.3'
+}
+
 group 'ru.gurv.notebook'
 version '1.0-SNAPSHOT'
 
+asciidoctor {
+    attributes \
+        'toc': 'left',
+        'imagesdir': 'images'
+    sources { include '*.adoc' }
+    sourceDir 'content'
+    outputDir 'build'
+    requires 'asciidoctor-diagram'
+}
+
+build {
+    dependsOn asciidoctor
+}
