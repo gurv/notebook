@@ -1,16 +1,18 @@
 buildscript {
-    dependencies {
-        classpath group: 'org.asciidoctor', name: 'asciidoctorj-diagram', version: '1.5.0'
-        classpath group: 'org.asciidoctor', name: 'asciidoctorj-pdf', version: '1.5.0-alpha.11'
+    repositories {
+        jcenter()
     }
-}
-
-plugins {
-    id 'org.asciidoctor.convert' version '1.5.3'
+    
+    dependencies {
+        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.8'
+        classpath 'org.asciidoctor:asciidoctorj-diagram:1.5.0'
+    }
 }
 
 group 'ru.gurv.notebook'
 version '1.0-SNAPSHOT'
+
+apply plugin: 'org.asciidoctor.convert'
 
 asciidoctor {
     attributes \
