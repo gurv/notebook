@@ -69,3 +69,36 @@ DISKPART> format fs=fat32
 
 Программа DiskPart успешно отформатировала том.
 ```
+
+== minikube
+
+Скачать
+https://github.com/kubernetes/minikube/releases/download/v0.29.0/minikube-windows-amd64
+https://github.com/kubernetes/kubernetes/releases/download/v1.12.1/kubernetes.tar.gz
+
+Создать в приложении "Hyper-V Manager" внешний vswitch с именем "minikube"
+
+Распаковать в C:\app\k8s\ и переименовать в kubectl.exe и minikube.exe
+
+Если была другая версия minikube,
+то остановить/удалить VM "Hyper-V Manager"
+и очистить каталог C:\Users\GurV\.minikube\ 
+
+```
+# cтарт
+minikube start --vm-driver hyperv --hyperv-virtual-switch minikube
+# разное
+minikube status
+minikube ip
+minikube dashboard
+minikube docker-env
+kubectl get services --all-namespaces
+kubectl get pod
+kubectl get nodes
+kubectl config view
+kubectl cluster-info
+# dashboard
+curl http://192.168.1.35:30000/
+# выполнить в powershell, и тогда docker будет работать с docker machine в minikube
+minikube docker-env | Invoke-Expression
+```

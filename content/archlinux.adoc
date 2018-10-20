@@ -239,7 +239,7 @@ EndSection
 
 Section "Monitor"
     Identifier  "HDMI1"
-    Option      "PreferredMode" "1600x1200"
+    Option      "PreferredMode" "1920x1200"
     Option      "LeftOf" "DP1"
 EndSection
 
@@ -364,36 +364,38 @@ curl -s https://gist.githubusercontent.com/Tadly/0e65d30f279a34c33e9b/raw/pacaur
 
 == minikube
 
-* установить
 ```
+su gurv
+# остановить docker machine
+#sudo systemctl stop docker
+# сверка версий в репо и уже установленной
+#pacaur -i minikube
+# удалить
+#pacaur -R minikube
+# очистить ~/.minikube/machines
+# установить
 pacaur -S minikube
-curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/v1.6.0/bin/linux/amd64/kubectl && chmod +x kubectl && sudo mv kubectl /usr/local/bin/
-# пробный старт
-minikube start
-```
-
-dashboard
-```
+# старт (тайминг: 1 мин)
+minikube start --vm-driver=virtualbox
+# будет в списке виртуалок
+vboxmanage list vms
+vboxmanage list runningvms
+# стop
+minikube stop
+# конфигурация 
+cat ~/.minikube/machines/minikube/config.json
+# docker (на хосте, необязателен)
+eval $(minikube docker-env)
+docker version
+docker image ls
+# dashboard
 minikube dashboard --url
-chromium ...
+# ssh
+minikube ssh
+# проброс портов (пример)
+#vboxmanage controlvm "minikube" natpf1 "http,tcp,,51926,,80"
+#vboxmanage controlvm "minikube" natpf1 "https,tcp,,51927,,443"
 ```
-
-[TIP]
-====
-20180507: ошибка
-```
-[root@luna ~]# minikube start
-Starting local Kubernetes v1.10.0 cluster...
-Starting VM...
-Getting VM IP address...
-Moving files into cluster...
-Setting up certs...
-Connecting to cluster...
-Setting up kubeconfig...
-Starting cluster components...
-E0508 18:25:44.787253    1081 start.go:281] Error restarting cluster:  restarting kube-proxy: waiting for kube-proxy to be up for configmap update: timed out waiting for the condition
-```
-====
 
 == IDEA
 
@@ -500,9 +502,14 @@ pacman -Ql virtualbox
 pacman -R virtualbox
 ```
 
-Очистка кеша:
+Очистка файловый кеш пакетов:
 ```
 pacman -Sc
+```
+
+Обновить OC
+```
+pacman -Syu
 ```
 
 == VS Code
