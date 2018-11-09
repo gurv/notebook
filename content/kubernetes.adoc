@@ -2,7 +2,10 @@
 
 * https://kubernetes.io/[site],
 https://github.com/kubernetes/kubernetes[git],
-https://kubernetes.io/docs/home/[docs]
+https://kubernetes.io/docs/home/[docs],
+https://kubernetes.io/docs/concepts/services-networking/service/[docs: Services],
+https://kubernetes.io/docs/concepts/workloads/controllers/deployment/[docs: Deployments],
+https://kubernetes.io/docs/concepts/storage/persistent-volumes/[docs: Persistent Volumes]
 
 * kubectl на Windows
 
@@ -19,6 +22,8 @@ https://habrahabr.ru/company/flant/blog/327338/["Хабр 201706: Зачем н�
 https://plugins.jetbrains.com/plugin/download?rel=true&updateId=44772[IDEA-плагин]
 
 https://blog.jetbrains.com/idea/2018/03/intellij-idea-2018-1-kubernetes-support/["IntelliJ IDEA 2018.1: Kubernetes support"]
+
+https://habr.com/company/southbridge/blog/346314/["2018: Понимание сети Kubernetes: сервисы"]
 
 == Helm
 
