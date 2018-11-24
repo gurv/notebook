@@ -17,6 +17,29 @@ C:\Users\GurV\.kube\config
 ```
 
 * Полезное:
+```
+kubectl version
+kubectl get pods
+kubectl get po --namespace kube-system
+kubectl describe pods
+
+# delete
+#   kubectl delete (-f FILENAME \| TYPE [NAME \| /NAME \| -l label \| --all]) [flags]
+kubectl delete --all pods --namespace=default
+kubectl delete --all services --namespace=default
+kubectl delete --all deployments --namespace=default
+kubectl delete --all pvc --namespace=default
+
+# persistence volumes
+kubectl create -f ./helm/pv.yaml
+kubectl create -f ./helm/pvc.yaml
+kubectl get pv
+#helm install ./helm/postgresql --set persistence.existingClaim=pv-claim
+kubectl delete pv pv01
+```
+
+https://kubernetes.io/docs/tasks/debug-application-cluster/debug-application/[201811: Troubleshoot Applications]
+
 https://habrahabr.ru/company/flant/blog/327338/["Хабр 201706: Зачем нужен Kubernetes и почему он больше, чем PaaS?"]
 
 https://plugins.jetbrains.com/plugin/download?rel=true&updateId=44772[IDEA-плагин]
@@ -25,11 +48,109 @@ https://blog.jetbrains.com/idea/2018/03/intellij-idea-2018-1-kubernetes-support/
 
 https://habr.com/company/southbridge/blog/346314/["2018: Понимание сети Kubernetes: сервисы"]
 
+
+```
+# если не работает minikube stop
+ps -ef | grep kube
+kill 8775
+```
+
 == Helm
 
 * Полезное:
 
 ```
+helm ls
+
+# delete all
+helm ls --short | xargs -L1 helm delete
+
+kubectl get events
+
+# установить
+helm install ./helm/postgresql
+
 # просмотр результатов обработки
 helm template ./helm/postgresql
+
+helm version
+# список версий
+helm list
+# удалить версию
+helm delete release_name
+
+# репозитории
+helm repo list
+helm repo add bitnami https://charts.bitnami.com/bitnami
+helm repo update
+helm repo remove bitnami
+helm search postgresql
+```
+
+== OpenShift
+
+=== minishift
+
+https://github.com/minishift/minishift/releases[релизы]
+
+запускалось на ArchLinux
+```
+# скачать отсюда https://developers.redhat.com/products/cdk/download/
+cp ~/Downloads/cdk-3.6.0-1-minishift* /opt/app/minishift
+chmod +x /opt/app/minishift
+export PATH=$PATH:/opt/app
+echo 'export PATH=$PATH:/opt/app' >> ~/.bashrc
+minishift version
+export MINISHIFT_HOME=/opt/app/.minishift
+minishift setup-cdk
+minishift config set vm-driver virtualbox
+minishift config set memory 16g
+minishift config view
+#export MINISHIFT_USERNAME=vladimir.gurinovich
+#export MINISHIFT_PASSWORD=69
+#echo export MINISHIFT_USERNAME=$MINISHIFT_USERNAME >> ~/.bashrc
+#echo export MINISHIFT_PASSWORD=$MINISHIFT_PASSWORD >> ~/.bashrc
+minishift start --skip-registration
+
+# ?
+export HELM_HOST="$(minishift ip):$(oc get svc/tiller -o jsonpath='{.spec.ports[0].nodePort}' -n kube-system --as=system:admin)"
+export MINISHIFT_ADMIN_CONTEXT="default/$(oc config view -o jsonpath='{.contexts[?(@.name=="minishift")].context.cluster}')/system:admin"
+
+minishift ip1: не заработал, ошибка на apply
+minishift co1: не заработал, ошибка на apply
+minishift co1: не заработал, ошибка на apply
+minishift ad1: не заработал, ошибка на apply
+eval $(minis1: не заработал, ошибка на apply
+oc projects
+cd /opt/tmp
+
+# addons
+git clone ht1: не заработал, ошибка на applyaddons.git
+
+# kube-dashboard
+minishift addons install /opt/tmp/minishift-addons/add-ons/kube-dashboard/
+minishift addons apply kube-dashboard
+minishift addons enable kube-dashboard
+
+minishift stop
+minishift delete
+minishift start --skip-registration --memory=16g
+minishift openshift service dashboard -n kube-dashboard
+kubectl get services --all-namespaces --as=system:admin
+#oc delete project/kube-dashboard --as=system:admin
+eval $(minishift docker-env)
+docker version
+
+# удалить
+minishift delete
+# очистить /opt/app/.minishift
+
+# если висит minishift stop
+ps -ef | grep shift
+kill 11738
+
+# helm (!!! 201811: не заработал, ошибка на apply)
+# скачать https://github.com/minishift/minishift-addons.git
+minishift addons install /opt/tmp/minishift-addons/add-ons/helm/
+minishift addons apply helm
 ```
