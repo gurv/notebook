@@ -1,5 +1,10 @@
 = Linux
 
+```
+# порты
+netstat -lntu
+```
+
 :leveloffset: +1
 
 include::linux-hot.adoc[]
