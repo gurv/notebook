@@ -33,17 +33,18 @@ passwd
 (например, пароль: root)
 [TIP]
 ====
-Для *SSH*-соединения запустить
 ```
+# запуск ssh на госте
 systemctl start sshd
-```
-Если VM-гость, то из результатов этого
-```
-ip addr | grep "scope global"
-```
-пробросить порты с, например, 10.0.2.15:22 на localhost:22
 
-Можно соединяться по SSH, например, из MobiXterm
+# ssh-соединение с хоста
+boxmanage modifyvm arch --natpf1 "ssh,tcp,localhost,2222,,22"
+ssh root@localhost -p 2222
+# если "Host key verification failed"
+ssh-keygen -R [localhost]:2222
+# если "'xterm-termite': unknown terminal type"
+export TERM=xterm
+```
 ====
 
 * создание (выбрать тип dos c bootable), форматирование и монтирование раздела на диске (для luna заменть sda на nvme0n1 , sda1 на nvme0n1p1 )
@@ -153,9 +154,7 @@ reboot
 
 * шрифты, раскладка клавиатуры
 ```
-pacman -S --noconfirm kbd-ru-keymaps terminus-font ttf-dejavu ttf-liberation
-!!! при прогоне на VM сообшение: error: target not found: kbd-ru-keymaps
-!!! успешно выполнил так: pacman -S --noconfirm terminus-font ttf-dejavu ttf-liberation
+pacman -S --noconfirm terminus-font ttf-dejavu ttf-liberation
 
 nano /etc/vconsole.conf
 ```
@@ -199,69 +198,50 @@ git config --global user.email "vladimir.gurinovich@gmail.com"
 
 == Xorg
 
-* установить
 ```
+# установить
 pacman -S --noconfirm xf86-video-intel
 pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
 pacman -S --noconfirm termite chromium
-```
 
-переключение раскладки клавиатуры
-```
+# переключение раскладки клавиатуры
 nano ~/.xinitrc
-```
-добавить строку
-```
-setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
-```
-[TIP]
-====
-201805: это уже было в файле ~/.xinitrc для root. Добавил в файл для gurv.
-====
+# добавить строку
+#setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
 
-разрешить для всех пользователей
-```
+# разрешить для всех пользователей
 echo "allowed_users=anybody" > /etc/X11/Xwrapper.config
-```
 
-Настройка мониторов (для luna)
-```
+# настройка мониторов (для luna)
 nano /etc/X11/xorg.conf.d/10-monitor.conf
-```
-должно быть
-```
-Section "Monitor"
-    Identifier  "DP1"
-    Option      "PreferredMode" "1920x1200"
-    Option      "Primary" "true"
-    Option      "Rotate" "right"
-EndSection
-
-Section "Monitor"
-    Identifier  "HDMI1"
-    Option      "PreferredMode" "1920x1200"
-    Option      "LeftOf" "DP1"
-EndSection
-
-Section "Device"
-    Identifier "Device0"
-    Driver "intel"
-    Option "TearFree" "true"
-    Option "Monitor-DP1" "DP1"
-# not use
-#    Option "Monitor-HDMI1" "HDMI1"
-EndSection
-```
-
-[TIP]
-====
-на Luna в x-terminale можно настроить мониторы
-```
+# должно быть
+#Section "Monitor"
+#    Identifier  "DP1"
+#    Option      "PreferredMode" "1920x1200"
+#    Option      "Primary" "true"
+#    Option      "Rotate" "right"
+#EndSection
+#
+#Section "Monitor"
+#    Identifier  "HDMI1"
+#    Option      "PreferredMode" "1920x1200"
+#    Option      "LeftOf" "DP1"
+#EndSection
+#
+#Section "Device"
+#    Identifier "Device0"
+#    Driver "intel"
+#    Option "TearFree" "true"
+#    Option "Monitor-DP1" "DP1"
+## not use
+##    Option "Monitor-HDMI1" "HDMI1"
+#EndSection
+#
+# мониторы
 xrandr --output HDMI-1 --mode 1600x1200
 xrandr --output DP-1 --mode 1600x1200
 xrandr --output DP-1 --rotate right
 ```
-====
 
 == awesome
 
@@ -280,50 +260,31 @@ https://awesomewm.org/[site]
 * Win+Ctrl+Shift+F{1..5} — вкл/выкл отображения активного окна на указанном теге(тегах)
 ====
 
-* установить
 ```
+# установить
 pacman -S --noconfirm awesome
-mkdir ~/.config
-mkdir ~/.config/awesome
-cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
+mkdir /opt/app/.awesome
+cp /etc/xdg/awesome/rc.lua /opt/app/.awesome/
 echo "exec awesome" > ~/.xinitrc
-```
 
-[TIP]
-====
-TODO 201805: Ранее в файл ~/.xinitrc добавлялась раскладка клавы, а здесь она затирается
-====
-
-Настроить шрифт:
-```
+# шрифт
 nano ~/.Xresources
-```
-должно быть
-```
-Xft.dpi: 192.0
-```
+# должно быть
+#Xft.dpi: 192.0
 
-** использовать termite
-```
-nano ~/.config/awesome/rc.lua
-```
-должно быть:
-```
-terminal = "termite"
-```
-и размер шрифта
-```
+# использовать termite
+nano /opt/app/.awesome/rc.lua
+# должно быть
+#terminal = "termite"
+
+# размер шрифта
 nano ~/.config/termite/config
-```
-должно быть:
-```
-font = Monospace 16
-```
+#должно быть:
+#font = Monospace 16
 
-** отключить рисунок (закомментировать строку с theme.wallpaper)
-+
-```
-nano /usr/share/awesome/themes/default/theme.lua
+# отключить рисунок
+sudo nano /usr/share/awesome/themes/default/theme.lua
+# закомментировать theme.wallpaper
 ```
 
 == Docker
@@ -365,25 +326,6 @@ curl -s https://gist.githubusercontent.com/Tadly/0e65d30f279a34c33e9b/raw/pacaur
 == minikube
 
 ```
-su gurv
-# остановить docker machine
-#sudo systemctl stop docker
-# сверка версий в репо и уже установленной
-#pacaur -i minikube
-# удалить
-#pacaur -R minikube
-# очистить ~/.minikube/machines
-# установить
-pacaur -S minikube
-# старт (тайминг: 1 мин)
-minikube start --vm-driver=virtualbox
-# будет в списке виртуалок
-vboxmanage list vms
-vboxmanage list runningvms
-# стop
-minikube stop
-# конфигурация 
-cat ~/.minikube/machines/minikube/config.json
 # docker (на хосте, необязателен)
 eval $(minikube docker-env)
 docker version
@@ -411,104 +353,92 @@ idea.sh
 
 == VirtualBox
 
-* установить
 ```
+# установить
 pacman -S virtualbox linux-headers net-tools
+# добавить строку: vboxdrv
 nano /etc/modules-load.d/virtualbox.conf
-```
-(добавить строку: vboxdrv)
-```
+# добавить строку: vboxnetadp vboxnetflt vboxpci
 nano /etc/modules-load.d/vbox-other-modules.conf
-```
-(добавить: vboxnetadp vboxnetflt vboxpci)
+useradd -G vboxusers gurv
+# 201811: при обновлении потребовалось (установилась версия glibc-2.28-5-x86_64)
+#sudo pacman -Sy glibc
+vboxmanage setproperty machinefolder /opt/vm
+vboxmanage list systemproperties
 
-* разное
-** запуск в X: virtualbox
-** запуск в терминале: VBoxSDL или VBoxHeadless
+# systemd
+nano /etc/systemd/system/vboxvmservice@.service
+###
+[Unit]
+Description=VBox Virtual Machine %i Service
+Requires=systemd-modules-load.service
+After=systemd-modules-load.service
 
-[TIP]
-====
-* TODO пакет дополнений
+[Service]
+User=username
+Group=vboxusers
+ExecStart=/usr/bin/VBoxHeadless -s %i
+ExecStop=/usr/bin/VBoxManage controlvm %i savestate
 
-* TODO образ диска с гостевыми дополнениями
+[Install]
+WantedBy=multi-user.target
+###
+#
+useradd -G vboxusers gurv
+sudo pacman -S virtualbox-guest-iso
 
-* 20180508:
-```
-[root@luna ~]# pacman -Qs virtualbox
-local/virtualbox 5.2.10-1
-    Powerful x86 virtualization for enterprise as well as home use
-local/virtualbox-host-dkms 5.2.10-1
-    VirtualBox Host kernel modules sources
-```
-====
+# VM & systemd
+systemctl enable vboxvmservice@win
+systemctl start vboxvmservice@win
+# X-запуск: virtualbox
+# терминал: см. VBoxSDL или VBoxHeadless
 
-== VirtualBox-guest
+# установить на гостевой ArchLinux
+sudo pacman -S virtualbox-guest-modules-arch virtualbox-guest-utils
 
-* установить
-```
-pacman -S --noconfirm virtualbox-guest-modules-arch virtualbox-guest-utils
-```
-
-создать файл
-```
+# создать файл
 nano /etc/modules-load.d/virtualbox.conf
-```
+# со следующими строками:
+#vboxguest
+#vboxsf
+#vboxvideo
 
-со следующими строками:
-```
-vboxguest
-vboxsf
-vboxvideo
-```
-
-зарегистрировать сервис
-```
+# зарегистрировать сервис
 systemctl enable vboxservice
 nano ~/.xinitrc
-```
-( добавить строку /usr/bin/VBoxClient-all )
+# добавить строку
+#/usr/bin/VBoxClient-all
 
-[TIP]
-====
-Если нужно сжатие VDI-файла на Windows-host-е
-```
+# если нужно сжатие VDI-файла на Windows-host-е
 pacman -S dcfldd
-```
-это сделать на VM-guest перед сжатием
-```
+# это сделать на VM-guest перед сжатием
 dcfldd if=/dev/zero of=/fillfile bs=4M
 rm -rf /fillfile
-```
-это сжатие на Windows-host
-```
+# это сжатие на Windows-host
 VBoxManage.exe modifyhd luna.vdi --compact
 ```
-====
 
 == pacman
 
-Список установленных пакетов:
 ```
+# Поиск пакетов в репозитории
+pacman -Ss virtualbox
+
+# Список установленных пакетов
 pacman -Qi | grep Name
-```
 
-Список файлов пакета:
-```
+# Список файлов пакета
 pacman -Ql virtualbox
-```
 
-Удалить пакет:
-```
+# Удалить пакет
 pacman -R virtualbox
-```
+#
+pacman -Rs virtualbox
 
-Очистка файловый кеш пакетов:
-```
+# Очистка файловый кеш пакетов
 pacman -Sc
-```
 
-Обновить OC
-```
+# Обновить OC
 pacman -Syu
 ```
 

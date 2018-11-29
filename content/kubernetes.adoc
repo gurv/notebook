@@ -49,10 +49,50 @@ https://blog.jetbrains.com/idea/2018/03/intellij-idea-2018-1-kubernetes-support/
 https://habr.com/company/southbridge/blog/346314/["2018: Понимание сети Kubernetes: сервисы"]
 
 
+== minikube
+
+(для ArchLinux)
 ```
-# если не работает minikube stop
-ps -ef | grep kube
-kill 8775
+# установить
+#sudo systemctl stop docker
+export MINIKUBE_HOME=/opt/app/.minikube
+echo 'export MINIKUBE_HOME=/opt/app/.minikube' >> ~/.bashrc
+# сверка версий в репо и уже установленной
+#pacaur -i minikube
+pacaur -S minikube
+# конфигурация
+minikube config set memory 16384
+minikube config set disk-size 2000MB
+minikube config set vm-driver virtualbox
+#minikube config view
+#cat $MINIKUBE_HOME/machines/minikube/config.json
+
+# старт (тайминг: 1 мин)
+minikube start
+
+# будет в списке виртуалок
+vboxmanage list vms
+vboxmanage list runningvms
+
+# останов 
+minikube stop
+#ps -ef | grep kube
+#kill 4896
+
+# удалить
+#pacaur -R minikube
+# очистить ~/.minikube/machines
+
+# разное
+minikube status
+minikube ip
+minikube dashboard
+minikube docker-env
+kubectl get services --all-namespaces
+kubectl get pod
+kubectl get nodes
+kubectl config view
+kubectl cluster-info
 ```
 
 == Helm

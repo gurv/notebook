@@ -87,18 +87,7 @@ https://github.com/kubernetes/kubernetes/releases/download/v1.12.1/kubernetes.ta
 ```
 # cтарт
 minikube start --vm-driver hyperv --hyperv-virtual-switch minikube
-# разное
-minikube status
-minikube ip
-minikube dashboard
-minikube docker-env
-kubectl get services --all-namespaces
-kubectl get pod
-kubectl get nodes
-kubectl config view
-kubectl cluster-info
-# dashboard
-curl http://192.168.1.35:30000/
+
 # выполнить в powershell, и тогда docker будет работать с docker machine в minikube
 minikube docker-env | Invoke-Expression
 ```
