@@ -262,9 +262,9 @@ https://awesomewm.org/[site]
 
 ```
 # установить
-pacman -S --noconfirm awesome
-mkdir /opt/app/.awesome
-cp /etc/xdg/awesome/rc.lua /opt/app/.awesome/
+sudo pacman -S --noconfirm awesome
+mkdir ~/.awesome
+cp /etc/xdg/awesome/rc.lua ~/.awesome/
 echo "exec awesome" > ~/.xinitrc
 
 # шрифт
@@ -316,11 +316,29 @@ ExecStart=/usr/bin/dockerd -H 0.0.0.0:2375 -H fd://
 ====
 
 == pacaur
-helper для AUR
 
-* установить
 ```
-curl -s https://gist.githubusercontent.com/Tadly/0e65d30f279a34c33e9b/raw/pacaur_install.sh | bash
+# установить
+sudo pacman -S binutils make gcc fakeroot expac yajl git --noconfirm
+mkdir -p /tmp/pacaur_install
+cd /tmp/pacaur_install
+curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=cower
+makepkg PKGBUILD --skippgpcheck
+sudo pacman -U cower*.tar.xz --noconfirm
+curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur
+makepkg PKGBUILD
+sudo pacman -U pacaur*.tar.xz --noconfirm
+rm -r /tmp/pacaur_install
+
+# очистить кеш
+pacaur -Scc
+
+# удалить
+sudo pacman -Rs pacaur
+
+# разное
+# установить пакет
+pacaur -S <имя-пакета>
 ```
 
 == minikube
@@ -351,15 +369,51 @@ pacman -S intellij-idea-community-edition
 idea.sh
 ```
 
+== KVM
+
+```
+# Установить
+# CPU
+LC_ALL=C lscpu | grep Virtualization
+# KVM modules
+zgrep CONFIG_KVM /proc/config.gz
+# VIRTIO modules
+zgrep VIRTIO /proc/config.gz
+lsmod | grep kvm
+lsmod | grep virtio
+# Nested virtualization
+sudo modprobe -r kvm_intel
+sudo modprobe kvm_intel nested=1
+systool -m kvm_intel -v | grep nested
+#
+sudo pacman -S virt-manager
+sudo usermod --append --groups libvirt gurv
+sudo usermod --append --groups kvm gurv
+#
+sudo systemctl enable libvirtd.service
+sudo systemctl start libvirtd.service
+
+# запуск
+virt-manager
+
+# пример запуска Arch
+qemu-system-x86_64 \
+  -drive diskimg.qcow2,format=qcow2 \
+  -m 2048 -enable-kvm -M q35 \
+  -cpu host -smp 4,sockets=1,cores=4,threads=1 \
+  -bios /usr/share/qemu/bios.bin -boot menu=on \
+  -cdrom archlinux-2017.01.01-dual.is
+```
+
 == VirtualBox
 
 ```
 # установить
 pacman -S virtualbox linux-headers net-tools
 # добавить строку: vboxdrv
-nano /etc/modules-load.d/virtualbox.conf
+sudo nano /etc/modules-load.d/virtualbox.conf
 # добавить строку: vboxnetadp vboxnetflt vboxpci
-nano /etc/modules-load.d/vbox-other-modules.conf
+sudo nano /etc/modules-load.d/vbox-other-modules.conf
 useradd -G vboxusers gurv
 # 201811: при обновлении потребовалось (установилась версия glibc-2.28-5-x86_64)
 #sudo pacman -Sy glibc
@@ -367,7 +421,7 @@ vboxmanage setproperty machinefolder /opt/vm
 vboxmanage list systemproperties
 
 # systemd
-nano /etc/systemd/system/vboxvmservice@.service
+sudo nano /etc/systemd/system/vboxvmservice@.service
 ###
 [Unit]
 Description=VBox Virtual Machine %i Service
@@ -416,6 +470,10 @@ dcfldd if=/dev/zero of=/fillfile bs=4M
 rm -rf /fillfile
 # это сжатие на Windows-host
 VBoxManage.exe modifyhd luna.vdi --compact
+
+# списки виртуалок
+vboxmanage list vms
+vboxmanage list runningvms
 ```
 
 == pacman
@@ -429,6 +487,12 @@ pacman -Qi | grep Name
 
 # Список файлов пакета
 pacman -Ql virtualbox
+
+# Список всех пакетов (без их зависимостей)
+pacman -Qet
+
+# Пакеты-сироты
+pacman -Qdt
 
 # Удалить пакет
 pacman -R virtualbox
