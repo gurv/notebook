@@ -37,9 +37,13 @@ passwd
 # запуск ssh на госте
 systemctl start sshd
 
-# ssh-соединение с хоста
+# ssh-соединение с хоста на VirtualBox
 boxmanage modifyvm arch --natpf1 "ssh,tcp,localhost,2222,,22"
 ssh root@localhost -p 2222
+ssh root@192.168.122.215
+# ssh-соединение с хоста на KVM
+ssh root@192.168.122.215 -p 22
+
 # если "Host key verification failed"
 ssh-keygen -R [localhost]:2222
 # если "'xterm-termite': unknown terminal type"
