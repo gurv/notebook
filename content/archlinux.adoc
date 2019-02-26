@@ -532,3 +532,12 @@ code
 ```
 sudo pacman -S gconf
 ```
+
+== Sublime Text
+
+* Установить
+
+```
+pacaur -S sublime-text-dev
+sudo find / -name "sublime*"
+```
