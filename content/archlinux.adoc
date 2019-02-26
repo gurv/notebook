@@ -541,3 +541,16 @@ sudo pacman -S gconf
 pacaur -S sublime-text-dev
 sudo find / -name "sublime*"
 ```
+
+== SSH
+
+* Добввить приватный ключ, например, для GitHub
+
+```
+eval $(ssh-agent)
+chmod 400 /home/gurv/.ssh/github_rsa
+ls /home/gurv/.ssh/ -l
+ssh-add ~/.ssh/github_rsa
+ssh-add -l
+# добавить строку eval $(ssh-agent) в файл ~/.xinitrc
+```
