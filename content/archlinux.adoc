@@ -548,9 +548,30 @@ sudo find / -name "sublime*"
 
 ```
 eval $(ssh-agent)
+#   добавить строку eval $(ssh-agent) в файл ~/.xinitrc
+# новый ключ
+ssh-keygen -t rsa -b 4096 -C "gurv@mail.ru"
+#    ввести файл ключей: ~/.ssh/gurv-github_rsa
+# старый ключ
 chmod 400 /home/gurv/.ssh/github_rsa
+#
 ls /home/gurv/.ssh/ -l
-ssh-add ~/.ssh/github_rsa
+#
+ssh-add ~/.ssh/gurv-github_rsa
 ssh-add -l
-# добавить строку eval $(ssh-agent) в файл ~/.xinitrc
+# удалить
+# ssh-add -D
+# ctrl-c из терминала
+pacman -S xclip
+xclip -sel clip < ~/.ssh/gurv-github_rsa.pub
+#   можно сделать ctrl-c ключа на странице github
+# проверка
+ssh -T git@github.com
+#   если не заработает, то смотреть: ssh -vT git@github.com
+#
+# замена https на ssh в git-репозитории
+git remote -v
+git remote set-url origin git@github.com:gurv/notebook.git
+git remote -v
+# проверить git push
 ```
