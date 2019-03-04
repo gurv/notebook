@@ -48,7 +48,10 @@ npm update
 ====
 Ошибки сборки часто (TS2305, ...) "лечатся"
 ```
+# windows
 rmdir node_modules /s /q
+# linux
+rmdir node_modules --ignore-fail-on-non-empty
 npm install
 ```
 ====
