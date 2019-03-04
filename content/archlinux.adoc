@@ -207,6 +207,8 @@ git config --global user.email "vladimir.gurinovich@gmail.com"
 pacman -S --noconfirm xf86-video-intel
 pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
 pacman -S --noconfirm termite chromium
+# или (затем звпускать: google-chrome-stable)
+pacaur -S google-chrome
 
 # переключение раскладки клавиатуры
 nano ~/.xinitrc
@@ -483,6 +485,9 @@ vboxmanage list runningvms
 == pacman
 
 ```
+# Update the database
+sudo pacman -Syy
+
 # Поиск пакетов в репозитории
 pacman -Ss virtualbox
 
@@ -508,6 +513,9 @@ pacman -Sc
 
 # Обновить OC
 pacman -Syu
+
+# To install a local package, or from a website
+sudo pacman -U /path/to/the/package
 ```
 
 == VS Code
