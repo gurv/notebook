@@ -543,6 +543,14 @@ ls ~/.vscode/extensions
 
 Debugger for Chrome extension
 
+Git Stash
+
+Prettier - Code formatter
+
+* горячие клавишы
+
+https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
+
 == Sublime Text
 
 * Установить
