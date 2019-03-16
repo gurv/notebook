@@ -50,4 +50,13 @@ git show e51ac697cc27c8d58c6c3711b20ee3066c5e8c07
 git status
 git add --all
 git commit -m "..." --amend
+
+# Пустой коммит
+git commit --allow-empty -m "Trigger rebuild"
+
+# удалить remote branch
+git push origin --delete gh-pages
+
+# GitHub client
+npm install -g ngh
 ```
