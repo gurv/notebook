@@ -9,6 +9,8 @@
 
 :leveloffset: +1
 
+include::dash.adoc[]
+
 include::git.adoc[]
 
 include::linux.adoc[]
