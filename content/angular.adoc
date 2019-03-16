@@ -57,12 +57,16 @@ start http://localhost:4200
 или link:localhost:4200[localhost:4200]
 ====
 
-* Исправить анализатором кода (TSLint)
+* Анализатор кода (TSLint)
 +
 ```
+# исправить
+#   возможно останутся ERROR/WARNING, которые придется править вручную
 ng lint my-app --fix
+
+# анализ одного файла 
+ng lint --files src/app/app.component.ts --ts-config tsconfig.json
 ```
-Возможно останутся ERROR/WARNING, которые придется править вручную
 
 * Конфигурация Webpack
 
