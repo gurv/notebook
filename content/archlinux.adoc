@@ -547,6 +547,8 @@ Git Stash
 
 Prettier - Code formatter
 
+Sort Typescript Imports
+
 * горячие клавишы
 
 https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
