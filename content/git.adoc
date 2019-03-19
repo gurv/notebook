@@ -59,4 +59,31 @@ git push origin --delete gh-pages
 
 # GitHub client
 npm install -g ngh
+
+# использовать token
+git clone https://hostname/username/repo.git
+#  Username: your_username
+#  Password: your_token
+
+# Travis CI
+#
+# установить на Windows
+# загрузить/установить Ruby отсюда: http://www.ruby-lang.org/en/downloads/
+ruby -v
+export PATH=$PATH:/home/gurv/.gem/ruby/2.6.0/bin
+gem install travis -v 1.8.9
+#
+# установить на ArchLinux
+sudo pacman -S ruby
+ruby -v
+gem install travis
+travis version
+travis login --github-token <token>
+#
+travis token
+#
+# encrypt & add to .travis.yml
+travis encrypt GRGIT_USER="<token>" -r gurv/notebook -add
+# зашифровать приватный ключ
+travis encrypt-file travis_key --add
 ```
