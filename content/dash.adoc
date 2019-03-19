@@ -1,3 +1,7 @@
 = Обзор
 
 * Я в https://github.com/gurv/vg[GitHub]
+
+```
+setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
+```

@@ -5,8 +5,6 @@
 
 = Записная книжка GurV
 
-* https://github.com/gurv/notebook[git]
-
 :leveloffset: +1
 
 include::dash.adoc[]
