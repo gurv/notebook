@@ -4,51 +4,32 @@
 https://discuss.gradle.org/c/help-discuss[forum],
 https://blog.gradle.org/[blog]
 
-* Установка
-
-** Скачать https://gradle.org/releases[последнюю версию]
-
-** Распаковать архив, например, в каталог C:\app
-
-** В системную переменную PATH добавить, например, C:\app\gradle-4.3.1\bin
-
-[TIP]
-====
-Необходима JDK или JRE версии 7 и выше
-====
-
-* Версия
 ```
+# Установка
+#   Необходима JDK или JRE версии 7 и выше
+#   Скачать https://gradle.org/releases[последнюю версию]
+#   Распаковать архив, например, в каталог C:\app
+#   В системную переменную PATH добавить, например, C:\app\gradle-4.3.1\bin
+
+# Версия
 gradle -v
-```
 
-* Свойства
-```
+# Свойства
 gradle -q properties
-```
 
-* Задачи
-```
+# Задачи
 gradle -q tasks
-```
 
-* Зависимости
-```
+# Зависимости
 gradlew -q dependencies
-```
 
-* Запуск задачи без выполнения
-```
+# Запуск задачи без выполнения
 gradlew --dry-run :helloWorld
-```
 
-* Запуск задачи с обязательным выполнением
-```
+# Запуск задачи с обязательным выполнением
 gradlew –rerun-tasks :helloWorld
-```
 
-* Запуск задачи с получением отчета профилирования
-```
+# Запуск задачи с получением отчета профилирования
 gradlew :helloWorld --profile
 ```
 
@@ -61,18 +42,15 @@ gradlew :helloWorld --profile
 
 == Отладка сборки
 
-* Настроить
 ```
+# Настроить
 set GRADLE_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
-```
 
-* Запустить сборку (например, задачу hello)
-```
+# Запустить сборку (например, задачу hello)
 gradle hello --no-daemon -Dorg.gradle.debug=true
+#   и процесс сборки остановится с сообщением "Daemon will be stopped at the end of the build stopping after processing"
+# Добавить в IDEA debug-конфигурацию по шаблону "Defaults/Remote" и с настройками по умолчанию, запустить эту конфигурацию. Процесс сборки продолжится и остановится на breakpoint-е
 ```
-и процесс сборки остановится с сообщением "Daemon will be stopped at the end of the build stopping after processing"
-
-* Добавить в IDEA debug-конфигурацию по шаблону "Defaults/Remote" и с настройками по умолчанию, запустить эту конфигурацию. Процесс сборки продолжится и остановится на breakpoint-е
 
 == Plugins
 
@@ -99,29 +77,24 @@ gradle hello --no-daemon -Dorg.gradle.debug=true
 https://docs.gradle.org/current/userguide/working_with_files.html#sec:file_collections["Chapter 20. Working With Files"],
 https://guides.gradle.org/using-the-worker-api/["Using the Worker API"]
 
-* Переопределить задачу
 ```
+# Переопределить задачу
 task helloWorld(overwrite: true) { }
-```
 
-* Сборка без прогона тестов
-```
+# Сборка без тестов
 gradle build -x test
-```
 
-* Параллельное выполнение задач
-```
+# Параллельное выполнение задач
 gradle task1 task2 --parallel
-```
 
-* Обычная (не rich) консоль
-```
+# Обычная (не rich) консоль
 gradle ... --console=plain
-```
 
-* файл settings.gradle - определить переменные окружения для Gradle, область действия которых - проект
-```
+# файл settings.gradle - определить переменные окружения для Gradle, область действия которых - проект
 systemProp.openSslPath="C:/app/openSSL/bin/openssl.exe"
+
+# добавить wrapper
+gradle wrapper
 ```
 
 == Разработка плагинов
@@ -134,5 +107,3 @@ https://docs.gradle.org/current/userguide/software_model_extend.html["Extending 
 ====
 20170824 объявлено об остановке этих работ (см. https://blog.gradle.org/state-and-future-of-the-gradle-software-model["State and future of the Gradle Software Model"])
 ====
-
-
