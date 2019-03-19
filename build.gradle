@@ -9,6 +9,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'org.ajoberstar.git-publish' version '2.0.0'
+}
+
 group 'ru.gurv.notebook'
 version '1.0-SNAPSHOT'
 
@@ -22,6 +26,14 @@ asciidoctor {
     sourceDir 'content'
     outputDir 'build'
     requires 'asciidoctor-diagram'
+}
+
+gitPublish {
+    repoUri = 'git@github.com:gurv/notebook.git'
+    branch = 'gh-pages'
+    contents {
+        from 'build/html5'
+    }
 }
 
 build {
