@@ -9,7 +9,9 @@ jdk: oraclejdk8
 #  global:
 #    secure: kBZzFWISTnuRliKG1aDaNbmz7H1mOTJG9zgQdfqSF6Iv681KyFHkdY6OxB5jbBBDfKMLfHDG7yn4y5kDyoC17SiBwuOm1swdnCavxXbPm2/fU2qUE2gWqBHYOYPx0b1iHoT5cF62g+4pC7iclv55rWgbBzR1BoIxfriV1unyxcjdWHHswECgO3zg0TZN6XZM7vU3iE3rBuNQq1X8v0lKJy9Uesh90P4K37LtEARIYX6YEyvt10g9myFdwNcJoXt5WeWvzb28uyVKp4l9l1mNKG5Sq6TCirON8aUh8g/usXpNA/Mw7B0iJl+gkL3zSM4fdhIhKXfqBB41o0Npnx8/jmDnutipQhiPSeHarAbdLe/n04nELsnmZ/byvPFChJpE7gjCcbz+Z0ECYPoX6LRsf71JjDLeMJTJlcoiZGoostGkBFE+d2FrfW5hWJ8zn3HR3Lcv7LIvjiAdm7RXCgn5as0OH/XL/NtYBYUxdiUCjIWCpCAeYtWEgCHpWu4m36eDSdX/843ko20JKLkVkztr08WzUmRJupiS+FXoNOqdB8zGyQo8l5+NqsFnOBnxQNS4//TW62aDMGDxPpcaOUd+xwPz+xTVmc2Pez1KLz1TiIUQuz4IIDTr1lq2eSamK3EqxXyh+HP0ZvCqRMhKUrrbeEKa/HB8heZoGdzlMjHZX9k=
 # пока так оставляем
-script: ./gradlew build
+#script: ./gradlew build gitPublishPush
+# нет не оставляет, значение переменной GRGIT_USER указал в https://travis-ci.org/gurv/notebook/settings
+script: ./gradlew build gitPublishPush
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
