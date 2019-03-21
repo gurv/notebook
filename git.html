@@ -531,7 +531,25 @@ travis token
 # encrypt &amp; add to .travis.yml
 travis encrypt GRGIT_USER="&lt;token&gt;" -r gurv/notebook -add
 # зашифровать приватный ключ
-travis encrypt-file travis_key --add</code></pre>
+travis encrypt-file travis_key --add
+#
+# интеграция travis ci _и_ oss.sonatype.org
+travis encrypt -r gurv/vg-project "CI_DEPLOY_USERNAME=gurv"
+#   secure: "X22...AE="
+set +H
+travis encrypt -r gurv/vg-project "CI_DEPLOY_PASSWORD=!xxx"
+#   secure: "IGd...Ck="
+# добавить в .travis.yml
+env:
+  global:
+    - secure: "X22...AE="
+    - secure: "IGd...Ck="
+# но это не сработало и пришлось это убрать и в UI Travis CI добавить это переменные, так работает https://travis-ci.org/gurv/vg-project/builds
+# если публиковать с локальной машины то так
+export CI_DEPLOY_USERNAME=gurv
+set +H
+export CI_DEPLOY_PASSWORD=!xxx
+gradle publish</code></pre>
 </div>
 </div>
 </div>
@@ -540,7 +558,7 @@ travis encrypt-file travis_key --add</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-03-19 23:42:48 +0300
+Last updated 2019-03-22 00:49:26 +0300
 </div>
 </div>
 </body>
