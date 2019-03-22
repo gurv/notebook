@@ -448,20 +448,26 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li>
 <p>Запуск</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Windows</p>
 </li>
 </ul>
 </div>
-</li>
-</ul>
+<div class="paragraph">
+<p>Windows</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>%KAFKA_HOME%\bin\windows\zookeeper-server-start.bat %KAFKA_HOME%\config\zookeeper.properties
 %KAFKA_HOME%\bin\windows\kafka-server-start.bat %KAFKA_HOME%\config\server.properties</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Запуск Kafka локально на Windows</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cd C:\app\confluent-4.1.1\bin\windows
+zookeeper-server-start.bat C:\app\confluent-4.1.1\etc\kafka\zookeeper.properties
+kafka-server-start.bat C:\app\confluent-4.1.1\etc\kafka\server.properties</pre>
 </div>
 </div>
 <div class="ulist">
@@ -478,7 +484,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-03-19 23:42:48 +0300
+Last updated 2019-03-22 22:03:22 +0300
 </div>
 </div>
 </body>

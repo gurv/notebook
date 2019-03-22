@@ -2426,6 +2426,16 @@ DISKPART&gt; format fs=fat32
 Программа DiskPart успешно отформатировала том.</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Создание ключей</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>C:\app\java\jre1.8.0_92\bin\keytool.exe -genkeypair -alias vg -keyalg RSA -dname "CN=vg" -keystore vg.jks -keypass 1q2w3e4r -storepass 1q2w3e4r
+C:\app\java\jre1.8.0_92\bin\keytool.exe -export -keystore vg.jks -alias vg -rfc -storepass 1q2w3e4r -file vg.cer
+C:\app\openSSL\bin\openssl.exe x509 -inform pem -pubkey -in vg.cer</pre>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_minikube_2">minikube</h3>
 <div class="paragraph">
@@ -3852,20 +3862,26 @@ Spring Boot Actuator provides dependency management and auto-configuration for M
 </li>
 <li>
 <p>Запуск</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Windows</p>
 </li>
 </ul>
 </div>
-</li>
-</ul>
+<div class="paragraph">
+<p>Windows</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>%KAFKA_HOME%\bin\windows\zookeeper-server-start.bat %KAFKA_HOME%\config\zookeeper.properties
 %KAFKA_HOME%\bin\windows\kafka-server-start.bat %KAFKA_HOME%\config\server.properties</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Запуск Kafka локально на Windows</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>cd C:\app\confluent-4.1.1\bin\windows
+zookeeper-server-start.bat C:\app\confluent-4.1.1\etc\kafka\zookeeper.properties
+kafka-server-start.bat C:\app\confluent-4.1.1\etc\kafka\server.properties</pre>
 </div>
 </div>
 <div class="ulist">
