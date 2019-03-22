@@ -7,11 +7,18 @@ https://kafka.apache.org/downloads[download]
 
 * Запуск
 
-** Windows
+Windows
 ```
 %KAFKA_HOME%\bin\windows\zookeeper-server-start.bat %KAFKA_HOME%\config\zookeeper.properties
 %KAFKA_HOME%\bin\windows\kafka-server-start.bat %KAFKA_HOME%\config\server.properties
 ```
+
+Запуск Kafka локально на Windows
+----
+cd C:\app\confluent-4.1.1\bin\windows
+zookeeper-server-start.bat C:\app\confluent-4.1.1\etc\kafka\zookeeper.properties
+kafka-server-start.bat C:\app\confluent-4.1.1\etc\kafka\server.properties
+----
 
 * Полезное
 
