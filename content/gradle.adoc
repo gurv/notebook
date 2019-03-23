@@ -8,8 +8,12 @@ https://blog.gradle.org/[blog]
 # Установка
 #   Необходима JDK или JRE версии 7 и выше
 #   Скачать https://gradle.org/releases[последнюю версию]
+# windows
 #   Распаковать архив, например, в каталог C:\app
 #   В системную переменную PATH добавить, например, C:\app\gradle-4.3.1\bin
+# linux
+#   Распаковать архив, например, в каталог /opt/app
+ln -sf /opt/app/gradle-5.3/bin/gradle /opt/app/gradle
 
 # Без тестов
 gradle build -x test
