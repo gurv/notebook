@@ -463,8 +463,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <pre class="highlight"><code># Установка
 #   Необходима JDK или JRE версии 7 и выше
 #   Скачать https://gradle.org/releases[последнюю версию]
+# windows
 #   Распаковать архив, например, в каталог C:\app
 #   В системную переменную PATH добавить, например, C:\app\gradle-4.3.1\bin
+# linux
+#   Распаковать архив, например, в каталог /opt/app
+ln -sf /opt/app/gradle-5.3/bin/gradle /opt/app/gradle
 
 # Без тестов
 gradle build -x test
@@ -643,7 +647,7 @@ gradle wrapper</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-03-22 21:59:19 +0300
+Last updated 2019-03-23 20:29:18 +0300
 </div>
 </div>
 </body>
