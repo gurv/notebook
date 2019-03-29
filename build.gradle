@@ -16,6 +16,10 @@ plugins {
 group 'ru.gurv.notebook'
 version '1.0-SNAPSHOT'
 
+ext {
+    repoPath = 'gurv/notebook'
+}
+
 apply plugin: 'org.asciidoctor.convert'
 
 asciidoctor {
@@ -28,14 +32,20 @@ asciidoctor {
     requires 'asciidoctor-diagram'
 }
 
+build {
+    dependsOn asciidoctor
+}
+
 gitPublish {
-    repoUri = 'git@github.com:gurv/notebook.git'
     branch = 'gh-pages'
     contents {
         from 'build/html5'
     }
+    if (System.env.GRGIT_PASS) {
+        repoUri = "https://github.com/${repoPath}.git"
+    } else {
+        repoUri = "git@github.com:${repoPath}.git"
+    }
 }
 
-build {
-    dependsOn asciidoctor
-}
+gitPublishPush.dependsOn build
