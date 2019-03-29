@@ -42,46 +42,15 @@ gradlew :helloWorld --profile
 # Останов демонов
 gradle --stop
 gradle --status
-```
 
-== Отладка сборки
-
-```
+# Отладка сборки
 # Настроить
 set GRADLE_OPTS="-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=5005"
-
 # Запустить сборку (например, задачу hello)
 gradle hello --no-daemon -Dorg.gradle.debug=true
 #   и процесс сборки остановится с сообщением "Daemon will be stopped at the end of the build stopping after processing"
 # Добавить в IDEA debug-конфигурацию по шаблону "Defaults/Remote" и с настройками по умолчанию, запустить эту конфигурацию. Процесс сборки продолжится и остановится на breakpoint-е
-```
 
-== Plugins
-
-* https://github.com/Transmode/gradle-docker[se.transmode.gradle:gradle-docker]
-[TIP]
-====
-201701: Похоже что самый популярный
-====
-
-* https://github.com/palantir/gradle-docker[id 'com.palantir.docker']
-[TIP]
-====
-201803: Не, этот лучше
-====
-
-* https://github.com/bmuschko/gradle-docker-plugin[id 'com.bmuschko.docker-java-application']
-[TIP]
-====
-201805: Или же этот? Он может через remote API Docker-а
-====
-
-== Полезное
-
-https://docs.gradle.org/current/userguide/working_with_files.html#sec:file_collections["Chapter 20. Working With Files"],
-https://guides.gradle.org/using-the-worker-api/["Using the Worker API"]
-
-```
 # Переопределить задачу
 task helloWorld(overwrite: true) { }
 
