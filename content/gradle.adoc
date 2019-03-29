@@ -38,14 +38,11 @@ gradlew –rerun-tasks :helloWorld
 
 # Запуск задачи с получением отчета профилирования
 gradlew :helloWorld --profile
+
+# Останов демонов
+gradle --stop
+gradle --status
 ```
-
-* Управления зависимостями и порядком выполнения задач: dependsOn, mustRunAfter, finalizedBy
-
-[TIP]
-====
-* https://github.com/gradle/gradle-native[gradle-native]
-====
 
 == Отладка сборки
 
