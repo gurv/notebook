@@ -1,9 +1,11 @@
+= GurV
+:author: Гуринович Владимир
+:email: vladimir.gurinovich@gmail.com
+:noheader
 :toc-title: Содержимое
 :toclevels: 3
 :images: ./images
 :icons: font
-
-= Записная книжка GurV
 
 :leveloffset: +1
 

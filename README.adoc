@@ -2,4 +2,4 @@
 
 GitHub Pages: https://gurv.github.io/notebook/index.html
 
-CI: https://travis-ci.org/gurv/notebook
+Travis CI: https://travis-ci.org/gurv/notebook
