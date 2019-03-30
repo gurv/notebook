@@ -5,7 +5,8 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>Записная книжка GurV</title>
+<meta name="author" content=":noheader">
+<title>GurV</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -433,8 +434,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Записная книжка GurV</h1>
+<h1>GurV</h1>
 <div class="details">
+<span id="author" class="author">Гуринович Владимир</span><br>
+<span id="email" class="email"><a href="mailto:vladimir.gurinovich@gmail.com">vladimir.gurinovich@gmail.com</a></span><br>
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
 <div id="toc" class="toc2">
@@ -588,13 +591,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_обзор">Обзор</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Я в <a href="https://github.com/gurv/vg">GitHub</a></p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"</code></pre>
@@ -611,6 +607,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code># Изменить комментарий текущего локального коммита
 git commit --amend -m "новый"
+
+# Добавить еще файл в локальный коммит
+git add file1.txt
+git commit --amend -m "..."
 
 # Какие коммиты добавились по сравнению с веткой dev
 git cherry -v dev
@@ -1707,6 +1707,9 @@ ls ~/.vscode/extensions</code></pre>
 </div>
 <div class="paragraph">
 <p>Sort Typescript Imports</p>
+</div>
+<div class="paragraph">
+<p>AsciiDoc (stayfool.vscode-asciidoc)</p>
 </div>
 <div class="ulist">
 <ul>
@@ -4726,7 +4729,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-03-29 22:23:00 UTC
+Last updated 2019-03-30 08:36:42 UTC
 </div>
 </div>
 </body>
