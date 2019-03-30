@@ -49,3 +49,5 @@ gitPublish {
 }
 
 gitPublishPush.dependsOn build
+
+defaultTasks 'build'
