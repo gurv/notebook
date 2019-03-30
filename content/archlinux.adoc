@@ -549,6 +549,8 @@ Prettier - Code formatter
 
 Sort Typescript Imports
 
+AsciiDoc (stayfool.vscode-asciidoc)
+
 * горячие клавишы
 
 https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
