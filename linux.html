@@ -454,6 +454,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_vs_code">VS Code</a></li>
 <li><a href="#_sublime_text">Sublime Text</a></li>
 <li><a href="#_ssh">SSH</a></li>
+<li><a href="#_slack">Slack</a></li>
 </ul>
 </li>
 <li><a href="#_alpine">Alpine</a>
@@ -474,6 +475,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code># усыпить
 systemctl suspend
+
+# поиск файла по имени
+sudo find / -name "minishift"
 
 # настроить пользователю shell (например, когда ошибка "This account is currently not available"):
 chsh -s /bin/bash username
@@ -1288,23 +1292,20 @@ sudo modprobe -r kvm_intel
 sudo modprobe kvm_intel nested=1
 systool -m kvm_intel -v | grep nested
 #
-sudo pacman -S virt-manager
-sudo usermod --append --groups libvirt gurv
-sudo usermod --append --groups kvm gurv
-#
+sudo usermod -a -G kvm,libvirt $(whoami)
+# libvirtd
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
-
-# запуск
+# virt-manager
+sudo pacman -S virt-manager
 virt-manager
-
 # пример запуска Arch
 qemu-system-x86_64 \
   -drive diskimg.qcow2,format=qcow2 \
   -m 2048 -enable-kvm -M q35 \
   -cpu host -smp 4,sockets=1,cores=4,threads=1 \
   -bios /usr/share/qemu/bios.bin -boot menu=on \
-  -cdrom archlinux-2017.01.01-dual.is</code></pre>
+  -cdrom archlinux-2017.01.01-dual.iso</code></pre>
 </div>
 </div>
 </div>
@@ -1388,6 +1389,9 @@ vboxmanage list runningvms</code></pre>
 <pre class="highlight"><code># Update the database
 sudo pacman -Syy
 
+# Версия установленного пакета
+pacman -Q virtualbox
+
 # Поиск пакетов в репозитории
 pacman -Ss virtualbox
 
@@ -1413,6 +1417,8 @@ pacman -Sc
 
 # Обновить OC
 pacman -Syu
+#  внимание: если ошибка "error: required key missing from keyring", то
+pacman -S archlinux-keyring
 
 # To install a local package, or from a website
 sudo pacman -U /path/to/the/package</code></pre>
@@ -1528,6 +1534,18 @@ git remote -v
 git remote set-url origin git@github.com:gurv/notebook.git
 git remote -v
 # проверить git push</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_slack">Slack</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># установить
+pacaur -S slack-desktop
+
+# запуск
+slack</code></pre>
 </div>
 </div>
 </div>
@@ -2089,7 +2107,7 @@ nano ~/.config/mc/ini
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-03-30 09:21:34 UTC
+Last updated 2019-04-01 21:07:52 UTC
 </div>
 </div>
 </body>

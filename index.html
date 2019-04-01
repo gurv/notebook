@@ -462,6 +462,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_vs_code">VS Code</a></li>
 <li><a href="#_sublime_text">Sublime Text</a></li>
 <li><a href="#_ssh">SSH</a></li>
+<li><a href="#_slack">Slack</a></li>
 </ul>
 </li>
 <li><a href="#_alpine">Alpine</a>
@@ -718,6 +719,9 @@ gradle publish</code></pre>
 <div class="content">
 <pre class="highlight"><code># усыпить
 systemctl suspend
+
+# поиск файла по имени
+sudo find / -name "minishift"
 
 # настроить пользователю shell (например, когда ошибка "This account is currently not available"):
 chsh -s /bin/bash username
@@ -1529,23 +1533,20 @@ sudo modprobe -r kvm_intel
 sudo modprobe kvm_intel nested=1
 systool -m kvm_intel -v | grep nested
 #
-sudo pacman -S virt-manager
-sudo usermod --append --groups libvirt gurv
-sudo usermod --append --groups kvm gurv
-#
+sudo usermod -a -G kvm,libvirt $(whoami)
+# libvirtd
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
-
-# запуск
+# virt-manager
+sudo pacman -S virt-manager
 virt-manager
-
 # пример запуска Arch
 qemu-system-x86_64 \
   -drive diskimg.qcow2,format=qcow2 \
   -m 2048 -enable-kvm -M q35 \
   -cpu host -smp 4,sockets=1,cores=4,threads=1 \
   -bios /usr/share/qemu/bios.bin -boot menu=on \
-  -cdrom archlinux-2017.01.01-dual.is</code></pre>
+  -cdrom archlinux-2017.01.01-dual.iso</code></pre>
 </div>
 </div>
 </div>
@@ -1629,6 +1630,9 @@ vboxmanage list runningvms</code></pre>
 <pre class="highlight"><code># Update the database
 sudo pacman -Syy
 
+# Версия установленного пакета
+pacman -Q virtualbox
+
 # Поиск пакетов в репозитории
 pacman -Ss virtualbox
 
@@ -1654,6 +1658,8 @@ pacman -Sc
 
 # Обновить OC
 pacman -Syu
+#  внимание: если ошибка "error: required key missing from keyring", то
+pacman -S archlinux-keyring
 
 # To install a local package, or from a website
 sudo pacman -U /path/to/the/package</code></pre>
@@ -1769,6 +1775,18 @@ git remote -v
 git remote set-url origin git@github.com:gurv/notebook.git
 git remote -v
 # проверить git push</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_slack">Slack</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># установить
+pacaur -S slack-desktop
+
+# запуск
+slack</code></pre>
 </div>
 </div>
 </div>
@@ -4100,72 +4118,67 @@ helm search postgresql</code></pre>
 <h3 id="_openshift">OpenShift</h3>
 <div class="sect3">
 <h4 id="_minishift">minishift</h4>
-<div class="paragraph">
-<p><a href="https://github.com/minishift/minishift/releases">релизы</a></p>
-</div>
-<div class="paragraph">
-<p>запускалось на ArchLinux</p>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># скачать отсюда https://developers.redhat.com/products/cdk/download/
-cp ~/Downloads/cdk-3.6.0-1-minishift* /opt/app/minishift
-chmod +x /opt/app/minishift
-export PATH=$PATH:/opt/app
-echo 'export PATH=$PATH:/opt/app' &gt;&gt; ~/.bashrc
+<pre class="highlight"><code># Установка (ArchLinux и КVM)
+#
+# Setting Up the Virtualization Environment
+#   (https://docs.okd.io/latest/minishift/getting-started/setting-up-virtualization-environment.html)
+sudo pacman -S libvirt qemu dnsmasq ebtables
+sudo usermod -a -G kvm,libvirt $(whoami)
+sudo sed -ri 's/.?group\s?=\s?".+"/group = "kvm"/1' /etc/libvirt/qemu.conf
+newgrp libvirt
+# docker-machine-driver-kvm (root)
+curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.10.0/docker-machine-driver-kvm-centos7 -o /usr/local/bin/docker-machine-driver-kvm
+chmod +x /usr/local/bin/docker-machine-driver-kvm
+# libvirtd
+systemctl is-active libvirtd
+sudo systemctl start libvirtd
+# network
+sudo virsh net-list --all
+sudo virsh net-start default
+sudo virsh net-autostart default
+#
+# Installing Minishift
+#   (https://docs.okd.io/latest/minishift/getting-started/installing.html)
+#
+wget https://github.com/minishift/minishift/releases/download/v1.33.0/minishift-1.33.0-linux-amd64.tgz
+tar zxvf minishift-1.33.0-linux-amd64.tgz
+chmod +x minishift-1.33.0-linux-amd64/minishift
+ln -sf /opt/app/minishift-1.33.0-linux-amd64.tgz/minishift /opt/app/minishift
 minishift version
-export MINISHIFT_HOME=/opt/app/.minishift
-minishift setup-cdk
-minishift config set vm-driver virtualbox
-minishift config set memory 16g
-minishift config view
-#export MINISHIFT_USERNAME=vladimir.gurinovich
-#export MINISHIFT_PASSWORD=69
-#echo export MINISHIFT_USERNAME=$MINISHIFT_USERNAME &gt;&gt; ~/.bashrc
-#echo export MINISHIFT_PASSWORD=$MINISHIFT_PASSWORD &gt;&gt; ~/.bashrc
 minishift start --skip-registration
-
-# ?
+#   по умолчанию, пользователь developer, пароль любой
+#
+# Разное
+#
+# переменные окружения: MINISHIFT_HOME, MINISHIFT_USERNAME, MINISHIFT_PASSWORD
+# конфигурация
+minishift config set memory 16g
+# registry
+oc adm registry --help
+# мб пригодится
 export HELM_HOST="$(minishift ip):$(oc get svc/tiller -o jsonpath='{.spec.ports[0].nodePort}' -n kube-system --as=system:admin)"
 export MINISHIFT_ADMIN_CONTEXT="default/$(oc config view -o jsonpath='{.contexts[?(@.name=="minishift")].context.cluster}')/system:admin"
-
-minishift ip1: не заработал, ошибка на apply
-minishift co1: не заработал, ошибка на apply
-minishift co1: не заработал, ошибка на apply
-minishift ad1: не заработал, ошибка на apply
-eval $(minis1: не заработал, ошибка на apply
-oc projects
-cd /opt/tmp
-
-# addons
-git clone ht1: не заработал, ошибка на applyaddons.git
-
 # kube-dashboard
 minishift addons install /opt/tmp/minishift-addons/add-ons/kube-dashboard/
 minishift addons apply kube-dashboard
 minishift addons enable kube-dashboard
-
+oc delete project/kube-dashboard --as=system:admin
+# ...
 minishift stop
 minishift delete
 minishift start --skip-registration --memory=16g
 minishift openshift service dashboard -n kube-dashboard
 kubectl get services --all-namespaces --as=system:admin
-#oc delete project/kube-dashboard --as=system:admin
 eval $(minishift docker-env)
 docker version
-
 # удалить
 minishift delete
-# очистить /opt/app/.minishift
-
+rm -rf ~/.minishift
 # если висит minishift stop
 ps -ef | grep shift
-kill 11738
-
-# helm (!!! 201811: не заработал, ошибка на apply)
-# скачать https://github.com/minishift/minishift-addons.git
-minishift addons install /opt/tmp/minishift-addons/add-ons/helm/
-minishift addons apply helm</code></pre>
+kill 11738</code></pre>
 </div>
 </div>
 </div>
@@ -4722,7 +4735,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-03-30 09:21:34 UTC
+Last updated 2019-04-01 21:07:52 UTC
 </div>
 </div>
 </body>
