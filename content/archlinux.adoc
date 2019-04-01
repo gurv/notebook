@@ -392,23 +392,20 @@ sudo modprobe -r kvm_intel
 sudo modprobe kvm_intel nested=1
 systool -m kvm_intel -v | grep nested
 #
-sudo pacman -S virt-manager
-sudo usermod --append --groups libvirt gurv
-sudo usermod --append --groups kvm gurv
-#
+sudo usermod -a -G kvm,libvirt $(whoami)
+# libvirtd
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
-
-# запуск
+# virt-manager
+sudo pacman -S virt-manager
 virt-manager
-
 # пример запуска Arch
 qemu-system-x86_64 \
   -drive diskimg.qcow2,format=qcow2 \
   -m 2048 -enable-kvm -M q35 \
   -cpu host -smp 4,sockets=1,cores=4,threads=1 \
   -bios /usr/share/qemu/bios.bin -boot menu=on \
-  -cdrom archlinux-2017.01.01-dual.is
+  -cdrom archlinux-2017.01.01-dual.iso
 ```
 
 == VirtualBox
@@ -488,6 +485,9 @@ vboxmanage list runningvms
 # Update the database
 sudo pacman -Syy
 
+# Версия установленного пакета
+pacman -Q virtualbox
+
 # Поиск пакетов в репозитории
 pacman -Ss virtualbox
 
@@ -513,6 +513,8 @@ pacman -Sc
 
 # Обновить OC
 pacman -Syu
+#  внимание: если ошибка "error: required key missing from keyring", то
+pacman -S archlinux-keyring
 
 # To install a local package, or from a website
 sudo pacman -U /path/to/the/package
@@ -596,4 +598,14 @@ git remote -v
 git remote set-url origin git@github.com:gurv/notebook.git
 git remote -v
 # проверить git push
+```
+
+== Slack
+
+```
+# установить
+pacaur -S slack-desktop
+
+# запуск
+slack
 ```
