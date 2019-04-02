@@ -675,14 +675,20 @@ minishift delete
 minishift start --skip-registration --memory=16g
 minishift openshift service dashboard -n kube-dashboard
 kubectl get services --all-namespaces --as=system:admin
-eval $(minishift docker-env)
 docker version
 # удалить
 minishift delete
 rm -rf ~/.minishift
 # если висит minishift stop
 ps -ef | grep shift
-kill 11738</code></pre>
+kill 11738
+
+# Reuse the Minishift Docker daemon
+eval $(minishift docker-env)
+docker ps
+
+# Log into the OpenShift Docker registry
+docker login -u developer -p $(oc whoami -t) $(minishift openshift registry)</code></pre>
 </div>
 </div>
 </div>
@@ -692,7 +698,7 @@ kill 11738</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-04-01 21:07:52 UTC
+Last updated 2019-04-02 08:19:11 UTC
 </div>
 </div>
 </body>
