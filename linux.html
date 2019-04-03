@@ -1121,24 +1121,17 @@ mkdir ~/.awesome
 cp /etc/xdg/awesome/rc.lua ~/.awesome/
 echo "exec awesome" &gt; ~/.xinitrc
 
+# настройка
+nano ~/.awesome/rc.lua
+# - использовать termite: дб terminal = "termite"
+# - автозапуск приложений: см. autorunApps
+# - отключить рисунок: в /usr/share/awesome/themes/default/theme.lua закомментировать theme.wallpaper
+# - размер шрифта: в ~/.config/termite/config дб font = Monospace 16
+
 # шрифт
 nano ~/.Xresources
 # должно быть
-#Xft.dpi: 192.0
-
-# использовать termite
-nano /opt/app/.awesome/rc.lua
-# должно быть
-#terminal = "termite"
-
-# размер шрифта
-nano ~/.config/termite/config
-#должно быть:
-#font = Monospace 16
-
-# отключить рисунок
-sudo nano /usr/share/awesome/themes/default/theme.lua
-# закомментировать theme.wallpaper</code></pre>
+#Xft.dpi: 192.0</code></pre>
 </div>
 </div>
 </div>
@@ -2107,7 +2100,7 @@ nano ~/.config/mc/ini
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-04-02 08:19:11 UTC
+Last updated 2019-04-03 06:19:15 UTC
 </div>
 </div>
 </body>
