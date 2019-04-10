@@ -4142,22 +4142,26 @@ ln -sf /opt/app/minishift-1.33.0-linux-amd64.tgz/minishift /opt/app/minishift
 minishift version
 minishift start --skip-registration
 #   по умолчанию, пользователь developer, пароль любой
-#
-# Разное
-#
+
 # переменные окружения: MINISHIFT_HOME, MINISHIFT_USERNAME, MINISHIFT_PASSWORD
 # конфигурация
 minishift config set memory 16g
 # registry
 oc adm registry --help
+
+# docker
+eval $(minishift docker-env)
+
 # мб пригодится
 export HELM_HOST="$(minishift ip):$(oc get svc/tiller -o jsonpath='{.spec.ports[0].nodePort}' -n kube-system --as=system:admin)"
 export MINISHIFT_ADMIN_CONTEXT="default/$(oc config view -o jsonpath='{.contexts[?(@.name=="minishift")].context.cluster}')/system:admin"
+
 # kube-dashboard
 minishift addons install /opt/tmp/minishift-addons/add-ons/kube-dashboard/
 minishift addons apply kube-dashboard
 minishift addons enable kube-dashboard
 oc delete project/kube-dashboard --as=system:admin
+
 # ...
 minishift stop
 minishift delete
@@ -4165,9 +4169,11 @@ minishift start --skip-registration --memory=16g
 minishift openshift service dashboard -n kube-dashboard
 kubectl get services --all-namespaces --as=system:admin
 docker version
+
 # удалить
 minishift delete
 rm -rf ~/.minishift
+
 # если висит minishift stop
 ps -ef | grep shift
 kill 11738
@@ -4734,7 +4740,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-04-03 06:19:15 UTC
+Last updated 2019-04-10 22:01:52 UTC
 </div>
 </div>
 </body>
