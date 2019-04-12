@@ -590,7 +590,9 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"</code></pre>
+<pre class="highlight"><code>setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
+
+set +H</code></pre>
 </div>
 </div>
 </div>
@@ -2529,145 +2531,42 @@ npm update -g</code></pre>
 </div>
 <div class="sect2">
 <h3 id="_npm">npm</h3>
-<div class="ulist">
-<ul>
-<li>
+<div class="paragraph">
 <p><a href="https://www.npmjs.com">site</a></p>
-</li>
-<li>
-<p>Версия</p>
-</li>
-</ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>nmp -v</code></pre>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Установка последней версии</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>npm install -g npm@latest</code></pre>
-</div>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Обновить версии пакетов (локально)</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>npm update</code></pre>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Ошибки сборки часто (TS2305, &#8230;&#8203;) "лечатся"</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code># windows
+<pre class="highlight"><code># Версия
+nmp -v
+
+# Установка последней версии
+npm install -g npm@latest
+
+# Обновить версии пакетов (локально)
+npm update
+# Обновить версии пакетов (локально)
+sudo npm update -g
+
+# Ошибки сборки часто (TS2305, ...) "лечатся"
+# windows
 rmdir node_modules /s /q
 # linux
 rmdir node_modules --ignore-fail-on-non-empty
-npm install</code></pre>
-</div>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Установить пакет (например, rimraf)</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>npm install rimraf</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Версия пакета (например, rimraf) в удаленном npm-репозитории</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>npm view rimraf version</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Версия пакета (например, rimraf) в локальном npm-репозитории</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>npm list rimraf</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Версия пакета (например, rimraf) в глобальном npm-репозитории</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>npm list -п rimraf</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Версии пакетов в локальном npm-репозитории</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>npm list --depth=0</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>Версии пакетов в глобальном npm-репозитории</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>npm list -g --depth=0</code></pre>
+npm install
+
+# Установить пакет (например, rimraf)
+npm install rimraf
+
+# Версия пакета (например, rimraf) в удаленном npm-репозитории
+npm view rimraf version
+# Версия пакета (например, rimraf) в локальном npm-репозитории
+npm list rimraf
+# Версия пакета (например, rimraf) в глобальном npm-репозитории
+npm list -п rimraf
+# Версии пакетов в локальном npm-репозитории
+npm list --depth=0
+# Версии пакетов в глобальном npm-репозитории
+npm list -g --depth=0</code></pre>
 </div>
 </div>
 </div>
@@ -4740,7 +4639,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-04-10 22:01:52 UTC
+Last updated 2019-04-12 15:55:19 UTC
 </div>
 </div>
 </body>
