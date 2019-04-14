@@ -37,6 +37,8 @@ include::docker.adoc[]
 
 include::kubernetes.adoc[]
 
+include::openshift.adoc[]
+
 include::monitoring.adoc[]
 
 include::groovy.adoc[]
