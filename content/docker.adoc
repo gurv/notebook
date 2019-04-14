@@ -1,6 +1,6 @@
 = Docker
 
-* https://www.docker.com/[site],
+https://www.docker.com/[site],
 https://docs.docker.com/[docs],
 https://store.docker.com/[store],
 https://docs.docker.com/engine/reference/commandline/cli/[engine CLI],
@@ -10,43 +10,41 @@ https://hub.docker.com/[Docker Hub],
 https://github.com/docker/docker-ce[GitHub (CE)],
 https://github.com/docker/swarm[git: swarm]
 
-* Скачать образ (https://docs.docker.com/engine/reference/commandline/pull/[ref])
 ```
+# скачать образ
 docker pull openjdk:8-jre-alpine
-```
 
-* Собрать образ (https://docs.docker.com/engine/reference/commandline/build/[ref])
-```
+# собрать образ
 docker build -t imageNameAndTag dockerFile
-```
 
-* Всякое
-```
+#
 docker container ls
-```
-экспорт файловой системы контейнера
-```
-docker export 2c3890ad6c25 > out.tar
-```
-логи
-```
-docker logs -f 2c3890ad6c25
-```
-тома
-```
-docker volume ls
-```
-shell в alpine/java
-```
-docker run -it --rm openjdk:jre-alpine /bin/ash
-```
-каталог Docker-а на Linux-хосте
-```
-/var/lib/docker
-```
 
-указать удаленный Docker-хлст для Docker CLI (на Windows)
-```
+# зкспорт файловой системы контейнера
+docker export 2c3890ad6c25 > out.tar
+
+# логи
+docker logs -f 2c3890ad6c25
+
+# тома
+docker volume ls
+
+# stop all containers
+docker kill $(docker ps -q)
+# remove all containers
+docker rm $(docker ps -a -q)
+# remove all docker images
+docker rmi $(docker images -q)
+# remove all docker volumes
+docker volume ls -qf dangling=true | xargs -r docker volume rm
+
+# shell в alpine/java
+docker run -it --rm openjdk:jre-alpine /bin/ash
+
+# каталог Docker-а на Linux-хосте
+ls -l /var/lib/docker
+
+# указать удаленный Docker-хост для Docker CLI (на Windows)
 set DOCKER_HOST=tcp://192.168.1.33:2375
 ```
 
