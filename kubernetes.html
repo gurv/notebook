@@ -430,28 +430,14 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
 <h1>Kubernetes</h1>
 <div class="details">
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_minikube">minikube</a></li>
-<li><a href="#_helm">Helm</a></li>
-<li><a href="#_openshift">OpenShift</a>
-<ul class="sectlevel2">
-<li><a href="#_minishift">minishift</a></li>
-</ul>
-</li>
-</ul>
-</div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
@@ -522,17 +508,12 @@ kubectl delete pv pv01</code></pre>
 <div class="paragraph">
 <p><a href="https://habr.com/company/southbridge/blog/346314/">"2018: Понимание сети Kubernetes: сервисы"</a></p>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_minikube">minikube</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p>(для ArchLinux)</p>
+<p>minikube</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># установить
+<pre class="highlight"><code># установить (для ArchLinux)
 #sudo systemctl stop docker
 export MINIKUBE_HOME=/opt/app/.minikube
 echo 'export MINIKUBE_HOME=/opt/app/.minikube' &gt;&gt; ~/.bashrc
@@ -574,17 +555,8 @@ kubectl config view
 kubectl cluster-info</code></pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_helm">Helm</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Полезное:</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Helm</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -616,95 +588,10 @@ helm search postgresql</code></pre>
 </div>
 </div>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_openshift">OpenShift</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_minishift">minishift</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code># Установка (ArchLinux и КVM)
-#
-# Setting Up the Virtualization Environment
-#   (https://docs.okd.io/latest/minishift/getting-started/setting-up-virtualization-environment.html)
-sudo pacman -S libvirt qemu dnsmasq ebtables
-sudo usermod -a -G kvm,libvirt $(whoami)
-sudo sed -ri 's/.?group\s?=\s?".+"/group = "kvm"/1' /etc/libvirt/qemu.conf
-newgrp libvirt
-# docker-machine-driver-kvm (root)
-curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.10.0/docker-machine-driver-kvm-centos7 -o /usr/local/bin/docker-machine-driver-kvm
-chmod +x /usr/local/bin/docker-machine-driver-kvm
-# libvirtd
-systemctl is-active libvirtd
-sudo systemctl start libvirtd
-# network
-sudo virsh net-list --all
-sudo virsh net-start default
-sudo virsh net-autostart default
-#
-# Installing Minishift
-#   (https://docs.okd.io/latest/minishift/getting-started/installing.html)
-#
-wget https://github.com/minishift/minishift/releases/download/v1.33.0/minishift-1.33.0-linux-amd64.tgz
-tar zxvf minishift-1.33.0-linux-amd64.tgz
-chmod +x minishift-1.33.0-linux-amd64/minishift
-ln -sf /opt/app/minishift-1.33.0-linux-amd64.tgz/minishift /opt/app/minishift
-minishift version
-minishift start --skip-registration
-#   по умолчанию, пользователь developer, пароль любой
-
-# переменные окружения: MINISHIFT_HOME, MINISHIFT_USERNAME, MINISHIFT_PASSWORD
-# конфигурация
-minishift config set memory 16g
-# registry
-oc adm registry --help
-
-# docker
-eval $(minishift docker-env)
-
-# мб пригодится
-export HELM_HOST="$(minishift ip):$(oc get svc/tiller -o jsonpath='{.spec.ports[0].nodePort}' -n kube-system --as=system:admin)"
-export MINISHIFT_ADMIN_CONTEXT="default/$(oc config view -o jsonpath='{.contexts[?(@.name=="minishift")].context.cluster}')/system:admin"
-
-# kube-dashboard
-minishift addons install /opt/tmp/minishift-addons/add-ons/kube-dashboard/
-minishift addons apply kube-dashboard
-minishift addons enable kube-dashboard
-oc delete project/kube-dashboard --as=system:admin
-
-# ...
-minishift stop
-minishift delete
-minishift start --skip-registration --memory=16g
-minishift openshift service dashboard -n kube-dashboard
-kubectl get services --all-namespaces --as=system:admin
-docker version
-
-# удалить
-minishift delete
-rm -rf ~/.minishift
-
-# если висит minishift stop
-ps -ef | grep shift
-kill 11738
-
-# Reuse the Minishift Docker daemon
-eval $(minishift docker-env)
-docker ps
-
-# Log into the OpenShift Docker registry
-docker login -u developer -p $(oc whoami -t) $(minishift openshift registry)</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-04-14 20:34:02 UTC
+Last updated 2019-04-14 20:38:19 UTC
 </div>
 </div>
 </body>

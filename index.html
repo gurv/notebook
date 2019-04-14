@@ -552,17 +552,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_zookeeper">ZooKeeper</a></li>
 <li><a href="#_kafka">Kafka</a></li>
 <li><a href="#_docker_2">Docker</a></li>
-<li><a href="#_kubernetes">Kubernetes</a>
-<ul class="sectlevel2">
-<li><a href="#_minikube_3">minikube</a></li>
-<li><a href="#_helm">Helm</a></li>
-<li><a href="#_openshift">OpenShift</a>
-<ul class="sectlevel3">
-<li><a href="#_minishift">minishift</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li><a href="#_kubernetes">Kubernetes</a></li>
+<li><a href="#_openshift">OpenShift</a></li>
 <li><a href="#_monitoring">Monitoring</a>
 <ul class="sectlevel2">
 <li><a href="#_prometheus">Prometheus</a></li>
@@ -3872,14 +3863,12 @@ kubectl delete pv pv01</code></pre>
 <div class="paragraph">
 <p><a href="https://habr.com/company/southbridge/blog/346314/">"2018: Понимание сети Kubernetes: сервисы"</a></p>
 </div>
-<div class="sect2">
-<h3 id="_minikube_3">minikube</h3>
 <div class="paragraph">
-<p>(для ArchLinux)</p>
+<p>minikube</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># установить
+<pre class="highlight"><code># установить (для ArchLinux)
 #sudo systemctl stop docker
 export MINIKUBE_HOME=/opt/app/.minikube
 echo 'export MINIKUBE_HOME=/opt/app/.minikube' &gt;&gt; ~/.bashrc
@@ -3921,15 +3910,8 @@ kubectl config view
 kubectl cluster-info</code></pre>
 </div>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_helm">Helm</h3>
-<div class="ulist">
-<ul>
-<li>
-<p>Полезное:</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>Helm</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -3961,10 +3943,10 @@ helm search postgresql</code></pre>
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_openshift">OpenShift</h3>
-<div class="sect3">
-<h4 id="_minishift">minishift</h4>
+</div>
+<div class="sect1">
+<h2 id="_openshift">OpenShift</h2>
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code># Установка (ArchLinux и КVM)
@@ -4038,8 +4020,6 @@ docker ps
 
 # Log into the OpenShift Docker registry
 docker login -u developer -p $(oc whoami -t) $(minishift openshift registry)</code></pre>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -4594,7 +4574,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-04-14 20:34:02 UTC
+Last updated 2019-04-14 20:38:19 UTC
 </div>
 </div>
 </body>

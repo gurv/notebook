@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>mc</title>
+<title>OpenShift</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,345 +432,87 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>mc</h1>
+<h1>OpenShift</h1>
 <div class="details">
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
 </div>
 <div id="content">
-<div class="paragraph">
-<p>(Midnight Commander)</p>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre># установить ч/б цвета
-nano ~/.config/mc/ini
-# должно быть skin=dark</pre>
+<pre class="highlight"><code># Установка (ArchLinux и КVM)
+#
+# Setting Up the Virtualization Environment
+#   (https://docs.okd.io/latest/minishift/getting-started/setting-up-virtualization-environment.html)
+sudo pacman -S libvirt qemu dnsmasq ebtables
+sudo usermod -a -G kvm,libvirt $(whoami)
+sudo sed -ri 's/.?group\s?=\s?".+"/group = "kvm"/1' /etc/libvirt/qemu.conf
+newgrp libvirt
+# docker-machine-driver-kvm (root)
+curl -L https://github.com/dhiltgen/docker-machine-kvm/releases/download/v0.10.0/docker-machine-driver-kvm-centos7 -o /usr/local/bin/docker-machine-driver-kvm
+chmod +x /usr/local/bin/docker-machine-driver-kvm
+# libvirtd
+systemctl is-active libvirtd
+sudo systemctl start libvirtd
+# network
+sudo virsh net-list --all
+sudo virsh net-start default
+sudo virsh net-autostart default
+#
+# Installing Minishift
+#   (https://docs.okd.io/latest/minishift/getting-started/installing.html)
+#
+wget https://github.com/minishift/minishift/releases/download/v1.33.0/minishift-1.33.0-linux-amd64.tgz
+tar zxvf minishift-1.33.0-linux-amd64.tgz
+chmod +x minishift-1.33.0-linux-amd64/minishift
+ln -sf /opt/app/minishift-1.33.0-linux-amd64.tgz/minishift /opt/app/minishift
+minishift version
+minishift start --skip-registration
+#   по умолчанию, пользователь developer, пароль любой
+
+# переменные окружения: MINISHIFT_HOME, MINISHIFT_USERNAME, MINISHIFT_PASSWORD
+# конфигурация
+minishift config set memory 16g
+# registry
+oc adm registry --help
+
+# docker
+eval $(minishift docker-env)
+
+# мб пригодится
+export HELM_HOST="$(minishift ip):$(oc get svc/tiller -o jsonpath='{.spec.ports[0].nodePort}' -n kube-system --as=system:admin)"
+export MINISHIFT_ADMIN_CONTEXT="default/$(oc config view -o jsonpath='{.contexts[?(@.name=="minishift")].context.cluster}')/system:admin"
+
+# kube-dashboard
+minishift addons install /opt/tmp/minishift-addons/add-ons/kube-dashboard/
+minishift addons apply kube-dashboard
+minishift addons enable kube-dashboard
+oc delete project/kube-dashboard --as=system:admin
+
+# ...
+minishift stop
+minishift delete
+minishift start --skip-registration --memory=16g
+minishift openshift service dashboard -n kube-dashboard
+kubectl get services --all-namespaces --as=system:admin
+docker version
+
+# удалить
+minishift delete
+rm -rf ~/.minishift
+
+# если висит minishift stop
+ps -ef | grep shift
+kill 11738
+
+# Reuse the Minishift Docker daemon
+eval $(minishift docker-env)
+docker ps
+
+# Log into the OpenShift Docker registry
+docker login -u developer -p $(oc whoami -t) $(minishift openshift registry)</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>клавиши</p>
-</li>
-</ul>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Клавиши</th>
-<th class="tableblock halign-left valign-top">Действие</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Просмотр файла</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Редактирование файла</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Insert</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Выделение текущего объекта</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">+</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">вызывает окно для выделения группы файлов (можно использовать регулярные выражения)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">\</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">снимает отметку с группы файлов</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+Enter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Вставить 'текущий объект'1 в командную строку</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+.</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">не показывать или показать скрытые файлы или каталоги</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+,</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Переключить режим отображения панелей (вертикально/горизонтально)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+a, Ctrl+x,p</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Посылает в командную строку полный путь в текущей активной панели</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+c</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Вызывается меню быстрой смены текущего каталога на активной панели</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+g</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">отмечает первый файл или каталог в отображаемом списке на панели</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+h</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Вызов меню последних выполненных команд</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+i</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Смена текущего каталога на неактивной панели, на каталог в котором вы находитесь в активной панели</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+j</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">отмечает последний файл или каталог в отображаемом списке на панели</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+n</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Вернуть последующую выполненную командную строку</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+o</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">неактивная панель переходит в каталог на который указывает активная панель</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+p</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Вернуть предыдущую выполненную командную строку</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+r</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">отмечает средний файл или каталог в отображаемом списке на панели</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+t</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Смена режима работы панели ('Стандартный','Укороченный','Расширенный')</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+Shift+?</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Вызывается меню расширенного поиска файлов</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+Shift+A (Ctrl+x,Ctrl+p)</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Посылает в командную строку полный путь в нективной панели</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+Shift+H</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Отобразить историю каталогов</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+\</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Вызывается меню часто используемых каталогов</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+l</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Перерисовать экран</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+o</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Скрытие/показ панелей</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+r</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">перечитать содержимое каталога</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Быстрый поиск файла или каталога</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+Space</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Показать размер текущего каталога</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+x,a</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Отображается список активных соединений виртуальных файловых систем</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+x,c</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Просмотр/правка прав доступа текущего объекта</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+x,i</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Быстрый просмотр информации о текущем объекте на второй панели</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+x,j</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Показ фоновых задач</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+x,l</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Создать жесткую ссылку с текущего объекта</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+x,o</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Просмотр/правка владельца/группы для текущего объекта</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+x,q</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Быстрый просмотр содержимого файла на второй панели</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+x,s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Создает символьную ссылку symlink для текущего объекта</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+x,t</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Вставка всех выделенных объектов в командную строку</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+x,Ctrl+s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Редактировать символическую ссылку</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shift+F1</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Вызывается меню быстрого перехода между точками монтирования на левой панели</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shift+F2</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Вызывается меню быстрого перехода между точками монтирования на правой панели</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shift+F3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Просмотр файла raw без учета расширения</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shift+F4</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Создает новый файл</p></td>
-</tr>
-</tbody>
-</table>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">Клавиши</th>
-<th class="tableblock halign-left valign-top">Действие</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Начать выделение текста. Повторное нажатие F3 закончит выделение</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shift+F3</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Начать выделение блока текста. Повторное нажатие F3 закончит выделение</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Скопировать выделенный текст</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Переместить выделенный текст</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">F8</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Удалить выделенный текст</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+i</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Переключение режима "Автовыравнивание возвратом каретки", удобно при вставке отформатированного текста из буфера обмена</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+l</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Переход к строке по её номеру</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+q</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Вставка литерала (непечатного символа).См. таблицу ниже</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+t</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Сортировка строк выделенного текста</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+u</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Выполнить внешнюю команду и вставить в позицию под курсором её вывод</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+f</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Занести выделенный фрагмент во внутренний буфер обмена mc (записать во внешний файл)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+k</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Удалить часть строки до конца строки</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+n</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Создать новый файл</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+s</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Включить или выключить подсветку синтаксиса</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+t</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Выбрать кодировку текста</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+u</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Отменить действия</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+x</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Перейти в конец следующего</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+y</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Удалить строку</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+z</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Перейти на начало предыдущего слова</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shift+F5</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Вставка текста из внутреннего буфера обмена mc (прочитать внешний файл)</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+Enter</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Диалог перехода к определению функции</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Возврат после перехода к определению функции</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta++</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Переход вперед к определению функции</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+n</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Включение/отключение отображения номеров строк</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">tab</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Отодвигает вправо выделенный текст, если выключена опция "Постоянные блоки"</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta-tab</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Отодвигает влево выделенный текст, если выключена опция "Постоянные блоки"</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Shift+Стрелки</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Выделение текста</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+Стрелки</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Выделение вертикального блока</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+Shift+-</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Переключение режима отображения табуляций и пробелов</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Meta+Shift++</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Переключение режима "Автовыравнивание возвратом каретки"</p></td>
-</tr>
-</tbody>
-</table>
 </div>
 <div id="footer">
 <div id="footer-text">
