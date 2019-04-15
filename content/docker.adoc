@@ -13,8 +13,8 @@ https://github.com/docker/swarm[git: swarm]
 ```
 # Права контейнерам для работы с Docker-ом хоста
 # (выполнить после старта/рестарта Docker-а)
-chmod 777 /run/docker.sock
-chmod g+rwx,o+rwx /run/docker.sock
+sudo chmod 777 /run/docker.sock
+sudo chmod g+rwx,o+rwx /run/docker.sock
 
 # Консоль контейнера под root
 docker run -d vg/grafana
@@ -64,6 +64,8 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -q) --force
 # remove all docker volumes
 docker volume ls -qf dangling=true | xargs -r docker volume rm
+#
+docker rm $(docker ps -a |grep gurv |awk '{print $1}')
 
 # shell в alpine/java
 docker run -it --rm openjdk:jre-alpine /bin/ash
