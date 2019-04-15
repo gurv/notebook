@@ -453,8 +453,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code># Права контейнерам для работы с Docker-ом хоста
 # (выполнить после старта/рестарта Docker-а)
-chmod 777 /run/docker.sock
-chmod g+rwx,o+rwx /run/docker.sock
+sudo chmod 777 /run/docker.sock
+sudo chmod g+rwx,o+rwx /run/docker.sock
 
 # Консоль контейнера под root
 docker run -d vg/grafana
@@ -504,6 +504,8 @@ docker rm $(docker ps -a -q)
 docker rmi $(docker images -q) --force
 # remove all docker volumes
 docker volume ls -qf dangling=true | xargs -r docker volume rm
+#
+docker rm $(docker ps -a |grep gurv |awk '{print $1}')
 
 # shell в alpine/java
 docker run -it --rm openjdk:jre-alpine /bin/ash
@@ -542,7 +544,7 @@ set DOCKER_HOST=tcp://192.168.1.33:2375</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-04-15 18:15:22 UTC
+Last updated 2019-04-15 21:37:02 UTC
 </div>
 </div>
 </body>

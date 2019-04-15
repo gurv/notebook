@@ -469,6 +469,16 @@ ln -sf /opt/app/minishift-1.33.0-linux-amd64.tgz/minishift /opt/app/minishift
 minishift version
 minishift start --skip-registration
 #   по умолчанию, пользователь developer, пароль любой
+# login
+oc login -u developer
+oc login -u system:admin
+
+#
+oc apply -f resource.yml | oc create -f -
+oc process -f template.yml | oc create -f -
+
+#
+oc delete all --all
 
 # переменные окружения: MINISHIFT_HOME, MINISHIFT_USERNAME, MINISHIFT_PASSWORD
 # конфигурация
@@ -495,7 +505,24 @@ minishift delete
 minishift start --skip-registration --memory=16g
 minishift openshift service dashboard -n kube-dashboard
 kubectl get services --all-namespaces --as=system:admin
-docker version
+
+# Opening the OpenShift Web console in the default browser
+minishift console
+minishift console --url
+
+# Connect with SSH
+minishift ssh
+minishift ssh -- docker ps
+
+# hostfolder
+minishift hostfolder list
+minishift hostfolder add --source /home/gurv/.minishift-share --target /mnt/sda1/myshare myshare
+minishift hostfolder mount myshare
+minishift ssh "ls -al /mnt/sda1/myshare"
+minishift config set hostfolders-automount true
+minishift hostfolder list
+minishift hostfolder umount myshare
+minishift hostfolder remove myshare
 
 # удалить
 minishift delete
@@ -517,7 +544,7 @@ docker login -u developer -p $(oc whoami -t) $(minishift openshift registry)</co
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-04-15 18:15:22 UTC
+Last updated 2019-04-15 21:37:02 UTC
 </div>
 </div>
 </body>
