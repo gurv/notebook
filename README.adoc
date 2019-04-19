@@ -2,8 +2,8 @@
 
 image:https://img.shields.io/travis/gurv/notebook/master.svg[Build Status (Travis CI),link=https://travis-ci.org/gurv/notebook]
 image:https://sonarcloud.io/api/project_badges/measure?project=ru.gurv.notebook:notebook&metric=alert_status[Sonarcloud Status,link=https://sonarcloud.io/dashboard?id=ru.gurv.notebook%3Anotebook]
-image:https://img.shields.io/github/repo-size/gurv/notebook.svg[repo size]
 image:https://img.shields.io/github/contributors/gurv/notebook.svg[Contributors,link=https://github.com/gurv/notebook/graphs/contributors]
 image:https://img.shields.io/github/commit-activity/m/gurv/notebook.svg[Activity,link=https://github.com/gurv/notebook/pulse]
+image:https://img.shields.io/github/repo-size/gurv/notebook.svg[repo size]
 
-Documentation: https://gurv.github.io/notebook/index.html
+* https://gurv.github.io/notebook/index.html[Documentation]
