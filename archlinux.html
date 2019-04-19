@@ -449,8 +449,6 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_kvm">KVM</a></li>
 <li><a href="#_virtualbox">VirtualBox</a></li>
 <li><a href="#_pacman">pacman</a></li>
-<li><a href="#_vs_code">VS Code</a></li>
-<li><a href="#_sublime_text">Sublime Text</a></li>
 <li><a href="#_ssh">SSH</a></li>
 <li><a href="#_slack">Slack</a></li>
 </ul>
@@ -1295,81 +1293,6 @@ sudo pacman -U /path/to/the/package</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_vs_code">VS Code</h2>
-<div class="sectionbody">
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code># установка
-# загрузить отсюда https://code.visualstudio.com/download , например, версию ".tar.gz	64 bit"
-mkdir /opt/app/vscode-1.31.1
-cd /opt/app/vscode-1.31.1
-ls ~/Downloads/
-tar xfz ~/Downloads/code-stable-1549938209.tar.gz
-sudo ln -sf /opt/app/vscode-1.31.1/VSCode-linux-x64/bin/code /usr/local/bin/code
-
-# запуск
-code
-
-# если возникнет ошибка об отсутствии библиотеки, то выполнить
-sudo pacman -S gconf
-
-# расширения находятся здесь
-ls ~/.vscode/extensions</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>плагины</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Debugger for Chrome extension</p>
-</div>
-<div class="paragraph">
-<p>Git Stash</p>
-</div>
-<div class="paragraph">
-<p>Prettier - Code formatter</p>
-</div>
-<div class="paragraph">
-<p>Sort Typescript Imports</p>
-</div>
-<div class="paragraph">
-<p>AsciiDoc (stayfool.vscode-asciidoc)</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>горячие клавишы</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf" class="bare">https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf</a></p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_sublime_text">Sublime Text</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Установить</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>pacaur -S sublime-text-dev
-sudo find / -name "sublime*"</code></pre>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
 <h2 id="_ssh">SSH</h2>
 <div class="sectionbody">
 <div class="ulist">
@@ -1430,7 +1353,7 @@ slack</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-04-15 21:37:02 UTC
+Last updated 2019-04-19 21:20:35 UTC
 </div>
 </div>
 </body>

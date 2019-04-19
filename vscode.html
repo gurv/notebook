@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>Node.js</title>
+<title>VS Code</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -430,149 +430,68 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>Node.js</h1>
+<h1>VS Code</h1>
 <div class="details">
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_npm">npm</a></li>
-<li><a href="#_webpack">webpack</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://nodejs.org">site</a>,
-<a href="https://nodejs.org/dist">download</a></p>
-</li>
-</ul>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># установка (ArchLinux)
+# загрузить отсюда https://code.visualstudio.com/download , например, версию ".tar.gz	64 bit"
+mkdir /opt/app/vscode-1.31.1
+cd /opt/app/vscode-1.31.1
+ls ~/Downloads/
+tar xfz ~/Downloads/code-stable-1549938209.tar.gz
+sudo ln -sf /opt/app/vscode-1.31.1/VSCode-linux-x64/bin/code /usr/local/bin/code
+# запуск
+code
+# если возникнет ошибка об отсутствии библиотеки, то выполнить
+sudo pacman -S gconf
+# расширения находятся здесь
+ls ~/.vscode/extensions</code></pre>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>В установку Node.js входит npm</p>
-</div>
-</td>
-</tr>
-</table>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Версия</p>
+<p>плагины</p>
 </li>
 </ul>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>node -v</code></pre>
-</div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>Установка последней версии</p>
+<p>Project Manager</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>npm cache clean
-npm update -g</code></pre>
-</div>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_npm">npm</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://www.npmjs.com">site</a></p>
+<p>Debugger for Chrome extension</p>
 </div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code># Версия
-nmp -v
-
-# Установка последней версии
-npm install -g npm@latest
-
-# Обновить версии пакетов (локально)
-npm update
-# Обновить версии пакетов (локально)
-sudo npm update -g
-
-# Ошибки сборки часто (TS2305, ...) "лечатся"
-# windows
-rmdir node_modules /s /q
-# linux
-rmdir node_modules --ignore-fail-on-non-empty
-npm install
-
-# Установить пакет (например, rimraf)
-npm install rimraf
-
-# Версия пакета (например, rimraf) в удаленном npm-репозитории
-npm view rimraf version
-# Версия пакета (например, rimraf) в локальном npm-репозитории
-npm list rimraf
-# Версия пакета (например, rimraf) в глобальном npm-репозитории
-npm list -п rimraf
-# Версии пакетов в локальном npm-репозитории
-npm list --depth=0
-# Версии пакетов в глобальном npm-репозитории
-npm list -g --depth=0</code></pre>
+<div class="paragraph">
+<p>Debugger for Chrome extension</p>
 </div>
+<div class="paragraph">
+<p>Git Stash</p>
 </div>
+<div class="paragraph">
+<p>Prettier - Code formatter</p>
 </div>
+<div class="paragraph">
+<p>Sort Typescript Imports</p>
 </div>
-<div class="sect1">
-<h2 id="_webpack">webpack</h2>
-<div class="sectionbody">
+<div class="paragraph">
+<p>AsciiDoc (stayfool.vscode-asciidoc)</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://webpack.js.org/">site</a>,
-<a href="https://webpack.js.org/concepts/">docs</a>,
-<a href="https://github.com/webpack/webpack">git</a></p>
+<p>горячие клавишы</p>
 </li>
 </ul>
 </div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Tip</div>
-</td>
-<td class="content">
 <div class="paragraph">
-<p>20180129 Хабр: <a href="https://habrahabr.ru/post/347812/">"Вашему вниманию — Webpack 4"</a></p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
+<p><a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf" class="bare">https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf</a></p>
 </div>
 </div>
 <div id="footer">
