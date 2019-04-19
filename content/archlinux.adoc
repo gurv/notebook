@@ -513,43 +513,6 @@ pacman -S archlinux-keyring
 sudo pacman -U /path/to/the/package
 ```
 
-== VS Code
-
-```
-# установка
-# загрузить отсюда https://code.visualstudio.com/download , например, версию ".tar.gz	64 bit"
-mkdir /opt/app/vscode-1.31.1
-cd /opt/app/vscode-1.31.1
-ls ~/Downloads/
-tar xfz ~/Downloads/code-stable-1549938209.tar.gz
-sudo ln -sf /opt/app/vscode-1.31.1/VSCode-linux-x64/bin/code /usr/local/bin/code
-
-# запуск
-code
-
-# если возникнет ошибка об отсутствии библиотеки, то выполнить
-sudo pacman -S gconf
-
-# расширения находятся здесь
-ls ~/.vscode/extensions
-```
-
-* плагины
-
-Debugger for Chrome extension
-
-Git Stash
-
-Prettier - Code formatter
-
-Sort Typescript Imports
-
-AsciiDoc (stayfool.vscode-asciidoc)
-
-* горячие клавишы
-
-https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
-
 == Sublime Text
 
 * Установить
