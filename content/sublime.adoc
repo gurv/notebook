@@ -1,0 +1,7 @@
+= Sublime Text
+
+```
+# установка (ArchLinux)
+pacaur -S sublime-text-dev
+sudo find / -name "sublime*"
+```

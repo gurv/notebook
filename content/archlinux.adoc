@@ -513,15 +513,6 @@ pacman -S archlinux-keyring
 sudo pacman -U /path/to/the/package
 ```
 
-== Sublime Text
-
-* Установить
-
-```
-pacaur -S sublime-text-dev
-sudo find / -name "sublime*"
-```
-
 == SSH
 
 * Добввить приватный ключ, например, для GitHub
