@@ -1,4 +1,4 @@
-= Мои записи
+= Notes
 
 image:https://img.shields.io/travis/gurv/notebook/master.svg[Build Status (Travis CI),link=https://travis-ci.org/gurv/notebook]
 image:https://sonarcloud.io/api/project_badges/measure?project=ru.gurv.notebook:notebook&metric=alert_status[Sonarcloud Status,link=https://sonarcloud.io/dashboard?id=ru.gurv.notebook%3Anotebook]
