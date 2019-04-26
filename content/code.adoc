@@ -1,0 +1,8 @@
+= VS Code
+
+[options="header"]
+|===
+|... |,,,
+|Ctrl+Shift+/|comment block
+|Ctrl+/|uncomment block
+|===
