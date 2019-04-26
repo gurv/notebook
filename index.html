@@ -579,8 +579,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
-
+<pre class="highlight"><code>minishift stop
+systemctl suspend
+minishift start
+setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
 set +H</code></pre>
 </div>
 </div>
@@ -717,6 +719,9 @@ sudo find / -name "minishift"
 # настроить пользователю shell (например, когда ошибка "This account is currently not available"):
 chsh -s /bin/bash username
 
+# просмотр текущего каталога
+ls -la
+
 # сменить пользователя
 su username
 
@@ -728,8 +733,8 @@ ps -ef | grep java
 
 # копирование прав доступ к файлу/каталогу
 chmod --reference=src_file trg_file
-# копирование владельца и группы файла/каталога
-chown --reference=src_file trg_file
+# копирование (рекурсиво) владельца и группы файла/каталога
+chown -R --reference=src_file trg_file
 # добавление прав на запись в каталог для всех пользователей
 chmod o+w ./logs
 
@@ -3989,6 +3994,23 @@ minishift hostfolder list
 minishift hostfolder umount myshare
 minishift hostfolder remove myshare
 
+# location of the persistent data
+#   determined in the host-pv-dir flag of the minishift start command
+minishift ssh "ls -al /var/lib/minishift/openshift.local.pv"
+
+# volume
+minishift ssh
+sudo -i
+mkdir -p /mnt/sda1/var/lib/minishift/openshift.local.volumes/pv
+mkdir /mnt/sda1/var/lib/minishift/openshift.local.volumes/pv/h2-data
+chmod 777 -R /mnt/sda1/var/lib/minishift/openshift.local.volumes/pv
+exit
+exit
+
+#
+oc rsh -h
+oc exec -h
+
 # удалить
 minishift delete
 rm -rf ~/.minishift
@@ -4557,7 +4579,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-04-19 21:52:52 UTC
+Last updated 2019-04-26 19:12:31 UTC
 </div>
 </div>
 </body>

@@ -524,6 +524,23 @@ minishift hostfolder list
 minishift hostfolder umount myshare
 minishift hostfolder remove myshare
 
+# location of the persistent data
+#   determined in the host-pv-dir flag of the minishift start command
+minishift ssh "ls -al /var/lib/minishift/openshift.local.pv"
+
+# volume
+minishift ssh
+sudo -i
+mkdir -p /mnt/sda1/var/lib/minishift/openshift.local.volumes/pv
+mkdir /mnt/sda1/var/lib/minishift/openshift.local.volumes/pv/h2-data
+chmod 777 -R /mnt/sda1/var/lib/minishift/openshift.local.volumes/pv
+exit
+exit
+
+#
+oc rsh -h
+oc exec -h
+
 # удалить
 minishift delete
 rm -rf ~/.minishift
@@ -544,7 +561,7 @@ docker login -u developer -p $(oc whoami -t) $(minishift openshift registry)</co
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-04-19 21:52:52 UTC
+Last updated 2019-04-26 19:12:31 UTC
 </div>
 </div>
 </body>
