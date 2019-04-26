@@ -10,6 +10,9 @@ sudo find / -name "minishift"
 # настроить пользователю shell (например, когда ошибка "This account is currently not available"):
 chsh -s /bin/bash username
 
+# просмотр текущего каталога
+ls -la
+
 # сменить пользователя
 su username
 
@@ -21,8 +24,8 @@ ps -ef | grep java
 
 # копирование прав доступ к файлу/каталогу
 chmod --reference=src_file trg_file
-# копирование владельца и группы файла/каталога
-chown --reference=src_file trg_file
+# копирование (рекурсиво) владельца и группы файла/каталога
+chown -R --reference=src_file trg_file
 # добавление прав на запись в каталог для всех пользователей
 chmod o+w ./logs
 

@@ -1,7 +1,9 @@
 = Обзор
 
 ```
+minishift stop
+systemctl suspend
+minishift start
 setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
-
 set +H
 ```

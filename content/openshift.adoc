@@ -85,6 +85,23 @@ minishift hostfolder list
 minishift hostfolder umount myshare
 minishift hostfolder remove myshare
 
+# location of the persistent data
+#   determined in the host-pv-dir flag of the minishift start command
+minishift ssh "ls -al /var/lib/minishift/openshift.local.pv"
+
+# volume
+minishift ssh
+sudo -i
+mkdir -p /mnt/sda1/var/lib/minishift/openshift.local.volumes/pv
+mkdir /mnt/sda1/var/lib/minishift/openshift.local.volumes/pv/h2-data
+chmod 777 -R /mnt/sda1/var/lib/minishift/openshift.local.volumes/pv
+exit
+exit
+
+#
+oc rsh -h
+oc exec -h
+
 # удалить
 minishift delete
 rm -rf ~/.minishift
