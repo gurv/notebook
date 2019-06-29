@@ -1,0 +1,21 @@
+= Jenkins
+
+```
+# установка (ArchLinux)
+pacaur -S jenkins-lts
+archlinux-java status
+sudo archlinux-java set java-8-openjdk/jre
+sudo systemctl start jenkins
+# password
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+# UI
+http://localhost:8090/
+```
+
+20190622: No, variable names must start with a lowercase letter. Probably the plugin should enforce this directly.
+
+Class.isInstance(PipelineAction2)
+
+println("What bindings are there?: ${binding.variables}")
+
+eFor Shared Libraries which only define Global Variables (vars/), or a Jenkinsfile which only needs a Global Variable, the annotation pattern @Library('my-shared-library') _ may be useful for keeping code concise. In essence, instead of annotating an unnecessary import statement, the symbol _ is annotated.
