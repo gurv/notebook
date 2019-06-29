@@ -556,3 +556,23 @@ pacaur -S slack-desktop
 # запуск
 slack
 ```
+
+== Разное
+
+=== Добавление доверенного корневого сертификата
+
+```
+# доверенного корневого сертификата
+cp CORP_ROOT_CA.crt /etc/ca-certificates/trust-source/anchors/
+trust extract-compat
+# персонального сертификата и личного ключа для SSL авторизации
+pk12util -d sql:$HOME/.pki/nssdb -i ~/certs/16735976.p12
+# в chromium (там import, затем перезапустить chromium)
+chrome://settings/certificates
+```
+
+=== FAR
+```
+pacaur -S far2l-git
+far2l
+```
