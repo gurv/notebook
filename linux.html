@@ -453,6 +453,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_pacman">pacman</a></li>
 <li><a href="#_ssh">SSH</a></li>
 <li><a href="#_slack">Slack</a></li>
+<li><a href="#_разное">Разное</a></li>
 </ul>
 </li>
 <li><a href="#_alpine">Alpine</a>
@@ -1472,6 +1473,32 @@ slack</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_разное">Разное</h3>
+<div class="sect3">
+<h4 id="_добавление_доверенного_корневого_сертификата">Добавление доверенного корневого сертификата</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># доверенного корневого сертификата
+cp CORP_ROOT_CA.crt /etc/ca-certificates/trust-source/anchors/
+trust extract-compat
+# персонального сертификата и личного ключа для SSL авторизации
+pk12util -d sql:$HOME/.pki/nssdb -i ~/certs/16735976.p12
+# в chromium (там import, затем перезапустить chromium)
+chrome://settings/certificates</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_far">FAR</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>pacaur -S far2l-git
+far2l</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2030,7 +2057,7 @@ nano ~/.config/mc/ini
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-06-04 19:00:00 UTC
+Last updated 2019-06-29 05:05:52 UTC
 </div>
 </div>
 </body>

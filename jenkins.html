@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>Java</title>
+<title>Jenkins</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -430,57 +430,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>Java</h1>
+<h1>Jenkins</h1>
 <div class="details">
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_mission_control_flight_recorder">Mission Control &amp; Flight Recorder</a></li>
-<li><a href="#_java_se_8_date_and_time">Java SE 8 Date and Time</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p><a href="http://www.oracle.com/technetwork/indexes/downloads/index.html">Oracle Java</a>,
-<a href="http://jdk.java.net/9/">OpenJdk 9</a></p>
-</li>
-<li>
-<p>Полезное:
-<a href="https://habrahabr.ru/post/314386/">"Хабр 201709: Шпаргалки Java программиста 9: Java SE — Шпаргалка для собеседований и повторений"</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_mission_control_flight_recorder">Mission Control &amp; Flight Recorder</h2>
-<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>java -XX:+UnlockCommercialFeatures -XX:+FlightRecorder -jar sample.jar
-jmc</code></pre>
+<pre class="highlight"><code># установка (ArchLinux)
+pacaur -S jenkins-lts
+archlinux-java status
+sudo archlinux-java set java-8-openjdk/jre
+sudo systemctl start jenkins
+# password
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+# UI
+http://localhost:8090/</code></pre>
 </div>
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_java_se_8_date_and_time">Java SE 8 Date and Time</h2>
-<div class="sectionbody">
 <div class="paragraph">
-<p><a href="http://www.oracle.com/technetwork/articles/java/jf14-date-time-2125367.html">"Java SE 8 Date and Time"</a>,
-<a href="https://habrahabr.ru/post/274811/">"Хабр 201801: Java и время: часть первая"</a>,
-<a href="https://habrahabr.ru/post/274905/">"Хабр 201801: Java и время: часть первая"</a></p>
+<p>20190622: No, variable names must start with a lowercase letter. Probably the plugin should enforce this directly.</p>
 </div>
+<div class="paragraph">
+<p>Class.isInstance(PipelineAction2)</p>
 </div>
+<div class="paragraph">
+<p>println("What bindings are there?: ${binding.variables}")</p>
+</div>
+<div class="paragraph">
+<p>eFor Shared Libraries which only define Global Variables (vars/), or a Jenkinsfile which only needs a Global Variable, the annotation pattern @Library('my-shared-library') _ may be useful for keeping code concise. In essence, instead of annotating an unnecessary import statement, the symbol _ is annotated.</p>
 </div>
 </div>
 <div id="footer">

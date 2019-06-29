@@ -461,6 +461,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_pacman">pacman</a></li>
 <li><a href="#_ssh">SSH</a></li>
 <li><a href="#_slack">Slack</a></li>
+<li><a href="#_разное">Разное</a></li>
 </ul>
 </li>
 <li><a href="#_alpine">Alpine</a>
@@ -478,6 +479,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_minikube_2">minikube</a></li>
 </ul>
 </li>
+<li><a href="#_jenkins">Jenkins</a></li>
 <li><a href="#_vs_code">VS Code</a></li>
 <li><a href="#_node_js">Node.js</a>
 <ul class="sectlevel2">
@@ -1709,6 +1711,32 @@ slack</code></pre>
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_разное">Разное</h4>
+<div class="sect4">
+<h5 id="_добавление_доверенного_корневого_сертификата">Добавление доверенного корневого сертификата</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># доверенного корневого сертификата
+cp CORP_ROOT_CA.crt /etc/ca-certificates/trust-source/anchors/
+trust extract-compat
+# персонального сертификата и личного ключа для SSL авторизации
+pk12util -d sql:$HOME/.pki/nssdb -i ~/certs/16735976.p12
+# в chromium (там import, затем перезапустить chromium)
+chrome://settings/certificates</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_far">FAR</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>pacaur -S far2l-git
+far2l</code></pre>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_alpine">Alpine</h3>
@@ -2393,6 +2421,36 @@ minikube start --vm-driver hyperv --hyperv-virtual-switch minikube
 minikube docker-env | Invoke-Expression</code></pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_jenkins">Jenkins</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># установка (ArchLinux)
+pacaur -S jenkins-lts
+archlinux-java status
+sudo archlinux-java set java-8-openjdk/jre
+sudo systemctl start jenkins
+# password
+sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+# UI
+http://localhost:8090/</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>20190622: No, variable names must start with a lowercase letter. Probably the plugin should enforce this directly.</p>
+</div>
+<div class="paragraph">
+<p>Class.isInstance(PipelineAction2)</p>
+</div>
+<div class="paragraph">
+<p>println("What bindings are there?: ${binding.variables}")</p>
+</div>
+<div class="paragraph">
+<p>eFor Shared Libraries which only define Global Variables (vars/), or a Jenkinsfile which only needs a Global Variable, the annotation pattern @Library('my-shared-library') _ may be useful for keeping code concise. In essence, instead of annotating an unnecessary import statement, the symbol _ is annotated.</p>
 </div>
 </div>
 </div>
@@ -4607,7 +4665,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-06-04 19:00:00 UTC
+Last updated 2019-06-29 05:05:52 UTC
 </div>
 </div>
 </body>
