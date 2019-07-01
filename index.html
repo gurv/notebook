@@ -480,6 +480,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_jenkins">Jenkins</a></li>
+<li><a href="#_ansible">Ansible</a></li>
 <li><a href="#_vs_code">VS Code</a></li>
 <li><a href="#_node_js">Node.js</a>
 <ul class="sectlevel2">
@@ -582,7 +583,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>minishift stop
+<pre class="highlight"><code>7z a ci00011745_devops.zip ./ci00011745_devops/
+minishift stop
 systemctl suspend
 minishift start
 setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
@@ -596,7 +598,10 @@ set +H</code></pre>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># Изменить комментарий текущего локального коммита
+<pre class="highlight"><code># создать ветку
+git checkout -b ci
+
+# Изменить комментарий текущего локального коммита
 git commit --amend -m "новый"
 
 # Добавить еще файл в локальный коммит
@@ -629,9 +634,36 @@ git tag -d tagName
 # Проверка локального репозитория
 git fsck --full
 
+# URL репозитория
+git ls-remote --get-url
+
+# выход из git log по кнопке q
+
 # Отмена последних 2 шт отправленных (push) комиитов
 git reset --hard HEAD~2
 git push --force
+
+# отмена всех локальных незакрмичченных изменений
+git reset
+git checkout .
+
+# сброс (reset) текущего merge/rebase процесса
+git status
+git reset --hard
+#   или
+git merge --abort
+
+# получение изменений и слияние их в ветку
+git pull
+#   или отдельными коммандами
+git fetch
+git merge
+
+# включение режима трассировки
+set GIT_TRACE=1
+
+# изменить автора последнего коммита (например, принес из дома) на текущего (из конфига)
+git commit --amend --reset-author
 
 # Получить изменения со сбросом локальных изменений
 git fetch --all
@@ -648,17 +680,40 @@ git status
 git add --all
 git commit -m "..." --amend
 
+# список коммитов для анонса версии
+git log -n 8 --pretty=oneline --abbrev-commit
+#   в файле C:\Users\sbt-gurinovich-va\.gitconfig дб logOutputEncoding = utf-8
+
+
 # Пустой коммит
 git commit --allow-empty -m "Trigger rebuild"
 
-# удалить remote branch
+# удаление веток
+#   локальной
+git branch -d gh-pages
+#   remote
 git push origin --delete gh-pages
 
-# revert
-git revert HEAD --no-edit
+# unix-права на файл под windows
+git ls-tree HEAD
+git update-index --chmod=+x gradlew
+git status
+
+# создание ключей для SSH-соединений
+# запустить bash
+ssh-keygen -t rsa -b 4096
+# если не вводить имя файла, то он будет создан в ~/.ssh, если вводить, то в ./usr/bin/
+
+# отмена коммита (revert)
+#   получится так: Revert "старый комментарий"
+git revert 0c18356 --no-edit
 
 # GitHub client
 npm install -g ngh
+
+# IDEA: rebase (перемещение)
+# 1) переходим в ветку feat, в контекстном меню выбираем ветку dev и выполняем пункт "Rebase onto", результат - ветка feat перемещена
+# 2) переходим в ветку dev, в контекстном меню делаем слияние (merge) с веткой feat, результат - указатели веток dev, feat и HEAD находятся на одном коммите
 
 # использовать token
 git clone https://hostname/username/repo.git
@@ -2441,6 +2496,118 @@ http://localhost:8090/</code></pre>
 </div>
 </div>
 <div class="paragraph">
+<p>Установка под Windows
+'''
+# скачать war-файл
+setx JENKINS_HOME D:/app/jenkins-2.176.1
+java -jar -Dhudson.model.DownloadService.noSignatureCheck=true jenkins.war
+# UI: <a href="http://localhost:8080" class="bare">http://localhost:8080</a>
+# если страница пустая, то можно попробовать так <a href="http://localhost:8080/safeRestart" class="bare">http://localhost:8080/safeRestart</a>
+# здесь <a href="http://localhost:8080/pluginManager/advanced" class="bare">http://localhost:8080/pluginManager/advanced</a> установить плагин "C:\Локальные документы\dst\jenkins\update-sites-manager.hpi"
+#   здесь <a href="http://localhost:8080/updatesites/" class="bare">http://localhost:8080/updatesites/</a> указать
+#   id: sbt-jenkins
+#   URL: <a href="http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/OPIR_release/jenkins/download/alpha/update-center.json" class="bare">http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/OPIR_release/jenkins/download/alpha/update-center.json</a>
+# если список плагинов не загружается, то возможно здесь <a href="http://localhost:8080/pluginManager/advanced" class="bare">http://localhost:8080/pluginManager/advanced</a> нужно удалить url <a href="https://updates.jenkins.io/update-center.json" class="bare">https://updates.jenkins.io/update-center.json</a>
+# установить плагины:
+#   Pipeline: Multibranch
+#   Gradle Plugin
+#   Git plugin
+#   Blue Ocean
+#   Pipeline Utility Steps
+#   Rebuilder
+'''</p>
+</div>
+<div class="paragraph">
+<p>Проверка физ доступа (groovy)
+'''
+def socket = new Socket("palanga.cgs.sbrf.ru", 1521)
+socket.close()
+'''</p>
+</div>
+<div class="paragraph">
+<p>Список переменных окружения: <a href="https://sbt-jenkins/legacy/env-vars.html/" class="bare">https://sbt-jenkins/legacy/env-vars.html/</a></p>
+</div>
+<div class="paragraph">
+<p>"Убить" билд (hard-способ): &lt;url to jenkins&gt;/&lt;number build&gt;/kill</p>
+</div>
+<div class="paragraph">
+<p>Агенты: <a href="https://sbt-jenkins/legacy/computer/" class="bare">https://sbt-jenkins/legacy/computer/</a></p>
+</div>
+<div class="paragraph">
+<p>API результаты сборки: <a href="https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/575/api/json" class="bare">https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/575/api/json</a> или <a href="https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/575/api/json?pretty=true" class="bare">https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/575/api/json?pretty=true</a></p>
+</div>
+<div class="paragraph">
+<p>pipeline-заготовка (declarative)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>pipeline {
+    agent { label 'masterLin' }
+    stages {
+        stage('xxx') {
+            steps {
+                cleanWs()
+                script {
+                    echo 'xxx'
+                }
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>pipeline-заготовка (groovy) на примере получения пароля из привилегии :)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>#!groovy
+node('rhel7') {
+    cleanWs()
+    stage('xxx') {
+/*
+        // пароль из переменной
+        def a
+        withCredentials([usernamePassword(credentialsId: '24c709c2-6c2c-4fd0-896c-569b04f7f5c6', usernameVariable: 'user', passwordVariable: 'password')]) {
+            a = "${password}"
+        }
+        echo a
+*/
+/*
+        // пароль из файла
+        withCredentials([file(credentialsId: 'vault_file_cod', variable: 'vaultPasswordFile')]) {
+            sh "cat ${vaultPasswordFile}"
+        }
+*/
+        echo 'xxx'
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Badgets</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/InfoServices/badge/icon
+[![Build Status](https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/badge/icon)](https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/InfoServices/)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>// Диагностика параметров и переменных окружения
+println "Jenkins params:"
+params.each { name, value -&gt;
+    println "name: $name -&gt; value: $value"
+}
+println "Jenkins env:"
+env.getEnvironment().collect({ var -&gt; println "key: ${var.key} -&gt; value: ${var.value}" })
+println "System environment:"
+// TODO Не работает в песочнице: "sandbox.RejectedAccessException: Scripts not permitted to use staticMethod java.lang.System getenv"
+echo(System.getenv().collect({ var -&gt; "${var.key} = ${var.value}" }).join("\n"))</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>20190622: No, variable names must start with a lowercase letter. Probably the plugin should enforce this directly.</p>
 </div>
 <div class="paragraph">
@@ -2451,6 +2618,32 @@ http://localhost:8090/</code></pre>
 </div>
 <div class="paragraph">
 <p>eFor Shared Libraries which only define Global Variables (vars/), or a Jenkinsfile which only needs a Global Variable, the annotation pattern @Library('my-shared-library') _ may be useful for keeping code concise. In essence, instead of annotating an unnecessary import statement, the symbol _ is annotated.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_ansible">Ansible</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># работа с хранилищем
+#
+# запустить
+E:\app\msys64-20180503\mingw64.exe
+# и выполнить (располагается здесь /usr/bin/ansible-vault)
+ansible-vault --version
+# используемые пароли для шифрования хранилища задаются так
+ansible-vault --ask-vault-pass=&lt;password&gt;
+#   или так
+ansible-vault --vault-password-file=&lt;password-file&gt;
+#   или через файл ansible.cfg
+#   или, в ansible &gt;= 2.4, использовать vault-id
+# зашифровать/расшифровать файл
+ansible-vault encrypt /xxx.yml
+ansible-vault decrypt /xxx.yml
+
+# уровень сообщений задается параметром -v , мб и такой для полной -vvvvv</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -3021,6 +3214,9 @@ gradle -q tasks
 # Зависимости
 gradlew -q dependencies
 
+# другая Java
+gradle build -Dorg.gradle.java.home=...
+
 # Запуск задачи без выполнения
 gradlew --dry-run :helloWorld
 
@@ -3033,6 +3229,9 @@ gradlew :helloWorld --profile
 # Останов демонов
 gradle --stop
 gradle --status
+
+#
+setx GRADLE_USER_HOME D:\app\.gradle
 
 # Отладка сборки
 # Настроить
@@ -3106,6 +3305,17 @@ gradle wrapper</code></pre>
 <div class="sect1">
 <h2 id="_java">Java</h2>
 <div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># вывод debug-логов сетевого слоя
+-Djavax.net.debug=all
+
+# установка сертификатов в JRE
+# разместить файл *.crt в D:\wrk\20181003\tmp
+# выполнить под Администратором D:\wrk\20181003\cert-auto-java.cmd
+# сертификат добавится в E:\app\jdk-8u131\jre\lib\security\cacerts</code></pre>
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -4665,7 +4875,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-06-29 05:05:52 UTC
+Last updated 2019-07-01 06:06:35 UTC
 </div>
 </div>
 </body>

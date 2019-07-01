@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>systemd</title>
+<title>Ansible</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,134 +432,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>systemd</h1>
+<h1>Ansible</h1>
 <div class="details">
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
 </div>
 <div id="content">
-<div class="ulist">
-<ul>
-<li>
-<p>каталоги юнитов</p>
-<div class="ulist">
-<ul>
-<li>
-<p>/etc/systemd/system/ - юниты, созданные системным администратором</p>
-</li>
-<li>
-<p>/usr/lib/systemd/system/ – юниты из установленных пакетов</p>
-</li>
-<li>
-<p>/run/systemd/system/ — юниты, созданные в рантайме</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>запустить</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>systemctl start unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>остановить</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl stop unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>перезапустить</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl restart unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>перезагрузка настроек</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl reload unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>статус</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl status unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>проверка настройки автозапуска</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl is-enabled unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>включить в автозапуск</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl enable unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>убрать из автозапуска</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl disable unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>размер логов</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>journalctl --disk-usage</code></pre>
+<pre class="highlight"><code># работа с хранилищем
+#
+# запустить
+E:\app\msys64-20180503\mingw64.exe
+# и выполнить (располагается здесь /usr/bin/ansible-vault)
+ansible-vault --version
+# используемые пароли для шифрования хранилища задаются так
+ansible-vault --ask-vault-pass=&lt;password&gt;
+#   или так
+ansible-vault --vault-password-file=&lt;password-file&gt;
+#   или через файл ansible.cfg
+#   или, в ansible &gt;= 2.4, использовать vault-id
+# зашифровать/расшифровать файл
+ansible-vault encrypt /xxx.yml
+ansible-vault decrypt /xxx.yml
+
+# уровень сообщений задается параметром -v , мб и такой для полной -vvvvv</code></pre>
 </div>
 </div>
 </div>

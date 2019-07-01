@@ -452,6 +452,118 @@ http://localhost:8090/</code></pre>
 </div>
 </div>
 <div class="paragraph">
+<p>Установка под Windows
+'''
+# скачать war-файл
+setx JENKINS_HOME D:/app/jenkins-2.176.1
+java -jar -Dhudson.model.DownloadService.noSignatureCheck=true jenkins.war
+# UI: <a href="http://localhost:8080" class="bare">http://localhost:8080</a>
+# если страница пустая, то можно попробовать так <a href="http://localhost:8080/safeRestart" class="bare">http://localhost:8080/safeRestart</a>
+# здесь <a href="http://localhost:8080/pluginManager/advanced" class="bare">http://localhost:8080/pluginManager/advanced</a> установить плагин "C:\Локальные документы\dst\jenkins\update-sites-manager.hpi"
+#   здесь <a href="http://localhost:8080/updatesites/" class="bare">http://localhost:8080/updatesites/</a> указать
+#   id: sbt-jenkins
+#   URL: <a href="http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/OPIR_release/jenkins/download/alpha/update-center.json" class="bare">http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/OPIR_release/jenkins/download/alpha/update-center.json</a>
+# если список плагинов не загружается, то возможно здесь <a href="http://localhost:8080/pluginManager/advanced" class="bare">http://localhost:8080/pluginManager/advanced</a> нужно удалить url <a href="https://updates.jenkins.io/update-center.json" class="bare">https://updates.jenkins.io/update-center.json</a>
+# установить плагины:
+#   Pipeline: Multibranch
+#   Gradle Plugin
+#   Git plugin
+#   Blue Ocean
+#   Pipeline Utility Steps
+#   Rebuilder
+'''</p>
+</div>
+<div class="paragraph">
+<p>Проверка физ доступа (groovy)
+'''
+def socket = new Socket("palanga.cgs.sbrf.ru", 1521)
+socket.close()
+'''</p>
+</div>
+<div class="paragraph">
+<p>Список переменных окружения: <a href="https://sbt-jenkins/legacy/env-vars.html/" class="bare">https://sbt-jenkins/legacy/env-vars.html/</a></p>
+</div>
+<div class="paragraph">
+<p>"Убить" билд (hard-способ): &lt;url to jenkins&gt;/&lt;number build&gt;/kill</p>
+</div>
+<div class="paragraph">
+<p>Агенты: <a href="https://sbt-jenkins/legacy/computer/" class="bare">https://sbt-jenkins/legacy/computer/</a></p>
+</div>
+<div class="paragraph">
+<p>API результаты сборки: <a href="https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/575/api/json" class="bare">https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/575/api/json</a> или <a href="https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/575/api/json?pretty=true" class="bare">https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/575/api/json?pretty=true</a></p>
+</div>
+<div class="paragraph">
+<p>pipeline-заготовка (declarative)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>pipeline {
+    agent { label 'masterLin' }
+    stages {
+        stage('xxx') {
+            steps {
+                cleanWs()
+                script {
+                    echo 'xxx'
+                }
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>pipeline-заготовка (groovy) на примере получения пароля из привилегии :)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>#!groovy
+node('rhel7') {
+    cleanWs()
+    stage('xxx') {
+/*
+        // пароль из переменной
+        def a
+        withCredentials([usernamePassword(credentialsId: '24c709c2-6c2c-4fd0-896c-569b04f7f5c6', usernameVariable: 'user', passwordVariable: 'password')]) {
+            a = "${password}"
+        }
+        echo a
+*/
+/*
+        // пароль из файла
+        withCredentials([file(credentialsId: 'vault_file_cod', variable: 'vaultPasswordFile')]) {
+            sh "cat ${vaultPasswordFile}"
+        }
+*/
+        echo 'xxx'
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Badgets</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/InfoServices/badge/icon
+[![Build Status](https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/badge/icon)](https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/InfoServices/)</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>// Диагностика параметров и переменных окружения
+println "Jenkins params:"
+params.each { name, value -&gt;
+    println "name: $name -&gt; value: $value"
+}
+println "Jenkins env:"
+env.getEnvironment().collect({ var -&gt; println "key: ${var.key} -&gt; value: ${var.value}" })
+println "System environment:"
+// TODO Не работает в песочнице: "sandbox.RejectedAccessException: Scripts not permitted to use staticMethod java.lang.System getenv"
+echo(System.getenv().collect({ var -&gt; "${var.key} = ${var.value}" }).join("\n"))</code></pre>
+</div>
+</div>
+<div class="paragraph">
 <p>20190622: No, variable names must start with a lowercase letter. Probably the plugin should enforce this directly.</p>
 </div>
 <div class="paragraph">
@@ -467,7 +579,7 @@ http://localhost:8090/</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-06-29 05:05:52 UTC
+Last updated 2019-07-01 06:06:35 UTC
 </div>
 </div>
 </body>
