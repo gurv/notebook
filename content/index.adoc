@@ -19,6 +19,8 @@ include::windows.adoc[]
 
 include::jenkins.adoc[]
 
+include::ansible.adoc[]
+
 include::code.adoc[]
 
 include::nodejs.adoc[]

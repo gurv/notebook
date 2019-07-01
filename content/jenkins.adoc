@@ -12,6 +12,103 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 http://localhost:8090/
 ```
 
+Установка под Windows
+'''
+# скачать war-файл
+setx JENKINS_HOME D:/app/jenkins-2.176.1
+java -jar -Dhudson.model.DownloadService.noSignatureCheck=true jenkins.war
+# UI: http://localhost:8080
+# если страница пустая, то можно попробовать так http://localhost:8080/safeRestart
+# здесь http://localhost:8080/pluginManager/advanced установить плагин "C:\Локальные документы\dst\jenkins\update-sites-manager.hpi" 
+#   здесь http://localhost:8080/updatesites/ указать
+#   id: sbt-jenkins
+#   URL: http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/OPIR_release/jenkins/download/alpha/update-center.json
+# если список плагинов не загружается, то возможно здесь http://localhost:8080/pluginManager/advanced нужно удалить url https://updates.jenkins.io/update-center.json
+# установить плагины:
+#   Pipeline: Multibranch
+#   Gradle Plugin
+#   Git plugin
+#   Blue Ocean
+#   Pipeline Utility Steps
+#   Rebuilder
+'''
+
+Проверка физ доступа (groovy)
+'''
+def socket = new Socket("palanga.cgs.sbrf.ru", 1521)
+socket.close()
+'''
+
+Список переменных окружения: https://sbt-jenkins/legacy/env-vars.html/
+
+"Убить" билд (hard-способ): <url to jenkins>/<number build>/kill
+
+Агенты: https://sbt-jenkins/legacy/computer/
+
+API результаты сборки: https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/575/api/json или https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/575/api/json?pretty=true
+
+pipeline-заготовка (declarative)
+```
+pipeline {
+    agent { label 'masterLin' }
+    stages {
+        stage('xxx') {
+            steps {
+                cleanWs()
+                script {
+                    echo 'xxx'
+                }
+            }
+        }
+    }
+}
+```
+
+pipeline-заготовка (groovy) на примере получения пароля из привилегии :)
+```
+#!groovy
+node('rhel7') {
+    cleanWs()
+    stage('xxx') {
+/*
+        // пароль из переменной
+        def a
+        withCredentials([usernamePassword(credentialsId: '24c709c2-6c2c-4fd0-896c-569b04f7f5c6', usernameVariable: 'user', passwordVariable: 'password')]) {
+            a = "${password}"
+        }
+        echo a
+*/
+/*
+        // пароль из файла
+        withCredentials([file(credentialsId: 'vault_file_cod', variable: 'vaultPasswordFile')]) {
+            sh "cat ${vaultPasswordFile}"
+        }
+*/
+        echo 'xxx'
+    }
+}
+```
+
+Badgets
+```
+https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/InfoServices/badge/icon
+[![Build Status](https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/base/job/Ci/badge/icon)](https://sbt-jenkins.ca.sbrf.ru/legacy/job/BOV/job/devops/job/InfoServices/)
+```
+
+```
+// Диагностика параметров и переменных окружения
+println "Jenkins params:"
+params.each { name, value ->
+    println "name: $name -> value: $value"
+}
+println "Jenkins env:"
+env.getEnvironment().collect({ var -> println "key: ${var.key} -> value: ${var.value}" })
+println "System environment:"
+// TODO Не работает в песочнице: "sandbox.RejectedAccessException: Scripts not permitted to use staticMethod java.lang.System getenv"
+echo(System.getenv().collect({ var -> "${var.key} = ${var.value}" }).join("\n"))
+```
+
+
 20190622: No, variable names must start with a lowercase letter. Probably the plugin should enforce this directly.
 
 Class.isInstance(PipelineAction2)

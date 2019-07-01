@@ -1,6 +1,9 @@
 = Git
 
 ```
+# создать ветку
+git checkout -b ci
+
 # Изменить комментарий текущего локального коммита
 git commit --amend -m "новый"
 
@@ -34,9 +37,36 @@ git tag -d tagName
 # Проверка локального репозитория
 git fsck --full
 
+# URL репозитория
+git ls-remote --get-url
+
+# выход из git log по кнопке q
+
 # Отмена последних 2 шт отправленных (push) комиитов
 git reset --hard HEAD~2
 git push --force
+
+# отмена всех локальных незакрмичченных изменений
+git reset
+git checkout .
+
+# сброс (reset) текущего merge/rebase процесса
+git status
+git reset --hard
+#   или
+git merge --abort
+
+# получение изменений и слияние их в ветку
+git pull
+#   или отдельными коммандами
+git fetch
+git merge
+
+# включение режима трассировки
+set GIT_TRACE=1
+
+# изменить автора последнего коммита (например, принес из дома) на текущего (из конфига)
+git commit --amend --reset-author
 
 # Получить изменения со сбросом локальных изменений
 git fetch --all
@@ -53,17 +83,40 @@ git status
 git add --all
 git commit -m "..." --amend
 
+# список коммитов для анонса версии
+git log -n 8 --pretty=oneline --abbrev-commit
+#   в файле C:\Users\sbt-gurinovich-va\.gitconfig дб logOutputEncoding = utf-8
+
+
 # Пустой коммит
 git commit --allow-empty -m "Trigger rebuild"
 
-# удалить remote branch
+# удаление веток
+#   локальной
+git branch -d gh-pages
+#   remote
 git push origin --delete gh-pages
 
-# revert
-git revert HEAD --no-edit
+# unix-права на файл под windows
+git ls-tree HEAD
+git update-index --chmod=+x gradlew
+git status
+
+# создание ключей для SSH-соединений
+# запустить bash
+ssh-keygen -t rsa -b 4096
+# если не вводить имя файла, то он будет создан в ~/.ssh, если вводить, то в ./usr/bin/
+
+# отмена коммита (revert)
+#   получится так: Revert "старый комментарий"
+git revert 0c18356 --no-edit
 
 # GitHub client
 npm install -g ngh
+
+# IDEA: rebase (перемещение)
+# 1) переходим в ветку feat, в контекстном меню выбираем ветку dev и выполняем пункт "Rebase onto", результат - ветка feat перемещена 
+# 2) переходим в ветку dev, в контекстном меню делаем слияние (merge) с веткой feat, результат - указатели веток dev, feat и HEAD находятся на одном коммите
 
 # использовать token
 git clone https://hostname/username/repo.git

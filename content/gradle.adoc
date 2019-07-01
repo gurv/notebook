@@ -30,6 +30,9 @@ gradle -q tasks
 # Зависимости
 gradlew -q dependencies
 
+# другая Java
+gradle build -Dorg.gradle.java.home=...
+
 # Запуск задачи без выполнения
 gradlew --dry-run :helloWorld
 
@@ -42,6 +45,9 @@ gradlew :helloWorld --profile
 # Останов демонов
 gradle --stop
 gradle --status
+
+#
+setx GRADLE_USER_HOME D:\app\.gradle
 
 # Отладка сборки
 # Настроить

@@ -1,0 +1,21 @@
+= Ansible
+
+```
+# работа с хранилищем
+#
+# запустить
+E:\app\msys64-20180503\mingw64.exe 
+# и выполнить (располагается здесь /usr/bin/ansible-vault)
+ansible-vault --version
+# используемые пароли для шифрования хранилища задаются так
+ansible-vault --ask-vault-pass=<password>
+#   или так
+ansible-vault --vault-password-file=<password-file>
+#   или через файл ansible.cfg
+#   или, в ansible >= 2.4, использовать vault-id
+# зашифровать/расшифровать файл
+ansible-vault encrypt /xxx.yml
+ansible-vault decrypt /xxx.yml
+
+# уровень сообщений задается параметром -v , мб и такой для полной -vvvvv
+```
