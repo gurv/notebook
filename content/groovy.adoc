@@ -6,7 +6,4 @@ http://groovy-lang.org/download.html[download]
 
 @Singleton(lazy = false)
 
-Closure
-	this
-	owner
-	delegate
+Closure (this, owner, delegate)
