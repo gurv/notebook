@@ -34,7 +34,7 @@ java -jar -Dhudson.model.DownloadService.noSignatureCheck=true jenkins.war
 # Проверка физ доступа (groovy)
 def socket = new Socket("palanga.cgs.sbrf.ru", 1521)
 socket.close()
-'''
+```
 
 Список переменных окружения: https://sbt-jenkins/legacy/env-vars.html/
 
@@ -105,11 +105,11 @@ println "System environment:"
 echo(System.getenv().collect({ var -> "${var.key} = ${var.value}" }).join("\n"))
 ```
 
-
 20190622: No, variable names must start with a lowercase letter. Probably the plugin should enforce this directly.
 
 Class.isInstance(PipelineAction2)
 
 println("What bindings are there?: ${binding.variables}")
 
-eFor Shared Libraries which only define Global Variables (vars/), or a Jenkinsfile which only needs a Global Variable, the annotation pattern @Library('my-shared-library') _ may be useful for keeping code concise. In essence, instead of annotating an unnecessary import statement, the symbol _ is annotated.
+library('lib@version)_
+For Shared Libraries which only define Global Variables (vars/), or a Jenkinsfile which only needs a Global Variable, the annotation pattern @Library('my-shared-library') _ may be useful for keeping code concise. In essence, instead of annotating an unnecessary import statement, the symbol _ is annotated.
