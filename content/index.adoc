@@ -29,11 +29,15 @@ include::angular.adoc[]
 
 include::gradle.adoc[]
 
+include::maven.adoc[]
+
 include::asciidoc.adoc[]
 
 include::java.adoc[]
 
 include::spring.adoc[]
+
+include::postgresql.adoc[]
 
 include::zookeeper.adoc[]
 

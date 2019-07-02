@@ -5,4 +5,18 @@
 |... |,,,
 |Ctrl+Shift+/|comment block
 |Ctrl+/|uncomment block
+|Alt+Shift+F|Format Document
+|Ctrl+Shift+V|Markdown Preview
 |===
+
+```
+# Установка
+#
+# Выполнить (указать для установки каталог d:\app\vs-code-1.27.2)
+D:\dst\vscode\VSCodeUserSetup-x64-1.27.2.exe 
+# Скопировать содержимое d:\dst\vscode\vscode-extentions-20180906.tar.gz в каталог d:\app\.vscode
+# В d:\app\vs-code-1.27.2\bin\code.cmd дб
+call "%~dp0..\Code.exe" "%~dp0..\resources\app\out\cli.js" --extensions-dir E:\app\.vscode %*
+```
+
+Увеличить размеры самой vscode - в settings изменить window.zoomLevel = 1

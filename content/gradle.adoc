@@ -76,7 +76,7 @@ systemProp.openSslPath="C:/app/openSSL/bin/openssl.exe"
 gradle wrapper
 ```
 
-== Разработка плагинов
+Разработка плагинов
 
 * https://docs.gradle.org/current/userguide/pt06.html["The Software model"]
 (https://docs.gradle.org/current/userguide/software_model.html["Rule based model configuration"],

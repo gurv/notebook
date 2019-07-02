@@ -1,0 +1,14 @@
+= PostgreSQL
+
+```
+# список пользователей
+select * from pq_shadow
+
+# список БД
+select * from pq_database
+или
+psql -l
+
+# выход из psql
+\q
+```

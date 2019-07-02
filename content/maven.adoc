@@ -1,0 +1,74 @@
+= Maven
+
+lifecycle - жизненный цикл, состит из последовательности фаз
+phase - фаза
+goal - задача. Мб привязана к нескольким фазам. Привязка:
+```
+<execution>
+    <id>if.pre-clean</id>
+    <phase>pre-clean</phase>
+    <goals>
+        <goal>resource</goal>
+        <goal>build</goal>
+    </goals>
+</execution>
+```
+
+```
+# установить версию
+mvnversions:set -s settings.xml -DnewVersion=D-01.000.00-03
+
+# debug
+-X
+
+# менее многословный вывод
+mvn ... -q ...
+
+# включить/исключить проекты
+mvn ... --projects "!<module_name1>,<module_name1>"
+
+# публикация
+mvn deploy:deploy-file -DgroupId=com.diffplug.spotless -DartifactId=spotless-eclipse-groovy -Dversion=3.0.0 -Dpackaging=jar -Dfile=D:\dst\spotless\spotless-eclipse-groovy-3.0.0.jar  -DrepositoryId=sbtnexus -Durl=http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/PRCRED_thirdparty -DgeneratePom=false -DpomFile=D:\dst\spotless\4\pom.xml --settings ./settings.xml
+# , где settings.xml:
+<?xml version="1.0"?>
+<settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <localRepository>D:/app/.m2/repository</localRepository>
+  <servers>
+    <server>
+      <username>PRCRED-build</username>
+      <password>PRCREDbuild</password>
+      <id>sbtnexus</id>
+    </server>
+  </servers>
+  <mirrors>
+    <mirror>
+      <mirrorOf>*</mirrorOf>
+      <url>http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/central</url>
+      <id>sbtnexus-public</id>
+    </mirror>
+  </mirrors>
+</settings>
+
+# исключить плагин из проекта
+</plugins>
+	<plugin>
+	    <artifactId>maven-install-plugin</artifactId>
+		<configuration>
+			<skip>true</skip>
+		</configuration>
+	</plugin>
+</plugins>
+```
+
+Плагины:
+
+* properties-maven-plugin
+
+* fabric8-maven-plugin
+
+* groovy-maven-plugin
+
+* com.google.code.maven-replacer-plugin:replacer
+
+* com.soebes.maven.plugins:iterator-maven-plugin

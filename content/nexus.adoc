@@ -1,0 +1,16 @@
+= Nexus
+
+```
+# запуск (Windows)
+nexus.exe /run
+
+# установка Windows-сервиса
+nexus /install
+
+# рабочий каталог по умолчанию (см. настройку karaf.data в bin\nexus.vmoptions)
+../sonatype-work/nexus3
+
+# загрузка файла (под Windows - запустить d:\app\msys64-20180503\mingw32.exe)
+cd /
+curl -v -u user:password --upload-file maven-metadata.xml http://sbrf-nexus.ca.sbrf.ru/nexus/content/repositories/Nexus_PROD/Nexus_PROD/CI01535028_ZIK/maven-metadata.xml
+```

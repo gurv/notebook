@@ -1,47 +1,51 @@
 = Windows
 
-Java-процессы:
 ```
+chcp 65001
+
+# если нет прав админа
+setx GRADLE_HOME D:\app\gradle-5.3.1
+setx GRADLE_USER_HOME D:\app\.gradle
+setx PATH "%PATH%;%GRADLE_HOME\bin%
+
+# Установка Java из exe без прав админа
+# запустить
+D:\app\7-zip-19.00\7-ZipPortable.exe
+# 7-Zip - распаковать D:\tmp\jdk-8u211-windows-x64.exe в D:\tmp\jdk-8u211\
+cd C:\JDK\.rsrc\1033\JAVA_CAB10
+extrac32 111
+# распаковать D:\tmp\jdk-8u211\.rsrc\1033\JAVA_CAB10\tools.zip в D:\app\jdk-8u211
+cd D:\app\jdk-8u211
+for /r %x in (*.pack) do .\bin\unpack200 -r "%x" "%~dx%~px%~nx.jar"
+# использовать
+gradle test -Dorg.gradle.java.home=D:/app/jdk-8u211
+
+# Java-процессы:
 tasklist /fi "imagename eq java.exe"
-```
 
-Имя хоста:
-```
+# Имя хоста:
 hostname
-```
 
-MAC-адреса:
-```
+# MAC-адреса:
 getmac /v
-```
 
-Поиск процесса использующего порт:
-```
+# Поиск процесса использующего порт:
 netstat -ano | find ":49997"
-```
 
-Убить процесс по его PID:
-```
+# Убить процесс по его PID:
 tskill 10424
-```
 
-Изменить глобальную системную переменную:
-```
+# Изменить глобальную системную переменную:
 setx PATH "%PATH%;C:\app\kubernetes-1.10.2" -m
-```
 
-Запуск от другого пользователя:
-```
+# Запуск от другого пользователя:
 runas /user:gurv cmd
-```
 
-Файл "localhost":
-```
+# Файл "localhost":
 c:\Windows\System32\Drivers\etc\hosts
-```
 
-Форматирование USB-носителя:
-```
+# Форматирование USB-носителя:
+# 
 diskpart
 DISKPART> list disk
 
@@ -68,10 +72,8 @@ DISKPART> format fs=fat32
   Завершено (в процентах): 100
 
 Программа DiskPart успешно отформатировала том.
-```
 
-Создание ключей
-----
+# Создание ключей
 C:\app\java\jre1.8.0_92\bin\keytool.exe -genkeypair -alias vg -keyalg RSA -dname "CN=vg" -keystore vg.jks -keypass 1q2w3e4r -storepass 1q2w3e4r
 C:\app\java\jre1.8.0_92\bin\keytool.exe -export -keystore vg.jks -alias vg -rfc -storepass 1q2w3e4r -file vg.cer
 C:\app\openSSL\bin\openssl.exe x509 -inform pem -pubkey -in vg.cer
