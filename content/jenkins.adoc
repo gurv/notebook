@@ -2,6 +2,7 @@
 
 ```
 # установка (ArchLinux)
+#
 pacaur -S jenkins-lts
 archlinux-java status
 sudo archlinux-java set java-8-openjdk/jre
@@ -10,11 +11,9 @@ sudo systemctl start jenkins
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 # UI
 http://localhost:8090/
-```
 
-Установка под Windows
-'''
-# скачать war-файл
+# Установка под Windows
+# # скачать war-файл
 setx JENKINS_HOME D:/app/jenkins-2.176.1
 java -jar -Dhudson.model.DownloadService.noSignatureCheck=true jenkins.war
 # UI: http://localhost:8080
@@ -31,10 +30,8 @@ java -jar -Dhudson.model.DownloadService.noSignatureCheck=true jenkins.war
 #   Blue Ocean
 #   Pipeline Utility Steps
 #   Rebuilder
-'''
 
-Проверка физ доступа (groovy)
-'''
+# Проверка физ доступа (groovy)
 def socket = new Socket("palanga.cgs.sbrf.ru", 1521)
 socket.close()
 '''
