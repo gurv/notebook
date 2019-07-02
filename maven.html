@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>systemd</title>
+<title>Maven</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,135 +432,98 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>systemd</h1>
+<h1>Maven</h1>
 <div class="details">
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
 </div>
 <div id="content">
-<div class="ulist">
-<ul>
-<li>
-<p>каталоги юнитов</p>
-<div class="ulist">
-<ul>
-<li>
-<p>/etc/systemd/system/ - юниты, созданные системным администратором</p>
-</li>
-<li>
-<p>/usr/lib/systemd/system/ – юниты из установленных пакетов</p>
-</li>
-<li>
-<p>/run/systemd/system/ — юниты, созданные в рантайме</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>запустить</p>
-</li>
-</ul>
+<div class="paragraph">
+<p>lifecycle - жизненный цикл, состит из последовательности фаз
+phase - фаза
+goal - задача. Мб привязана к нескольким фазам. Привязка:</p>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>systemctl start unit</code></pre>
+<pre class="highlight"><code>&lt;execution&gt;
+    &lt;id&gt;if.pre-clean&lt;/id&gt;
+    &lt;phase&gt;pre-clean&lt;/phase&gt;
+    &lt;goals&gt;
+        &lt;goal&gt;resource&lt;/goal&gt;
+        &lt;goal&gt;build&lt;/goal&gt;
+    &lt;/goals&gt;
+&lt;/execution&gt;</code></pre>
 </div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># установить версию
+mvnversions:set -s settings.xml -DnewVersion=D-01.000.00-03
+
+# debug
+-X
+
+# менее многословный вывод
+mvn ... -q ...
+
+# включить/исключить проекты
+mvn ... --projects "!&lt;module_name1&gt;,&lt;module_name1&gt;"
+
+# публикация
+mvn deploy:deploy-file -DgroupId=com.diffplug.spotless -DartifactId=spotless-eclipse-groovy -Dversion=3.0.0 -Dpackaging=jar -Dfile=D:\dst\spotless\spotless-eclipse-groovy-3.0.0.jar  -DrepositoryId=sbtnexus -Durl=http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/PRCRED_thirdparty -DgeneratePom=false -DpomFile=D:\dst\spotless\4\pom.xml --settings ./settings.xml
+# , где settings.xml:
+&lt;?xml version="1.0"?&gt;
+&lt;settings xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd" xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;localRepository&gt;D:/app/.m2/repository&lt;/localRepository&gt;
+  &lt;servers&gt;
+    &lt;server&gt;
+      &lt;username&gt;PRCRED-build&lt;/username&gt;
+      &lt;password&gt;PRCREDbuild&lt;/password&gt;
+      &lt;id&gt;sbtnexus&lt;/id&gt;
+    &lt;/server&gt;
+  &lt;/servers&gt;
+  &lt;mirrors&gt;
+    &lt;mirror&gt;
+      &lt;mirrorOf&gt;*&lt;/mirrorOf&gt;
+      &lt;url&gt;http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/central&lt;/url&gt;
+      &lt;id&gt;sbtnexus-public&lt;/id&gt;
+    &lt;/mirror&gt;
+  &lt;/mirrors&gt;
+&lt;/settings&gt;
+
+# исключить плагин из проекта
+&lt;/plugins&gt;
+	&lt;plugin&gt;
+	    &lt;artifactId&gt;maven-install-plugin&lt;/artifactId&gt;
+		&lt;configuration&gt;
+			&lt;skip&gt;true&lt;/skip&gt;
+		&lt;/configuration&gt;
+	&lt;/plugin&gt;
+&lt;/plugins&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Плагины:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>остановить</p>
+<p>properties-maven-plugin</p>
 </li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl stop unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
 <li>
-<p>перезапустить</p>
+<p>fabric8-maven-plugin</p>
 </li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl restart unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
 <li>
-<p>перезагрузка настроек</p>
+<p>groovy-maven-plugin</p>
 </li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl reload unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
 <li>
-<p>статус</p>
+<p>com.google.code.maven-replacer-plugin:replacer</p>
 </li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl status unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
 <li>
-<p>проверка настройки автозапуска</p>
+<p>com.soebes.maven.plugins:iterator-maven-plugin</p>
 </li>
 </ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl is-enabled unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>включить в автозапуск</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl enable unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>убрать из автозапуска</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl disable unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>размер логов</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>journalctl --disk-usage</code></pre>
-</div>
 </div>
 </div>
 <div id="footer">

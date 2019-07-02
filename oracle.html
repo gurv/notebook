@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>systemd</title>
+<title>Oracle</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,134 +432,72 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>systemd</h1>
+<h1>Oracle</h1>
 <div class="details">
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
 </div>
 <div id="content">
-<div class="ulist">
-<ul>
-<li>
-<p>каталоги юнитов</p>
-<div class="ulist">
-<ul>
-<li>
-<p>/etc/systemd/system/ - юниты, созданные системным администратором</p>
-</li>
-<li>
-<p>/usr/lib/systemd/system/ – юниты из установленных пакетов</p>
-</li>
-<li>
-<p>/run/systemd/system/ — юниты, созданные в рантайме</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>запустить</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>systemctl start unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>остановить</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl stop unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>перезапустить</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl restart unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>перезагрузка настроек</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl reload unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>статус</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl status unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>проверка настройки автозапуска</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl is-enabled unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>включить в автозапуск</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl enable unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>убрать из автозапуска</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>systemctl disable unit</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>размер логов</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>journalctl --disk-usage</code></pre>
+<pre class="highlight"><code>select * from dba_temp_free_space;
+
+TABLESPACE_NAME	TEMP
+TABLESPACE_SIZE	20971520
+ALLOCATED_SPACE	20971520
+FREE_SPACE	17825792
+
+# Конвертация БД с Win64 на Linux64 (ENDIAN_FORMAT: Little -&gt; Big)
+
+Описание: 10g+: Transportable Tablespaces Across Different Platforms (Doc ID 243304.1)
+
+&gt; sqlplus sys/sys@EKP as sysdba
+&gt; rman.exe target=sys/sys@EKP
+SQL&gt; col platform_name for a35
+SQL&gt; select * from v$transportable_platform order by platform_id;
+SQL&gt; SELECT tp.platform_id,substr(d.PLATFORM_NAME,1,30), ENDIAN_FORMAT
+	FROM V$TRANSPORTABLE_PLATFORM tp, V$DATABASE d
+    WHERE tp.PLATFORM_NAME = d.PLATFORM_NAME;
+SQL&gt; SELECT * FROM v$tablespace;
+SQL&gt; execute sys.dbms_tts.transport_set_check('TBS1,TBS2', true);
+SQL&gt; execute sys.dbms_tts.transport_set_check('T_DATA,I_DATA,T_DICT,I_DICT,T_AUD,I_AUD,T_LONG', true);
+SQL&gt; select * from sys.transport_set_violations;
+(должно быть пусто)
+SQL&gt; alter tablespace T_DATA read only;
+RMAN&gt; convert tablespace 'T_DATA' to platform="AIX-Based Systems (64-bit)" db_file_name_convert='E:\ekp\oradata\EKP\T_DATA.DBF', 'E:\tmp\T_DATA.DBF';
+SQL&gt; alter tablespace I_DATA read only;
+RMAN&gt; convert tablespace 'I_DATA' to platform="AIX-Based Systems (64-bit)" db_file_name_convert='E:\ekp\oradata\EKP\I_DATA.DBF', 'E:\tmp\I_DATA.DBF';
+SQL&gt; alter tablespace T_DICT read only;
+RMAN&gt; convert tablespace 'T_DICT' to platform="AIX-Based Systems (64-bit)" db_file_name_convert='E:\ekp\oradata\EKP\T_DICT.DBF', 'E:\tmp\T_DICT.DBF';
+SQL&gt; alter tablespace I_DICT read only;
+RMAN&gt; convert tablespace 'I_DICT' to platform="AIX-Based Systems (64-bit)" db_file_name_convert='E:\ekp\oradata\EKP\I_DICT.DBF', 'E:\tmp\I_DICT.DBF';
+SQL&gt; alter tablespace T_AUD read only;
+RMAN&gt; convert tablespace 'T_AUD' to platform="AIX-Based Systems (64-bit)" db_file_name_convert='E:\ekp\oradata\EKP\T_AUD.DBF', 'E:\tmp\T_AUD.DBF';
+SQL&gt; alter tablespace I_AUD read only;
+RMAN&gt; convert tablespace 'I_AUD' to platform="AIX-Based Systems (64-bit)" db_file_name_convert='E:\ekp\oradata\EKP\I_AUD.DBF', 'E:\tmp\I_AUD.DBF';
+SQL&gt; alter tablespace T_LONG read only;
+RMAN&gt; convert tablespace 'T_LONG' to platform="AIX-Based Systems (64-bit)" db_file_name_convert='E:\ekp\oradata\EKP\T_LONG.DBF', 'E:\tmp\T_LONG.DBF';
+(тайминг 2 мин)
+
+# создание дампа на Windows
+#
+&gt; sqlplus sys/sys@EKP as sysdba
+SQL&gt; CREATE OR REPLACE DIRECTORY IBS_DUMP_DIR AS 'E:/tmp';
+&gt; E:\app\oracle-11.2.0\product\dbhome_1\BIN\expdp.exe userid='sys/sys@EKP as sysdba' schemas=IBS directory=IBS_DUMP_DIR dumpfile=schema_ibs.dmp logfile=schema_ibs_export.log compression=all
+или
+&gt; E:\app\oracle-11.2.0\product\dbhome_1\BIN\expdp.exe userid='sys/sys@EKP as sysdba' full=yes directory=IBS_DUMP_DIR dumpfile=full_yes.dmp logfile=full_yes_export.log compression=all
+
+# установка Oracle 18c
+#
+в E:\app\oracle-18c\product\dbhome скопировать содержимое D:\dst\oracle-18c\WINDOWS.X64_180000_db_home.zip
+#
+запустить E:\app\oracle-18c\product\dbhome\setup.exe
+	и указать E:\app\oracle-18c в поле "Oracle Base"
+	снять крыж "Create as Container database"
+	пароль: 1
+	pprb18c
+	E:\prb\oradata\{DB_UNIQUE_NAME}
+	E:\prb\oradata\fast_recovery_area\{DB_UNIQUE_NAME}</code></pre>
 </div>
 </div>
 </div>
