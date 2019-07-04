@@ -20,6 +20,10 @@ ls ~/.vscode/extensions
 
 Project Manager
 
+MetaGo https://marketplace.visualstudio.com/items?itemName=metaseed.metago
+
+Bookmarks https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks
+
 Debugger for Chrome extension
 
 Debugger for Chrome extension
