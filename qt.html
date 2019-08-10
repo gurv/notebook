@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>Monitoring</title>
+<title>Qt</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -430,103 +430,24 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article toc2 toc-left">
+<body class="article">
 <div id="header">
-<h1>Monitoring</h1>
+<h1>Qt</h1>
 <div class="details">
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
-<div id="toc" class="toc2">
-<div id="toctitle">Table of Contents</div>
-<ul class="sectlevel1">
-<li><a href="#_prometheus">Prometheus</a></li>
-<li><a href="#_grafana">Grafana</a></li>
-</ul>
-</div>
 </div>
 <div id="content">
-<div id="preamble">
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Полезное:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://github.com/stefanprodan/swarmprom">swarmprom</a> - хороший прототип,</p>
-</li>
-<li>
-<p><a href="https://www.consul.io/docs/agent/telemetry.html">Consul Metrics</a> (agent/server/cluster)</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_prometheus">Prometheus</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Power your metrics and alerting with a leading
-open-source monitoring solution.</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://prometheus.io/">site</a>,
-<a href="https://prometheus.io/docs/introduction/overview/">docs</a>,
-<a href="https://prometheus.io/docs/instrumenting/pushing/">docs: pushgateway</a>,
-<a href="https://github.com/prometheus">git</a>,
-<a href="https://hub.docker.com/r/prom/prometheus/">docker: prom/prometheus</a>,
-<a href="https://registry.hub.docker.com/u/prom/pushgateway/">docker: prom/pushgateway</a>,
-<a href="https://grafana.com/dashboards">dashboards</a>,
-<a href="https://github.com/prometheus/node_exporter">node_exporter (метрики *NIX-хоста)</a>,
-<a href="https://github.com/martinlindhe/wmi_exporter">WMI exporter (метрики Windows-хоста)</a></p>
-</li>
-<li>
-<p>Полезное:
-<a href="https://github.com/stefanprodan/swarmprom">"git: Docker Swarm instrumentation with Prometheus, Grafana, cAdvisor, Node Exporter and Alert Manager"</a>,
-<a href="https://www.digitalocean.com/community/tutorials/how-to-install-prometheus-using-docker-on-ubuntu-14-04">"How To Install Prometheus using Docker&#8230;&#8203;"</a>,
-<a href="https://docs.docker.com/config/thirdparty/prometheus/">"Collect Docker metrics with Prometheus"</a>,
-<a href="https://finestructure.co/blog/2016/5/16/monitoring-with-prometheus-grafana-docker-part-1">"Monitoring with Prometheus, Grafana &amp; Docker Part 1"</a>,
-<a href="https://prometheus.io/docs/visualization/grafana/#using">"prometheus: GRAFANA SUPPORT FOR PROMETHEUS"</a></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_grafana">Grafana</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>The open platform for beautiful analytics and monitoring</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://grafana.com/">site</a>,
-<a href="http://docs.grafana.org/">docs</a>,
-<a href="https://github.com/grafana/grafana">git</a>,
-<a href="https://hub.docker.com/r/grafana/grafana/">docker</a></p>
-</li>
-<li>
-<p>Dashboards:</p>
-<div class="ulist">
-<ul>
-<li>
-<p><a href="https://grafana.com/dashboards/893">Docker and system monitoring by Thibaut Mottet</a></p>
-</li>
-<li>
-<p><a href="https://grafana.com/dashboards/2129">Windows Node by ecto</a></p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># Установка под ArchLinux
+sudo pacman -S qt5-base
+# загрузить отсюда https://www.qt.io/download
+sudo chmod +x ./qt-unified-linux-x64-3.1.1-online.run
+./qt-unified-linux-x64-3.1.1-online.run
+# (больше 15 ГБт)
+# запуск
+~/Qt/Tools/QtCreator/bin/qtcreator</code></pre>
 </div>
 </div>
 </div>

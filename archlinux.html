@@ -455,6 +455,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_добавление_доверенного_корневого_сертификата">Добавление доверенного корневого сертификата</a></li>
 <li><a href="#_far">FAR</a></li>
+<li><a href="#_telegram">Telegram</a></li>
 </ul>
 </li>
 </ul>
@@ -1118,25 +1119,25 @@ minikube ssh
 <div class="sect1">
 <h2 id="_idea">IDEA</h2>
 <div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>установить</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacman -S intellij-idea-community-edition</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>, указать java-environment jdk8-openjdk,
-старт</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>idea.sh</code></pre>
+<pre class="highlight"><code># community-edition
+# установить
+pacman -S intellij-idea-community-edition
+# указать java-environment jdk8-openjdk
+# запуск
+idea.sh
+
+# ultimate
+# скачать https://www.jetbrains.com/idea/download/#section=linux
+# распаковать в /opt/app/
+tar -xf idea-2019.2.tar.gz
+# в файле /opt/app/idea-IU-192.5728.98/bin/idea.properties раскомментировать строки:
+#   idea.config.path=${user.home}/.IntelliJIdea/config
+#   idea.system.path=${user.home}/.IntelliJIdea/system
+ln -sf /opt/app/idea-IU-192.5728.98/bin/idea.sh /opt/app/idea
+# запуск
+idea</code></pre>
 </div>
 </div>
 </div>
@@ -1381,13 +1382,22 @@ far2l</code></pre>
 </div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_telegram">Telegram</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>pacaur -S telegram-desktop-bin
+telegram-desktop</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-07-18 07:31:13 UTC
+Last updated 2019-08-10 08:09:24 UTC
 </div>
 </div>
 </body>

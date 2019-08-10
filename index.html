@@ -558,6 +558,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_groovy">Groovy</a></li>
 <li><a href="#_rust">Rust</a></li>
+<li><a href="#_qt">Qt</a></li>
 <li><a href="#_typescript">TypeScript</a></li>
 <li><a href="#_rxjs">RxJS</a></li>
 <li><a href="#_graphql">GraphQL</a></li>
@@ -1534,25 +1535,25 @@ minikube ssh
 </div>
 <div class="sect3">
 <h4 id="_idea">IDEA</h4>
-<div class="ulist">
-<ul>
-<li>
-<p>установить</p>
-</li>
-</ul>
-</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacman -S intellij-idea-community-edition</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>, указать java-environment jdk8-openjdk,
-старт</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>idea.sh</code></pre>
+<pre class="highlight"><code># community-edition
+# установить
+pacman -S intellij-idea-community-edition
+# указать java-environment jdk8-openjdk
+# запуск
+idea.sh
+
+# ultimate
+# скачать https://www.jetbrains.com/idea/download/#section=linux
+# распаковать в /opt/app/
+tar -xf idea-2019.2.tar.gz
+# в файле /opt/app/idea-IU-192.5728.98/bin/idea.properties раскомментировать строки:
+#   idea.config.path=${user.home}/.IntelliJIdea/config
+#   idea.system.path=${user.home}/.IntelliJIdea/system
+ln -sf /opt/app/idea-IU-192.5728.98/bin/idea.sh /opt/app/idea
+# запуск
+idea</code></pre>
 </div>
 </div>
 </div>
@@ -1782,6 +1783,15 @@ chrome://settings/certificates</code></pre>
 <div class="content">
 <pre class="highlight"><code>pacaur -S far2l-git
 far2l</code></pre>
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="_telegram">Telegram</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>pacaur -S telegram-desktop-bin
+telegram-desktop</code></pre>
 </div>
 </div>
 </div>
@@ -2570,6 +2580,13 @@ echo(System.getenv().collect({ var -&gt; "${var.key} = ${var.value}" }).join("\n
 </div>
 </div>
 <div class="paragraph">
+<p><a href="https://jenkins.io/doc/book/pipeline/shared-libraries/" class="bare">https://jenkins.io/doc/book/pipeline/shared-libraries/</a></p>
+</div>
+<div class="paragraph">
+<p>Jenkins Pipeline Unit testing framework:
+<a href="https://github.com/jenkinsci/JenkinsPipelineUnit" class="bare">https://github.com/jenkinsci/JenkinsPipelineUnit</a></p>
+</div>
+<div class="paragraph">
 <p>20190622: No, variable names must start with a lowercase letter. Probably the plugin should enforce this directly.</p>
 </div>
 <div class="paragraph">
@@ -2712,6 +2729,14 @@ call "%~dp0..\Code.exe" "%~dp0..\resources\app\out\cli.js" --extensions-dir E:\a
 npm update -g</code></pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Установка для ArchLinux 'Current'</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>sudo pacman -U https://www.archlinux.org/packages/community-testing/x86_64/nodejs/download/</code></pre>
+</div>
+</div>
 </td>
 </tr>
 </table>
@@ -2724,7 +2749,7 @@ npm update -g</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code># Версия
-nmp -v
+npm -v
 
 # Установка последней версии
 npm install -g npm@latest
@@ -4616,6 +4641,23 @@ cargo build
 </div>
 </div>
 <div class="sect1">
+<h2 id="_qt">Qt</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># Установка под ArchLinux
+sudo pacman -S qt5-base
+# загрузить отсюда https://www.qt.io/download
+sudo chmod +x ./qt-unified-linux-x64-3.1.1-online.run
+./qt-unified-linux-x64-3.1.1-online.run
+# (больше 15 ГБт)
+# запуск
+~/Qt/Tools/QtCreator/bin/qtcreator</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_typescript">TypeScript</h2>
 <div class="sectionbody">
 <div class="ulist">
@@ -4980,7 +5022,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-07-18 07:31:13 UTC
+Last updated 2019-08-10 08:09:24 UTC
 </div>
 </div>
 </body>
