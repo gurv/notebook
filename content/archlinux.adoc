@@ -576,3 +576,9 @@ chrome://settings/certificates
 pacaur -S far2l-git
 far2l
 ```
+
+=== Telegram
+```
+pacaur -S telegram-desktop-bin
+telegram-desktop
+```

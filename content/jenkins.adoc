@@ -105,6 +105,11 @@ println "System environment:"
 echo(System.getenv().collect({ var -> "${var.key} = ${var.value}" }).join("\n"))
 ```
 
+https://jenkins.io/doc/book/pipeline/shared-libraries/
+
+Jenkins Pipeline Unit testing framework:
+https://github.com/jenkinsci/JenkinsPipelineUnit
+
 20190622: No, variable names must start with a lowercase letter. Probably the plugin should enforce this directly.
 
 Class.isInstance(PipelineAction2)

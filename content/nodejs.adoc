@@ -20,6 +20,11 @@ node -v
 npm cache clean
 npm update -g
 ```
+
+Установка для ArchLinux 'Current'
+```
+sudo pacman -U https://www.archlinux.org/packages/community-testing/x86_64/nodejs/download/
+```
 ====
 
 == npm
@@ -28,7 +33,7 @@ https://www.npmjs.com[site]
 
 ```
 # Версия
-nmp -v
+npm -v
 
 # Установка последней версии
 npm install -g npm@latest

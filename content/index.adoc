@@ -55,6 +55,8 @@ include::groovy.adoc[]
 
 include::rust.adoc[]
 
+include::qt.adoc[]
+
 include::typescript.adoc[]
 
 include::rxjs.adoc[]
