@@ -358,14 +358,24 @@ minikube ssh
 
 == IDEA
 
-* установить
 ```
+# community-edition
+# установить
 pacman -S intellij-idea-community-edition
-```
-, указать java-environment jdk8-openjdk,
-старт
-```
+# указать java-environment jdk8-openjdk
+# запуск
 idea.sh
+
+# ultimate
+# скачать https://www.jetbrains.com/idea/download/#section=linux
+# распаковать в /opt/app/
+tar -xf idea-2019.2.tar.gz
+# в файле /opt/app/idea-IU-192.5728.98/bin/idea.properties раскомментировать строки:
+#   idea.config.path=${user.home}/.IntelliJIdea/config
+#   idea.system.path=${user.home}/.IntelliJIdea/system
+ln -sf /opt/app/idea-IU-192.5728.98/bin/idea.sh /opt/app/idea
+# запуск
+idea
 ```
 
 == KVM
