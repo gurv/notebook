@@ -438,16 +438,81 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div id="content">
+<div class="paragraph">
+<p>Полезное:</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf">"shortcuts"</a></p>
+<p><a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf">shortcuts (pdf)</a></p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+Shift+/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">comment block</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uncomment block</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alt+Shift+F</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Format Document</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+Shift+V</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Markdown Preview</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>плагины:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Manager</p>
+</li>
+<li>
+<p>MetaGo <a href="https://marketplace.visualstudio.com/items?itemName=metaseed.metago" class="bare">https://marketplace.visualstudio.com/items?itemName=metaseed.metago</a></p>
+</li>
+<li>
+<p>Bookmarks <a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks" class="bare">https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks</a></p>
+</li>
+<li>
+<p>Debugger for Chrome extension</p>
+</li>
+<li>
+<p>Debugger for Chrome extension</p>
+</li>
+<li>
+<p>Git Stash</p>
+</li>
+<li>
+<p>Prettier - Code formatter</p>
+</li>
+<li>
+<p>Sort Typescript Imports</p>
+</li>
+<li>
+<p>AsciiDoc (stayfool.vscode-asciidoc)</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># установка (ArchLinux)
+<pre class="highlight"><code># установка (ArchLinux)c
 # загрузить отсюда https://code.visualstudio.com/download , например, версию ".tar.gz	64 bit"
 mkdir /opt/app/vscode-1.31.1
 cd /opt/app/vscode-1.31.1
@@ -459,58 +524,24 @@ code
 # если возникнет ошибка об отсутствии библиотеки, то выполнить
 sudo pacman -S gconf
 # расширения находятся здесь
-ls ~/.vscode/extensions</code></pre>
+ls ~/.vscode/extensions
+
+# Установка (Windows)
+# Выполнить (указать для установки каталог d:\app\vs-code-1.27.2)
+D:\dst\vscode\VSCodeUserSetup-x64-1.27.2.exe
+# Скопировать содержимое d:\dst\vscode\vscode-extentions-20180906.tar.gz в каталог d:\app\.vscode
+# В d:\app\vs-code-1.27.2\bin\code.cmd дб
+call "%~dp0..\Code.exe" "%~dp0..\resources\app\out\cli.js" --extensions-dir E:\app\.vscode %*</code></pre>
 </div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>плагины</p>
-</li>
-</ul>
 </div>
 <div class="paragraph">
-<p>Project Manager</p>
-</div>
-<div class="paragraph">
-<p>MetaGo <a href="https://marketplace.visualstudio.com/items?itemName=metaseed.metago" class="bare">https://marketplace.visualstudio.com/items?itemName=metaseed.metago</a></p>
-</div>
-<div class="paragraph">
-<p>Bookmarks <a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks" class="bare">https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks</a></p>
-</div>
-<div class="paragraph">
-<p>Debugger for Chrome extension</p>
-</div>
-<div class="paragraph">
-<p>Debugger for Chrome extension</p>
-</div>
-<div class="paragraph">
-<p>Git Stash</p>
-</div>
-<div class="paragraph">
-<p>Prettier - Code formatter</p>
-</div>
-<div class="paragraph">
-<p>Sort Typescript Imports</p>
-</div>
-<div class="paragraph">
-<p>AsciiDoc (stayfool.vscode-asciidoc)</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>горячие клавишы</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf" class="bare">https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf</a></p>
+<p>Увеличить размеры самой vscode - в settings изменить window.zoomLevel = 1</p>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-09-21 20:27:24 UTC
+Last updated 2019-09-21 20:48:26 UTC
 </div>
 </div>
 </body>

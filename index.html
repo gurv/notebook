@@ -2650,17 +2650,21 @@ ansible-vault decrypt /xxx.yml
 <div class="sect1">
 <h2 id="_vs_code">VS Code</h2>
 <div class="sectionbody">
+<div class="paragraph">
+<p>Полезное:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf">shortcuts (pdf)</a></p>
+</li>
+</ul>
+</div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 50%;">
 <col style="width: 50%;">
 </colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">&#8230;&#8203;</th>
-<th class="tableblock halign-left valign-top">,,,</th>
-</tr>
-</thead>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Ctrl+Shift+/</p></td>
@@ -2680,10 +2684,61 @@ ansible-vault decrypt /xxx.yml
 </tr>
 </tbody>
 </table>
+<div class="ulist">
+<ul>
+<li>
+<p>плагины:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Project Manager</p>
+</li>
+<li>
+<p>MetaGo <a href="https://marketplace.visualstudio.com/items?itemName=metaseed.metago" class="bare">https://marketplace.visualstudio.com/items?itemName=metaseed.metago</a></p>
+</li>
+<li>
+<p>Bookmarks <a href="https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks" class="bare">https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks</a></p>
+</li>
+<li>
+<p>Debugger for Chrome extension</p>
+</li>
+<li>
+<p>Debugger for Chrome extension</p>
+</li>
+<li>
+<p>Git Stash</p>
+</li>
+<li>
+<p>Prettier - Code formatter</p>
+</li>
+<li>
+<p>Sort Typescript Imports</p>
+</li>
+<li>
+<p>AsciiDoc (stayfool.vscode-asciidoc)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># Установка
-#
+<pre class="highlight"><code># установка (ArchLinux)c
+# загрузить отсюда https://code.visualstudio.com/download , например, версию ".tar.gz	64 bit"
+mkdir /opt/app/vscode-1.31.1
+cd /opt/app/vscode-1.31.1
+ls ~/Downloads/
+tar xfz ~/Downloads/code-stable-1549938209.tar.gz
+sudo ln -sf /opt/app/vscode-1.31.1/VSCode-linux-x64/bin/code /usr/local/bin/code
+# запуск
+code
+# если возникнет ошибка об отсутствии библиотеки, то выполнить
+sudo pacman -S gconf
+# расширения находятся здесь
+ls ~/.vscode/extensions
+
+# Установка (Windows)
 # Выполнить (указать для установки каталог d:\app\vs-code-1.27.2)
 D:\dst\vscode\VSCodeUserSetup-x64-1.27.2.exe
 # Скопировать содержимое d:\dst\vscode\vscode-extentions-20180906.tar.gz в каталог d:\app\.vscode
@@ -5042,7 +5097,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-09-21 20:27:24 UTC
+Last updated 2019-09-21 20:48:26 UTC
 </div>
 </div>
 </body>
