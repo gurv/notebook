@@ -21,7 +21,7 @@ include::jenkins.adoc[]
 
 include::ansible.adoc[]
 
-include::code.adoc[]
+include::vscode.adoc[]
 
 include::nodejs.adoc[]
 

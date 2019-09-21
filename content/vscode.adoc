@@ -1,10 +1,30 @@
 = VS Code
 
-* https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf["shortcuts"]
+Полезное:
 
+* https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf[shortcuts (pdf)]
+
+|===
+|Ctrl+Shift+/|comment block
+|Ctrl+/|uncomment block
+|Alt+Shift+F|Format Document
+|Ctrl+Shift+V|Markdown Preview
+|===
+
+* плагины:
+
+** Project Manager
+** MetaGo https://marketplace.visualstudio.com/items?itemName=metaseed.metago
+** Bookmarks https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks
+** Debugger for Chrome extension
+** Debugger for Chrome extension
+** Git Stash
+** Prettier - Code formatter
+** Sort Typescript Imports
+** AsciiDoc (stayfool.vscode-asciidoc)
 
 ```
-# установка (ArchLinux)
+# установка (ArchLinux)c
 # загрузить отсюда https://code.visualstudio.com/download , например, версию ".tar.gz	64 bit"
 mkdir /opt/app/vscode-1.31.1
 cd /opt/app/vscode-1.31.1
@@ -17,28 +37,13 @@ code
 sudo pacman -S gconf
 # расширения находятся здесь
 ls ~/.vscode/extensions
+
+# Установка (Windows)
+# Выполнить (указать для установки каталог d:\app\vs-code-1.27.2)
+D:\dst\vscode\VSCodeUserSetup-x64-1.27.2.exe 
+# Скопировать содержимое d:\dst\vscode\vscode-extentions-20180906.tar.gz в каталог d:\app\.vscode
+# В d:\app\vs-code-1.27.2\bin\code.cmd дб
+call "%~dp0..\Code.exe" "%~dp0..\resources\app\out\cli.js" --extensions-dir E:\app\.vscode %*
 ```
 
-* плагины
-
-Project Manager
-
-MetaGo https://marketplace.visualstudio.com/items?itemName=metaseed.metago
-
-Bookmarks https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks
-
-Debugger for Chrome extension
-
-Debugger for Chrome extension
-
-Git Stash
-
-Prettier - Code formatter
-
-Sort Typescript Imports
-
-AsciiDoc (stayfool.vscode-asciidoc)
-
-* горячие клавишы
-
-https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf
+Увеличить размеры самой vscode - в settings изменить window.zoomLevel = 1
