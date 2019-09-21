@@ -1,5 +1,8 @@
 = VS Code
 
+* https://code.visualstudio.com/shortcuts/keyboard-shortcuts-windows.pdf["shortcuts"]
+
+
 ```
 # установка (ArchLinux)
 # загрузить отсюда https://code.visualstudio.com/download , например, версию ".tar.gz	64 bit"
