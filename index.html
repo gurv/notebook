@@ -452,6 +452,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_установка">Установка</a></li>
 <li><a href="#_xorg">Xorg</a></li>
 <li><a href="#_awesome">awesome</a></li>
+<li><a href="#_java">java</a></li>
 <li><a href="#_docker">Docker</a></li>
 <li><a href="#_pacaur">pacaur</a></li>
 <li><a href="#_minikube">minikube</a></li>
@@ -497,7 +498,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_gradle">Gradle</a></li>
 <li><a href="#_maven">Maven</a></li>
 <li><a href="#_asciidoc">AsciiDoc</a></li>
-<li><a href="#_java">Java</a>
+<li><a href="#_java_2">Java</a>
 <ul class="sectlevel2">
 <li><a href="#_mission_control_flight_recorder">Mission Control &amp; Flight Recorder</a></li>
 <li><a href="#_java_se_8_date_and_time">Java SE 8 Date and Time</a></li>
@@ -1422,6 +1423,25 @@ nano ~/.awesome/rc.lua
 nano ~/.Xresources
 # должно быть
 #Xft.dpi: 192.0</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_java">java</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># установить
+sudo pacman -S jdk11-openjdk
+
+# установить
+sudo pacman -S jdk11-openjdk
+
+# список
+archlinux-java status
+# изменить "по умолчанию"
+sudo archlinux-java set java-11-openjdk
+# посмотреть "по умолчанию"
+archlinux-java get</code></pre>
 </div>
 </div>
 </div>
@@ -3408,7 +3428,7 @@ mvn deploy:deploy-file -DgroupId=com.diffplug.spotless -DartifactId=spotless-ecl
 </div>
 </div>
 <div class="sect1">
-<h2 id="_java">Java</h2>
+<h2 id="_java_2">Java</h2>
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
@@ -5022,7 +5042,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-08-14 13:49:22 UTC
+Last updated 2019-09-21 07:37:55 UTC
 </div>
 </div>
 </body>
