@@ -286,6 +286,23 @@ nano ~/.Xresources
 #Xft.dpi: 192.0
 ```
 
+== java
+
+```
+# установить
+sudo pacman -S jdk11-openjdk
+
+# установить
+sudo pacman -S jdk11-openjdk
+
+# список
+archlinux-java status
+# изменить "по умолчанию"
+sudo archlinux-java set java-11-openjdk
+# посмотреть "по умолчанию"
+archlinux-java get
+```
+
 == Docker
 
 * установить
