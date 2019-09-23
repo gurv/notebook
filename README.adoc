@@ -6,5 +6,6 @@ image:https://img.shields.io/github/contributors/gurv/notebook.svg[Contributors,
 image:https://img.shields.io/github/commit-activity/m/gurv/notebook.svg[Activity,link=https://github.com/gurv/notebook/pulse]
 image:https://img.shields.io/github/repo-size/gurv/notebook.svg[repo size]
 image:https://dev.azure.com/gurv/vg/_apis/build/status/vg-notebook?branchName=master[Build Status]
+image:https://github.com/gurv/notebook/workflows/ci/badge.svg[GitHub CI]
 
 * https://gurv.github.io/notebook/index.html[Documentation]
