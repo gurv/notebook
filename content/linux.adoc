@@ -121,8 +121,12 @@ cat /etc/*-release
 # порты
 netstat -lntu
 
-# Environmental Variables
+# Environment Variables
+export PATH=${PATH}:${HOME}/bin
 printenv
+set
+echo "$HOME"
+printf "%s\n" $HOME
 
 # в загруженных Chrome файлах есть ссылки на источник
 getfattr -d ./notebook-master.zip 

@@ -75,6 +75,9 @@ systemProp.openSslPath="C:/app/openSSL/bin/openssl.exe"
 # добавить wrapper
 gradle wrapper
 ```
+Полезное
+
+* https://docs.gradle.org/current/userguide/build_lifecycle.html["Build Lifecycle"]
 
 Разработка плагинов
 

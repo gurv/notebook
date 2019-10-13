@@ -13,6 +13,8 @@ include::dash.adoc[]
 
 include::git.adoc[]
 
+include::github.adoc[]
+
 include::linux.adoc[]
 
 include::windows.adoc[]
