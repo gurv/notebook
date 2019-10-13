@@ -445,6 +445,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel1">
 <li><a href="#_обзор">Обзор</a></li>
 <li><a href="#_git">Git</a></li>
+<li><a href="#_github">GitHub</a></li>
 <li><a href="#_linux">Linux</a>
 <ul class="sectlevel2">
 <li><a href="#_archlinux">ArchLinux</a>
@@ -760,6 +761,30 @@ gradle publish</code></pre>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_github">GitHub</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># GitHub Package Registry
+docker login docker.pkg.github.com -u USERNAME -p TOKEN
+docker tag IMAGE_ID docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME:VERSION
+docker push docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME:VERSION
+# https://github.com/OWNER/REPOSITORY/packages</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Полезное:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://help.github.com/en/articles/configuring-docker-for-use-with-github-package-registry" class="bare">https://help.github.com/en/articles/configuring-docker-for-use-with-github-package-registry</a> ["Configuring Docker for use with GitHub Package Registry"]</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_linux">Linux</h2>
 <div class="sectionbody">
 <div class="listingblock">
@@ -884,8 +909,12 @@ cat /etc/*-release
 # порты
 netstat -lntu
 
-# Environmental Variables
+# Environment Variables
+export PATH=${PATH}:${HOME}/bin
 printenv
+set
+echo "$HOME"
+printf "%s\n" $HOME
 
 # в загруженных Chrome файлах есть ссылки на источник
 getfattr -d ./notebook-master.zip
@@ -3346,6 +3375,16 @@ gradle wrapper</code></pre>
 </div>
 </div>
 <div class="paragraph">
+<p>Полезное</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://docs.gradle.org/current/userguide/build_lifecycle.html">"Build Lifecycle"</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
 <p>Разработка плагинов</p>
 </div>
 <div class="ulist">
@@ -5097,7 +5136,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-09-23 18:33:21 UTC
+Last updated 2019-10-13 21:23:02 UTC
 </div>
 </div>
 </body>

@@ -5,7 +5,7 @@
 <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="generator" content="Asciidoctor 1.5.8">
-<title>nano</title>
+<title>GitHub</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
 <style>
 /* Asciidoctor default stylesheet | MIT License | http://asciidoctor.org */
@@ -432,51 +432,31 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </head>
 <body class="article">
 <div id="header">
-<h1>nano</h1>
+<h1>GitHub</h1>
 <div class="details">
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
 </div>
 <div id="content">
-<div class="paragraph">
-<p>Linux Command-Line Text Editor</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># GitHub Package Registry
+docker login docker.pkg.github.com -u USERNAME -p TOKEN
+docker tag IMAGE_ID docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME:VERSION
+docker push docker.pkg.github.com/OWNER/REPOSITORY/IMAGE_NAME:VERSION
+# https://github.com/OWNER/REPOSITORY/packages</code></pre>
 </div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 50%;">
-<col style="width: 50%;">
-</colgroup>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Клавиши</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Действие</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ctrl-o</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Запись в файл</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ctrl-x</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">выход</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ctrl+w</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">поиск</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">alt+6</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">скопировать</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ctrl+k</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">вырезать</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ctrl+u</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">вставить</p></td>
-</tr>
-</tbody>
-</table>
+</div>
+<div class="paragraph">
+<p>Полезное:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://help.github.com/en/articles/configuring-docker-for-use-with-github-package-registry" class="bare">https://help.github.com/en/articles/configuring-docker-for-use-with-github-package-registry</a> ["Configuring Docker for use with GitHub Package Registry"]</p>
+</li>
+</ul>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">

@@ -593,8 +593,12 @@ cat /etc/*-release
 # порты
 netstat -lntu
 
-# Environmental Variables
+# Environment Variables
+export PATH=${PATH}:${HOME}/bin
 printenv
+set
+echo "$HOME"
+printf "%s\n" $HOME
 
 # в загруженных Chrome файлах есть ссылки на источник
 getfattr -d ./notebook-master.zip
@@ -2086,7 +2090,7 @@ nano ~/.config/mc/ini
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-09-23 18:33:21 UTC
+Last updated 2019-10-13 21:23:02 UTC
 </div>
 </div>
 </body>
