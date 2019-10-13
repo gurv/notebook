@@ -78,6 +78,7 @@ gradle wrapper
 Полезное
 
 * https://docs.gradle.org/current/userguide/build_lifecycle.html["Build Lifecycle"]
+* https://github.com/GoogleContainerTools/jib/tree/master/jib-gradle-plugin ["Jib - Containerize your Gradle Java project"]
 
 Разработка плагинов
 
