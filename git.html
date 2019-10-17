@@ -465,6 +465,21 @@ git config --global core.editor 'D:\app\sublime\3.0\sublime_text.exe' -w
 # Просмотр настройки diff-утилиты
 git config --global merge.tool
 
+# Список тегов
+git tag
+# или
+git tag -l &lt;pattern&gt;
+
+# Просмотр тега (annotated)
+git show v1.0.0
+
+# Добавление тега
+# lightweight
+git tag v1.0.0
+# annotated
+git tag -a v1.0.0 -m "Releasing version v1.0.0"
+git push origin v1.0.0
+
 # Удаление тегов
 git tag -d tagName
 git push origin :refs/tags/tagName
@@ -607,7 +622,7 @@ gradle publish</code></pre>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-10-16 22:34:02 UTC
+Last updated 2019-10-17 13:22:55 UTC
 </div>
 </div>
 </body>
