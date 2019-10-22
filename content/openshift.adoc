@@ -98,6 +98,9 @@ chmod 777 -R /mnt/sda1/var/lib/minishift/openshift.local.volumes/pv
 exit
 exit
 
+# create a new project
+oc new-project <project_name> --description="<description>" --display-name="<display_name>"
+
 #
 oc rsh -h
 oc exec -h
