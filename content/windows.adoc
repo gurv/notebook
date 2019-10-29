@@ -100,3 +100,24 @@ minikube start --vm-driver hyperv --hyperv-virtual-switch minikube
 # выполнить в powershell, и тогда docker будет работать с docker machine в minikube
 minikube docker-env | Invoke-Expression
 ```
+
+== WSL
+
+```
+# в Power Shell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+
+# открыть Microsoft Store
+#    и выбрать Ubuntu
+#    затем в Пуск появится Ubuntu - запустить
+# если в консоле будет сообщение "Unsupported console settings. In order to use this feature the legacy console must be disabled."
+# , то
+#    Open cmd.exe
+#    Right click title bar -> Properties -> Uncheck Use legacy console
+#    Click OK
+
+# установка rustup
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+rustc --version
+```
