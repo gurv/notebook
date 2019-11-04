@@ -430,14 +430,22 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>Windows</h1>
 <div class="details">
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_wsl">WSL</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>chcp 65001
@@ -547,10 +555,37 @@ minikube docker-env | Invoke-Expression</code></pre>
 </div>
 </div>
 </div>
+</div>
+<div class="sect1">
+<h2 id="_wsl">WSL</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># в Power Shell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-Linux
+
+# открыть Microsoft Store
+#    и выбрать Ubuntu
+#    затем в Пуск появится Ubuntu - запустить
+# если в консоле будет сообщение "Unsupported console settings. In order to use this feature the legacy console must be disabled."
+# , то
+#    Open cmd.exe
+#    Right click title bar -&gt; Properties -&gt; Uncheck Use legacy console
+#    Click OK
+
+# установка rustup
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+source $HOME/.cargo/env
+rustc --version</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-10-22 21:10:08 UTC
+Last updated 2019-11-04 09:04:50 UTC
 </div>
 </div>
 </body>
