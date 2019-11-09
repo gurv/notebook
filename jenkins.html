@@ -430,14 +430,23 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>Jenkins</h1>
 <div class="details">
 <span id="revnumber">version 1.0-SNAPSHOT</span>
 </div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_shared_libraries">Shared Libraries</a></li>
+<li><a href="#_jenkinsfile_runner">Jenkinsfile Runner</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
+<div id="preamble">
+<div class="sectionbody">
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code># установка (ArchLinux)
@@ -574,15 +583,38 @@ echo(System.getenv().collect({ var -&gt; "${var.key} = ${var.value}" }).join("\n
 <div class="paragraph">
 <p>println("What bindings are there?: ${binding.variables}")</p>
 </div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_shared_libraries">Shared Libraries</h2>
+<div class="sectionbody">
 <div class="paragraph">
-<p>library('lib@version)_
-For Shared Libraries which only define Global Variables (vars/), or a Jenkinsfile which only needs a Global Variable, the annotation pattern @Library('my-shared-library') _ may be useful for keeping code concise. In essence, instead of annotating an unnecessary import statement, the symbol _ is annotated.</p>
+<p>library('lib@version)_</p>
+</div>
+<div class="paragraph">
+<p>For Shared Libraries which only define Global Variables (vars/), or a Jenkinsfile which only needs a Global Variable, the annotation pattern @Library('my-shared-library') _ may be useful for keeping code concise. In essence, instead of annotating an unnecessary import statement, the symbol _ is annotated.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_jenkinsfile_runner">Jenkinsfile Runner</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>GitHub: <a href="https://github.com/jenkinsci/jenkinsfile-runner" class="bare">https://github.com/jenkinsci/jenkinsfile-runner</a></p>
+</div>
+<div class="paragraph">
+<p>DockerHub: <a href="https://hub.docker.com/r/jenkins4eval/jenkinsfile-runner" class="bare">https://hub.docker.com/r/jenkins4eval/jenkinsfile-runner</a></p>
+</div>
+<div class="paragraph">
+<p>Олег Ненашев — Under the hood of serverless Jenkins: Jenkinsfile Runner: <a href="https://www.youtube.com/watch?v=s1GvxZIO27Y&amp;list=PL-ety8gh7rTpTfIaormD2gRFxO0Ocnb22&amp;index=24&amp;t=1542s" class="bare">https://www.youtube.com/watch?v=s1GvxZIO27Y&amp;list=PL-ety8gh7rTpTfIaormD2gRFxO0Ocnb22&amp;index=24&amp;t=1542s</a></p>
+</div>
+</div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-11-04 09:04:50 UTC
+Last updated 2019-11-09 07:02:34 UTC
 </div>
 </div>
 </body>
