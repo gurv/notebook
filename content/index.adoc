@@ -3,7 +3,7 @@
 :email: vladimir.gurinovich@gmail.com
 :noheader
 :toc-title: Содержимое
-:toclevels: 3
+:toclevels: 2
 :images: ./images
 :icons: font
 
