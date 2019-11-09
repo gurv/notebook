@@ -116,5 +116,18 @@ Class.isInstance(PipelineAction2)
 
 println("What bindings are there?: ${binding.variables}")
 
+
+== Shared Libraries
+
 library('lib@version)_
+
 For Shared Libraries which only define Global Variables (vars/), or a Jenkinsfile which only needs a Global Variable, the annotation pattern @Library('my-shared-library') _ may be useful for keeping code concise. In essence, instead of annotating an unnecessary import statement, the symbol _ is annotated.
+
+
+== Jenkinsfile Runner
+
+GitHub: https://github.com/jenkinsci/jenkinsfile-runner
+
+DockerHub: https://hub.docker.com/r/jenkins4eval/jenkinsfile-runner
+
+Олег Ненашев — Under the hood of serverless Jenkins: Jenkinsfile Runner: https://www.youtube.com/watch?v=s1GvxZIO27Y&list=PL-ety8gh7rTpTfIaormD2gRFxO0Ocnb22&index=24&t=1542s
