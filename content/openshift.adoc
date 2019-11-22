@@ -116,7 +116,16 @@ kill 11738
 # Reuse the Minishift Docker daemon
 eval $(minishift docker-env)
 docker ps
+# undo
+eval "$(docker-machine env -u)"
 
 # Log into the OpenShift Docker registry
+minishift addons apply registry-route
 docker login -u developer -p $(oc whoami -t) $(minishift openshift registry)
 ```
+
+== CodeReady Containers
+
+https://code-ready.github.io/crc/
+
+20191122 скачал это https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz?extIdCarryOver=true&sc_cid=701f2000001OH7JAAW
