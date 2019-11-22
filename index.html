@@ -518,7 +518,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_kafka">Kafka</a></li>
 <li><a href="#_docker_2">Docker</a></li>
 <li><a href="#_kubernetes">Kubernetes</a></li>
-<li><a href="#_openshift">OpenShift</a></li>
+<li><a href="#_openshift">OpenShift</a>
+<ul class="sectlevel2">
+<li><a href="#_codeready_containers">CodeReady Containers</a></li>
+</ul>
+</li>
 <li><a href="#_monitoring">Monitoring</a>
 <ul class="sectlevel2">
 <li><a href="#_prometheus">Prometheus</a></li>
@@ -4590,9 +4594,21 @@ kill 11738
 # Reuse the Minishift Docker daemon
 eval $(minishift docker-env)
 docker ps
+# undo
+eval "$(docker-machine env -u)"
 
 # Log into the OpenShift Docker registry
+minishift addons apply registry-route
 docker login -u developer -p $(oc whoami -t) $(minishift openshift registry)</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_codeready_containers">CodeReady Containers</h3>
+<div class="paragraph">
+<p><a href="https://code-ready.github.io/crc/" class="bare">https://code-ready.github.io/crc/</a></p>
+</div>
+<div class="paragraph">
+<p>20191122 скачал это <a href="https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz?extIdCarryOver=true&amp;sc_cid=701f2000001OH7JAAW" class="bare">https://mirror.openshift.com/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz?extIdCarryOver=true&amp;sc_cid=701f2000001OH7JAAW</a></p>
 </div>
 </div>
 </div>
@@ -5170,7 +5186,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-11-10 19:06:47 UTC
+Last updated 2019-11-22 21:02:10 UTC
 </div>
 </div>
 </body>
