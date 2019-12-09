@@ -1,17 +1,13 @@
-buildscript {
-    repositories {
-        jcenter()
-    }
-    
-    dependencies {
-        classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.6.0'
-        classpath 'org.asciidoctor:asciidoctorj-diagram:1.5.12'
-    }
+plugins {
+    id 'org.asciidoctor.jvm.convert' version '2.4.0'
+    id 'org.asciidoctor.jvm.pdf' version '2.4.0'
+    id 'org.asciidoctor.jvm.epub' version '2.4.0'
+    id 'org.ajoberstar.git-publish' version '2.0.0'
+    id "org.sonarqube" version "2.7.1"
 }
 
-plugins {
-    id 'org.ajoberstar.git-publish' version '2.0.0'
-    id "org.sonarqube" version "2.7.1" apply false
+repositories {
+    jcenter()
 }
 
 group 'ru.gurv.notebook'
@@ -21,21 +17,13 @@ ext {
     repoPath = 'gurv/notebook'
 }
 
-apply plugin: 'org.asciidoctor.convert'
-apply plugin: 'org.sonarqube'
-
 asciidoctor {
-    attributes \
-        'toc': 'left',
-        'imagesdir': 'images'
-    sources { include '*.adoc' }
-    sourceDir 'content'
-    outputDir 'build'
-    requires 'asciidoctor-diagram'
-}
-
-build {
-    dependsOn asciidoctor
+    sources { include 'index.adoc' }
+    baseDirFollowsSourceDir()
+    outputOptions {
+        backends 'html', 'pdf', 'epub3'
+    }
+    attributes 'toc': 'left'
 }
 
 sonarqube {
@@ -43,7 +31,7 @@ sonarqube {
         property "sonar.host.url", "https://sonarcloud.io"
         property "sonar.organization", "gurv-github"
         property "sonar.projectVersion", "${project.version}"
-        property "sonar.sources", "."
+        property "sonar.sources", "src"
         property "sonar.links.ci", "https://travis-ci.org/gurv/notebook"
         property "sonar.links.scm", "https://github.com/gurv/notebook"
         property "sonar.links.issue", "https://github.com/gurv/notebook/issues"
@@ -53,7 +41,7 @@ sonarqube {
 gitPublish {
     branch = 'gh-pages'
     contents {
-        from 'build/html5'
+        from 'build/docs/asciidoc/html'
     }
     if (System.env.GRGIT_PASS) {
         repoUri = "https://github.com/${repoPath}.git"
@@ -62,6 +50,6 @@ gitPublish {
     }
 }
 
+build.dependsOn asciidoctor
 gitPublishPush.dependsOn build
-
 defaultTasks 'build'
