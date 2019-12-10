@@ -1,7 +1,5 @@
 plugins {
     id 'org.asciidoctor.jvm.convert' version '2.4.0'
-    id 'org.asciidoctor.jvm.pdf' version '2.4.0'
-    id 'org.asciidoctor.jvm.epub' version '2.4.0'
     id 'org.ajoberstar.git-publish' version '2.0.0'
     id "org.sonarqube" version "2.7.1"
 }
@@ -20,10 +18,12 @@ ext {
 asciidoctor {
     sources { include 'index.adoc' }
     baseDirFollowsSourceDir()
-    outputOptions {
-        backends 'html', 'pdf', 'epub3'
+    attributes 'toc': 'left', 'imagesdir': 'images'
+    asciidoctorj {
+        modules {
+            diagram.version '1.5.12'
+        }
     }
-    attributes 'toc': 'left'
 }
 
 sonarqube {
@@ -41,7 +41,10 @@ sonarqube {
 gitPublish {
     branch = 'gh-pages'
     contents {
-        from 'build/docs/asciidoc/html'
+        from ("${buildDir}/docs/asciidoc") {
+            include '**/*'
+            exclude '**/.asciidoctor'
+        }
     }
     if (System.env.GRGIT_PASS) {
         repoUri = "https://github.com/${repoPath}.git"
