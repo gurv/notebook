@@ -516,6 +516,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_postgresql">PostgreSQL</a></li>
 <li><a href="#_zookeeper">ZooKeeper</a></li>
 <li><a href="#_kafka">Kafka</a></li>
+<li><a href="#_vagrant">Vagrant</a></li>
 <li><a href="#_docker_2">Docker</a></li>
 <li><a href="#_kubernetes">Kubernetes</a></li>
 <li><a href="#_openshift">OpenShift</a>
@@ -2525,10 +2526,14 @@ pacaur -S jenkins-lts
 archlinux-java status
 sudo archlinux-java set java-8-openjdk/jre
 sudo systemctl start jenkins
+# /var/lib/jenkins
 # password
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 # UI
 http://localhost:8090/
+# установить рекомендуемый набор плагинов
+# установить 'Configuration as Code Plugin'
+
 
 # Установка под Windows
 # # скачать war-файл
@@ -2687,7 +2692,45 @@ echo(System.getenv().collect({ var -&gt; "${var.key} = ${var.value}" }).join("\n
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># работа с хранилищем
+<pre class="highlight"><code># установка (ArchLinux)
+sudo pacman -S ansible
+ansible --version
+# 20191215: 2.8.2
+ansible -m ping localhost
+# sudo nano /etc/ansible/ansible.cfg
+# sudo nano /etc/ansible/hosts
+python3 --version
+python3 --help
+# /usr/lib/python3.7/
+# установка pip
+sudo pacman -S python-pip
+pip --version
+# 20191221: pip 19.0.3 from /usr/lib/python3.7/site-packages/pip (python 3.7)
+pip install ansible-lint
+ansible-lint --version
+# 20191221: ansible-lint 4.2.0
+
+# установка из исходников (требуется для разработки модулей)
+git clone https://github.com/ansible/ansible.git
+cd ansible
+python3 -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt
+. hacking/env-setup
+# "After the initial setup above, every time you are ready to start developing Ansible you should be able to just run the following from the root of the Ansible repo"
+. venv/bin/activate &amp;&amp; . hacking/env-setup
+
+sudo pip install molecule
+molecule --version
+# 20191221: molecule, version 2.22
+# https://github.com/gantsign/molecule-wrapper
+wget 'https://raw.githubusercontent.com/gantsign/molecule-wrapper/master/moleculew' -O moleculew &amp;&amp; chmod 'u+x' moleculew
+./moleculew wrapper-version
+# 20191221: 0.9.11
+# cookiecutter --version
+# 20191221: Cookiecutter 1.6.0 from /usr/lib/python3.7/site-packages (Python 3.7)
+
+# работа с хранилищем
 #
 # запустить
 E:\app\msys64-20180503\mingw64.exe
@@ -2703,8 +2746,47 @@ ansible-vault --vault-password-file=&lt;password-file&gt;
 ansible-vault encrypt /xxx.yml
 ansible-vault decrypt /xxx.yml
 
-# уровень сообщений задается параметром -v , мб и такой для полной -vvvvv</code></pre>
+# уровень сообщений задается параметром -v , мб и такой для полной -vvvvv
+
+# Gathers facts
+ansible localhost -m setup
+
+# plugin documentation tool
+# https://docs.ansible.com/ansible/2.4/ansible-doc.html
+#
+# version
+ansible-doc --version
+# list available plugins
+ansible-doc --list | grep pacman
+# show playbook snippet for specified plugin(s)
+ansible-doc --snippet pacman
+# prepend colon-separated path(s) to module library (default=[u’/home/jenkins/.ansible/plugins/modules’, u’/usr/share/ansible/plugins/modules’])
+ansible-doc --module-path=./xxx/lib:./yyy/lib --list</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.8host.com/blog/kak-rabotat-s-ansible-prostaya-i-udobnaya-shpargalka/" class="bare">https://www.8host.com/blog/kak-rabotat-s-ansible-prostaya-i-udobnaya-shpargalka/</a> [Хорошая справка по терминам и командной строке]</p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html#developing-modules-general">"Ansible module development: getting started"</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_documenting.html" class="bare">https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_documenting.html</a> [Module format and documentation]</p>
+</div>
+<div class="paragraph">
+<p><a href="https://habr.com/ru/post/418579/">"Python: Как работают библиотеки виртуального окружения"</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://docs.ansible.com/ansible/latest/modules/pacman_module.html">"pacman – Manage packages with pacman"</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://jpmens.net/2012/07/05/shell-scripts-as-ansible-modules/">"Shell scripts as Ansible modules"</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://habr.com/ru/post/305400/">"Хабр: Пособие по Ansible"</a></p>
+</div>
+<div class="paragraph">
+<p><a href="https://habr.com/ru/company/d2cio/blog/348118/">"Хабр: Расширяем функционал Ansible с помощью модулей"</a></p>
 </div>
 </div>
 </div>
@@ -2777,6 +2859,12 @@ ansible-vault decrypt /xxx.yml
 </li>
 <li>
 <p>AsciiDoc (stayfool.vscode-asciidoc)</p>
+</li>
+<li>
+<p>GitLens</p>
+</li>
+<li>
+<p>Ansible</p>
 </li>
 </ul>
 </div>
@@ -4217,6 +4305,47 @@ kafka-server-start.bat C:\app\confluent-4.1.1\etc\kafka\server.properties</pre>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_vagrant">Vagrant</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://www.vagrantup.com/docs/">docs</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># установка (ArchLinux)
+sudo pacman -S vagrant
+vagrant --version
+# 20191222: Vagrant 2.2.5
+vagrant plugin install vagrant-libvirt
+
+# ArchLinux box &amp; virtualbox provider
+cd ~/tmp/vagrant-arch
+vagrant init archlinux/archlinux
+vagrant up
+vagrant status
+# default    running (virtualbox)
+# connect ssh (password: vagrant)
+ssh vagrant@127.0.0.1 -p 2222
+# connect virtualbox (vagrant/vagrant)
+virtualbox
+
+# ArchLinux box &amp; libvirt provider
+cd ~/tmp/vagrant-arch
+vagrant init archlinux/archlinux
+vagrant up --provider=libvirt
+vagrant status
+default    running (libvirt)
+# connect ssh - ?
+# connect virt-manager (vagrant/vagrant)
+virt-manager
+
+# stop
+vagrant halt default</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_docker_2">Docker</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -4958,6 +5087,16 @@ sudo chmod +x ./qt-unified-linux-x64-3.1.1-online.run
 <p><a href="https://www.jetbrains.com/idea/download/#section=windows">download</a>,
 <a href="https://www.jetbrains.com/idea/nextversion/">EAP-download</a></p>
 </li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># установка (ArchLinux)
+ln -sf /opt/app/idea-IU-193.5233.102/bin/idea.sh /opt/app/idea</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
 <li>
 <p>Полезное:
 <a href="http://proselyte.net/intellij-idea-hotkeys/">Горячие клавиши</a>,
@@ -5189,7 +5328,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-12-10 06:00:29 UTC
+Last updated 2019-12-22 17:58:25 UTC
 </div>
 </div>
 </body>
