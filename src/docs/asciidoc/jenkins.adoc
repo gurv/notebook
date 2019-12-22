@@ -7,10 +7,14 @@ pacaur -S jenkins-lts
 archlinux-java status
 sudo archlinux-java set java-8-openjdk/jre
 sudo systemctl start jenkins
+# /var/lib/jenkins
 # password
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 # UI
 http://localhost:8090/
+# установить рекомендуемый набор плагинов
+# установить 'Configuration as Code Plugin'
+
 
 # Установка под Windows
 # # скачать war-файл

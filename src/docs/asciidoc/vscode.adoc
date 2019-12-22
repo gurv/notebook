@@ -22,6 +22,8 @@
 ** Prettier - Code formatter
 ** Sort Typescript Imports
 ** AsciiDoc (stayfool.vscode-asciidoc)
+** GitLens 
+** Ansible
 
 ```
 # установка (ArchLinux)c

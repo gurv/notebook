@@ -45,6 +45,8 @@ include::zookeeper.adoc[]
 
 include::kafka.adoc[]
 
+include::vagrant.adoc[]
+
 include::docker.adoc[]
 
 include::kubernetes.adoc[]

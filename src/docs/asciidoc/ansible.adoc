@@ -1,6 +1,44 @@
 = Ansible
 
 ```
+# установка (ArchLinux)
+sudo pacman -S ansible
+ansible --version
+# 20191215: 2.8.2
+ansible -m ping localhost
+# sudo nano /etc/ansible/ansible.cfg
+# sudo nano /etc/ansible/hosts
+python3 --version
+python3 --help
+# /usr/lib/python3.7/
+# установка pip
+sudo pacman -S python-pip
+pip --version
+# 20191221: pip 19.0.3 from /usr/lib/python3.7/site-packages/pip (python 3.7)
+pip install ansible-lint
+ansible-lint --version
+# 20191221: ansible-lint 4.2.0
+
+# установка из исходников (требуется для разработки модулей)
+git clone https://github.com/ansible/ansible.git
+cd ansible
+python3 -m venv venv
+. venv/bin/activate
+pip install -r requirements.txt
+. hacking/env-setup
+# "After the initial setup above, every time you are ready to start developing Ansible you should be able to just run the following from the root of the Ansible repo"
+. venv/bin/activate && . hacking/env-setup
+
+sudo pip install molecule
+molecule --version
+# 20191221: molecule, version 2.22
+# https://github.com/gantsign/molecule-wrapper
+wget 'https://raw.githubusercontent.com/gantsign/molecule-wrapper/master/moleculew' -O moleculew && chmod 'u+x' moleculew
+./moleculew wrapper-version
+# 20191221: 0.9.11
+# cookiecutter --version
+# 20191221: Cookiecutter 1.6.0 from /usr/lib/python3.7/site-packages (Python 3.7)
+
 # работа с хранилищем
 #
 # запустить
@@ -18,4 +56,35 @@ ansible-vault encrypt /xxx.yml
 ansible-vault decrypt /xxx.yml
 
 # уровень сообщений задается параметром -v , мб и такой для полной -vvvvv
+
+# Gathers facts
+ansible localhost -m setup
+
+# plugin documentation tool
+# https://docs.ansible.com/ansible/2.4/ansible-doc.html
+#
+# version
+ansible-doc --version
+# list available plugins
+ansible-doc --list | grep pacman
+# show playbook snippet for specified plugin(s)
+ansible-doc --snippet pacman
+# prepend colon-separated path(s) to module library (default=[u’/home/jenkins/.ansible/plugins/modules’, u’/usr/share/ansible/plugins/modules’])
+ansible-doc --module-path=./xxx/lib:./yyy/lib --list
 ```
+
+https://www.8host.com/blog/kak-rabotat-s-ansible-prostaya-i-udobnaya-shpargalka/ [Хорошая справка по терминам и командной строке]
+
+https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html#developing-modules-general["Ansible module development: getting started"]
+
+https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_documenting.html [Module format and documentation]
+
+https://habr.com/ru/post/418579/["Python: Как работают библиотеки виртуального окружения"]
+
+https://docs.ansible.com/ansible/latest/modules/pacman_module.html["pacman – Manage packages with pacman"]
+
+https://jpmens.net/2012/07/05/shell-scripts-as-ansible-modules/["Shell scripts as Ansible modules"]
+
+https://habr.com/ru/post/305400/["Хабр: Пособие по Ansible"]
+
+https://habr.com/ru/company/d2cio/blog/348118/["Хабр: Расширяем функционал Ansible с помощью модулей"]

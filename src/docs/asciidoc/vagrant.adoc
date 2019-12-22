@@ -1,0 +1,35 @@
+= Vagrant
+
+https://www.vagrantup.com/docs/[docs]
+
+```
+# установка (ArchLinux)
+sudo pacman -S vagrant
+vagrant --version
+# 20191222: Vagrant 2.2.5
+vagrant plugin install vagrant-libvirt
+
+# ArchLinux box & virtualbox provider 
+cd ~/tmp/vagrant-arch
+vagrant init archlinux/archlinux
+vagrant up
+vagrant status
+# default    running (virtualbox)
+# connect ssh (password: vagrant)
+ssh vagrant@127.0.0.1 -p 2222
+# connect virtualbox (vagrant/vagrant)
+virtualbox
+
+# ArchLinux box & libvirt provider 
+cd ~/tmp/vagrant-arch
+vagrant init archlinux/archlinux
+vagrant up --provider=libvirt
+vagrant status
+default    running (libvirt)
+# connect ssh - ?
+# connect virt-manager (vagrant/vagrant)
+virt-manager
+
+# stop
+vagrant halt default
+```
