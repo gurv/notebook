@@ -2765,6 +2765,11 @@ ansible-doc --module-path=./xxx/lib:./yyy/lib --list</code></pre>
 </div>
 </div>
 <div class="paragraph">
+<p>inventory_dir
+inventory_file
+role_path</p>
+</div>
+<div class="paragraph">
 <p><a href="https://www.8host.com/blog/kak-rabotat-s-ansible-prostaya-i-udobnaya-shpargalka/" class="bare">https://www.8host.com/blog/kak-rabotat-s-ansible-prostaya-i-udobnaya-shpargalka/</a> [Хорошая справка по терминам и командной строке]</p>
 </div>
 <div class="paragraph">
@@ -4312,7 +4317,10 @@ kafka-server-start.bat C:\app\confluent-4.1.1\etc\kafka\server.properties</pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># установка (ArchLinux)
+<pre class="highlight"><code># установка (Windows): https://www.vagrantup.com/downloads.html
+# Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+
+# установка (ArchLinux)
 sudo pacman -S vagrant
 vagrant --version
 # 20191222: Vagrant 2.2.5
@@ -4342,6 +4350,12 @@ virt-manager
 # stop
 vagrant halt default</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p><a href="https://www.vagrantup.com/docs/provisioning/ansible_intro.html" class="bare">https://www.vagrantup.com/docs/provisioning/ansible_intro.html</a> [Ansible and Vagrant]</p>
+</div>
+<div class="paragraph">
+<p><a href="https://www.vagrantup.com/docs/provisioning/ansible.html" class="bare">https://www.vagrantup.com/docs/provisioning/ansible.html</a> [Ansible Provisioner]</p>
 </div>
 </div>
 </div>
@@ -5328,7 +5342,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2019-12-22 17:58:25 UTC
+Last updated 2019-12-23 21:25:06 UTC
 </div>
 </div>
 </body>
