@@ -73,6 +73,10 @@ ansible-doc --snippet pacman
 ansible-doc --module-path=./xxx/lib:./yyy/lib --list
 ```
 
+inventory_dir
+inventory_file
+role_path
+
 https://www.8host.com/blog/kak-rabotat-s-ansible-prostaya-i-udobnaya-shpargalka/ [Хорошая справка по терминам и командной строке]
 
 https://docs.ansible.com/ansible/latest/dev_guide/developing_modules_general.html#developing-modules-general["Ansible module development: getting started"]

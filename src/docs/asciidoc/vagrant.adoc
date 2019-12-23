@@ -3,6 +3,9 @@
 https://www.vagrantup.com/docs/[docs]
 
 ```
+# установка (Windows): https://www.vagrantup.com/downloads.html
+# Disable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+
 # установка (ArchLinux)
 sudo pacman -S vagrant
 vagrant --version
@@ -33,3 +36,7 @@ virt-manager
 # stop
 vagrant halt default
 ```
+
+https://www.vagrantup.com/docs/provisioning/ansible_intro.html [Ansible and Vagrant]
+
+https://www.vagrantup.com/docs/provisioning/ansible.html [Ansible Provisioner]
