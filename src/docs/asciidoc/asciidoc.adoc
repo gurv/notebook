@@ -9,3 +9,9 @@ http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#[Syntax Quick Refer
 https://asciidoctor.github.io/asciidoctor-gradle-plugin/development-2.0/user-guide/[Asciidoctor Gradle Plugin Suite],
 https://confluence-publisher.atlassian.net/wiki/spaces/CPD/overview?mode=global[Confluence Publisher],
 https://www.slideshare.net/ysb33r/docuops-asciidoctor-in-a-jvm-world[SlideShare Asciidoctor JVM]
+
+* PlantUML
+
+https://www.planttext.com/
+
+https://plantuml.com/ru/
