@@ -15,3 +15,5 @@ https://www.slideshare.net/ysb33r/docuops-asciidoctor-in-a-jvm-world[SlideShare 
 https://www.planttext.com/
 
 https://plantuml.com/ru/
+
+"You can use the tilde as escape character": ~
