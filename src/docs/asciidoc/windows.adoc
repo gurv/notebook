@@ -116,6 +116,24 @@ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Windows-Subsystem-L
 #    Right click title bar -> Properties -> Uncheck Use legacy console
 #    Click OK
 
+# список 
+wsl -l -v
+
+# преобразовать дистрибутив в формат WSL версии 2
+wsl --set-version Ubuntu-18.04 2
+wsl --set-default-version 2
+
+# Ansible
+wsl -d Ubuntu-18.04
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt update
+sudo apt install ansible
+ansible --version
+# 20191228: ansible 2.9.21
+git config --global user.name gurv
+git config --global user.email vladimir.gurinovich@gmail.com
+ansible-galaxy collection init sbrf.devops_collection
+
 # установка rustup
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source $HOME/.cargo/env
