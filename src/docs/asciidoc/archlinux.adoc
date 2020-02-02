@@ -535,6 +535,8 @@ pacman -Sc
 pacman -Syu
 #  внимание: если ошибка "error: required key missing from keyring", то
 pacman -S archlinux-keyring
+#  внимание: если ошибка "Invalid or Corrupted package (PGP signature)", то в файле /etc/pacman.conf указать
+SigLevel = Never
 
 # To install a local package, or from a website
 sudo pacman -U /path/to/the/package
