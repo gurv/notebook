@@ -59,6 +59,8 @@ include::groovy.adoc[]
 
 include::rust.adoc[]
 
+include::python.adoc[]
+
 include::qt.adoc[]
 
 include::typescript.adoc[]

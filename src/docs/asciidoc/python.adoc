@@ -1,0 +1,9 @@
+= Python
+
+```
+# pip
+pip install 'coverage==4.5.4'
+pip uninstall coverage
+```
+
+https://habr.com/ru/post/448794/ [Python Testing с pytest]
