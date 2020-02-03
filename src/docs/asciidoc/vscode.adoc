@@ -14,6 +14,7 @@
 * плагины:
 
 ** Project Manager
+** Docker (ms-azuretools.vscode-docker)
 ** MetaGo https://marketplace.visualstudio.com/items?itemName=metaseed.metago
 ** Bookmarks https://marketplace.visualstudio.com/items?itemName=alefragnani.Bookmarks
 ** Debugger for Chrome extension
@@ -26,7 +27,7 @@
 ** Ansible
 
 ```
-# установка (ArchLinux)c
+# установка (ArchLinux)
 # загрузить отсюда https://code.visualstudio.com/download , например, версию ".tar.gz	64 bit"
 mkdir /opt/app/vscode-1.31.1
 cd /opt/app/vscode-1.31.1
