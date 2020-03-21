@@ -171,6 +171,14 @@ FONT_MAP=
 USECOLOR="yes"
 ```
 
+* звук
+
+```
+sudo pacman -S alsa-lib alsa-utils
+amixer
+alsamixer
+```
+
 "перевернутый" монитор
 ```
 nano /etc/default/grub
