@@ -208,6 +208,13 @@ git config --global user.name gurv
 git config --global user.email "vladimir.gurinovich@gmail.com"
 ```
 
+* Skype
+
+```
+pacaur -S skypeforlinux-stable-bin
+skypeforlinux
+```
+
 == Xorg
 
 ```
