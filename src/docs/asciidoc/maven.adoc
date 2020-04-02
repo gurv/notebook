@@ -27,6 +27,12 @@ mvn ... -q ...
 # включить/исключить проекты
 mvn ... --projects "!<module_name1>,<module_name1>"
 
+# список целей связанных с фазой (например, compile) и их плагины
+mvn help:describe -Dcmd=compile
+
+# выполнение нескольких целей (Maven 3.3.1+. first-cli/second-cli - это id секций execution)
+mvn exec:java@first-cli exec:java@second-cli
+
 # публикация
 mvn deploy:deploy-file -DgroupId=com.diffplug.spotless -DartifactId=spotless-eclipse-groovy -Dversion=3.0.0 -Dpackaging=jar -Dfile=D:\dst\spotless\spotless-eclipse-groovy-3.0.0.jar  -DrepositoryId=sbtnexus -Durl=http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/PRCRED_thirdparty -DgeneratePom=false -DpomFile=D:\dst\spotless\4\pom.xml --settings ./settings.xml
 # , где settings.xml:
@@ -72,3 +78,5 @@ mvn deploy:deploy-file -DgroupId=com.diffplug.spotless -DartifactId=spotless-ecl
 * com.google.code.maven-replacer-plugin:replacer
 
 * com.soebes.maven.plugins:iterator-maven-plugin
+
+* com.google.cloud.tools:jib-maven-plugin
