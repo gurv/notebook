@@ -3625,6 +3625,12 @@ mvn ... -q ...
 # включить/исключить проекты
 mvn ... --projects "!&lt;module_name1&gt;,&lt;module_name1&gt;"
 
+# список целей связанных с фазой (например, compile) и их плагины
+mvn help:describe -Dcmd=compile
+
+# выполнение нескольких целей (Maven 3.3.1+. first-cli/second-cli - это id секций execution)
+mvn exec:java@first-cli exec:java@second-cli
+
 # публикация
 mvn deploy:deploy-file -DgroupId=com.diffplug.spotless -DartifactId=spotless-eclipse-groovy -Dversion=3.0.0 -Dpackaging=jar -Dfile=D:\dst\spotless\spotless-eclipse-groovy-3.0.0.jar  -DrepositoryId=sbtnexus -Durl=http://sbtnexus.ca.sbrf.ru:8081/nexus/content/repositories/PRCRED_thirdparty -DgeneratePom=false -DpomFile=D:\dst\spotless\4\pom.xml --settings ./settings.xml
 # , где settings.xml:
@@ -3678,6 +3684,9 @@ mvn deploy:deploy-file -DgroupId=com.diffplug.spotless -DartifactId=spotless-ecl
 </li>
 <li>
 <p>com.soebes.maven.plugins:iterator-maven-plugin</p>
+</li>
+<li>
+<p>com.google.cloud.tools:jib-maven-plugin</p>
 </li>
 </ul>
 </div>
@@ -5420,7 +5429,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2020-03-23 12:06:51 UTC
+Last updated 2020-04-02 09:30:34 UTC
 </div>
 </div>
 </body>
