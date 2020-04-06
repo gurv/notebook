@@ -9,6 +9,7 @@
 |Ctrl+/|uncomment block
 |Alt+Shift+F|Format Document
 |Ctrl+Shift+V|Markdown Preview
+|Ctrl+B|Toggle Sidebar visibility
 |===
 
 * плагины:
