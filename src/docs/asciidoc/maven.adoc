@@ -26,6 +26,10 @@ mvn ... -q ...
 
 # включить/исключить проекты
 mvn ... --projects "!<module_name1>,<module_name1>"
+# с проектами, от которых зависит проект my-project
+mvn ... --projects my-project --also-make
+# с проектами, которые зависит от проекта my-project
+mvn ... --projects my-project --also-make-dependents
 
 # список целей связанных с фазой (например, compile) и их плагины
 mvn help:describe -Dcmd=compile
