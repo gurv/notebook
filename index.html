@@ -3628,6 +3628,10 @@ mvn ... -q ...
 
 # включить/исключить проекты
 mvn ... --projects "!&lt;module_name1&gt;,&lt;module_name1&gt;"
+# с проектами, от которых зависит проект my-project
+mvn ... --projects my-project --also-make
+# с проектами, которые зависит от проекта my-project
+mvn ... --projects my-project --also-make-dependents
 
 # список целей связанных с фазой (например, compile) и их плагины
 mvn help:describe -Dcmd=compile
@@ -5433,7 +5437,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2020-04-06 12:58:08 UTC
+Last updated 2020-04-10 09:53:41 UTC
 </div>
 </div>
 </body>
