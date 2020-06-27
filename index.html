@@ -1007,6 +1007,7 @@ ssh-keygen -R [localhost]:2222
 # если "'xterm-termite': unknown terminal type"
 export TERM=xterm
 
+# 20200627 (Бридино):
 # если не работает ping
 ping google.com
 ping: google.com: Name or service not known
@@ -1024,6 +1025,11 @@ resolvectl status
 # дб
 DNSSEC setting: no</code></pre>
 </div>
+</div>
+<div class="paragraph">
+<p># 20200627 (Бридино):
+pacstrap -i /mnt grub-bios
+mkinitcpio -p linux</p>
 </div>
 </td>
 </tr>
@@ -1064,7 +1070,7 @@ mount /dev/sda1 /mnt</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacstrap -i /mnt base base-devel linux-firmware</code></pre>
+<pre class="highlight"><code>pacstrap -i /mnt base base-devel</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -1364,6 +1370,17 @@ git config --global user.email "vladimir.gurinovich@gmail.com"</code></pre>
 <div class="content">
 <pre class="highlight"><code>pacaur -S skypeforlinux-stable-bin
 skypeforlinux</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_yay">Yay</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>cd /tmp
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si</code></pre>
 </div>
 </div>
 </div>
@@ -5454,7 +5471,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2020-06-27 09:16:57 UTC
+Last updated 2020-06-27 12:03:19 UTC
 </div>
 </div>
 </body>
