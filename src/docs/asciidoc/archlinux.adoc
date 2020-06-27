@@ -49,6 +49,7 @@ ssh-keygen -R [localhost]:2222
 # если "'xterm-termite': unknown terminal type"
 export TERM=xterm
 
+# 20200627 (Бридино):
 # если не работает ping
 ping google.com
 ping: google.com: Name or service not known
@@ -66,6 +67,10 @@ resolvectl status
 # дб
 DNSSEC setting: no
 ```
+
+# 20200627 (Бридино):
+pacstrap -i /mnt grub-bios
+mkinitcpio -p linux
 ====
 
 * создание (выбрать тип dos c bootable), форматирование и монтирование раздела на диске (для luna заменть sda на nvme0n1 , sda1 на nvme0n1p1 )
@@ -82,7 +87,7 @@ nano /etc/pacman.d/mirrorlist
 
 * установить базовые пакеты
 ```
-pacstrap -i /mnt base base-devel linux-firmware
+pacstrap -i /mnt base base-devel
 ```
 
 * временно подменить корневой каталог
@@ -230,6 +235,15 @@ git config --global user.email "vladimir.gurinovich@gmail.com"
 ```
 pacaur -S skypeforlinux-stable-bin
 skypeforlinux
+```
+
+== Yay
+
+```
+cd /tmp
+git clone https://aur.archlinux.org/yay.git
+cd yay
+makepkg -si
 ```
 
 == Xorg
