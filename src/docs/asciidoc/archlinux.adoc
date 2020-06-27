@@ -34,20 +34,37 @@ passwd
 [TIP]
 ====
 ```
-# запуск ssh на госте
+# запуск ssh
 systemctl start sshd
 
-# ssh-соединение с хоста на VirtualBox
+# ssh-соединение
+ssh root@192.168.1.35
+
+# ssh-соединение с VirtualBox-хоста
 boxmanage modifyvm arch --natpf1 "ssh,tcp,localhost,2222,,22"
 ssh root@localhost -p 2222
-ssh root@192.168.122.215
-# ssh-соединение с хоста на KVM
-ssh root@192.168.122.215 -p 22
 
 # если "Host key verification failed"
 ssh-keygen -R [localhost]:2222
 # если "'xterm-termite': unknown terminal type"
 export TERM=xterm
+
+# если не работает ping
+ping google.com
+ping: google.com: Name or service not known
+# и еще так
+resolvectl query google.com
+google.com: resolve call failed: DNSSEC validation failed: signature-expired
+# то здесь
+nano /etc/systemd/resolved.conf
+# указать
+DNSSEC=false
+# рестартовать
+systemctl restart systemd-resolved
+# посмотреть
+resolvectl status
+# дб
+DNSSEC setting: no
 ```
 ====
 
@@ -65,7 +82,7 @@ nano /etc/pacman.d/mirrorlist
 
 * установить базовые пакеты
 ```
-pacstrap -i /mnt base base-devel
+pacstrap -i /mnt base base-devel linux-firmware
 ```
 
 * временно подменить корневой каталог
