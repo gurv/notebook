@@ -992,20 +992,37 @@ getfattr -d ./notebook-master.zip
 <td class="content">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code># запуск ssh на госте
+<pre class="highlight"><code># запуск ssh
 systemctl start sshd
 
-# ssh-соединение с хоста на VirtualBox
+# ssh-соединение
+ssh root@192.168.1.35
+
+# ssh-соединение с VirtualBox-хоста
 boxmanage modifyvm arch --natpf1 "ssh,tcp,localhost,2222,,22"
 ssh root@localhost -p 2222
-ssh root@192.168.122.215
-# ssh-соединение с хоста на KVM
-ssh root@192.168.122.215 -p 22
 
 # если "Host key verification failed"
 ssh-keygen -R [localhost]:2222
 # если "'xterm-termite': unknown terminal type"
-export TERM=xterm</code></pre>
+export TERM=xterm
+
+# если не работает ping
+ping google.com
+ping: google.com: Name or service not known
+# и еще так
+resolvectl query google.com
+google.com: resolve call failed: DNSSEC validation failed: signature-expired
+# то здесь
+nano /etc/systemd/resolved.conf
+# указать
+DNSSEC=false
+# рестартовать
+systemctl restart systemd-resolved
+# посмотреть
+resolvectl status
+# дб
+DNSSEC setting: no</code></pre>
 </div>
 </div>
 </td>
@@ -1047,7 +1064,7 @@ mount /dev/sda1 /mnt</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacstrap -i /mnt base base-devel</code></pre>
+<pre class="highlight"><code>pacstrap -i /mnt base base-devel linux-firmware</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -5437,7 +5454,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2020-04-10 09:53:41 UTC
+Last updated 2020-06-27 09:16:57 UTC
 </div>
 </div>
 </body>
