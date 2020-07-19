@@ -31,32 +31,40 @@ C:\app\imageWriter\1.0.0\Win32DiskImager.exe
 passwd
 ```
 (например, пароль: root)
+
 [TIP]
 ====
+.ssh
 ```
-# запуск ssh
+# запуск
 systemctl start sshd
 
-# ssh-соединение
+# соединение
 ssh root@192.168.1.35
 
-# ssh-соединение с VirtualBox-хоста
+# соединение с хоста VirtualBox
 boxmanage modifyvm arch --natpf1 "ssh,tcp,localhost,2222,,22"
 ssh root@localhost -p 2222
 
 # если "Host key verification failed"
 ssh-keygen -R [localhost]:2222
+
 # если "'xterm-termite': unknown terminal type"
 export TERM=xterm
+```
+====
 
-# 20200627 (Бридино):
-# если не работает ping
+[NOTE]
+====
+.DNSSEC (20200627 Бридино)
+```
+# не работал ping
 ping google.com
 ping: google.com: Name or service not known
-# и еще так
+# и так
 resolvectl query google.com
 google.com: resolve call failed: DNSSEC validation failed: signature-expired
-# то здесь
+# здесь
 nano /etc/systemd/resolved.conf
 # указать
 DNSSEC=false
@@ -67,10 +75,38 @@ resolvectl status
 # дб
 DNSSEC setting: no
 ```
+====
 
-# 20200627 (Бридино):
+[NOTE]
+====
+.BIOS (20200627 Бридино)
+```
 pacstrap -i /mnt grub-bios
 mkinitcpio -p linux
+```
+====
+
+[TIP]
+====
+.WiFi
+```
+# здесь
+nano /etc/wpa_supplicant/example.conf
+# дб
+ctrl_interface=/run/wpa_supplicant
+update_config=1
+#
+wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/example.conf
+wpa_cli
+> scan
+> scan_results
+> add_network
+> set_network 0 ssid "gurv-route"
+> set_network 0 psk "gurv-route-passphrase"
+> enable_network 0
+> save_config
+dhcpcd wlan0
+```
 ====
 
 * создание (выбрать тип dos c bootable), форматирование и монтирование раздела на диске (для luna заменть sda на nvme0n1 , sda1 на nvme0n1p1 )
@@ -88,6 +124,7 @@ nano /etc/pacman.d/mirrorlist
 * установить базовые пакеты
 ```
 pacstrap -i /mnt base base-devel
+pacman -S --noconfirm nano
 ```
 
 * временно подменить корневой каталог
@@ -131,7 +168,7 @@ nano /etc/sudoers
 
 * загрузчик (для luna заменть sda на nvme0n1)
 ```
-pacman -S grub
+pacman -S --noconfirm grub
 grub-install --target=i386-pc --force --recheck /dev/sda
 exit
 arch-chroot /mnt grub-mkconfig --output=/boot/grub/grub.cfg
@@ -158,7 +195,7 @@ systemctl start dhcpcd
 
 * установить Midnight Commander
 ```
-pacman -S mc
+pacman -S --noconfirm mc
 ```
 
 * установить SSH
