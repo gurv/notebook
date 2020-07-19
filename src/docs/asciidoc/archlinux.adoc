@@ -82,7 +82,7 @@ DNSSEC setting: no
 .BIOS (20200627 Бридино)
 ```
 pacstrap -i /mnt grub-bios
-mkinitcpio -p linux
+arch-chroot /mnt mkinitcpio -p linux
 ```
 ====
 
@@ -90,6 +90,10 @@ mkinitcpio -p linux
 ====
 .WiFi
 ```
+# узнать имя интерфейса
+ip link show
+# поднять интерфейс
+ip link set wlan0 up
 # здесь
 nano /etc/wpa_supplicant/example.conf
 # дб
@@ -101,10 +105,11 @@ wpa_cli
 > scan
 > scan_results
 > add_network
-> set_network 0 ssid "gurv-route"
+> set_network 0 ssid "gurv-router"
 > set_network 0 psk "gurv-route-passphrase"
 > enable_network 0
 > save_config
+> quit
 dhcpcd wlan0
 ```
 ====
@@ -123,13 +128,17 @@ nano /etc/pacman.d/mirrorlist
 
 * установить базовые пакеты
 ```
-pacstrap -i /mnt base base-devel
-pacman -S --noconfirm nano
+pacstrap -i /mnt base base-devel linux linux-firmware
 ```
 
-* временно подменить корневой каталог
+* подменить корневой каталог
 ```
 arch-chroot /mnt
+```
+
+* нужные пакеты
+```
+pacman -S --noconfirm nano, openssh, dhcpcd
 ```
 
 * выбрать язык (оставить только en_US.UTF-8 UTF-8 и ru_RU.UTF-8 UTF-8)
@@ -174,6 +183,15 @@ exit
 arch-chroot /mnt grub-mkconfig --output=/boot/grub/grub.cfg
 genfstab -p /mnt > /mnt/etc/fstab
 ```
+[NOTE]
+====
+.BIOS (20200719 Бридино)
+```
+pacman -S grub-bios
+grub-install --target=i386-pc --force --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+====
 
 * отредактировать настройки сети
 ```
@@ -198,16 +216,19 @@ systemctl start dhcpcd
 pacman -S --noconfirm mc
 ```
 
-* установить SSH
+* настроить SSH
 ```
-pacman -S openssh
 nano /etc/ssh/sshd_config
-systemctl enable sshd
 ```
-для X-клиентов должно быть:
+дб:
 ```
 PermitRootLogin yes
 X11Forwarding yes
+```
+
+запустить SSH
+```
+systemctl enable sshd
 ```
 
 * перегрузка
