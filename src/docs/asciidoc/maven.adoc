@@ -31,6 +31,9 @@ mvn ... --projects my-project --also-make
 # с проектами, которые зависит от проекта my-project
 mvn ... --projects my-project --also-make-dependents
 
+# выполнить один тест
+mvn ... -Dtest=org.apache.maven.utils.ConverterTest
+
 # список целей связанных с фазой (например, compile) и их плагины
 mvn help:describe -Dcmd=compile
 
