@@ -991,30 +991,46 @@ getfattr -d ./notebook-master.zip
 </td>
 <td class="content">
 <div class="listingblock">
+<div class="title">ssh</div>
 <div class="content">
-<pre class="highlight"><code># запуск ssh
+<pre class="highlight"><code># запуск
 systemctl start sshd
 
-# ssh-соединение
+# соединение
 ssh root@192.168.1.35
 
-# ssh-соединение с VirtualBox-хоста
+# соединение с хоста VirtualBox
 boxmanage modifyvm arch --natpf1 "ssh,tcp,localhost,2222,,22"
 ssh root@localhost -p 2222
 
 # если "Host key verification failed"
 ssh-keygen -R [localhost]:2222
-# если "'xterm-termite': unknown terminal type"
-export TERM=xterm
 
-# 20200627 (Бридино):
-# если не работает ping
+# если "'xterm-termite': unknown terminal type"
+export TERM=xterm</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="listingblock">
+<div class="title">DNSSEC (20200627 Бридино)</div>
+<div class="content">
+<pre class="highlight"><code># не работал ping
 ping google.com
 ping: google.com: Name or service not known
-# и еще так
+# и так
 resolvectl query google.com
 google.com: resolve call failed: DNSSEC validation failed: signature-expired
-# то здесь
+# здесь
 nano /etc/systemd/resolved.conf
 # указать
 DNSSEC=false
@@ -1026,10 +1042,55 @@ resolvectl status
 DNSSEC setting: no</code></pre>
 </div>
 </div>
-<div class="paragraph">
-<p># 20200627 (Бридино):
-pacstrap -i /mnt grub-bios
-mkinitcpio -p linux</p>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="listingblock">
+<div class="title">BIOS (20200627 Бридино)</div>
+<div class="content">
+<pre class="highlight"><code>pacstrap -i /mnt grub-bios
+mkinitcpio -p linux</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="listingblock">
+<div class="title">WiFi</div>
+<div class="content">
+<pre class="highlight"><code># здесь
+nano /etc/wpa_supplicant/example.conf
+# дб
+ctrl_interface=/run/wpa_supplicant
+update_config=1
+#
+wpa_supplicant -B -i wlan0 -c /etc/wpa_supplicant/example.conf
+wpa_cli
+&gt; scan
+&gt; scan_results
+&gt; add_network
+&gt; set_network 0 ssid "gurv-route"
+&gt; set_network 0 psk "gurv-route-passphrase"
+&gt; enable_network 0
+&gt; save_config
+dhcpcd wlan0</code></pre>
+</div>
 </div>
 </td>
 </tr>
@@ -1070,7 +1131,8 @@ mount /dev/sda1 /mnt</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacstrap -i /mnt base base-devel</code></pre>
+<pre class="highlight"><code>pacstrap -i /mnt base base-devel
+pacman -S --noconfirm nano</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -1172,7 +1234,7 @@ nano /etc/sudoers</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacman -S grub
+<pre class="highlight"><code>pacman -S --noconfirm grub
 grub-install --target=i386-pc --force --recheck /dev/sda
 exit
 arch-chroot /mnt grub-mkconfig --output=/boot/grub/grub.cfg
@@ -1231,7 +1293,7 @@ systemctl start dhcpcd</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacman -S mc</code></pre>
+<pre class="highlight"><code>pacman -S --noconfirm mc</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -3667,6 +3729,9 @@ mvn ... --projects my-project --also-make
 # с проектами, которые зависит от проекта my-project
 mvn ... --projects my-project --also-make-dependents
 
+# выполнить один тест
+mvn ... -Dtest=org.apache.maven.utils.ConverterTest
+
 # список целей связанных с фазой (например, compile) и их плагины
 mvn help:describe -Dcmd=compile
 
@@ -5471,7 +5536,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2020-06-27 12:03:19 UTC
+Last updated 2020-07-19 07:01:59 UTC
 </div>
 </div>
 </body>
