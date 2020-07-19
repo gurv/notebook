@@ -1057,7 +1057,7 @@ DNSSEC setting: no</code></pre>
 <div class="title">BIOS (20200627 Бридино)</div>
 <div class="content">
 <pre class="highlight"><code>pacstrap -i /mnt grub-bios
-mkinitcpio -p linux</code></pre>
+arch-chroot /mnt mkinitcpio -p linux</code></pre>
 </div>
 </div>
 </td>
@@ -1074,7 +1074,11 @@ mkinitcpio -p linux</code></pre>
 <div class="listingblock">
 <div class="title">WiFi</div>
 <div class="content">
-<pre class="highlight"><code># здесь
+<pre class="highlight"><code># узнать имя интерфейса
+ip link show
+# поднять интерфейс
+ip link set wlan0 up
+# здесь
 nano /etc/wpa_supplicant/example.conf
 # дб
 ctrl_interface=/run/wpa_supplicant
@@ -1085,10 +1089,11 @@ wpa_cli
 &gt; scan
 &gt; scan_results
 &gt; add_network
-&gt; set_network 0 ssid "gurv-route"
+&gt; set_network 0 ssid "gurv-router"
 &gt; set_network 0 psk "gurv-route-passphrase"
 &gt; enable_network 0
 &gt; save_config
+&gt; quit
 dhcpcd wlan0</code></pre>
 </div>
 </div>
@@ -1131,20 +1136,31 @@ mount /dev/sda1 /mnt</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacstrap -i /mnt base base-devel
-pacman -S --noconfirm nano</code></pre>
+<pre class="highlight"><code>pacstrap -i /mnt base base-devel linux linux-firmware</code></pre>
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>временно подменить корневой каталог</p>
+<p>подменить корневой каталог</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>arch-chroot /mnt</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>нужные пакеты</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>pacman -S --noconfirm nano, openssh, dhcpcd</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -1241,6 +1257,25 @@ arch-chroot /mnt grub-mkconfig --output=/boot/grub/grub.cfg
 genfstab -p /mnt &gt; /mnt/etc/fstab</code></pre>
 </div>
 </div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="listingblock">
+<div class="title">BIOS (20200719 Бридино)</div>
+<div class="content">
+<pre class="highlight"><code>pacman -S grub-bios
+grub-install --target=i386-pc --force --recheck /dev/sda
+grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -1299,24 +1334,30 @@ systemctl start dhcpcd</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>установить SSH</p>
+<p>настроить SSH</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacman -S openssh
-nano /etc/ssh/sshd_config
-systemctl enable sshd</code></pre>
+<pre class="highlight"><code>nano /etc/ssh/sshd_config</code></pre>
 </div>
 </div>
 <div class="paragraph">
-<p>для X-клиентов должно быть:</p>
+<p>дб:</p>
 </div>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>PermitRootLogin yes
 X11Forwarding yes</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>запустить SSH</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>systemctl enable sshd</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -5536,7 +5577,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2020-07-19 07:01:59 UTC
+Last updated 2020-07-19 15:47:13 UTC
 </div>
 </div>
 </body>
