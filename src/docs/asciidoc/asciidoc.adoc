@@ -6,6 +6,7 @@ http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#[Syntax Quick Refer
 
 
 * Полезное:
+https://asciidoclive.com/[AsciiDocLIVE is a free online AsciiDoc editor],
 https://asciidoctor.github.io/asciidoctor-gradle-plugin/development-2.0/user-guide/[Asciidoctor Gradle Plugin Suite],
 https://confluence-publisher.atlassian.net/wiki/spaces/CPD/overview?mode=global[Confluence Publisher],
 https://www.slideshare.net/ysb33r/docuops-asciidoctor-in-a-jvm-world[SlideShare Asciidoctor JVM]
