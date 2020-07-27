@@ -5,16 +5,17 @@ http://asciidoctor.org/docs/[docs],
 http://asciidoctor.org/docs/asciidoc-syntax-quick-reference/#[Syntax Quick Reference]
 
 
-* Полезное:
-https://asciidoclive.com/[AsciiDocLIVE is a free online AsciiDoc editor],
-https://asciidoctor.github.io/asciidoctor-gradle-plugin/development-2.0/user-guide/[Asciidoctor Gradle Plugin Suite],
-https://confluence-publisher.atlassian.net/wiki/spaces/CPD/overview?mode=global[Confluence Publisher],
-https://www.slideshare.net/ysb33r/docuops-asciidoctor-in-a-jvm-world[SlideShare Asciidoctor JVM]
+* полезное:
+
+** https://asciidoclive.com/[AsciiDocLIVE is a free online AsciiDoc editor]
+** https://asciidoctor.github.io/asciidoctor-gradle-plugin/development-2.0/user-guide/[Asciidoctor Gradle Plugin Suite]
+** https://confluence-publisher.atlassian.net/wiki/spaces/CPD/overview?mode=global[Confluence Publisher]
+** https://www.slideshare.net/ysb33r/docuops-asciidoctor-in-a-jvm-world[SlideShare Asciidoctor JVM]
+** "You can use the tilde as escape character": ~
 
 * PlantUML
 
-https://www.planttext.com/
+** https://www.planttext.com/
 
-https://plantuml.com/ru/
+** https://plantuml.com/ru/
 
-"You can use the tilde as escape character": ~
