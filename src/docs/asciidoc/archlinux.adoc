@@ -690,6 +690,16 @@ pacaur -S slack-desktop
 slack
 ```
 
+== Клиент 
+Torrent
+```
+# установить
+sudo pacman -S transmission-gtk
+
+# запуск
+transmission-gtk
+```
+
 == Разное
 
 === Добавление доверенного корневого сертификата
