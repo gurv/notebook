@@ -690,14 +690,24 @@ pacaur -S slack-desktop
 slack
 ```
 
-== Клиент 
-Torrent
+== Torrent
+
 ```
-# установить
+# установить клиента
 sudo pacman -S transmission-gtk
 
 # запуск
 transmission-gtk
+```
+
+== VLC (video player)
+
+```
+# установить
+sudo pacman -S vlc
+
+# запуск
+vlc
 ```
 
 == Разное
