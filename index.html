@@ -2022,6 +2022,30 @@ telegram-desktop</code></pre>
 </div>
 </div>
 </div>
+<div class="sect4">
+<h5 id="_disk">disk</h5>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># список дисков
+sudo fdisk -l
+# fdisk не создает раздел более 2ТБ, поэтому использовать parted
+sudo parted /dev/sda
+(parted) print
+(parted) mklabel gpt
+# размер можно увидеть командой print
+#   Disk /dev/sda: 3001GB
+(parted) mkpart primary 1 3001G
+(parted) quit
+sudo mkfs.ext4 /dev/sda1 -L "ext"
+sudo mkdir /mnt/ext
+sudo mount /dev/sda1 /mnt/ext
+# найти UUID
+ls -al /dev/disk/by-uuid/
+# добавить строку в /etc/fstab
+UUID=1d46ac90-62a0-471c-821a-c6a81b283657 /mnt/ext ext4 defaults 0 0</code></pre>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -5618,7 +5642,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2020-10-17 08:50:30 UTC
+Last updated 2020-11-01 10:32:37 UTC
 </div>
 </div>
 </body>
