@@ -735,3 +735,24 @@ far2l
 pacaur -S telegram-desktop-bin
 telegram-desktop
 ```
+
+=== disk
+```
+# список дисков
+sudo fdisk -l
+# fdisk не создает раздел более 2ТБ, поэтому использовать parted
+sudo parted /dev/sda
+(parted) print
+(parted) mklabel gpt
+# размер можно увидеть командой print
+#   Disk /dev/sda: 3001GB
+(parted) mkpart primary 1 3001G
+(parted) quit
+sudo mkfs.ext4 /dev/sda1 -L "ext"
+sudo mkdir /mnt/ext
+sudo mount /dev/sda1 /mnt/ext
+# найти UUID
+ls -al /dev/disk/by-uuid/
+# добавить строку в /etc/fstab
+UUID=1d46ac90-62a0-471c-821a-c6a81b283657 /mnt/ext ext4 defaults 0 0
+```
