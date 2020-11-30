@@ -1,5 +1,8 @@
-name: ci
-on: [push]
+name: CI
+on:
+  push:
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
