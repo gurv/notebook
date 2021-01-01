@@ -254,9 +254,14 @@ USECOLOR="yes"
 * звук
 
 ```
-sudo pacman -S alsa-lib alsa-utils
-amixer
+sudo pacman -S alsa-lib alsa-utils asoundconf
+# установить карту по умолчанию
+asoundconf list
+asoundconf set-default-card PCH
+# настроить
 alsamixer
+# проверить
+speaker-test
 ```
 
 "перевернутый" монитор
@@ -291,7 +296,7 @@ git config --global user.email "vladimir.gurinovich@gmail.com"
 * Skype
 
 ```
-pacaur -S skypeforlinux-stable-bin
+yay -S skypeforlinux-stable-bin
 skypeforlinux
 ```
 
@@ -311,7 +316,7 @@ makepkg -si
 pacman -S --noconfirm xf86-video-intel
 pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
 pacman -S --noconfirm termite
-pacaur -S google-chrome
+yay -S google-chrome
 ln -s /usr/bin/google-chrome-stable /opt/app/chrome
 
 # переключение раскладки клавиатуры
@@ -374,11 +379,11 @@ https://awesomewm.org/[site]
 # установить
 sudo pacman -S --noconfirm awesome
 mkdir ~/.awesome
-cp /etc/xdg/awesome/rc.lua ~/.awesome/
+cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
 echo "exec awesome" > ~/.xinitrc
 
 # настройка
-nano ~/.awesome/rc.lua
+nano ~/.config/awesome/rc.lua
 # - использовать termite: дб terminal = "termite"
 # - автозапуск приложений: см. autorunApps
 # - отключить рисунок: в /usr/share/awesome/themes/default/theme.lua закомментировать theme.wallpaper
@@ -434,32 +439,6 @@ gpasswd -a gurv docker
 ExecStart=/usr/bin/dockerd -H 0.0.0.0:2375 -H fd://
 ```
 ====
-
-== pacaur
-
-```
-# установить
-sudo pacman -S binutils make gcc fakeroot expac yajl git --noconfirm
-mkdir -p /tmp/pacaur_install
-cd /tmp/pacaur_install
-curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=cower
-makepkg PKGBUILD --skippgpcheck
-sudo pacman -U cower*.tar.xz --noconfirm
-curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur
-makepkg PKGBUILD
-sudo pacman -U pacaur*.tar.xz --noconfirm
-rm -r /tmp/pacaur_install
-
-# очистить кеш
-pacaur -Scc
-
-# удалить
-sudo pacman -Rs pacaur
-
-# разное
-# установить пакет
-pacaur -S <имя-пакета>
-```
 
 == minikube
 
@@ -684,7 +663,7 @@ git remote -v
 
 ```
 # установить
-pacaur -S slack-desktop
+yay -S slack-desktop
 
 # запуск
 slack
@@ -726,13 +705,13 @@ chrome://settings/certificates
 
 === FAR
 ```
-pacaur -S far2l-git
+yay -S far2l-git
 far2l
 ```
 
 === Telegram
 ```
-pacaur -S telegram-desktop-bin
+yay -S telegram-desktop-bin
 telegram-desktop
 ```
 
