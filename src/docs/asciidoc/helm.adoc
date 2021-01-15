@@ -1,0 +1,24 @@
+= Helm
+
+* https://helm.sh[site],
+https://github.com/helm/helm[github]
+
+* полезное:
+https://artifacthub.io/packages/search?kind=0[Поиск чартов в публичных репозиториях],
+https://github.com/bitnami/charts/tree/master/bitnami[Чарты от bitnami на GitHub],
+https://github.com/roboll/helmfile/blob/master/docs/writing-helmfile.md[The Helmfile Best Practices Guide]
+
+* плагины/обертки:
+https://github.com/aslafy-z/helm-git[helm-git],
+https://github.com/roboll/helmfile[helmfile]
+
+* установка (ArchLinux):
+```
+sudo pacman -S helm
+helm --help
+```
+
+* разное:
+```
+helm env
+```
