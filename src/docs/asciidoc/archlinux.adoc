@@ -293,7 +293,35 @@ git config --global user.name gurv
 git config --global user.email "vladimir.gurinovich@gmail.com"
 ```
 
-* Skype
+== Диск
+
+```
+# список дисков и разделов
+lsblk -f
+# создать разделы для EFI и Arch
+sudo cfdisk /dev/nvme0n1
+#   1й - тип: "EFI System"; размер: 500M
+#   2й - тип: "Linux filesystem"; размер: остальное
+# отформатировать раздел EFI
+sudo mkfs.fat -F32 /dev/nvme0n1p1 -n EFI
+# установить GRUB в раздел EFI
+mkdir -p /tmp/efi
+sudo mount /dev/nvme0n1p1 /tmp/efi
+sudo grub-install --efi-directory=/tmp/efi --boot-directory=/tmp/efi/EFI --bootloader-id=grub --target=x86_64-efi --removable  /dev/nvme0n1p1
+# создать файл /tmp/efi/EFI/grub/grub.cfg
+set timeout=3
+menuentry "Arch Linux" {
+ linux /boot/vmlinuz-linux rw root=UUID=f155a7de-d2e9-44c9-b6c0-d0aad60df772
+ initrd /boot/initramfs-linux.img
+}
+# отформатировать раздел для Arch
+sudo mkfs.ext4 /dev/nvme0n1p2 -L arch
+# установить Arch
+sudo mount /dev/nvme0n1p2 /mnt
+pacstrap /mnt base base-devel linux linux-firmware
+```
+
+== Skype
 
 ```
 yay -S skypeforlinux-stable-bin
