@@ -16,6 +16,13 @@ jobs:
     - name: Build
       run: |
         ./gradlew build
+    - name: GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build/docs/asciidoc
+        exclude_assets: '**/.asciidoctor'
+        keep_files: true
     - name: Slack
       if: always()
       uses: 8398a7/action-slack@v3
