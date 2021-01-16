@@ -468,6 +468,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </ul>
 </li>
 <li><a href="#_ansible">Ansible</a></li>
+<li><a href="#_helm">Helm</a></li>
 <li><a href="#_vs_code">VS Code</a></li>
 <li><a href="#_node_js">Node.js</a>
 <ul class="sectlevel2">
@@ -1407,9 +1408,14 @@ USECOLOR="yes"</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>sudo pacman -S alsa-lib alsa-utils
-amixer
-alsamixer</code></pre>
+<pre class="highlight"><code>sudo pacman -S alsa-lib alsa-utils asoundconf
+# установить карту по умолчанию
+asoundconf list
+asoundconf set-default-card PCH
+# настроить
+alsamixer
+# проверить
+speaker-test</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1462,16 +1468,42 @@ git config --global user.name gurv
 git config --global user.email "vladimir.gurinovich@gmail.com"</code></pre>
 </div>
 </div>
-<div class="ulist">
-<ul>
-<li>
-<p>Skype</p>
-</li>
-</ul>
 </div>
+<div class="sect3">
+<h4 id="_диск">Диск</h4>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacaur -S skypeforlinux-stable-bin
+<pre class="highlight"><code># список дисков и разделов
+lsblk -f
+# создать разделы для EFI и Arch
+sudo cfdisk /dev/nvme0n1
+#   1й - тип: "EFI System"; размер: 500M
+#   2й - тип: "Linux filesystem"; размер: остальное
+# отформатировать раздел EFI
+sudo mkfs.fat -F32 /dev/nvme0n1p1 -n EFI
+# установить GRUB в раздел EFI
+mkdir -p /tmp/efi
+sudo mount /dev/nvme0n1p1 /tmp/efi
+sudo grub-install --efi-directory=/tmp/efi --boot-directory=/tmp/efi/EFI --bootloader-id=grub --target=x86_64-efi --removable  /dev/nvme0n1p1
+# создать файл /tmp/efi/EFI/grub/grub.cfg
+set timeout=3
+menuentry "Arch Linux" {
+ linux /boot/vmlinuz-linux rw root=UUID=f155a7de-d2e9-44c9-b6c0-d0aad60df772
+ initrd /boot/initramfs-linux.img
+}
+# отформатировать раздел для Arch
+sudo mkfs.ext4 /dev/nvme0n1p2 -L arch
+# установить Arch
+sudo mount /dev/nvme0n1p2 /mnt
+pacstrap /mnt base base-devel linux linux-firmware</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_skype">Skype</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>yay -S skypeforlinux-stable-bin
 skypeforlinux</code></pre>
 </div>
 </div>
@@ -1495,7 +1527,7 @@ makepkg -si</code></pre>
 pacman -S --noconfirm xf86-video-intel
 pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
 pacman -S --noconfirm termite
-pacaur -S google-chrome
+yay -S google-chrome
 ln -s /usr/bin/google-chrome-stable /opt/app/chrome
 
 # переключение раскладки клавиатуры
@@ -1590,11 +1622,11 @@ xrandr --output DP-1 --rotate right</code></pre>
 <pre class="highlight"><code># установить
 sudo pacman -S --noconfirm awesome
 mkdir ~/.awesome
-cp /etc/xdg/awesome/rc.lua ~/.awesome/
+cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
 echo "exec awesome" &gt; ~/.xinitrc
 
 # настройка
-nano ~/.awesome/rc.lua
+nano ~/.config/awesome/rc.lua
 # - использовать termite: дб terminal = "termite"
 # - автозапуск приложений: см. autorunApps
 # - отключить рисунок: в /usr/share/awesome/themes/default/theme.lua закомментировать theme.wallpaper
@@ -1686,34 +1718,6 @@ gpasswd -a gurv docker</code></pre>
 </td>
 </tr>
 </table>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_pacaur">pacaur</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code># установить
-sudo pacman -S binutils make gcc fakeroot expac yajl git --noconfirm
-mkdir -p /tmp/pacaur_install
-cd /tmp/pacaur_install
-curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=cower
-makepkg PKGBUILD --skippgpcheck
-sudo pacman -U cower*.tar.xz --noconfirm
-curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur
-makepkg PKGBUILD
-sudo pacman -U pacaur*.tar.xz --noconfirm
-rm -r /tmp/pacaur_install
-
-# очистить кеш
-pacaur -Scc
-
-# удалить
-sudo pacman -Rs pacaur
-
-# разное
-# установить пакет
-pacaur -S &lt;имя-пакета&gt;</code></pre>
-</div>
 </div>
 </div>
 <div class="sect3">
@@ -1957,7 +1961,7 @@ git remote -v
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code># установить
-pacaur -S slack-desktop
+yay -S slack-desktop
 
 # запуск
 slack</code></pre>
@@ -2008,7 +2012,7 @@ chrome://settings/certificates</code></pre>
 <h5 id="_far">FAR</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacaur -S far2l-git
+<pre class="highlight"><code>yay -S far2l-git
 far2l</code></pre>
 </div>
 </div>
@@ -2017,7 +2021,7 @@ far2l</code></pre>
 <h5 id="_telegram">Telegram</h5>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacaur -S telegram-desktop-bin
+<pre class="highlight"><code>yay -S telegram-desktop-bin
 telegram-desktop</code></pre>
 </div>
 </div>
@@ -3029,6 +3033,51 @@ role_path</p>
 </div>
 </div>
 <div class="sect1">
+<h2 id="_helm">Helm</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://helm.sh">site</a>,
+<a href="https://github.com/helm/helm">github</a></p>
+</li>
+<li>
+<p>полезное:
+<a href="https://artifacthub.io/packages/search?kind=0">Поиск чартов в публичных репозиториях</a>,
+<a href="https://github.com/bitnami/charts/tree/master/bitnami">Чарты от bitnami на GitHub</a>,
+<a href="https://github.com/roboll/helmfile/blob/master/docs/writing-helmfile.md">The Helmfile Best Practices Guide</a></p>
+</li>
+<li>
+<p>плагины/обертки:
+<a href="https://github.com/aslafy-z/helm-git">helm-git</a>,
+<a href="https://github.com/roboll/helmfile">helmfile</a></p>
+</li>
+<li>
+<p>установка (ArchLinux):</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>sudo pacman -S helm
+helm --help</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>разное:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>helm env</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
 <h2 id="_vs_code">VS Code</h2>
 <div class="sectionbody">
 <div class="paragraph">
@@ -3119,18 +3168,8 @@ role_path</p>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code># установка (ArchLinux)
-# загрузить отсюда https://code.visualstudio.com/download , например, версию ".tar.gz	64 bit"
-mkdir /opt/app/vscode-1.31.1
-cd /opt/app/vscode-1.31.1
-ls ~/Downloads/
-tar xfz ~/Downloads/code-stable-1549938209.tar.gz
-sudo ln -sf /opt/app/vscode-1.31.1/VSCode-linux-x64/bin/code /usr/local/bin/code
-# запуск
+yar -S visual-studio-code-bin
 code
-# если возникнет ошибка об отсутствии библиотеки, то выполнить
-sudo pacman -S gconf
-# расширения находятся здесь
-ls ~/.vscode/extensions
 
 # Установка (Windows)
 # Выполнить (указать для установки каталог d:\app\vs-code-1.27.2)
@@ -5642,7 +5681,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2020-11-01 10:32:37 UTC
+Last updated 2021-01-16 07:12:13 UTC
 </div>
 </div>
 </body>
