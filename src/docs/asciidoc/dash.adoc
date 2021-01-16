@@ -1,10 +1,7 @@
-= Обзор
+= Под рукой
 
 ```
-7z a ci00011745_devops.zip ./ci00011745_devops/
-minishift stop
 systemctl suspend
-minishift start
 setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
 set +H
 ```
