@@ -429,9 +429,6 @@ nano ~/.Xresources
 # установить
 sudo pacman -S jdk11-openjdk
 
-# установить
-sudo pacman -S jdk11-openjdk
-
 # список
 archlinux-java status
 # изменить "по умолчанию"
