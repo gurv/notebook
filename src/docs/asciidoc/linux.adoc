@@ -127,6 +127,7 @@ printenv
 set
 echo "$HOME"
 printf "%s\n" $HOME
+unset HOME
 
 # в загруженных Chrome файлах есть ссылки на источник
 getfattr -d ./notebook-master.zip 
