@@ -554,9 +554,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>systemctl suspend
-setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
-set +H</code></pre>
+<pre class="highlight"><code>setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
+zip -e out.zip in1.txt in2.txt
+set +H
+systemctl suspend</code></pre>
 </div>
 </div>
 </div>
@@ -901,6 +902,7 @@ printenv
 set
 echo "$HOME"
 printf "%s\n" $HOME
+unset HOME
 
 # в загруженных Chrome файлах есть ссылки на источник
 getfattr -d ./notebook-master.zip
@@ -3039,7 +3041,8 @@ role_path</p>
 <p>полезное:
 <a href="https://artifacthub.io/packages/search?kind=0">Поиск чартов в публичных репозиториях</a>,
 <a href="https://github.com/bitnami/charts/tree/master/bitnami">Чарты от bitnami на GitHub</a>,
-<a href="https://github.com/roboll/helmfile/blob/master/docs/writing-helmfile.md">The Helmfile Best Practices Guide</a></p>
+<a href="https://github.com/roboll/helmfile/blob/master/docs/writing-helmfile.md">The Helmfile Best Practices Guide</a>,
+<a href="https://jenkins-x.io/community/labs/enhancements/proposals/4/readme/">JenkinsX: Preview with Helmfile</a>,</p>
 </li>
 <li>
 <p>плагины/обертки:
@@ -5675,7 +5678,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2021-01-16 07:23:28 UTC
+Last updated 2021-01-30 06:06:15 UTC
 </div>
 </div>
 </body>
