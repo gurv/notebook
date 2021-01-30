@@ -1,7 +1,8 @@
 = Под рукой
 
 ```
-systemctl suspend
 setxkbmap -layout "us,ru" -option "grp:ctrl_shift_toggle"
+zip -e out.zip in1.txt in2.txt
 set +H
+systemctl suspend
 ```
