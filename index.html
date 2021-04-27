@@ -1171,7 +1171,7 @@ mount /dev/sda1 /mnt</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacman -S --noconfirm nano, openssh, dhcpcd</code></pre>
+<pre class="highlight"><code>pacman -S --noconfirm nano openssh dhcpcd</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -1392,9 +1392,9 @@ X11Forwarding yes</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacman -S --noconfirm terminus-font ttf-dejavu ttf-liberation
+<pre class="highlight"><code>sudo pacman -S --noconfirm terminus-font ttf-dejavu ttf-liberation
 
-nano /etc/vconsole.conf</code></pre>
+sudo nano /etc/vconsole.conf</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1418,7 +1418,7 @@ USECOLOR="yes"</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>sudo pacman -S alsa-lib alsa-utils asoundconf
+<pre class="highlight"><code>sudo pacman -S --noconfirm alsa-lib alsa-utils asoundconf
 # установить карту по умолчанию
 asoundconf list
 asoundconf set-default-card PCH
@@ -1534,9 +1534,9 @@ makepkg -si</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code># установить
-pacman -S --noconfirm xf86-video-intel
-pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
-pacman -S --noconfirm termite
+sudo pacman -S --noconfirm xf86-video-intel
+sudo pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
+sudo pacman -S --noconfirm termite
 yay -S google-chrome
 ln -s /usr/bin/google-chrome-stable /opt/app/chrome
 
@@ -1631,7 +1631,8 @@ xrandr --output DP-1 --rotate right</code></pre>
 <div class="content">
 <pre class="highlight"><code># установить
 sudo pacman -S --noconfirm awesome
-mkdir ~/.awesome
+mkdir ~/.config
+mkdir ~/.config/awesome
 cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
 echo "exec awesome" &gt; ~/.xinitrc
 
@@ -6168,7 +6169,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2021-04-16 06:06:41 UTC
+Last updated 2021-04-27 10:36:46 UTC
 </div>
 </div>
 </body>
