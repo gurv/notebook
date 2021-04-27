@@ -138,7 +138,7 @@ arch-chroot /mnt
 
 * нужные пакеты
 ```
-pacman -S --noconfirm nano, openssh, dhcpcd
+pacman -S --noconfirm nano openssh dhcpcd
 ```
 
 * выбрать язык (оставить только en_US.UTF-8 UTF-8 и ru_RU.UTF-8 UTF-8)
@@ -238,9 +238,9 @@ reboot
 
 * шрифты, раскладка клавиатуры
 ```
-pacman -S --noconfirm terminus-font ttf-dejavu ttf-liberation
+sudo pacman -S --noconfirm terminus-font ttf-dejavu ttf-liberation
 
-nano /etc/vconsole.conf
+sudo nano /etc/vconsole.conf
 ```
 должно быть:
 ```
@@ -254,7 +254,7 @@ USECOLOR="yes"
 * звук
 
 ```
-sudo pacman -S alsa-lib alsa-utils asoundconf
+sudo pacman -S --noconfirm alsa-lib alsa-utils asoundconf
 # установить карту по умолчанию
 asoundconf list
 asoundconf set-default-card PCH
@@ -341,9 +341,9 @@ makepkg -si
 
 ```
 # установить
-pacman -S --noconfirm xf86-video-intel
-pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
-pacman -S --noconfirm termite
+sudo pacman -S --noconfirm xf86-video-intel
+sudo pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
+sudo pacman -S --noconfirm termite
 yay -S google-chrome
 ln -s /usr/bin/google-chrome-stable /opt/app/chrome
 
@@ -406,7 +406,8 @@ https://awesomewm.org/[site]
 ```
 # установить
 sudo pacman -S --noconfirm awesome
-mkdir ~/.awesome
+mkdir ~/.config
+mkdir ~/.config/awesome
 cp /etc/xdg/awesome/rc.lua ~/.config/awesome/
 echo "exec awesome" > ~/.xinitrc
 
