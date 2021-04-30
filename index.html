@@ -450,7 +450,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel2">
 <li><a href="#_archlinux">ArchLinux</a></li>
 <li><a href="#_alpine">Alpine</a></li>
-<li><a href="#_mc">mc</a></li>
+<li><a href="#_mc_2">mc</a></li>
 <li><a href="#_nano">nano</a></li>
 <li><a href="#_systemd">systemd</a></li>
 <li><a href="#_клавиатура">Клавиатура</a></li>
@@ -1261,11 +1261,7 @@ nano /etc/sudoers</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacman -S --noconfirm grub
-grub-install --target=i386-pc --force --recheck /dev/sda
-exit
-arch-chroot /mnt grub-mkconfig --output=/boot/grub/grub.cfg
-genfstab -p /mnt &gt; /mnt/etc/fstab</code></pre>
+<pre class="highlight"><code>pacman -S --noconfirm grub</code></pre>
 </div>
 </div>
 <div class="admonitionblock note">
@@ -1278,14 +1274,20 @@ genfstab -p /mnt &gt; /mnt/etc/fstab</code></pre>
 <div class="listingblock">
 <div class="title">BIOS (20200719 Бридино)</div>
 <div class="content">
-<pre class="highlight"><code>pacman -S grub-bios
-grub-install --target=i386-pc --force --recheck /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
+<pre class="highlight"><code>pacman -S --noconfirm grub-bios</code></pre>
 </div>
 </div>
 </td>
 </tr>
 </table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>grub-install --target=i386-pc --force --recheck /dev/sda
+exit
+arch-chroot /mnt grub-mkconfig --output=/boot/grub/grub.cfg
+genfstab -p /mnt &gt; /mnt/etc/fstab</code></pre>
+</div>
 </div>
 <div class="ulist">
 <ul>
@@ -1317,6 +1319,9 @@ grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
 <div class="paragraph">
 <p>и вынуть USB-носитель с ISO-образом (или на VM-хосте отключить загрузку с ISO-дистрибутива этого VM-guest)</p>
 </div>
+<div class="paragraph">
+<p>Войти под пользователем gurv</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -1326,20 +1331,8 @@ grub-mkconfig -o /boot/grub/grub.cfg</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>systemctl enable dhcpcd
-systemctl start dhcpcd</code></pre>
-</div>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>установить Midnight Commander</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>pacman -S --noconfirm mc</code></pre>
+<pre class="highlight"><code>sudo systemctl enable dhcpcd
+sudo systemctl start dhcpcd</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -1351,7 +1344,7 @@ systemctl start dhcpcd</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>nano /etc/ssh/sshd_config</code></pre>
+<pre class="highlight"><code>sudo nano /etc/ssh/sshd_config</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -1368,7 +1361,7 @@ X11Forwarding yes</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>systemctl enable sshd</code></pre>
+<pre class="highlight"><code>sudo systemctl enable sshd</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -1473,7 +1466,7 @@ speaker-test</code></pre>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>sudo pacman -S git gradle nodejs npm
+<pre class="highlight"><code>sudo pacman -S --noconfirm git gradle nodejs npm
 git config --global user.name gurv
 git config --global user.email "vladimir.gurinovich@gmail.com"</code></pre>
 </div>
@@ -1506,6 +1499,14 @@ sudo mkfs.ext4 /dev/nvme0n1p2 -L arch
 # установить Arch
 sudo mount /dev/nvme0n1p2 /mnt
 pacstrap /mnt base base-devel linux linux-firmware</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_mc">mc</h4>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>sudo pacman -S --noconfirm mc</code></pre>
 </div>
 </div>
 </div>
@@ -1655,7 +1656,7 @@ nano ~/.Xresources
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code># установить
-sudo pacman -S jdk11-openjdk
+sudo pacman -S --noconfirm jdk11-openjdk
 
 # список
 archlinux-java status
@@ -1752,7 +1753,7 @@ minikube ssh
 <div class="content">
 <pre class="highlight"><code># community-edition
 # установить
-pacman -S intellij-idea-community-edition
+pacman -S --noconfirm intellij-idea-community-edition
 # указать java-environment jdk8-openjdk
 # запуск
 idea.sh
@@ -1793,7 +1794,7 @@ sudo usermod -a -G kvm,libvirt $(whoami)
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
 # virt-manager
-sudo pacman -S virt-manager
+sudo pacman -S --noconfirm virt-manager
 virt-manager
 # пример запуска Arch
 qemu-system-x86_64 \
@@ -1810,7 +1811,7 @@ qemu-system-x86_64 \
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code># установить
-pacman -S virtualbox linux-headers net-tools
+sudo pacman -S --noconfirm virtualbox linux-headers net-tools
 # добавить строку: vboxdrv
 sudo nano /etc/modules-load.d/virtualbox.conf
 # добавить строку: vboxnetadp vboxnetflt vboxpci
@@ -1840,7 +1841,7 @@ WantedBy=multi-user.target
 ###
 #
 useradd -G vboxusers gurv
-sudo pacman -S virtualbox-guest-iso
+sudo pacman -S --noconfirm virtualbox-guest-iso
 
 # VM &amp; systemd
 systemctl enable vboxvmservice@win
@@ -1849,7 +1850,7 @@ systemctl start vboxvmservice@win
 # терминал: см. VBoxSDL или VBoxHeadless
 
 # установить на гостевой ArchLinux
-sudo pacman -S virtualbox-guest-modules-arch virtualbox-guest-utils
+sudo pacman -S --noconfirm virtualbox-guest-modules-arch virtualbox-guest-utils
 
 # создать файл
 nano /etc/modules-load.d/virtualbox.conf
@@ -2100,7 +2101,7 @@ UUID=1d46ac90-62a0-471c-821a-c6a81b283657 /mnt/ext ext4 defaults 0 0</code></pre
 </div>
 </div>
 <div class="sect2">
-<h3 id="_mc">mc</h3>
+<h3 id="_mc_2">mc</h3>
 <div class="paragraph">
 <p>(Midnight Commander)</p>
 </div>
@@ -6169,7 +6170,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2021-04-27 10:36:46 UTC
+Last updated 2021-04-30 20:37:56 UTC
 </div>
 </div>
 </body>
