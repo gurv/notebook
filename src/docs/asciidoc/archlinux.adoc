@@ -178,20 +178,20 @@ nano /etc/sudoers
 * загрузчик (для luna заменть sda на nvme0n1)
 ```
 pacman -S --noconfirm grub
-grub-install --target=i386-pc --force --recheck /dev/sda
-exit
-arch-chroot /mnt grub-mkconfig --output=/boot/grub/grub.cfg
-genfstab -p /mnt > /mnt/etc/fstab
 ```
 [NOTE]
 ====
 .BIOS (20200719 Бридино)
 ```
-pacman -S grub-bios
-grub-install --target=i386-pc --force --recheck /dev/sda
-grub-mkconfig -o /boot/grub/grub.cfg
+pacman -S --noconfirm grub-bios
 ```
 ====
+```
+grub-install --target=i386-pc --force --recheck /dev/sda
+exit
+arch-chroot /mnt grub-mkconfig --output=/boot/grub/grub.cfg
+genfstab -p /mnt > /mnt/etc/fstab
+```
 
 * отредактировать настройки сети
 ```
@@ -205,20 +205,17 @@ poweroff
 ```
 и вынуть USB-носитель с ISO-образом (или на VM-хосте отключить загрузку с ISO-дистрибутива этого VM-guest)
 
+Войти под пользователем gurv
+
 * автозапуск и старт DHCP-клиента
 ```
-systemctl enable dhcpcd
-systemctl start dhcpcd
-```
-
-* установить Midnight Commander
-```
-pacman -S --noconfirm mc
+sudo systemctl enable dhcpcd
+sudo systemctl start dhcpcd
 ```
 
 * настроить SSH
 ```
-nano /etc/ssh/sshd_config
+sudo nano /etc/ssh/sshd_config
 ```
 дб:
 ```
@@ -228,7 +225,7 @@ X11Forwarding yes
 
 запустить SSH
 ```
-systemctl enable sshd
+sudo systemctl enable sshd
 ```
 
 * перегрузка
@@ -288,7 +285,7 @@ timedatectl status
 
 git / gradle / ...
 ```
-sudo pacman -S git gradle nodejs npm
+sudo pacman -S --noconfirm git gradle nodejs npm
 git config --global user.name gurv
 git config --global user.email "vladimir.gurinovich@gmail.com"
 ```
@@ -319,6 +316,12 @@ sudo mkfs.ext4 /dev/nvme0n1p2 -L arch
 # установить Arch
 sudo mount /dev/nvme0n1p2 /mnt
 pacstrap /mnt base base-devel linux linux-firmware
+```
+
+== mc
+
+```
+sudo pacman -S --noconfirm mc
 ```
 
 == Skype
@@ -428,7 +431,7 @@ nano ~/.Xresources
 
 ```
 # установить
-sudo pacman -S jdk11-openjdk
+sudo pacman -S --noconfirm jdk11-openjdk
 
 # список
 archlinux-java status
@@ -487,7 +490,7 @@ minikube ssh
 ```
 # community-edition
 # установить
-pacman -S intellij-idea-community-edition
+pacman -S --noconfirm intellij-idea-community-edition
 # указать java-environment jdk8-openjdk
 # запуск
 idea.sh
@@ -526,7 +529,7 @@ sudo usermod -a -G kvm,libvirt $(whoami)
 sudo systemctl enable libvirtd.service
 sudo systemctl start libvirtd.service
 # virt-manager
-sudo pacman -S virt-manager
+sudo pacman -S --noconfirm virt-manager
 virt-manager
 # пример запуска Arch
 qemu-system-x86_64 \
@@ -541,7 +544,7 @@ qemu-system-x86_64 \
 
 ```
 # установить
-pacman -S virtualbox linux-headers net-tools
+sudo pacman -S --noconfirm virtualbox linux-headers net-tools
 # добавить строку: vboxdrv
 sudo nano /etc/modules-load.d/virtualbox.conf
 # добавить строку: vboxnetadp vboxnetflt vboxpci
@@ -571,7 +574,7 @@ WantedBy=multi-user.target
 ###
 #
 useradd -G vboxusers gurv
-sudo pacman -S virtualbox-guest-iso
+sudo pacman -S --noconfirm virtualbox-guest-iso
 
 # VM & systemd
 systemctl enable vboxvmservice@win
@@ -580,7 +583,7 @@ systemctl start vboxvmservice@win
 # терминал: см. VBoxSDL или VBoxHeadless
 
 # установить на гостевой ArchLinux
-sudo pacman -S virtualbox-guest-modules-arch virtualbox-guest-utils
+sudo pacman -S --noconfirm virtualbox-guest-modules-arch virtualbox-guest-utils
 
 # создать файл
 nano /etc/modules-load.d/virtualbox.conf
