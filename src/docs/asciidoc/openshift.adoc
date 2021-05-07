@@ -1,5 +1,10 @@
 = OpenShift
 
+[WARNING]
+====
+20210507: `minishift` устарел, использовать `CodeReady Containers`
+====
+
 ```
 # Установка (ArchLinux и КVM)
 #
