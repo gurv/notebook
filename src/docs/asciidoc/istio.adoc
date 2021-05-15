@@ -1,5 +1,7 @@
 = Istio
 
+https://www.istioworkshop.io/03-servicemesh-overview/istio-architecture/[Istio Architecture]
+
 https://istio.io/latest/docs/reference/config/networking/gateway/[Gateway]
 
 https://istio.io/latest/docs/reference/config/networking/virtual-service/[Virtual Service]
