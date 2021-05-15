@@ -1672,17 +1672,17 @@ archlinux-java get</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>установить</p>
+<p>установка</p>
 </li>
 </ul>
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>pacman -S --noconfirm docker
-systemctl enable docker
-systemctl start docker
-docker info
-gpasswd -a gurv docker</code></pre>
+<pre class="highlight"><code>sudo pacman -S --noconfirm docker
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo docker info
+sudo gpasswd -a gurv docker</code></pre>
 </div>
 </div>
 <div class="admonitionblock tip">
@@ -2008,8 +2008,8 @@ vlc</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code># доверенного корневого сертификата
-cp CORP_ROOT_CA.crt /etc/ca-certificates/trust-source/anchors/
-trust extract-compat
+sudo cp CORP_ROOT_CA.crt /etc/ca-certificates/trust-source/anchors/
+sudo trust extract-compat
 # персонального сертификата и личного ключа для SSL авторизации
 pk12util -d sql:$HOME/.pki/nssdb -i ~/certs/16735976.p12
 # в chromium (там import, затем перезапустить chromium)
@@ -5651,6 +5651,32 @@ open-source monitoring solution.</p>
 <a href="https://win.rustup.rs/">download</a></p>
 </li>
 <li>
+<p>Установка/обновление на Arch Linux</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>cd ~/Downloads
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rust.sh
+chmod +x rust.sh
+./rust.sh
+
+# restart your current shell
+
+# проверка
+rustup show
+
+# это выполнять после нового login
+source ~/.cargo/env
+
+# обновление
+rustup self update</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
 <p>Установка на Windows 10</p>
 <div class="ulist">
 <ul>
@@ -6184,7 +6210,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2021-05-07 15:49:55 UTC
+Last updated 2021-05-15 07:01:35 UTC
 </div>
 </div>
 </body>
