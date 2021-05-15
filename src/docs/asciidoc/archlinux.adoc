@@ -443,13 +443,13 @@ archlinux-java get
 
 == Docker
 
-* установить
+* установка
 ```
-pacman -S --noconfirm docker
-systemctl enable docker
-systemctl start docker
-docker info
-gpasswd -a gurv docker
+sudo pacman -S --noconfirm docker
+sudo systemctl enable docker
+sudo systemctl start docker
+sudo docker info
+sudo gpasswd -a gurv docker
 ```
 
 [TIP]
@@ -724,8 +724,8 @@ vlc
 
 ```
 # доверенного корневого сертификата
-cp CORP_ROOT_CA.crt /etc/ca-certificates/trust-source/anchors/
-trust extract-compat
+sudo cp CORP_ROOT_CA.crt /etc/ca-certificates/trust-source/anchors/
+sudo trust extract-compat
 # персонального сертификата и личного ключа для SSL авторизации
 pk12util -d sql:$HOME/.pki/nssdb -i ~/certs/16735976.p12
 # в chromium (там import, затем перезапустить chromium)
