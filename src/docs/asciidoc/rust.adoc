@@ -3,6 +3,26 @@
 * https://www.rust-lang.org/[site],
 https://win.rustup.rs/[download]
 
+* Установка/обновление на Arch Linux
+
+```
+cd ~/Downloads
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rust.sh
+chmod +x rust.sh
+./rust.sh
+
+# restart your current shell
+
+# проверка
+rustup show
+
+# это выполнять после нового login
+source ~/.cargo/env
+
+# обновление
+rustup self update
+```
+
 * Установка на Windows 10
 
 ** Скачать
