@@ -1,0 +1,36 @@
+= Istio
+
+https://istio.io/latest/docs/reference/config/networking/gateway/[Gateway]
+
+https://istio.io/latest/docs/reference/config/networking/virtual-service/[Virtual Service]
+
+
+== Ingress
+
+https://istio.io/latest/docs/tasks/traffic-management/ingress/[docs]
+
+
+[plantuml, istio-ingress, png]
+....
+object "app : Deployment" as app_d
+object "app-... : Pod" as app_pod
+object "app : Service" as app_svc
+object "ingress : Deployment" as ingress_d
+object "ingress-... : Pod" as ingress_pod
+object "ingress-gw : Gateway" as ingress_gw
+note top of ingress_gw : Порты, протоколы и хосты входящего трафика
+ingress_gw : spec.selector.istio = ingressgateway
+ingress_gw : spec.servers[0].hosts = ...
+ingress_gw : spec.servers[0].port.number = ...
+ingress_gw : spec.servers[0].port.protocol = ...
+object "app : VirtualService" as app_vs
+note top of app_vs : Правила маршрутизации трафика
+app_vs : spec.gateways[0] = ingress-gw
+app_vs : spec.http[0].route[0].destination.host = app
+app_pod .. app_d
+app_svc .. app_pod
+ingress_pod .. ingress_d
+ingress_pod .. ingress_gw
+app_vs .. app_svc
+app_vs .. ingress_gw
+....

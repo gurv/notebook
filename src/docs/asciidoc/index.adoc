@@ -79,6 +79,8 @@ include::oidc.adoc[]
 
 include::idea.adoc[]
 
+include::istio.adoc[]
+
 include::chrome.adoc[]
 
 include::micex.adoc[]
