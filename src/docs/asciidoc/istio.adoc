@@ -1,16 +1,14 @@
 = Istio
 
-https://www.istioworkshop.io/03-servicemesh-overview/istio-architecture/[Istio Architecture]
+* Основное:
+https://istio.io/latest/[site],
+https://istio.io/latest/docs/[docs],
+https://github.com/istio/istio[GitHub]
 
-https://istio.io/latest/docs/reference/config/networking/gateway/[Gateway]
-
-https://istio.io/latest/docs/reference/config/networking/virtual-service/[Virtual Service]
-
+* Полезное:
+https://www.istioworkshop.io[Istio Service Mesh Workshop]
 
 == Ingress
-
-https://istio.io/latest/docs/tasks/traffic-management/ingress/[docs]
-
 
 [plantuml, istio-ingress, png]
 ....
