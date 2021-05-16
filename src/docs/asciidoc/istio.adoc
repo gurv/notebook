@@ -12,25 +12,41 @@ https://www.istioworkshop.io[Istio Service Mesh Workshop]
 
 [plantuml, istio-ingress, png]
 ....
-object "app : Deployment" as app_d
-object "app-... : Pod" as app_pod
-object "app : Service" as app_svc
-object "ingress : Deployment" as ingress_d
 object "ingress-... : Pod" as ingress_pod
+object "istio-proxy-... : Container" as ingress_istio_proxy_c
 object "ingress-gw : Gateway" as ingress_gw
 note top of ingress_gw : Порты, протоколы и хосты входящего трафика
 ingress_gw : spec.selector.istio = ingressgateway
-ingress_gw : spec.servers[0].hosts = ...
-ingress_gw : spec.servers[0].port.number = ...
-ingress_gw : spec.servers[0].port.protocol = ...
+ingress_pod *.. ingress_istio_proxy_c
+ingress_pod .. ingress_gw
+object "app-... : Pod" as app_pod
+object "app-... : Container" as app_c
+object "istio-proxy-... : Container" as app_istio_proxy_c
+app_pod *.. app_c
+app_pod *.. app_istio_proxy_c
+object "app : Service" as app_svc
 object "app : VirtualService" as app_vs
 note top of app_vs : Правила маршрутизации трафика
-app_vs : spec.gateways[0] = ingress-gw
-app_vs : spec.http[0].route[0].destination.host = app
-app_pod .. app_d
-app_svc .. app_pod
-ingress_pod .. ingress_d
-ingress_pod .. ingress_gw
+app_svc ..> "*" app_pod : spec.selector.app = app
 app_vs .. app_svc
-app_vs .. ingress_gw
+app_vs ..> ingress_gw : spec.gateways[0] = ingress-gw
+....
+
+== Egress
+
+[plantuml, istio-egress, png]
+....
+object "egress-... : Pod" as egress_pod
+object "istio-proxy-... : Container" as egress_istio_proxy_c
+egress_pod *.. egress_istio_proxy_c
+object "app-ext : ServiceEntry" as app_ext_se
+note top of app_ext_se : "Ручное" добавление записи во внутренний реестр сервисов Istio
+app_ext_se : spec.location = MESH_EXTERNAL
+object "app-ext-gw : Gateway" as app_ext_gw
+note top of app_ext_gw : Порты, протоколы и хосты исходящего трафика
+app_ext_gw : spec.selector.istio = egressgateway
+app_ext_gw .. app_ext_se
+object "app-ext-vs : VirtualService" as app_ext_vs
+note top of app_ext_vs : Правила маршрутизации трафика
+app_ext_vs ..> app_ext_gw : spec.gateways[0] = app-ext-gw
 ....
