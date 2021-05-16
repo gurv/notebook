@@ -7,6 +7,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Graphviz
+      run: sudo apt-get install graphviz
     - name: Checkout
       uses: actions/checkout@v1
     - name: Java
