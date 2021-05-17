@@ -427,6 +427,15 @@ nano ~/.Xresources
 #Xft.dpi: 192.0
 ```
 
+== Remmina
+
+```
+# установить
+sudo pacman -S remmina
+sudo pacman -S freerdp
+yay -S remmina-plugin-rdesktop
+```
+
 == java
 
 ```
