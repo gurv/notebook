@@ -8,6 +8,9 @@ https://github.com/istio/istio[GitHub]
 * Полезное:
 https://www.istioworkshop.io[Istio Service Mesh Workshop]
 
+* Envoy:
+image:envoy-sidecar.png[]
+
 == Ingress
 
 [plantuml, istio-ingress, png]
