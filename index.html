@@ -458,6 +458,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_windows">Windows</a>
 <ul class="sectlevel2">
+<li><a href="#_установка_2">Установка</a></li>
 <li><a href="#_клавиатура_2">Клавиатура</a></li>
 <li><a href="#_wsl">WSL</a></li>
 </ul>
@@ -855,6 +856,8 @@ SQL&gt; exit
 
 # копирование (scp) файла на другой узел
 scp -r /PPRB/audit-server-envelope-7.2.0.hf1.1.zip root@10.116.176.85:/envelope/src
+# копирование (scp) файла c другого узла
+scp gurv@10.116.176.85:/Downloads/src.txt ~/Downloads/
 # копирование (rsync) каталога c другого узла
 rsync -avzhe ssh wildfly@10.116.176.85:/opt/pprb/wildfly-app /opt/pprb
 
@@ -2699,6 +2702,19 @@ nano ~/.config/mc/ini
 <div class="sect1">
 <h2 id="_windows">Windows</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_установка_2">Установка</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>SSH</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Через "Панель управления" установить сервер SSH из дополнительных компонент (называется "Сервер OpenSSH") и включить его автозапуск</p>
+</div>
+</div>
 <div class="sect2">
 <h3 id="_клавиатура_2">Клавиатура</h3>
 <table class="tableblock frame-all grid-all stretch">
@@ -6266,7 +6282,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2021-05-18 04:41:06 UTC
+Last updated 2021-05-19 09:13:54 UTC
 </div>
 </div>
 </body>
