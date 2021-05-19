@@ -63,6 +63,8 @@ SQL> exit
 
 # копирование (scp) файла на другой узел
 scp -r /PPRB/audit-server-envelope-7.2.0.hf1.1.zip root@10.116.176.85:/envelope/src
+# копирование (scp) файла c другого узла
+scp gurv@10.116.176.85:/Downloads/src.txt ~/Downloads/
 # копирование (rsync) каталога c другого узла
 rsync -avzhe ssh wildfly@10.116.176.85:/opt/pprb/wildfly-app /opt/pprb
 
