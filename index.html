@@ -1482,6 +1482,47 @@ git config --global user.email "vladimir.gurinovich@gmail.com"</code></pre>
 </div>
 </div>
 <div class="sect3">
+<h4 id="_archey3">Archey3</h4>
+<div class="paragraph">
+<p>Скрипт для вывода логотипа и базовой информации о системе</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># установить
+sudo pacman -S archey3
+# добавить строку вызова archey3 в конец текста
+nano ~/.bashrc</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_pcmanfm">PCManFM</h4>
+<div class="paragraph">
+<p>Файловый менеджер</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># установить
+sudo pacman -S pcmanfm-gtk3
+# запуск
+pcmanfm</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_slim">SLiM</h4>
+<div class="paragraph">
+<p>Графический вход (пока не понял как использовать)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code># установить
+sudo pacman -S slim
+sudo systemctl enable slim.service</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
 <h4 id="_диск">Диск</h4>
 <div class="listingblock">
 <div class="content">
@@ -1545,7 +1586,7 @@ makepkg -si</code></pre>
 <div class="content">
 <pre class="highlight"><code># установить
 sudo pacman -S --noconfirm xf86-video-intel
-sudo pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
+sudo pacman -S --noconfirm xorg-server xorg-apps xorg-xinit xorg-xev
 sudo pacman -S --noconfirm termite
 yay -S google-chrome
 ln -s /usr/bin/google-chrome-stable /opt/app/chrome
@@ -6282,7 +6323,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2021-05-19 09:13:54 UTC
+Last updated 2021-05-23 10:12:50 UTC
 </div>
 </div>
 </body>
