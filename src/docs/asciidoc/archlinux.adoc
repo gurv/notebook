@@ -290,6 +290,38 @@ git config --global user.name gurv
 git config --global user.email "vladimir.gurinovich@gmail.com"
 ```
 
+== Archey3
+
+Скрипт для вывода логотипа и базовой информации о системе
+
+```
+# установить
+sudo pacman -S archey3
+# добавить строку вызова archey3 в конец текста
+nano ~/.bashrc
+```
+
+== PCManFM
+
+Файловый менеджер
+
+```
+# установить
+sudo pacman -S pcmanfm-gtk3
+# запуск
+pcmanfm
+```
+
+== SLiM
+
+Графический вход (пока не понял как использовать)
+
+```
+# установить
+sudo pacman -S slim
+sudo systemctl enable slim.service
+```
+
 == Диск
 
 ```
@@ -345,7 +377,7 @@ makepkg -si
 ```
 # установить
 sudo pacman -S --noconfirm xf86-video-intel
-sudo pacman -S --noconfirm xorg-server xorg-apps xorg-xinit
+sudo pacman -S --noconfirm xorg-server xorg-apps xorg-xinit xorg-xev
 sudo pacman -S --noconfirm termite
 yay -S google-chrome
 ln -s /usr/bin/google-chrome-stable /opt/app/chrome
