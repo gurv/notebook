@@ -87,4 +87,6 @@ include::micex.adoc[]
 
 include::microservices.adoc[]
 
+include::semantic-web.adoc[]
+
 :leveloffset: -1
