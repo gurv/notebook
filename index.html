@@ -563,6 +563,21 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 <li><a href="#_ммвб">ММВБ</a></li>
 <li><a href="#_микросервисы">Микросервисы</a></li>
+<li><a href="#_semantic_web">Semantic Web</a>
+<ul class="sectlevel2">
+<li><a href="#_owl">OWL</a></li>
+<li><a href="#_rdf">RDF</a></li>
+<li><a href="#_rdfs">RDFS</a></li>
+<li><a href="#_shacl">SHACL</a></li>
+<li><a href="#_sparql">SPARQL</a></li>
+<li><a href="#_apache_jena">Apache Jena</a></li>
+<li><a href="#_bfo">BFO</a></li>
+<li><a href="#_qudt">QUDT</a></li>
+<li><a href="#_skos">SKOS</a></li>
+<li><a href="#_nif">NIF</a></li>
+<li><a href="#_тринидата">ТриниДата</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -6319,11 +6334,228 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_semantic_web">Semantic Web</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Semantic Web is an extension of the World Wide Web through standards set by the World Wide Web Consortium (W3C).[1] The goal of the Semantic Web is to make Internet data machine-readable.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="https://www.w3.org/standards/semanticweb/#:~:text=The%20term%20%E2%80%9CSemantic%20Web%E2%80%9D%20refers,SPARQL%2C%20OWL%2C%20and%20SKOS">W3C</a>,
+<a href="https://en.wikipedia.org/wiki/Semantic_Web">Wiki</a></p>
+</li>
+<li>
+<p>Полезное:
+<a href="https://www.oracle.com/technetwork/database/options/semantic-tech/oow08-rdfs-owl-apps-131263.pdf">Oracle: Using OWL/RDFS for Building Semantic Web Applications</a>,
+<a href="https://docs.oracle.com/en/database/oracle/oracle-database/12.2/rdfrm/rdf-suipport-for-apache-jena.html#GUID-3F437E3E-3B74-4CCF-9F16-B2B07B3899E8">Oracle: RDF Semantic Graph Support for Apache Jena</a>,
+<a href="https://events.static.linuxfound.org/sites/events/files/slides/SPARQL%20Optimisation%20101%20Tutorial.pdf">SPARQL Optimisation 101 Tutorial</a>,
+<a href="https://www.stardog.com/platform/">Stardog</a>,
+<a href="https://www.cambridgesemantics.com/why-anzo/">Anzo</a>,
+<a href="https://graphdb.ontotext.com/documentation/free/index.html">GraphDB</a>,
+<a href="https://habr.com/ru/post/451206/">habr: Что сейчас происходит с RDF-хранилищами?</a>,
+<a href="https://habr.com/ru/post/455008/">habr: Semantic Web и Linked Data. Исправления и дополнения</a>,
+<a href="https://habr.com/ru/post/576304/">habr: Как снизить зависимость кода от структуры данных?</a>,
+<a href="https://github.com/kracr/owl2bench">github: OWL2Bench</a></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_owl">OWL</h3>
+<div class="paragraph">
+<p>The Web Ontology Language (OWL) is a family of knowledge representation languages for authoring ontologies. Ontologies are a formal way to describe taxonomies and classification networks, essentially defining the structure of knowledge for various domains: the nouns representing classes of objects and the verbs representing relations between the objects</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="https://www.w3.org/OWL/">W3C</a>,
+<a href="https://www.w3.org/TR/owl-mapping-to-rdf/">W3C: Mapping to RDF Graphs</a>,
+<a href="https://www.w3.org/TR/owl2-manchester-syntax/">W3C: Manchester Syntax</a>,
+<a href="https://en.wikipedia.org/wiki/Web_Ontology_Language">Wiki</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rdf">RDF</h3>
+<div class="paragraph">
+<p>The Resource Description Framework (RDF) is a family of World Wide Web Consortium (W3C) specifications originally designed as a metadata data model. It has come to be used as a general method for conceptual description or modeling of information that is implemented in web resources, using a variety of syntax notations and data serialization formats. It is also used in knowledge management applications.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="https://www.w3.org/RDF/">W3C</a>,
+<a href="https://en.wikipedia.org/wiki/Resource_Description_Framework">Wiki</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_rdfs">RDFS</h3>
+<div class="paragraph">
+<p>RDF Schema (Resource Description Framework Schema, variously abbreviated as RDFS, RDF(S), RDF-S, or RDF/S) is a set of classes with certain properties using the RDF extensible knowledge representation data model, providing basic elements for the description of ontologies. It uses various forms of RDF vocabularies, intended to structure RDF resources. RDF and RDFS can be saved in a triplestore, then one can entail some knowledge from them using a query language, like SPARQL.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="https://www.w3.org/TR/2014/REC-rdf-schema-20140225/">W3C: RDF Schema 1.1</a>,
+<a href="https://en.wikipedia.org/wiki/RDF_Schema">Wiki</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_shacl">SHACL</h3>
+<div class="paragraph">
+<p>Shapes Constraint Language (SHACL) is a World Wide Web Consortium (W3C) specification for validating graph-based data against a set of conditions. Among others, SHACL includes features to express conditions that constrain the number of values that a property may have, the type of such values, numeric ranges, string matching patterns, and logical combinations of such constraints. SHACL also includes an extension mechanism to express more complex conditions in languages such as SPARQL.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="https://www.w3.org/TR/shacl/">W3C</a>,
+<a href="https://en.wikipedia.org/wiki/SHACL">Wiki</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_sparql">SPARQL</h3>
+<div class="paragraph">
+<p>SPARQL (pronounced "sparkle" /ˈspɑːkəl/, a recursive acronym for SPARQL Protocol and RDF Query Language) is an RDF query language—that is, a semantic query language for databases—able to retrieve and manipulate data stored in Resource Description Framework (RDF) format.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="https://www.w3.org/TR/rdf-sparql-query/">W3C</a>,
+<a href="https://en.wikipedia.org/wiki/SPARQL">Wiki</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_turtle">Turtle</h4>
+<div class="paragraph">
+<p>Terse RDF Triple Language (Turtle) is a syntax and file format for expressing data in the Resource Description Framework (RDF) data model. Turtle syntax is similar to that of SPARQL, an RDF query language. It is a common data format for storing RDF data, along with N-Triples, JSON-LD and RDF/XML.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="https://www.w3.org/TR/turtle/">W3C</a>,
+<a href="https://en.wikipedia.org/wiki/Turtle_(syntax)">Wiki</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_apache_jena">Apache Jena</h3>
+<div class="paragraph">
+<p>A free and open source Java framework for building Semantic Web and Linked Data applications.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="https://jena.apache.org/index.html">site</a>,
+<a href="https://jena.apache.org/documentation/">docs</a>,
+<a href="https://jena.apache.org/about_jena/architecture.html">architecture</a>,
+<a href="https://github.com/apache/jena">github</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_bfo">BFO</h3>
+<div class="paragraph">
+<p>The Basic Formal Ontology (BFO) is a small, upper level ontology that is designed for use in supporting information retrieval, analysis and integration in scientific and other domains. BFO is a genuine upper ontology. Thus it does not contain physical, chemical, biological or other terms which would properly fall within the coverage domains of the special sciences. BFO is used by more than 250 ontology-driven endeavors throughout the world.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="https://basic-formal-ontology.org/">site</a>,
+<a href="file:///C:/Users/GurV/Downloads/BFO2-Reference.pdf">reference</a>,
+<a href="https://github.com/BFO-ontology/BFO">github</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_qudt">QUDT</h3>
+<div class="paragraph">
+<p>QUDT presents a unified architecture for the conceptual representation of quantities, quantity kinds, units, dimensions, and data types, which lie at the core of all scientific and engineering inquiry.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="http://www.qudt.org/pages/HomePage.html">site</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_skos">SKOS</h3>
+<div class="paragraph">
+<p>The Simple Knowledge Organization System (SKOS) is a common data model for sharing and linking knowledge organization systems via the Semantic Web.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="https://www.w3.org/TR/skos-reference/">reference</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_nif">NIF</h3>
+<div class="paragraph">
+<p>The NLP Interchange Format (NIF) is an RDF/OWL-based format that aims to achieve interoperability between Natural Language Processing (NLP) tools, language resources and annotations.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="https://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core/nif-core.html" class="bare">https://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core/nif-core.html</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_тринидата">ТриниДата</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Основное:
+<a href="https://trinidata.ru/">site</a></p>
+</li>
+<li>
+<p>Полезное:
+<a href="https://trinidata.ru/files/CookBook.pdf">Корпоративные автоматизированные системы на основе онтологических моделей: книга рецептов</a>
+<a href="https://trinidata.ru/files/EnterpriseModeling.pdf">ОНТОЛОГИЧЕСКОЕ МОДЕЛИРОВАНИЕ ПРЕДПРИЯТИЙ. МЕТОДЫ И ТЕХНОЛОГИИ</a>,
+<a href="https://trinidata.ru/files/ArchiGraphMIRUserGuide.pdf">РУКОВОДСТВО ПОЛЬЗОВАТЕЛЯ редактора онтологий АрхиГраф.Мир</a>,
+<a href="https://trinidata.ru/files/OntoAdminGuide.pdf">РУКОВОДСТВО АДМИНИСТРАТОРА редактора онтологий Onto.pro</a>,
+<a href="https://trinidata.ru/mdm_benchmark.htm">АрхиГраф.MDM. Результаты теста быстродействия</a>,
+<a href="https://trinidata.ru/tech_tech.htm">Технологии онтологического моделирования. RDF и OWL</a></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
 </div>
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2021-05-23 10:12:50 UTC
+Last updated 2021-09-07 20:40:19 UTC
 </div>
 </div>
 </body>
