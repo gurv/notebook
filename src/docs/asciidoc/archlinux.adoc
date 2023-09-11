@@ -487,28 +487,18 @@ archlinux-java get
 * установка
 ```
 sudo pacman -S --noconfirm docker
-sudo systemctl enable docker
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
 sudo systemctl start docker
 sudo docker info
-sudo gpasswd -a gurv docker
+sudo groupadd docker
+sudo usermod -aG docker $USER
+# выйти и зайти
+# тест:
+docker run hello-world
+# 20230911: для этого теста потребовалось еще:
+sudo pacman -S glibc
 ```
-
-[TIP]
-====
-* 20180503: установился docker-1:18.04.0-1
-* TODO пытался в /etc/docker/daemon.json указать
-```
-{
-  "hosts": ["tcp://0.0.0.0:2376"]
-}
-```
-, но стартует с ошибками
-
-* в /usr/lib/systemd/system/docker.service должно быть
-```
-ExecStart=/usr/bin/dockerd -H 0.0.0.0:2375 -H fd://
-```
-====
 
 == minikube
 
