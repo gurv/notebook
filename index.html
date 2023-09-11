@@ -1755,54 +1755,18 @@ archlinux-java get</code></pre>
 <div class="listingblock">
 <div class="content">
 <pre class="highlight"><code>sudo pacman -S --noconfirm docker
-sudo systemctl enable docker
+sudo systemctl enable docker.service
+sudo systemctl enable containerd.service
 sudo systemctl start docker
 sudo docker info
-sudo gpasswd -a gurv docker</code></pre>
+sudo groupadd docker
+sudo usermod -aG docker $USER
+# выйти и зайти
+# тест:
+docker run hello-world
+# 20230911: для этого теста потребовалось еще:
+sudo pacman -S glibc</code></pre>
 </div>
-</div>
-<div class="admonitionblock tip">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
-</td>
-<td class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>20180503: установился docker-1:18.04.0-1</p>
-</li>
-<li>
-<p>TODO пытался в /etc/docker/daemon.json указать</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>{
-  "hosts": ["tcp://0.0.0.0:2376"]
-}</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>, но стартует с ошибками</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>в /usr/lib/systemd/system/docker.service должно быть</p>
-</li>
-</ul>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>ExecStart=/usr/bin/dockerd -H 0.0.0.0:2375 -H fd://</code></pre>
-</div>
-</div>
-</td>
-</tr>
-</table>
 </div>
 </div>
 <div class="sect3">
@@ -6555,7 +6519,7 @@ Go to VCS/Git/Rebase. Then select Interactive option. It will show you a list of
 <div id="footer">
 <div id="footer-text">
 Version 1.0-SNAPSHOT<br>
-Last updated 2021-09-07 20:40:19 UTC
+Last updated 2023-09-11 16:38:33 UTC
 </div>
 </div>
 </body>
